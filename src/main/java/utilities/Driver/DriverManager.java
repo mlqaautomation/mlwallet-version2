@@ -14,6 +14,8 @@ import java.util.Set;
 public class DriverManager {
     //thread local for web driver
     private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<> ();
+    private Object driver;
+
     //private static final boolean useRemoteWebDriver = Boolean.getBoolean("remoteDriver");
     public static void createDriver(final DriverType browser){
         switch (browser){
@@ -110,4 +112,8 @@ public static void closeWebBrowser() {
     }
 
     private DriverManager(){}
+
+
 }
+
+
