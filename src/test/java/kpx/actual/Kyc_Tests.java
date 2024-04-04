@@ -18,7 +18,7 @@ public class Kyc_Tests extends BaseTest {
     public void KYC_TC_02()throws Exception{
         if(this.homeSteps.isInHomePage()){
             this.kycSteps.navigateKycPage();
-//            this.kycSteps.searchRegisteredKYC_Valid();
+            this.kycSteps.searchRegisteredKYC_Valid();
             this.kycSteps.searchRegisteredKYC_Valid();
             ExtentReporter.logPass("Registered KYC records will display");
 
@@ -27,23 +27,24 @@ public class Kyc_Tests extends BaseTest {
     }
 
 
-//    @Test(dependsOnMethods = "loginGoogle" , priority = 2)
-//    public void KYC_TC_03()throws Exception{
-//        if(this.homeSteps.isInHomePage()){
-//            this.kycSteps.navigateKycPage();
-//            this.kycSteps.searchRegisteredKYC_Invalid();
-//            this.kycSteps.searchRegisteredKYC_Invalid03();
-//            this.kycSteps.searchRegisteredKYC_Invalid04();
-//            this.kycSteps.searchRegisteredKYC_Invalid05();
-//
-//        }
-//    }
-    
     @Test(dependsOnMethods = "loginGoogle" , priority = 2)
+    public void KYC_TC_03()throws Exception{
+        if(this.homeSteps.isInHomePage()){
+            this.kycSteps.navigateKycPage();
+            this.kycSteps.searchRegisteredKYC_Invalid();
+            this.kycSteps.searchRegisteredKYC_Invalid03();
+            this.kycSteps.searchRegisteredKYC_Invalid04();
+            this.kycSteps.searchRegisteredKYC_Invalid05();
+
+        }
+    }
+    
+    @Test(dependsOnMethods = "loginGoogle" , priority = 3)
     public void KYC_TC_04()throws Exception {
         if (this.homeSteps.isInHomePage()) {
             this.kycSteps.AddNewKYC_Valid();
             this.kycSteps.AddNewKYC01();
+
 
         }
     }
