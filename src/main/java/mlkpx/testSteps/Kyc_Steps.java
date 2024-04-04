@@ -16,10 +16,10 @@ public class Kyc_Steps extends Base_Steps {
         try{
             click(kycPageObjects.kyc_link(), "Kyc Page");
             if(isVisible(kycPageObjects.kycPage_h2(), getText(kycPageObjects.kycPage_h2()))){
-                LoggingUtils.info("Navigated to Search KYC Page");
+                LoggingUtils.info("KYC page will display");
             }
         }catch (Exception e){
-            LoggingUtils.info("Failed to Navigate Search KYC Page "+ e);
+            LoggingUtils.info("KYC page will not display "+ e);
         }
     }
 
@@ -103,21 +103,25 @@ public class Kyc_Steps extends Base_Steps {
 
             type(kycPageObjects.placeOfBirth(), "Place of birth", propertyReader.getproperty("birthplace"));
             click(kycPageObjects.nationalityButton(), "Nationality");
+
             click(kycPageObjects.filipinoNationality(), "Filipino Nationality");
             click(kycPageObjects.civilStatus(), "Civil Status");
             click(kycPageObjects.civilStatusSingle(), "Single Civil Status");
             click(kycPageObjects.genderButton(), "Gender");
-            click(kycPageObjects.genderMale(), "Male Gender");
+            click(kycPageObjects.genderMale(), "Selected Gender");
             click(kycPageObjects.countryBirth(), "Country Birth");
-            click(kycPageObjects.selectCountryBirth(), "Select Country Birth");
-            click(kycPageObjects.hasNoMobileNumber(), "Check no Mobile Number");
-            click(kycPageObjects.inputEmail(), "Email");
+            click(kycPageObjects.selectCountryBirth(), "Selected Country Birth");
+
+            type(kycPageObjects.inputMobileNumber(), "Mobile Number", propertyReader.getproperty("mobilenumber"));
             type(kycPageObjects.inputEmail(), "Email", propertyReader.getproperty("email"));
+            scrollDown(30);
+
             click(kycPageObjects.provinceState(), "Province or State");
             click(kycPageObjects.selectProvinceState(), "Select Province or State");
             click(kycPageObjects.municipality(), "Click Municipality");
             click(kycPageObjects.selectMunicipality(), "Select Municipality");
             click(kycPageObjects.sameWithCurrentAddress(), "Same with Current Address");
+
             type(kycPageObjects.companyName(), "Company/Employer Name", propertyReader.getproperty("companyname"));
             click(kycPageObjects.productServices(),"Product/Services Offered");
             click(kycPageObjects.selectProductServices(), "Selected Product/Services Offered");
@@ -126,6 +130,32 @@ public class Kyc_Steps extends Base_Steps {
             click(kycPageObjects.selectedPosistionAtWork(), "Selected Product/Services Offered");
             click(kycPageObjects.natureOfWork(),"Nature of Work");
             click(kycPageObjects.selectedNatureOfWork(), "Selected Nature of Work");
+
+            click(kycPageObjects.idType(),"ID Type");
+            click(kycPageObjects.idTypeSelected(), "Selected ID Type");
+            type(kycPageObjects.idNumber(), "ID Number", propertyReader.getproperty("IdNo"));
+            click(kycPageObjects.expiryDate(), "Expiry Date field");
+            type(kycPageObjects.expiryDate(), "Expiry Date field", propertyReader.getproperty("expiryDate"));
+            kycPageObjects.expiryDate().sendKeys(Keys.ARROW_LEFT);
+            type(kycPageObjects.expiryDate(), "Expiry Date field", propertyReader.getproperty("expiryMonth"));
+            kycPageObjects.expiryDate().sendKeys(Keys.ARROW_LEFT);
+            kycPageObjects.expiryDate().sendKeys(Keys.ARROW_LEFT);
+            type(kycPageObjects.expiryDate(), "Expiry Date field", propertyReader.getproperty("expiryDay"));
+            scrollDown(50);
+
+            click(kycPageObjects.frontIDCamButton(), "Camera");
+            waitSleep(2);
+            click(kycPageObjects.captureButtonID1(), "Capture Photo");
+
+            click(kycPageObjects.captureButtonID1(), "Capture Photo");
+            waitSleep(2);
+            click(kycPageObjects.setPhotoButton(), "Set Photo");
+            click(kycPageObjects.setPhotoButton(), "Set Photo");
+
+           click(kycPageObjects.customersPhoto(), "Customers Photo");
+           click(kycPageObjects.customersPhotoButton(), "Customers Photo Capture Button");
+           click(kycPageObjects.setPhotoCustomers(), "Set Customers Photo");
+
         } catch (Exception e) {
             ExtentReporter.logFail("" + e);
         }
