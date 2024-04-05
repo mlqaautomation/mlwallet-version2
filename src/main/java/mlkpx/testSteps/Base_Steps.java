@@ -10,6 +10,7 @@ public abstract class Base_Steps extends GeneralMethod {
     Login_PageObjects loginPageObjects = new Login_PageObjects();
     Google_PageObjects googlePageObjects = new Google_PageObjects();
     SendOut_PageObjects sendOutPageObjects = new SendOut_PageObjects();
+    SendOutCancellation_PageObjects sendOutCancellationPageObjects = new SendOutCancellation_PageObjects();
     final String filepath = "src\\test\\java\\resources\\testData.properties";
     propertyReader propertyReader = new propertyReader(filepath);
 

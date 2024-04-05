@@ -1,9 +1,6 @@
 package kpx.base;
 
-import mlkpx.testSteps.Home_Steps;
-import mlkpx.testSteps.Kyc_Steps;
-import mlkpx.testSteps.Login_Steps;
-import mlkpx.testSteps.SendOut_Steps;
+import mlkpx.testSteps.*;
 import org.testng.annotations.*;
 
 import static utilities.Driver.DriverManager.*;
@@ -16,6 +13,7 @@ public class BaseTest {
     protected Login_Steps loginSteps;
     protected Kyc_Steps kycSteps;
     protected SendOut_Steps sendOutSteps;
+    protected SendOutCancellation_Steps sendOutCancellationSteps;
 
     @Parameters("browser")
     @BeforeClass (alwaysRun = true)
@@ -35,6 +33,7 @@ public class BaseTest {
         this.homeSteps = new Home_Steps();
         this.kycSteps = new Kyc_Steps();
         this.sendOutSteps = new SendOut_Steps();
+        this.sendOutCancellationSteps = new SendOutCancellation_Steps();
 
 
     }

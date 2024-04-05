@@ -8,8 +8,11 @@
     <test name="KYC Input">
         <parameter name="browser" value="chrome">
             <classes>
-                <class name="kpx.actual.SendOut_Tests">
-                </class>
+<!--                <class name="kpx.actual.Kyc_Tests_Tests">-->
+<!--                </class>-->
+<!--                <class name="kpx.actual.SendOut_Tests">-->
+<!--               </class>-->
+                <class name="kpx.actual.SendOutCancellation_Tests"> </class>
             </classes>
         </parameter>
     </test>

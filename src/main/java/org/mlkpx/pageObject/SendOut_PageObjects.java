@@ -19,6 +19,7 @@ public class SendOut_PageObjects {
     public WebElement yesRadioButton(){ return getDriver().findElement(By.xpath("//*[text()=\"Yes\"]"));}
     public WebElement branchInformationText(){ return getDriver().findElement(By.xpath("//*[text()=\"Branch Information\"]"));}
     public WebElement branchField(){
+
         return getDriver().findElement(By.cssSelector("[name=\"branchCode\"]"));
     }
     public WebElement branchNotFoundText(){ return getDriver().findElement(By.xpath("//*[text()=\"Branch not found\"]"));}
@@ -50,12 +51,13 @@ public class SendOut_PageObjects {
         return getDriver().findElement(By.cssSelector("[name=\"senderOtherInformation.contactNumber\"]"));
     }
     public WebElement searchReceivers(){return getDriver().findElement(By.xpath("//*[text()='Search Receivers']\n"));}
-    public WebElement receiversText(){return getDriver().findElement(By.xpath("Receiver Information\n"));}
+    public WebElement name_Text(){return getDriver().findElement(By.xpath("//*[text()=\"Name: \"]\n"));}
+
+    public WebElement selectButton(){return getDriver().findElement(By.xpath("//*[text()= \"Select\"]\n"));}
+
     public WebElement addNewReceivers(){
         return getDriver().findElement(By.xpath("//*[text()='Add New Receiver']"));
     }
-
-    public WebElement vpoRemarks(){ return getDriver().findElement(By.xpath("//*[text()='VPO Remarks']"));}
 
     public WebElement r_LastName(){
         return getDriver().findElement(By.cssSelector("[placeholder=\"Last Name\"]"));
@@ -89,11 +91,10 @@ public class SendOut_PageObjects {
     public WebElement r_sex_Field(){
         return getDriver().findElement(By.cssSelector("[name=\"beneficiary.gender\"]"));
     }
-
     public WebElement r_selected_Sex_Field(){
+
         return getDriver().findElement(By.cssSelector("[value=\"male\"]"));
     }
-
     public WebElement no_ContactNo(){
         return getDriver().findElement(By.cssSelector("[name=\"beneficiary.hasNoContactNumber\"]"));
     }
@@ -114,11 +115,13 @@ public class SendOut_PageObjects {
     public WebElement principalAmount(){
         return getDriver().findElement(By.cssSelector("[id=\"moneyInput\"]"));
     }
-    public WebElement submitSendOut(){
-        return getDriver().findElement(By.xpath("//*[text()=\"Submit Sendout\"]"));
-    }
+    public WebElement submitSendOut(){ return getDriver().findElement(By.xpath("//*[text()=\"Submit Sendout\"]"));}
 
     public WebElement totalAmount(){ return getDriver().findElement(By.xpath("//*[label=\"Total Amount\"]"));}
+    public WebElement cancelButton(){ return getDriver().findElement(By.xpath("//*[@class='swal2-cancel swal2-styled' and text()='Cancel']"));}
+    public WebElement confirmSendOutButton(){ return getDriver().findElement(By.xpath("//*[text()='Confirm Sendout']"));}
+    public WebElement proceedToPrinting(){ return getDriver().findElement(By.xpath("//*[text()='Proceed to Printing']"));}
+    public WebElement cancelButtonInReceipt(){ return getDriver().findElement(By.xpath("//*[text()='Cancel']\n"));}
 
 
 }
