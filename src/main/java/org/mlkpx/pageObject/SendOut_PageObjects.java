@@ -131,4 +131,13 @@ public class SendOut_PageObjects {
     public WebElement cancelButton(){
         return getDriver().findElement(By.cssSelector("[class=\"swal2-cancel swal2-styled\"]"));}
 
+    public WebElement searchKYCdone(){
+        return getDriver().findElement(By.cssSelector("[class=\"sc-dNsVcS ihXJLX\"]"));}
+
+    public WebElement senderInformationText(){
+        return getDriver().findElement(By.xpath("//*[text()=\"Sender Information\"]"));}
+    public WebElement lastNameRequiredDangerText(){
+        return getDriver().findElement(By.xpath("//*[text()=\"Last name is a required field\"]"));}
+    public WebElement firstNameRequiredText(){
+        return getDriver().findElement(By.xpath("//label[text()='First Name']/span[contains(@class, 'text-danger')]"));}
 }
