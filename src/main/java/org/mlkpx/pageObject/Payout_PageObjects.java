@@ -63,6 +63,8 @@ public class Payout_PageObjects {
     }
     public WebElement SelectKYC(){return getDriver().findElement(By.xpath("(//button[normalize-space()='Select KYC'])[1]"));
     }
+    public WebElement SelectsKYC(){return getDriver().findElement(By.xpath("//span[contains(text(),'Select KYC')]"));
+    }
     public WebElement PayoutInfos(){return getDriver().findElement(By.xpath("//h2[contains(text(),'Payout')]"));
     }
     public WebElement ClaimAmount(){return getDriver().findElement(By.xpath("//button[normalize-space()='Claim Amount']"));

@@ -205,7 +205,7 @@ public class Payout_Steps extends Base_Steps{
             payoutPageObjects.NavViewKYC().click();
 
             JavascriptExecutor jse = (JavascriptExecutor) driver;
-            jse.executeScript("arguments[0].scrollIntoView(true);", payoutPageObjects.SelectKYC());
+            jse.executeScript("arguments[0].scrollIntoView(true);", payoutPageObjects.SelectsKYC());
             click(payoutPageObjects.SelectKYC(), "Select KYC");
             if (payoutPageObjects.PayoutInfos().isEnabled()) {
                 LoggingUtils.info("Navigated to View Payout Information's");
@@ -314,7 +314,7 @@ public class Payout_Steps extends Base_Steps{
             type(payoutPageObjects.PayKTPN(), "KTPN Number", propertyReader.getproperty("ClaimKTPNnum"));
             type(payoutPageObjects.PayAmount(), "Amount", propertyReader.getproperty("InvalidAmount"));
             click(payoutPageObjects.SearchButton(), "Search Button");
-            assertEqual(getText(payoutPageObjects.AmountClaimed()), "Sorry this transaction is already claimed. (version: 9add532)");
+            assertEqual(getText(payoutPageObjects.AmountClaimed()), "Sorry this transaction is already claimed. (version: 6a3815b)");
             if (isVisible(payoutPageObjects.PayoutClaimed(), getText(payoutPageObjects.payoutClaim_h5()))) {
                 assertEqual(getText(payoutPageObjects.payoutClaim_h5()), "Payout Claimed");
             }
@@ -340,7 +340,7 @@ public class Payout_Steps extends Base_Steps{
             type(payoutPageObjects.PayKTPN(), "KTPN Number", propertyReader.getproperty("ClaimKTPNnum"));
             type(payoutPageObjects.PayAmount(), "Amount", propertyReader.getproperty("InvalidAmount"));
             click(payoutPageObjects.SearchButton(), "Search Button");
-            assertEqual(getText(payoutPageObjects.AmountClaimed()), "Sorry this transaction is already claimed. (version: 9add532)");
+            assertEqual(getText(payoutPageObjects.AmountClaimed()), "Sorry this transaction is already claimed. (version: 6a3815b)");
 
             if (isVisible(payoutPageObjects.PayoutClaimed(), getText(payoutPageObjects.payoutClaim_h5()))) {
                 assertEqual(getText(payoutPageObjects.payoutClaim_h5()), "Payout Claimed");
