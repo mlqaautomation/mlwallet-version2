@@ -7,66 +7,46 @@ import utilities.ExtentReport.ExtentReporter;
 public class Kyc_Tests extends BaseTest {
     @Test(description = "Logging in via gmail and kpx")
     public void loginGoogle() throws Exception {
-        this.loginSteps.signInGoogle("teller");
-        this.loginSteps.loginKpx("teller");
-        if(this.homeSteps.isInHomePage()){
-            ExtentReporter.logPass("Login, Passed!!");
+        this.loginSteps.signInGoogle("admin");
+        this.loginSteps.loginKpx("admin");
+        if (this.homeSteps.isInHomePage()) {
+            ExtentReporter.logPass("loginGoogle", "Successfully login");
+        } else {
+            ExtentReporter.logFail("loginGoogle ", "Failed login");
         }
     }
 
-//    @Test(dependsOnMethods = "loginGoogle" , priority = 1)
-//    public void KYC_TC_02()throws Exception{
-//        if(this.homeSteps.isInHomePage()){
-//            this.kycSteps.navigateKycPage();
-//            this.kycSteps.searchRegisteredKYC_Valid();
-//            ExtentReporter.logPass("Registered KYC records will display");
-//
-//        }
-//    }
-
-//    @Test(dependsOnMethods = "loginGoogle" , priority = 2)
-//    public void KYC_TC_03()throws Exception{
-//        if(this.homeSteps.isInHomePage()){
-//            this.kycSteps.navigateKycPage();
-//            this.kycSteps.searchRegisteredKYC_Invalid();
-//            ExtentReporter.logPass("LASTNAME and FIRSTNAME IS REQUIRED.");
-//
-//        }
-//    }
-//    @Test(dependsOnMethods = "loginGoogle" , priority = 3)
-//    public void KYC_TC_03_1()throws Exception{
-//        if(this.homeSteps.isInHomePage()){
-//            this.kycSteps.navigateKycPage();
-//            this.kycSteps.searchRegisteredKYC_InvalidInputNumbers();
-//            ExtentReporter.logPass("LAST NAME IS REQUIRED.");
-//
-//        }
-//    }
-//    @Test(dependsOnMethods = "loginGoogle" , priority = 4)
-//    public void KYC_TC_03_2()throws Exception{
-//        if(this.homeSteps.isInHomePage()){
-//            this.kycSteps.navigateKycPage();
-//            this.kycSteps.searchRegisteredKYC_InvalidInputSpecialCharacters();
-//            ExtentReporter.logPass("Cannot proceed to search or No Data");
-//
-//        }
-//    }
-//    @Test(dependsOnMethods = "loginGoogle" , priority = 5)
-//    public void KYC_TC_03_3()throws Exception{
-//        if(this.homeSteps.isInHomePage()){
-//            this.kycSteps.navigateKycPage();
-//            this.kycSteps.searchRegisteredKYC_InvalidInputMoreThan60Characters();
-//            ExtentReporter.logPass("MAXIMUM OF 60 CHARACTERS.");
-//
-//        }
-//    }
-    @Test(dependsOnMethods = "loginGoogle" , priority = 2)
-    public void KYC_TC_04()throws Exception{
-        if(this.homeSteps.isInHomePage()){
+    @Test(dependsOnMethods = "loginGoogle", priority = 2, description = "Test to verify display of registered kyc records")
+    public void KYC_TC_02() throws Exception {
+        if (this.homeSteps.isInHomePage()) {
             this.kycSteps.navigateKycPage();
-            this.kycSteps.validInputsInAddKYCNameSectionPositiveTesting();
-            this.kycSteps.addedKYC();
+            this.kycSteps.searchRegisteredKYC_Valid();
+            ExtentReporter.logPass("KYC_TC_02", "Registered KYC records will display");
         }
     }
 
+    @Test(dependsOnMethods = "loginGoogle", priority = 3, description = "Negative Testing for KYC Search")
+    public void KYC_TC_03() throws Exception {
+        if (this.homeSteps.isInHomePage()) {
+            this.kycSteps.navigateKycPage();
+            this.kycSteps.searchRegisteredKYC_Invalid();
+            this.kycSteps.searchRegisteredKYC_Invalid03();
+            this.kycSteps.searchRegisteredKYC_Invalid04();
+            this.kycSteps.searchRegisteredKYC_Invalid05();
+        }
+    }
+
+    @Test(dependsOnMethods = "loginGoogle", priority = 4, description = "Test to ADD KYC")
+    public void KYC_TC_04() throws Exception {
+        this.homeSteps.isInHomePage();
+        this.kycSteps.navigateKycPage();
+        this.kycSteps.AddNewKYC_Valid();
+        this.kycSteps.AddNewKYC01();
+
+    }
 }
+
+
+
+    
+

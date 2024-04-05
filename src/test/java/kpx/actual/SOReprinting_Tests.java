@@ -4,8 +4,7 @@ import kpx.base.BaseTest;
 import org.testng.annotations.Test;
 import utilities.ExtentReport.ExtentReporter;
 
-public class SendOutCancellation_Tests extends BaseTest {
-
+public class SOReprinting_Tests extends BaseTest {
     @Test(description = "Logging in via gmail and kpx")
     public void loginGoogle() throws Exception {
         this.loginSteps.signInGoogle("teller");
@@ -14,11 +13,12 @@ public class SendOutCancellation_Tests extends BaseTest {
             ExtentReporter.logPass("loginGoogle", "Login, Passed!!");
         }
     }
-    @Test(dependsOnMethods = "loginGoogle" , priority = 1, description = "Verify Navigation of SendOut Cancellation")
-    public void navigatingSendOutPage()throws Exception{
+
+    @Test(dependsOnMethods = "loginGoogle" , priority = 1, description = "Verify of Navigating SO Reprinting Page")
+    public void navigatingSOReprintingPage()throws Exception{
         if(this.homeSteps.isInHomePage()) {
-            this.sendOutCancellationSteps.DS_TC_01();
-            this.sendOutCancellationSteps.SOC_TC_01();
+            this.soReprintingSteps.DS_TC_01();
+            this.soReprintingSteps.SOR_TC_01();
 
         }
 

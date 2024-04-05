@@ -1,13 +1,8 @@
 package mlkpx.testSteps;
 
-import org.mlkpx.pageObject.Kyc_PageObjects;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ISelect;
-import utilities.Driver.DriverManager;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
-import org.openqa.selenium.WebElement;
 public class Kyc_Steps extends Base_Steps {
 
 
@@ -30,10 +25,10 @@ public class Kyc_Steps extends Base_Steps {
             type(kycPageObjects.firstName_field(), "First name field", propertyReader.getproperty("First_name"));
             click(kycPageObjects.searchBtn(), "Search button");
             if(!kycPageObjects.buttonList().isEmpty()){
-                ExtentReporter.logPass("Successfully Search KYC");
+                ExtentReporter.logPass("searchRegisteredKYC_Valid","Successfully Search KYC");
             }
         }catch (Exception e){
-            ExtentReporter.logFail(""+e);
+            ExtentReporter.logFail("searchRegisteredKYC_Valid",""+e);
         }
     }
 
@@ -42,47 +37,59 @@ public class Kyc_Steps extends Base_Steps {
             type(kycPageObjects.lastName_field(), "Last name field", "");
             type(kycPageObjects.firstName_field(), "First name field", "");
             click(kycPageObjects.searchBtn(), "Search button");
+            assertEqual(getText(kycPageObjects.lastName_required()),"LAST NAME IS REQUIRED.");
+            assertEqual(getText(kycPageObjects.firstName_required()),"FIRST NAME IS REQUIRED.");
         }catch (Exception e){
-            ExtentReporter.logFail(""+e);
+            ExtentReporter.logFail("searchRegisteredKYC_Invalid",""+e);
         }
     }
-//    public void searchRegisteredKYC_InvalidInputNumbers(){
-//        try{
-//            type(kycPageObjects.lastName_field(), "Last name field", "3234");
-//            type(kycPageObjects.firstName_field(), "First name field", "12312");
-//            click(kycPageObjects.searchBtn(), "Search button");
-//        }catch (Exception e){
-//            ExtentReporter.logFail(""+e);
-//        }
-//    }
-//    public void searchRegisteredKYC_InvalidInputSpecialCharacters(){
-//        try{
-//            type(kycPageObjects.lastName_field(), "Last name field", "@_#@#@*(#&@$^$");
-//            type(kycPageObjects.firstName_field(), "First name field", "$@@!()$)(@$");
-//            click(kycPageObjects.searchBtn(), "Search button");
-//        }catch (Exception e){
-//            ExtentReporter.logFail(""+e);
-//        }
-//    }
-//    public void searchRegisteredKYC_InvalidInputMoreThan60Characters(){
-//        try{
-//            type(kycPageObjects.lastName_field(), "Last name field", "sdfdssssssssssssssssssssssssssssssssssssssssssssssssssssssfDSfsssssssssssssssgggggggggggggggASSSSSSSSSSSS");
-//            type(kycPageObjects.firstName_field(), "First name field", "sfsdfdsfffffffffffffffffffffffffffSDDDDDDDFFfdsffffffffffffffffffffffffffffffffasfffffffffaaaaaaaaasfccc");
-//            click(kycPageObjects.searchBtn(), "Search button");
-//        }catch (Exception e){
-//            ExtentReporter.logFail(""+e);
-//        }
-//    }
 
 
+    public void searchRegisteredKYC_Invalid03(){
+        try{
+            type(kycPageObjects.lastName_field(), "Numeric Last name field", "45645");
+            type(kycPageObjects.firstName_field(), "Numeric First name field", "456456");
+            click(kycPageObjects.searchBtn(), "Search button");
+            ExtentReporter.logPass("searchRegisteredKYC_Invalid03","Can't Input Numbers" +
+                    " Cannot proceed to search or No Dat");
+        }catch (Exception e){
+            ExtentReporter.logFail("searchRegisteredKYC_Invalid03",""+e);
+        }
+    }
 
-    public void validInputsInAddKYCNameSectionPositiveTesting() throws Exception {
+    public void searchRegisteredKYC_Invalid04() {
         try {
-            type(kycPageObjects.lastName_field(), "Last name field", propertyReader.getproperty("L_name"));
-            type(kycPageObjects.firstName_field(), "First name field", propertyReader.getproperty("F_Name"));
+            type(kycPageObjects.lastName_field(), "Special Character Last name field", "#$%@$%%#^^");
+            type(kycPageObjects.firstName_field(), "Special Character First name field", "#$%@$%%#^^");
+            click(kycPageObjects.searchBtn(), "Search button");
+            ExtentReporter.logPass("searchRegisteredKYC_Invalid04","Can't Input Special Characters" +
+                    "- Cannot proceed to search or No Data");
+        }catch (Exception e){
+            ExtentReporter.logFail( "searchRegisteredKYC_Invalid04",""+e);
+        }
+    }
+
+    public void searchRegisteredKYC_Invalid05() {
+        try {
+            type(kycPageObjects.lastName_field(), "60 Character Last name field", propertyReader.getproperty("MLast_name"));
+            type(kycPageObjects.firstName_field(), "60 Character First name field", propertyReader.getproperty("MFirst_name"));
+            type(kycPageObjects.middleName_field(), "60 Character Middle name field", propertyReader.getproperty("MMiddle_name"));
+            type(kycPageObjects.suffix_field(), "Suffix field", "JRRRR");
+            click(kycPageObjects.searchBtn(), "Search button");
+            assertEqual(getText(kycPageObjects.lastName_max60()),"MAXIMUM OF 60 CHARACTERS.");
+            assertEqual(getText(kycPageObjects.firstName_max60()),"MAXIMUM OF 60 CHARACTERS.");
+            ExtentReporter.logPass("searchRegisteredKYC_Invalid05","Can input only 5 letters in Suffix");
+        }catch (Exception e){
+            ExtentReporter.logFail("searchRegisteredKYC_Invalid05",""+e);
+        }
+    }
+    public void AddNewKYC_Valid() throws Exception{
+            click(kycPageObjects.kyc_link(), "Kyc Page");
+            type(kycPageObjects.lastName_field(), "Last name field", propertyReader.getproperty("ELName"));
+            type(kycPageObjects.firstName_field(), "First name field", propertyReader.getproperty("EFName"));
             click(kycPageObjects.searchBtn(), "Search button");
             click(kycPageObjects.birthdate_field(), "Birthdate field");
-            type(kycPageObjects.birthdate_field(), "Birthdate field", propertyReader.getproperty("birthDate"));
+            type(kycPageObjects.birthdate_field(), "Birthdate field", propertyReader.getproperty("year"));
             kycPageObjects.birthdate_field().sendKeys(Keys.ARROW_LEFT);
             type(kycPageObjects.birthdate_field(), "Birthdate field", propertyReader.getproperty("month"));
             kycPageObjects.birthdate_field().sendKeys(Keys.ARROW_LEFT);
@@ -91,74 +98,89 @@ public class Kyc_Steps extends Base_Steps {
             click(kycPageObjects.searchInOtherSystemButton(), "Search in other system");
             waitSleep(10);
             if(!kycPageObjects.buttonList().isEmpty()){
-                ExtentReporter.logPass("Loading to be directed to the Add KYC Page.");
+                ExtentReporter.logPass("","Loading to be directed to the Add KYC Page.");
             }
-        } catch (Exception e) {
-            ExtentReporter.logFail("" + e);
         }
-    }
 
-    public void addedKYC() throws Exception {
-        try {
+    public void AddNewKYC01 () throws Exception{
+        waitSleep(20000);
+            if (kycPageObjects.AddLName().isEnabled()) {
+                type(kycPageObjects.AddLName(), "Last name field", "Siarot");
+            } else if (kycPageObjects.AddFName().isEnabled()) {
+                type(kycPageObjects.AddFName(), "First name field", "Enrique");
+                waitSleep(5000);
+            }
+            type(kycPageObjects.AddFName(), "Middle name field", "Alferez");
+            waitSleep(2000);
+            click(kycPageObjects.Checkbox(), "Middle Name Check Box");
+            click(kycPageObjects.AddSuffix(), "Select Suffix");
+            type(kycPageObjects.AddBirthPlace(), "Edit/Input Valid BirthDate", "Bohol, Philippines");
+            click(kycPageObjects.SelectNational(), "Select Nationality");
+            click(kycPageObjects.SelectCivilStatus(), "Select Civil Status");
+            click(kycPageObjects.SelectGender(), "Select Gender at Birth");
+            click(kycPageObjects.SelectCountry(), "Select Country Birth");
 
-            type(kycPageObjects.placeOfBirth(), "Place of birth", propertyReader.getproperty("birthplace"));
-            click(kycPageObjects.nationalityButton(), "Nationality");
+            scrollToElement(kycPageObjects.ContactInfo());
+            if (kycPageObjects.ContactInfo().getText().contains("Contact Information")) {
+                type(kycPageObjects.MobileField(), "Input Mobile Number", "09203447377");
+                click(kycPageObjects.MobileCheckout(), "Check if No Mobile Number");
+                type(kycPageObjects.TelephoneField(), "Input Telephone", "02454321345");
+                type(kycPageObjects.EmailField(), "Input Email", "testing@gmail.com");
+            }
+            if (kycPageObjects.CAddressInfo().getText().contains("CURRENT ADDRESS")) {
+                click(kycPageObjects.SelectProvince(), "Select Province");
+                click(kycPageObjects.SelectMunicipality(), "Select Municipality");
+                type(kycPageObjects.HouseStreetInfo(), "House No, Street/ Sitio/Baranggay", "Testing,testing,testing");
+            }
+            if (kycPageObjects.PAddressInfo().getText().contains("PERMANENT ADDRESS")) {
+                click(kycPageObjects.PSelectProvince(), "Select Permanent Province");
+                click(kycPageObjects.PSelectMunicipality(), "Select Permanent Municipality");
+                type(kycPageObjects.PHouseStreetInfo(), "House No, Street/ Sitio/Baranggay", "Testing,testing,testing");
+                click(kycPageObjects.SameCurrentAddress(), "Click Checkout");
+            }
+            if (kycPageObjects.WorkNature().getText().contains("Nature of Work")) {
+                click(kycPageObjects.SourceIncome(), "Select Source of Income");
+                type(kycPageObjects.CompanyName(), "Select Company Employee Name", "Mlhuillier");
+                click(kycPageObjects.ProductOffered(), "Select Product and Services");
+                type(kycPageObjects.WorkAddress(), "Input Work Address", "Cebu City");
+                click(kycPageObjects.PositionAtWork(), "Select Position at Work");
+                click(kycPageObjects.NatureOfWork(), "Select Nature of Work");
+            }
+            if (kycPageObjects.Identification().getText().contains("ID")) {
+                click(kycPageObjects.IDType(), "Select ID Type");
+                type(kycPageObjects.IDNumber(), "Input ID Number", "1234567891011");
+            }
+            if (kycPageObjects.FrontID().getText().contains("ID1")) {
+                scrollToElement(kycPageObjects.Identification());
+                click(kycPageObjects.FCamera(), "Select Camera");
+                waitSleep(2000);
+                click(kycPageObjects.FCapture(), "Select Capture Photo");
+                waitSleep(3000);
+                click(kycPageObjects.FSet(), "Select Set Photo");
+            }
+//            if (kycPageObjects.BackID().getText().contains("ID2")) {
+//                waitSleep(2000);
+//                click(kycPageObjects.BCamera(), "Select Camera");
+//                click(kycPageObjects.BCapture(), "Select Capture Photo");
+//                waitSleep(3000);
+//                click(kycPageObjects.BSet(), "Select Set Photo");
+//            }
+            if (kycPageObjects.CustomerPhoto().getText().contains("CUSTOMER'S PHOTO")) {
+                click(kycPageObjects.CCamera(), "Select Camera");
+                waitSleep(2000);
+                click(kycPageObjects.CCapture(), "Select Capture Photo");
+                waitSleep(2000);
+                click(kycPageObjects.CSet(), "Select Set Photo");
+            }
 
-            click(kycPageObjects.filipinoNationality(), "Filipino Nationality");
-            click(kycPageObjects.civilStatus(), "Civil Status");
-            click(kycPageObjects.civilStatusSingle(), "Single Civil Status");
-            click(kycPageObjects.genderButton(), "Gender");
-            click(kycPageObjects.genderMale(), "Selected Gender");
-            click(kycPageObjects.countryBirth(), "Country Birth");
-            click(kycPageObjects.selectCountryBirth(), "Selected Country Birth");
-
-            type(kycPageObjects.inputMobileNumber(), "Mobile Number", propertyReader.getproperty("mobilenumber"));
-            type(kycPageObjects.inputEmail(), "Email", propertyReader.getproperty("email"));
-            scrollDown(30);
-
-            click(kycPageObjects.provinceState(), "Province or State");
-            click(kycPageObjects.selectProvinceState(), "Select Province or State");
-            click(kycPageObjects.municipality(), "Click Municipality");
-            click(kycPageObjects.selectMunicipality(), "Select Municipality");
-            click(kycPageObjects.sameWithCurrentAddress(), "Same with Current Address");
-
-            type(kycPageObjects.companyName(), "Company/Employer Name", propertyReader.getproperty("companyname"));
-            click(kycPageObjects.productServices(),"Product/Services Offered");
-            click(kycPageObjects.selectProductServices(), "Selected Product/Services Offered");
-            type(kycPageObjects.workAddress(), "Work Address", propertyReader.getproperty("workaddress"));
-            click(kycPageObjects.posistionAtWork(),"Posistion at Work");
-            click(kycPageObjects.selectedPosistionAtWork(), "Selected Product/Services Offered");
-            click(kycPageObjects.natureOfWork(),"Nature of Work");
-            click(kycPageObjects.selectedNatureOfWork(), "Selected Nature of Work");
-
-            click(kycPageObjects.idType(),"ID Type");
-            click(kycPageObjects.idTypeSelected(), "Selected ID Type");
-            type(kycPageObjects.idNumber(), "ID Number", propertyReader.getproperty("IdNo"));
-            click(kycPageObjects.expiryDate(), "Expiry Date field");
-            type(kycPageObjects.expiryDate(), "Expiry Date field", propertyReader.getproperty("expiryDate"));
-            kycPageObjects.expiryDate().sendKeys(Keys.ARROW_LEFT);
-            type(kycPageObjects.expiryDate(), "Expiry Date field", propertyReader.getproperty("expiryMonth"));
-            kycPageObjects.expiryDate().sendKeys(Keys.ARROW_LEFT);
-            kycPageObjects.expiryDate().sendKeys(Keys.ARROW_LEFT);
-            type(kycPageObjects.expiryDate(), "Expiry Date field", propertyReader.getproperty("expiryDay"));
-            scrollDown(50);
-
-            click(kycPageObjects.frontIDCamButton(), "Camera");
-            waitSleep(2);
-            click(kycPageObjects.captureButtonID1(), "Capture Photo");
-
-            click(kycPageObjects.captureButtonID1(), "Capture Photo");
-            waitSleep(2);
-            click(kycPageObjects.setPhotoButton(), "Set Photo");
-            click(kycPageObjects.setPhotoButton(), "Set Photo");
-
-           click(kycPageObjects.customersPhoto(), "Customers Photo");
-           click(kycPageObjects.customersPhotoButton(), "Customers Photo Capture Button");
-           click(kycPageObjects.setPhotoCustomers(), "Set Customers Photo");
-
-        } catch (Exception e) {
-            ExtentReporter.logFail("" + e);
-        }
+            if (kycPageObjects.ActiveStatus().getText().contains("Is Customer Active?")) {
+                scrollToElement(kycPageObjects.ActiveStatus());
+                waitSleep(2000);
+                click(kycPageObjects.KYCEdit(), "Edit");
+                click(kycPageObjects.YesActive(), "Yes");
+                click(kycPageObjects.KYCDone(), "Done");
+                click(kycPageObjects.SaveNewKYC(), "Save New KYC");
+            }
     }
 
 }

@@ -12,10 +12,6 @@ public class SendOut_PageObjects {
     }
     public WebElement sendOutTransaction(){ return getDriver().findElement(By.xpath("//*[@class='dropdown-toggle nav-link' and text()='Sendout Transactions']\n"));}
 
-    public WebElement sendOutDomesticText(){
-        return getDriver().findElement(By.cssSelector("[class=\"sc-fThUAz GNSHw text-capitalize\"]"));
-    }
-    public WebElement domesticSendOut(){ return getDriver().findElement(By.xpath("//*[@class='nav-link' and @href='/sendout/domestic']"));}
     public WebElement yesRadioButton(){ return getDriver().findElement(By.xpath("//*[text()=\"Yes\"]"));}
     public WebElement branchInformationText(){ return getDriver().findElement(By.xpath("//*[text()=\"Branch Information\"]"));}
     public WebElement branchField(){
@@ -28,6 +24,12 @@ public class SendOut_PageObjects {
     }
     public WebElement searchKYC(){
         return getDriver().findElement(By.xpath("//*[text()='Search KYC']"));
+    }
+    public WebElement receiverInformation(){
+        return getDriver().findElement(By.xpath("//*[text()= \"Receiver Information\"]"));
+    }
+    public WebElement sendOutDomesticText(){
+        return getDriver().findElement(By.xpath("[class=\"sc-dExYaf gCEszf text-capitalize\"]"));
     }
     public WebElement lastName(){
         return getDriver().findElement(By.xpath("//*[@name='lastName']"));
@@ -98,7 +100,6 @@ public class SendOut_PageObjects {
     public WebElement no_ContactNo(){
         return getDriver().findElement(By.cssSelector("[name=\"beneficiary.hasNoContactNumber\"]"));
     }
-    public WebElement r_ProvinceStateText(){ return getDriver().findElement(By.xpath("//label[contains(text(), 'Province/State')]"));}
 
     public WebElement sourceOfFund(){
         return getDriver().findElement(By.cssSelector("[placeholder=\"Source of Fund\"]"));
@@ -113,15 +114,21 @@ public class SendOut_PageObjects {
         return getDriver().findElement(By.cssSelector("[name=\"senderOtherInformation.messageToReceiver\"]"));
     }
     public WebElement principalAmount(){
+
         return getDriver().findElement(By.cssSelector("[id=\"moneyInput\"]"));
     }
     public WebElement submitSendOut(){ return getDriver().findElement(By.xpath("//*[text()=\"Submit Sendout\"]"));}
 
     public WebElement totalAmount(){ return getDriver().findElement(By.xpath("//*[label=\"Total Amount\"]"));}
-    public WebElement cancelButton(){ return getDriver().findElement(By.xpath("//*[@class='swal2-cancel swal2-styled' and text()='Cancel']"));}
+
     public WebElement confirmSendOutButton(){ return getDriver().findElement(By.xpath("//*[text()='Confirm Sendout']"));}
     public WebElement proceedToPrinting(){ return getDriver().findElement(By.xpath("//*[text()='Proceed to Printing']"));}
     public WebElement cancelButtonInReceipt(){ return getDriver().findElement(By.xpath("//*[text()='Cancel']\n"));}
-
+    public WebElement yesCancelTransaction(){
+        return getDriver().findElement(By.cssSelector("[class=\"swal2-confirm swal2-styled\"]"));}
+    public WebElement noStayOnThisPage(){
+        return getDriver().findElement(By.cssSelector("[class=\"swal2-confirm swal2-styled\"]"));}
+    public WebElement cancelButton(){
+        return getDriver().findElement(By.cssSelector("[class=\"swal2-cancel swal2-styled\"]"));}
 
 }

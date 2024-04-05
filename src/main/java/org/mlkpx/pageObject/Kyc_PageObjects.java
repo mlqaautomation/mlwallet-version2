@@ -34,68 +34,82 @@ public class Kyc_PageObjects {
     }
     public WebElement lastName_required(){return getDriver().findElement(By.xpath("//*[contains(text(), 'Last name is required.')]"));}
     public WebElement firstName_required(){return getDriver().findElement(By.xpath("//*[contains(text(), 'First name is required.')]"));}
+    public WebElement birthDate(){
+        return getDriver().findElement(By.xpath("//input[@placeholder='Birth Date']"));
+    }
+    public WebElement lastName_max60(){return getDriver().findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/div/form/div/div[1]/div/small"));}
+    public WebElement firstName_max60(){return getDriver().findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/div/form/div/div[2]/div/small"));}
+    public WebElement middleName_max60(){return getDriver().findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/div/form/div/div[3]/div/small"));}
     public WebElement birthdate_field(){return getDriver().findElement(By.cssSelector("[placeholder='Birth Date']"));}
-
+    public WebElement searchOtherDevice(){return getDriver().findElement(By.xpath("//button[normalize-space()='Search in Other Systems']"));
+    }
     public WebElement searchInOtherSystemButton() {
         return getDriver().findElement(By.cssSelector("[class='btn btn-primary']"));
     }
-    public WebElement addKYCText(){return getDriver().findElement(By.xpath("//*[text()=\"Add KYC\"]"));}
-    public WebElement loading(){return getDriver().findElement(By.xpath("//div[@class=\"lds-ripple\"]"));}
-    public WebElement kycNotFoundText(){return getDriver().findElement(By.cssSelector("[class=\"container alert alert-warning fade show\"]"));}
-    public WebElement placeOfBirth(){return getDriver().findElement(By.cssSelector("[name=\"placeOfBirth\"]"));}
-    public WebElement nationalityButton(){return getDriver().findElement(By.cssSelector("[name=\"nationality\"]"));}
-    public WebElement filipinoNationality(){return getDriver().findElement(By.cssSelector("[value=\"FILIPINO\"]"));}
-    public WebElement civilStatus(){return getDriver().findElement(By.cssSelector("[name=\"civilStatus\"]"));}
-    public WebElement civilStatusSingle(){return getDriver().findElement(By.cssSelector("[value=\"single\"]"));}
-    public WebElement genderButton(){return getDriver().findElement(By.cssSelector("[name=\"gender\"]"));}
-    public WebElement genderMale(){return getDriver().findElement(By.cssSelector("[value='male']"));}
-    public WebElement countryBirth(){return getDriver().findElement(By.cssSelector("[name=\"countryOfBirth\"]"));}
-    public WebElement selectCountryBirth(){return getDriver().findElement(By.cssSelector("[value='PHILIPPINES']"));}
-    public WebElement contactInfoText(){return getDriver().findElement(By.xpath("//*[text()='Contact Information']"));}
-    public WebElement wholePageClicktoScroll(){return getDriver().findElement(By.cssSelector("[class='themed-container container-fluid']"));}
-    public WebElement hasNoMobileNumber(){return getDriver().findElement(By.cssSelector("[name=\"hasNoMobileNumber\"]"));}
-    public WebElement inputMobileNumber(){return getDriver().findElement(By.cssSelector("[name=\"cellphoneNumber\"]"));}
-    public WebElement inputEmail(){return getDriver().findElement(By.cssSelector("[name=\"email\"]"));}
-    public WebElement countryText(){return getDriver().findElement(By.xpath("//*[text()='Country']"));}
-    public WebElement currentAddress(){return getDriver().findElement(By.cssSelector("[class='text-muted subheading my-3']"));}
-    public WebElement provinceState(){return getDriver().findElement(By.cssSelector("[name=\"currentAddress.addressL1Id\"]"));}
-    public WebElement selectProvinceState(){return getDriver().findElement(By.xpath("//*[@value='25' and text()='CEBU']"));}
-    public WebElement municipality(){return getDriver().findElement(By.cssSelector("[name=\"currentAddress.addressL2Id\"]"));}
-    public WebElement selectMunicipality(){return getDriver().findElement(By.cssSelector("[value='851']"));}
-    public WebElement houseNoStreetSitioBarangay(){return getDriver().findElement(By.cssSelector("[name=\"currentAddress.otherAddress\"]"));}
-    public WebElement sameWithCurrentAddress(){return getDriver().findElement(By.cssSelector("[name=\"isSameCurrentAddress\"]"));}
-    public WebElement permanentHouseNoStreetSitioBrangay(){return getDriver().findElement(By.cssSelector("[name=\"permanentAddress.otherAddress\"]"));}
-    public WebElement permanentProvinceState(){return getDriver().findElement(By.cssSelector("[name=\"permanentAddress.addressL1Id\"]"));}
-//    public WebElement (){return getDriver().findElement(By.cssSelector("[name=\"currentAddress.addressL1Id\"]"));}
+    public WebElement AddLName(){return getDriver().findElement(By.xpath("//input[@placeholder='Last Name']"));}
+    public WebElement AddFName(){return getDriver().findElement(By.xpath("//input[@placeholder='First Name']"));}
+    public WebElement AddMName(){return getDriver().findElement(By.xpath("//input[@placeholder='Middle Name']"));}
+    public WebElement Checkbox(){return getDriver().findElement(By.xpath("//input[@name='hasNoMiddleName']"));}
+    public WebElement AddBirthPlace(){return getDriver().findElement(By.xpath("//input[@placeholder='Place of Birth']"));}
+    public WebElement AddSuffix(){return getDriver().findElement(By.xpath("//option[@value='JR']"));}
+    public WebElement SelectNational(){return getDriver().findElement(By.xpath("//option[@value='FILIPINO']"));}
+    public WebElement SelectCivilStatus(){return getDriver().findElement(By.xpath("//option[@value='single']"));}
+    public WebElement SelectGender(){return getDriver().findElement(By.xpath("//option[@value='male']"));}
+    public WebElement SelectCountry(){return getDriver().findElement(By.xpath("//option[@value='PHILIPPINES']"));}
+    public WebElement ContactInfo(){return getDriver().findElement(By.xpath("//h5[contains(text(),'Contact Information')]"));}
+    public WebElement MobileField(){return getDriver().findElement(By.xpath("//input[@name='cellphoneNumber']"));}
+    public WebElement MobileCheckout(){return getDriver().findElement(By.cssSelector("[name='hasNoMobileNumber'"));}
+    public WebElement TelephoneField(){return getDriver().findElement(By.xpath("//input[@name='telephoneNumber']"));}
+    public WebElement EmailField(){return getDriver().findElement(By.xpath("//input[@name='email']"));}
 
-    public WebElement companyName(){return getDriver().findElement(By.cssSelector("[name=\"companyName\"]"));}
-    public WebElement productServices(){return getDriver().findElement(By.cssSelector("[name=\"productOffered\"]"));}
-    public WebElement selectProductServices(){return getDriver().findElement(By.cssSelector("[value='INFORMATION TECHNOLOGY']"));}
-    public WebElement workAddress(){return getDriver().findElement(By.cssSelector("[name=\"workAddress\"]"));}
-    public WebElement posistionAtWork(){return getDriver().findElement(By.cssSelector("[name=\"workPosition\"]"));}
-    public WebElement selectedPosistionAtWork(){return getDriver().findElement(By.cssSelector("[value='STAFF/CLERK/WORKER (OFFICE)']"));}
-    public WebElement natureOfWork(){return getDriver().findElement(By.cssSelector("[name=\"natureOfWork\"]"));}
-    public WebElement selectedNatureOfWork(){return getDriver().findElement(By.cssSelector("[value='IT PROFESSIONAL/PROGRAMMER']"));}
-    public WebElement idType(){return getDriver().findElement(By.cssSelector("[name=\"id.validIdCardId\"]"));}
-    public WebElement idTypeSelected(){return getDriver().findElement(By.xpath("//*[@value=\"3\" and text()=\"DRIVER'S LICENSE\"]"));}
-    public WebElement idNumber(){return getDriver().findElement(By.cssSelector("[name=\"id.idNumber\"]"));}
-    public WebElement expiryDate(){return getDriver().findElement(By.cssSelector("[name=\"id.expirationDate\"]"));}
-//    public WebElement expiryDateSelected(){return getDriver().findElement(By.cssSelector("[max=\"9999-12-30\"]"));}
+    public WebElement CAddressInfo(){return getDriver().findElement(By.xpath("//h6[contains(text(),'Current Address')]"));}
+    public WebElement SelectProvince(){return getDriver().findElement(By.xpath("(//option[contains(text(),'ABRA') and @value='1'])[1]"));}
+    public WebElement SelectMunicipality(){return getDriver().findElement(By.xpath("//option[contains(text(),'BOLINEY') and @value='323']"));}
+    public WebElement HouseStreetInfo(){return getDriver().findElement(By.xpath("(//input[@placeholder='HOUSE NO, STREET / SITIO / BARANGAY'])[1]"));}
 
 
-    public WebElement id1Text(){return getDriver().findElement(By.xpath("//*[text()='ID1']"));}
-    public WebElement closeButton(){return getDriver().findElement(By.cssSelector("//button[@class='close']"));}
-    public WebElement frontIDCamButton(){return getDriver().findElement(By.cssSelector("[type=\"button\"][name=\"id1File\"]"));}
-    public WebElement captureButtonID1(){return getDriver().findElement(By.xpath("//*[text()= \"Capture Photo\"]"));}
-    public WebElement setPhotoButton(){return getDriver().findElement(By.cssSelector("[class=\"sc-SrznA cVrTcU btn btn-primary\"]"));}
-    public WebElement customersPhoto(){return getDriver().findElement(By.cssSelector("[name=\"customerPhoto\"]"));}
-    public WebElement customersPhotoButton(){return getDriver().findElement(By.xpath("//*[@class=\"btn-sm btn btn-secondary\" and text()=\"Capture Photo\"]"));}
-    public WebElement setPhotoCustomers(){return getDriver().findElement(By.xpath("//*[@class=\"sc-lnPyaJ gExulw btn btn-primary\"]"));}
+    public WebElement PAddressInfo(){return getDriver().findElement(By.xpath("//h6[contains(text(),'Permanent Address')]"));}
+    public WebElement PSelectProvince(){return getDriver().findElement(By.xpath("(//option[contains(text(),'AGUSAN DEL NORTE') and @value='2'])[2]"));}
+    public WebElement PSelectMunicipality(){return getDriver().findElement(By.xpath("//option[contains(text(),'BUENAVISTA') and @value='589']"));}
+    public WebElement PHouseStreetInfo(){return getDriver().findElement(By.xpath("(//input[@placeholder='HOUSE NO, STREET / SITIO / BARANGAY'])[2]"));}
+    public WebElement SameCurrentAddress(){return getDriver().findElement(By.xpath("//input[@placeholder='House No, Street']"));}
+
+    public WebElement WorkNature(){return getDriver().findElement(By.xpath("//h5[contains(text(),'Nature of Work')]"));}
+    public WebElement SourceIncome(){return getDriver().findElement(By.xpath("//select[@placeholder='Source of Income']"));}
+    public WebElement CompanyName(){return getDriver().findElement(By.xpath("//input[@placeholder='Company/Employer Name']"));}
+    public WebElement ProductOffered(){return getDriver().findElement(By.xpath("//option[@value='INFORMATION TECHNOLOGY']"));}
+    public WebElement WorkAddress(){return getDriver().findElement(By.xpath("//input[@placeholder='Work Address']"));}
+    public WebElement PositionAtWork(){return getDriver().findElement(By.xpath("//option[@value='ENGINEER/SPECIALIST/TECHNICIAN']"));}
+    public WebElement NatureOfWork(){return getDriver().findElement(By.xpath("//option[@value='BPO AGENT/OFFICER']"));}
 
 
 
+    public WebElement Identification(){return getDriver().findElement(By.xpath("//h5[contains(text(),'ID')]"));}
+    public WebElement IDType(){return getDriver().findElement(By.xpath("(//option[@value='5'])[5]"));}
+    public WebElement IDNumber(){return getDriver().findElement(By.xpath("(//input[@placeholder='ID No'])[1]"));}
 
 
+    public WebElement FrontID(){return getDriver().findElement(By.xpath("(//label[contains(text(),'ID')])[6]"));}
+    public WebElement FCamera(){return getDriver().findElement(By.xpath("(//button[normalize-space()='Camera'])[1]"));}
+    public WebElement FCapture(){return getDriver().findElement(By.xpath("//button[normalize-space()='Capture Photo']"));}
+    public WebElement FSet(){return getDriver().findElement(By.xpath("//button[normalize-space()='Set Photo']"));}
 
+
+    public WebElement BackID(){return getDriver().findElement(By.xpath("(//label[contains(text(),'ID')])[7]"));}
+    public WebElement BCamera(){return getDriver().findElement(By.cssSelector("[type='button'][name='id2File']"));}
+    public WebElement BCapture(){return getDriver().findElement(By.xpath("//button[normalize-space()='Capture Photo']"));}
+    public WebElement BSet(){return getDriver().findElement(By.xpath("//button[normalize-space()='Set Photo']"));}
+
+
+    public WebElement CustomerPhoto(){return getDriver().findElement(By.xpath("(//label[@class='subheading'])[4]"));}
+    public WebElement CCamera(){return getDriver().findElement(By.cssSelector("[name='customerPhoto']"));}
+    public WebElement CCapture(){return getDriver().findElement(By.xpath("//button[normalize-space()='Capture Photo']"));}
+    public WebElement CSet(){return getDriver().findElement(By.xpath("//button[normalize-space()='Set Photo']"));}
+
+    public WebElement ActiveStatus(){return getDriver().findElement(By.xpath("//label[contains(text(),'Is Customer Active?')]"));}
+    public WebElement KYCEdit(){return getDriver().findElement(By.xpath("(//button[@class='btn-sm btn btn-secondary'])[4]"));}
+    public WebElement YesActive(){return getDriver().findElement(By.xpath("(//input[@value='1'])[3]"));}
+    public WebElement KYCDone(){return getDriver().findElement(By.xpath("//button[normalize-space()='Done']"));}
+    public WebElement SaveNewKYC(){return getDriver().findElement(By.xpath("//button[normalize-space()='Save New KYC']"));}
 
 }

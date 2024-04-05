@@ -48,7 +48,9 @@ public class DriverManager {
         options.addArguments("--incognito");
         options.addArguments("use-fake-ui-for-media-stream");
 
+        chromePreferences.put("profile.default_content_setting_values.notifications", 2);
         options.setExperimentalOption("prefs", chromePreferences);
+
         // Create desired capabilities
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
