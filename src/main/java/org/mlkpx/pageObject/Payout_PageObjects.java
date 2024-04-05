@@ -14,6 +14,12 @@ public class Payout_PageObjects {
     public WebElement payoutPage_h5(){
         return getDriver().findElement(By.xpath("//h5[contains(text(),'No Transaction Found')]"));
     }
+    public WebElement PayoutClaimed(){
+        return getDriver().findElement(By.xpath("//h5[contains(text(),'Payout Claimed')]"));
+    }
+    public WebElement payoutClaim_h5(){
+        return getDriver().findElement(By.xpath("//h5[contains(text(),'Payout Claimed')]"));
+    }
     public WebElement PayoutTransaction(){
         return getDriver().findElement(By.xpath("(//a[@href='/payout'])[2]"));
     }
@@ -75,6 +81,19 @@ public class Payout_PageObjects {
     }
     public WebElement AmountClaimed(){return getDriver().findElement(By.cssSelector("[class='sc-gEvEer lkAUft']"));
     }
+    public WebElement RequiredKTPN(){return getDriver().findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div/div/form/div[2]/div[1]/div[4]/div/div/div[1]/div/small"));
+    }
+    public WebElement AmountShouldBeNumber(){return getDriver().findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div/div/form/div[2]/div[1]/div[4]/div/div/div[2]/div/small"));
+    }
+    public WebElement BranchNotFound(){return getDriver().findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div/div/form/div[1]/div/div[2]/div/div/div/div[1]/span"));
+    }
+
+    public WebElement ComplianceAss(){return getDriver().findElement(By.xpath("//h5[@class='sc-aXZVg FiXoI']"));
+    }
+    public WebElement OKCom(){return getDriver().findElement(By.xpath("//button[normalize-space()='OK']"));
+    }
+
+
 
 
 }
