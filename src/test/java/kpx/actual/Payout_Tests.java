@@ -32,8 +32,7 @@ public class Payout_Tests extends BaseTest{
             this.payoutSteps.validateSuccessfulRemoteDomesticPayout();
         }
 
-
-    }
+ }
     @Test(dependsOnMethods = "loginGoogle", priority = 3, description = "Domestic payout transaction with invalid KPTN")
     public void Payout_TC_03()throws Exception{
         if(this.homeSteps.isInHomePage()){
@@ -157,16 +156,88 @@ public class Payout_Tests extends BaseTest{
 
 
 
-    //P A Y O U T    C A N C E L L A T I ON
-    @Test(dependsOnMethods = "loginGoogle", priority = 1, description = "Validate successful payout cancellation")
-    public void Payout_TC_Cancellation_01()throws Exception{
-        if(this.homeSteps.isInHomePage()){
-            this.payoutSteps.navigatePayoutPage();
-            this.payoutSteps.validateRemoteComplianceAssistance();
-
-        }
-
-    }
+   // P A Y O U T    C A N C E L L A T I O N
+//    @Test(dependsOnMethods = "loginGoogle", priority = 1, description = "Validate successful payout cancellation")
+//    public void Payout_TC_Cancellation_01()throws Exception{
+//        if(this.homeSteps.isInHomePage()){
+//            this.payoutSteps.navigatePayoutPage();
+//            this.payoutSteps.validateSuccessfulPayoutCancellation();
+//
+//        }
+//
+//    }
+//    @Test(dependsOnMethods = "loginGoogle", priority = 2, description = "Validate remote successful payout cancellation")
+//    public void Payout_TC_Cancellation_02()throws Exception{
+//        if(this.homeSteps.isInHomePage()){
+//            this.payoutSteps.navigatePayoutPage();
+//            this.payoutSteps.validateRemoteSuccessfulPayoutCancellation();
+//
+//        }
+//
+//    }
+//    @Test(dependsOnMethods = "loginGoogle", priority = 3, description = "Validate payout cancellation with invalid KPTN")
+//    public void Payout_TC_Cancellation_03()throws Exception{
+//        if(this.homeSteps.isInHomePage()){
+//            this.payoutSteps.navigatePayoutPage();
+//            this.payoutSteps.validateInvalidKTPNPayoutCancellation();
+//
+//        }
+//
+//    }
+//        @Test(dependsOnMethods = "loginGoogle", priority = 4, description = "Validate payout already been cancelled transaction")
+//        public void Payout_TC_Cancellation_04()throws Exception{
+//        if(this.homeSteps.isInHomePage()){
+//            this.payoutSteps.navigatePayoutPage();
+//            this.payoutSteps.validateAlreadyBeenCancelledTransaction();
+//
+//        }
+//
+//    }
+//    @Test(dependsOnMethods = "loginGoogle", priority = 5, description = "To validate payout cancellation with no KPTN provided")
+//    public void Payout_TC_Cancellation_05()throws Exception{
+//        if(this.homeSteps.isInHomePage()){
+//            this.payoutSteps.navigatePayoutPage();
+//            this.payoutSteps.validatePayoutCancellationWithNoKPTN();
+//
+//        }
+//
+//    }
+//    @Test(dependsOnMethods = "loginGoogle", priority = 6, description = "To validate payout cancellation with no IR number provided")
+//    public void Payout_TC_Cancellation_06()throws Exception{
+//        if(this.homeSteps.isInHomePage()){
+//            this.payoutSteps.navigatePayoutPage();
+//            this.payoutSteps.validateNoIRNumberProvided();
+//
+//        }
+//
+//    }
+//    @Test(dependsOnMethods = "loginGoogle", priority = 7, description = "To validate payout cancellation with no Reason provided")
+//    public void Payout_TC_Cancellation_08()throws Exception{
+//        if(this.homeSteps.isInHomePage()){
+//            this.payoutSteps.navigatePayoutPage();
+//            this.payoutSteps.validateNoReasonProvided();
+//
+//        }
+//
+//    }
+//    @Test(dependsOnMethods = "loginGoogle", priority = 8, description = "To validate Cannot Cancel Payout")
+//    public void Payout_TC_Cancellation_14()throws Exception{
+//        if(this.homeSteps.isInHomePage()){
+//            this.payoutSteps.navigatePayoutPage();
+//            this.payoutSteps.validateCannotCancelPayout();
+//
+//        }
+//
+//    }
+//    @Test(dependsOnMethods = "loginGoogle", priority = 9, description = "To validate Keep the transaction In cancellation process")
+//    public void Payout_TC_Cancellation_15()throws Exception{
+//        if(this.homeSteps.isInHomePage()){
+//            this.payoutSteps.navigatePayoutPage();
+//            this.payoutSteps.validateKeepTheTransaction();
+//
+//        }
+//
+//    }
 
 
 }

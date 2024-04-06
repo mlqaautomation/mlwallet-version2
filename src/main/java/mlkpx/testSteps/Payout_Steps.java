@@ -27,8 +27,8 @@ public class Payout_Steps extends Base_Steps{
             click(payoutPageObjects.PayoutTransaction(), "Payout Transaction");
             click(payoutPageObjects.UnremoteTransaction(), "Un-remote Transaction");
             click(payoutPageObjects.DomesticTransaction(), "Domestic Transaction");
-            type(payoutPageObjects.PayKTPN(), "KTPN Number", propertyReader.getproperty("UnclaimKTPNnum"));
-            type(payoutPageObjects.PayAmount(), "Amount", propertyReader.getproperty("UnnPayAmount"));
+            type(payoutPageObjects.PayKTPN(), "KTPN Number", "KPNWJTKMKSF");
+            type(payoutPageObjects.PayAmount(), "Amount","200" );
             click(payoutPageObjects.SearchButton(), "Search Button");
             waitSleep(2);
             click(payoutPageObjects.SearchKYC(), "Search KYC");
@@ -45,18 +45,16 @@ public class Payout_Steps extends Base_Steps{
             waitSleep(2);
             if(isVisible(payoutPageObjects.payoutPage_h2(), getText(payoutPageObjects.payoutPage_h2()))){
                 LoggingUtils.info("Navigated to View KYC");
+                scrollDown(100);
+                waitSleep(3000);
+                scrollDown(100);
             }
-            if (payoutPageObjects.NavViewKYC().isEnabled()) {
-                payoutPageObjects.NavViewKYC().click();
+            click(payoutPageObjects.SelectKYC(), "Select KYC");
+            if (payoutPageObjects.PayoutInfos().isEnabled()) {
+                LoggingUtils.info("Navigated to View Payout Information's");
+                click(payoutPageObjects.ClaimAmount(), "Select Claim Amount");
+            }
 
-                JavascriptExecutor jse = (JavascriptExecutor) driver;
-                jse.executeScript("arguments[0].scrollIntoView(true);", payoutPageObjects.SelectKYC());
-                click(payoutPageObjects.SelectKYC(), "Select KYC");
-                if (payoutPageObjects.PayoutInfos().isEnabled()) {
-                    LoggingUtils.info("Navigated to View Payout Information's");
-                    click(payoutPageObjects.ClaimAmount(), "Select Claim Amount");
-                }
-            }
 
             if (payoutPageObjects.PayoutConfirm().isEnabled()) {
                 click(payoutPageObjects.ConfirmPayout(), "Click Confirm Payout");
@@ -80,8 +78,8 @@ public class Payout_Steps extends Base_Steps{
             type(payoutPageObjects.ReasonRemote(), "Reason", "Testing");
 
             click(payoutPageObjects.DomesticTransaction(), "Domestic Transaction");
-            type(payoutPageObjects.PayKTPN(), "KTPN Number", propertyReader.getproperty("RUnclaimKTPNnum"));
-            type(payoutPageObjects.PayAmount(), "Amount", propertyReader.getproperty("UnnPayAmount"));
+            type(payoutPageObjects.PayKTPN(), "KTPN Number", "KPNKHPRGHKJ");
+            type(payoutPageObjects.PayAmount(), "Amount", "100");
             click(payoutPageObjects.SearchButton(), "Search Button");
             waitSleep(2);
             click(payoutPageObjects.SearchKYC(), "Search KYC");
@@ -98,17 +96,15 @@ public class Payout_Steps extends Base_Steps{
             waitSleep(2);
             if(isVisible(payoutPageObjects.payoutPage_h2(), getText(payoutPageObjects.payoutPage_h2()))){
                 LoggingUtils.info("Navigated to View KYC");
+                scrollDown(100);
+                waitSleep(3000);
+                scrollDown(100);
             }
-            if (payoutPageObjects.NavViewKYC().isEnabled()) {
-                payoutPageObjects.NavViewKYC().click();
+            click(payoutPageObjects.SelectKYC(), "Select KYC");
 
-                JavascriptExecutor jse = (JavascriptExecutor) driver;
-                jse.executeScript("arguments[0].scrollIntoView(true);", payoutPageObjects.SelectKYC());
-                click(payoutPageObjects.SelectKYC(), "Select KYC");
-                if (payoutPageObjects.PayoutInfos().isEnabled()) {
-                    LoggingUtils.info("Navigated to View Payout Information's");
-                    click(payoutPageObjects.ClaimAmount(), "Select Claim Amount");
-                }
+            if (payoutPageObjects.PayoutInfos().isEnabled()) {
+                LoggingUtils.info("Navigated to View Payout Information's");
+                click(payoutPageObjects.ClaimAmount(), "Select Claim Amount");
             }
 
             if (payoutPageObjects.PayoutConfirm().isEnabled()) {
@@ -141,18 +137,16 @@ public class Payout_Steps extends Base_Steps{
         waitSleep(2);
         if(isVisible(payoutPageObjects.payoutPage_h2(), getText(payoutPageObjects.payoutPage_h2()))){
             LoggingUtils.info("Navigated to View KYC");
+            scrollDown(100);
+            waitSleep(3000);
+            scrollDown(100);
         }
-        if (payoutPageObjects.NavViewKYC().isEnabled()) {
-            payoutPageObjects.NavViewKYC().click();
+        click(payoutPageObjects.SelectKYC(), "Select KYC");
+        if (payoutPageObjects.PayoutInfos().isEnabled()) {
+            LoggingUtils.info("Navigated to View Payout Information's");
+            click(payoutPageObjects.ClaimAmount(), "Select Claim Amount");
+        }
 
-            JavascriptExecutor jse = (JavascriptExecutor) driver;
-            jse.executeScript("arguments[0].scrollIntoView(true);", payoutPageObjects.SelectKYC());
-            click(payoutPageObjects.SelectKYC(), "Select KYC");
-            if (payoutPageObjects.PayoutInfos().isEnabled()) {
-                LoggingUtils.info("Navigated to View Payout Information's");
-                click(payoutPageObjects.ClaimAmount(), "Select Claim Amount");
-            }
-        }
 
         if (payoutPageObjects.PayoutConfirm().isEnabled()) {
             click(payoutPageObjects.ConfirmPayout(), "Click Confirm Payout");
@@ -200,18 +194,16 @@ public class Payout_Steps extends Base_Steps{
         waitSleep(2);
         if(isVisible(payoutPageObjects.payoutPage_h2(), getText(payoutPageObjects.payoutPage_h2()))){
             LoggingUtils.info("Navigated to View KYC");
+            scrollDown(100);
+            waitSleep(3000);
+            scrollDown(100);
         }
-        if (payoutPageObjects.NavViewKYC().isEnabled()) {
-            payoutPageObjects.NavViewKYC().click();
+        click(payoutPageObjects.SelectKYC(), "Select KYC");
+        if (payoutPageObjects.PayoutInfos().isEnabled()) {
+            LoggingUtils.info("Navigated to View Payout Information's");
+            click(payoutPageObjects.ClaimAmount(), "Select Claim Amount");
+        }
 
-            JavascriptExecutor jse = (JavascriptExecutor) driver;
-            jse.executeScript("arguments[0].scrollIntoView(true);", payoutPageObjects.SelectsKYC());
-            click(payoutPageObjects.SelectKYC(), "Select KYC");
-            if (payoutPageObjects.PayoutInfos().isEnabled()) {
-                LoggingUtils.info("Navigated to View Payout Information's");
-                click(payoutPageObjects.ClaimAmount(), "Select Claim Amount");
-            }
-        }
 
         if (payoutPageObjects.PayoutConfirm().isEnabled()) {
             click(payoutPageObjects.ConfirmPayout(), "Click Confirm Payout");
@@ -384,8 +376,6 @@ public class Payout_Steps extends Base_Steps{
 
 
     }
-
-
     public void validateDPTwithoutAmountInput()throws Exception{
 
             click(payoutPageObjects.PayoutTransaction(), "Payout Transaction");
@@ -420,7 +410,6 @@ public class Payout_Steps extends Base_Steps{
 
 
     }
-
     public void validateRemoteInvalidBranchCode()throws Exception{
 
             click(payoutPageObjects.PayoutTransaction(), "Payout Transaction");
@@ -452,8 +441,166 @@ public class Payout_Steps extends Base_Steps{
 
     }
 
+    //P A Y O U T    C A N C E L L A T I O N
+    public void validateSuccessfulPayoutCancellation()throws Exception{
+
+        click(payoutPageObjects.payoutCanPage(), "Payout Cancellation");
+        if(isVisible(payoutPageObjects.PayoutCancellation(), getText(payoutPageObjects.PayoutCancellation()))){
+            click(payoutPageObjects.PayoutCancellation(), "Payout Cancellation Page");
+            LoggingUtils.info("Navigated the Payout Cancellation page");
+
+        }
+        type(payoutPageObjects.CancelKTPN(), "KTPN Number", propertyReader.getproperty("CKTPN"));
+        click(payoutPageObjects.SearchButton(), "Search Button");
+        if(isVisible(payoutPageObjects.PayoutCancellationAmountInfo(), getText(payoutPageObjects.PayoutCancellationAmountInfo()))){
+            type(payoutPageObjects.IRNum(), "KTPN Number", propertyReader.getproperty("IrNO"));
+            type(payoutPageObjects.ReasonCancel(), "Reason for Cancellation ", "Testing");
+            click(payoutPageObjects.CancelButton(), "Cancel Payout");
+            click(payoutPageObjects.YesCancelButton(), "Yes, Cancel Button");
+            click(payoutPageObjects.OKCom(), "Click OK");
+
+            LoggingUtils.info("Payout Cancelled" +
+                    "Payout transaction has been successfully cancelled");
+
+        }
+    }
+    public void validateRemoteSuccessfulPayoutCancellation()throws Exception{
+
+        click(payoutPageObjects.payoutCanPage(), "Payout Cancellation");
+        if(isVisible(payoutPageObjects.PayoutCancellation(), getText(payoutPageObjects.PayoutCancellation()))){
+            click(payoutPageObjects.PayoutCancellation(), "Payout Cancellation Page");
+            LoggingUtils.info("Navigated the Payout Cancellation page");
+
+        }
+        type(payoutPageObjects.CancelKTPN(), "KTPN Number", propertyReader.getproperty("CKTPN"));
+        click(payoutPageObjects.SearchButton(), "Search Button");
+        if(isVisible(payoutPageObjects.PayoutCancellationAmountInfo(), getText(payoutPageObjects.PayoutCancellationAmountInfo()))){
+            type(payoutPageObjects.IRNum(), "KTPN Number", propertyReader.getproperty("IrNO"));
+            type(payoutPageObjects.ReasonCancel(), "Reason for Cancellation ", "Testing");
+            click(payoutPageObjects.CancelButton(), "Cancel Payout");
+            click(payoutPageObjects.YesCancelButton(), "Yes, Cancel Button");
+
+            LoggingUtils.info("Payout Cancelled" +
+                    "Payout transaction has been successfully cancelled");
+
+        }
+    }
+    public void validateInvalidKTPNPayoutCancellation()throws Exception{
+
+        click(payoutPageObjects.payoutCanPage(), "Payout Cancellation");
+        if(isVisible(payoutPageObjects.PayoutCancellation(), getText(payoutPageObjects.PayoutCancellation()))){
+            click(payoutPageObjects.PayoutCancellation(), "Payout Cancellation Page");
+            LoggingUtils.info("Navigated the Payout Cancellation page");
+        }
+        type(payoutPageObjects.CancelKTPN(), "KTPN Number", propertyReader.getproperty("CKTPN"));
+        click(payoutPageObjects.SearchButton(), "Search Button");
+        if(isVisible(payoutPageObjects.NoTransactionFound(), getText(payoutPageObjects.NoTransactionFound()))) {
+            click(payoutPageObjects.OKCom(), "Click OK");
+        }
+        LoggingUtils.info("No Transaction Found" +
+                "Transaction with this KPTN could not be found. Please check the KPTN and try again. (version: 3737586)");
+
+    }
+    public void validateAlreadyBeenCancelledTransaction()throws Exception{
+
+        click(payoutPageObjects.payoutCanPage(), "Payout Cancellation");
+        if(isVisible(payoutPageObjects.PayoutCancellation(), getText(payoutPageObjects.PayoutCancellation()))){
+            click(payoutPageObjects.PayoutCancellation(), "Payout Cancellation Page");
+            LoggingUtils.info("Navigated the Payout Cancellation page");
+        }
+        type(payoutPageObjects.CancelKTPN(), "KTPN Number", "KPNRCHYTSSW");
+        click(payoutPageObjects.SearchButton(), "Search Button");
+
+        assertEqual(getText(payoutPageObjects.AlreadyBeenCancelled()), "Payout transaction has already been cancelled.");
+
+    }
+    public void validatePayoutCancellationWithNoKPTN()throws Exception{
+
+        click(payoutPageObjects.payoutCanPage(), "Payout Cancellation");
+        if(isVisible(payoutPageObjects.PayoutCancellation(), getText(payoutPageObjects.PayoutCancellation()))){
+            click(payoutPageObjects.PayoutCancellation(), "Payout Cancellation Page");
+            LoggingUtils.info("Navigated the Payout Cancellation page");
+        }
+        type(payoutPageObjects.CancelKTPN(), "KTPN Number", "");
+        click(payoutPageObjects.SearchButton(), "Search Button");
+        assertEqual(getText(payoutPageObjects.CKTPNRequired()), "KPTN is required");
 
 
+    }
+    public void validateNoIRNumberProvided()throws Exception{
 
+        click(payoutPageObjects.payoutCanPage(), "Payout Cancellation");
+        if(isVisible(payoutPageObjects.PayoutCancellation(), getText(payoutPageObjects.PayoutCancellation()))){
+            click(payoutPageObjects.PayoutCancellation(), "Payout Cancellation Page");
+            LoggingUtils.info("Navigated the Payout Cancellation page");
+
+        }
+        type(payoutPageObjects.CancelKTPN(), "KTPN Number", propertyReader.getproperty("RUnclaimKTPNnum"));
+        click(payoutPageObjects.SearchButton(), "Search Button");
+        if(isVisible(payoutPageObjects.PayoutCancellationAmountInfo(), getText(payoutPageObjects.PayoutCancellationAmountInfo()))){
+            type(payoutPageObjects.IRNum(), "KTPN Number", "");
+            click(payoutPageObjects.CancelButton(), "Cancel Payout");
+
+            assertEqual(getText(payoutPageObjects.IRNumRequired()), "IR Number is required");
+
+
+        }
+    }
+    public void validateNoReasonProvided()throws Exception{
+
+        click(payoutPageObjects.payoutCanPage(), "Payout Cancellation");
+        if(isVisible(payoutPageObjects.PayoutCancellation(), getText(payoutPageObjects.PayoutCancellation()))){
+            click(payoutPageObjects.PayoutCancellation(), "Payout Cancellation Page");
+            LoggingUtils.info("Navigated the Payout Cancellation page");
+
+        }
+        type(payoutPageObjects.CancelKTPN(), "KTPN Number", propertyReader.getproperty("RUnclaimKTPNnum"));
+        click(payoutPageObjects.SearchButton(), "Search Button");
+        if(isVisible(payoutPageObjects.PayoutCancellationAmountInfo(), getText(payoutPageObjects.PayoutCancellationAmountInfo()))){
+            type(payoutPageObjects.IRNum(), "KTPN Number", propertyReader.getproperty("IrNO"));
+            type(payoutPageObjects.ReasonCancel(), "Reason for Cancellation ", "");
+            click(payoutPageObjects.CancelButton(), "Cancel Payout");
+
+            assertEqual(getText(payoutPageObjects.ReasonRequired()), "Reason for Cancellation is required");
+        }
+    }
+    public void validateCannotCancelPayout()throws Exception{
+
+        click(payoutPageObjects.payoutCanPage(), "Payout Cancellation");
+        if(isVisible(payoutPageObjects.PayoutCancellation(), getText(payoutPageObjects.PayoutCancellation()))){
+            click(payoutPageObjects.PayoutCancellation(), "Payout Cancellation Page");
+            LoggingUtils.info("Navigated the Payout Cancellation page");
+
+        }
+        type(payoutPageObjects.CancelKTPN(), "KTPN Number", propertyReader.getproperty("RUnclaimKTPNnum"));
+        click(payoutPageObjects.SearchButton(), "Search Button");
+        if(isVisible(payoutPageObjects.PayoutCancellationAmountInfo(), getText(payoutPageObjects.PayoutCancellationAmountInfo()))){
+            type(payoutPageObjects.IRNum(), "KTPN Number", propertyReader.getproperty("IrNO"));
+            type(payoutPageObjects.ReasonCancel(), "Reason for Cancellation ", "Testing");
+            click(payoutPageObjects.CancelButton(), "Cancel Payout");
+            click(payoutPageObjects.YesCancelButton(), "Yes, Cancel Button");
+
+            assertEqual(getText(payoutPageObjects.CannotCancel()), "Cannot Cancel Payout");
+        }
+    }
+    public void validateKeepTheTransaction()throws Exception{
+
+        click(payoutPageObjects.payoutCanPage(), "Payout Cancellation");
+        if(isVisible(payoutPageObjects.PayoutCancellation(), getText(payoutPageObjects.PayoutCancellation()))){
+            click(payoutPageObjects.PayoutCancellation(), "Payout Cancellation Page");
+            LoggingUtils.info("Navigated the Payout Cancellation page");
+
+        }
+        type(payoutPageObjects.CancelKTPN(), "KTPN Number", propertyReader.getproperty("RUnclaimKTPNnum"));
+        click(payoutPageObjects.SearchButton(), "Search Button");
+        if(isVisible(payoutPageObjects.PayoutCancellationAmountInfo(), getText(payoutPageObjects.PayoutCancellationAmountInfo()))){
+            type(payoutPageObjects.IRNum(), "KTPN Number", propertyReader.getproperty("IrNO"));
+            type(payoutPageObjects.ReasonCancel(), "Reason for Cancellation ", "Testing");
+            click(payoutPageObjects.KeepTransaction(), "Keep Transaction");
+            click(payoutPageObjects.YesKeepTransaction(), "Yes, Keep Transaction");
+
+            assertEqual(getText(payoutPageObjects.PayoutCancellationAmountInfo()), "Payout Cancellation");
+        }
+    }
 
 }
