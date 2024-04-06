@@ -1,9 +1,11 @@
 package utilities.Driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import utilities.Logger.LoggingUtils;
 
@@ -34,6 +36,8 @@ public class DriverManager {
         LoggingUtils.info("Setting up chrome driver...");
         HashMap<String, Object> chromePreferences = new HashMap<>();
         ChromeOptions options = new ChromeOptions();
+
+        chromePreferences.put("profile.default_content_setting_values.notifications", 2);
 //        options.addArguments("--headless=new");
         options.addArguments("enable-automation");
         options.addArguments("--no-sandbox");
@@ -51,6 +55,7 @@ public class DriverManager {
         chromePreferences.put("profile.default_content_setting_values.notifications", 2);
         options.setExperimentalOption("prefs", chromePreferences);
 
+        options.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
         // Create desired capabilities
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, options);

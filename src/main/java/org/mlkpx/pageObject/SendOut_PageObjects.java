@@ -7,137 +7,194 @@ import static utilities.Driver.DriverManager.getDriver;
 
 public class SendOut_PageObjects {
 
-    public WebElement sendOutLink(){
+    public WebElement sendOutLink() {
         return getDriver().findElement(By.xpath("//*[text()='Sendout']"));
     }
-    public WebElement sendOutTransaction(){ return getDriver().findElement(By.xpath("//*[@class='dropdown-toggle nav-link' and text()='Sendout Transactions']\n"));}
 
-    public WebElement yesRadioButton(){ return getDriver().findElement(By.xpath("//*[text()=\"Yes\"]"));}
-    public WebElement branchInformationText(){ return getDriver().findElement(By.xpath("//*[text()=\"Branch Information\"]"));}
-    public WebElement branchField(){
+    public WebElement sendOutTransaction() {
+        return getDriver().findElement(By.xpath("//*[@class='dropdown-toggle nav-link' and text()='Sendout Transactions']\n"));
+    }
+
+    public WebElement yesRadioButton() {
+        return getDriver().findElement(By.xpath("//*[text()=\"Yes\"]"));
+    }
+
+    public WebElement branchInformationText() {
+        return getDriver().findElement(By.xpath("//*[text()=\"Branch Information\"]"));
+    }
+
+    public WebElement branchField() {
 
         return getDriver().findElement(By.cssSelector("[name=\"branchCode\"]"));
     }
-    public WebElement branchNotFoundText(){ return getDriver().findElement(By.xpath("//*[text()=\"Branch not found\"]"));}
-    public WebElement inputReasonField(){
+
+    public WebElement branchNotFoundText() {
+        return getDriver().findElement(By.xpath("//*[text()=\"Branch not found\"]"));
+    }
+
+    public WebElement inputReasonField() {
         return getDriver().findElement(By.cssSelector("[name=\"remoteBranch.remoteReason\"]"));
     }
-    public WebElement searchKYC(){
+
+    public WebElement searchKYC() {
         return getDriver().findElement(By.xpath("//*[text()='Search KYC']"));
     }
-    public WebElement receiverInformation(){
-        return getDriver().findElement(By.xpath("//*[text()= \"Receiver Information\"]"));
+
+    public WebElement sendOutDomesticText() {
+        return getDriver().findElement(By.cssSelector("[class=\"sc-dExYaf gCEszf text-capitalize\"]"));
     }
-    public WebElement sendOutDomesticText(){
-        return getDriver().findElement(By.xpath("[class=\"sc-dExYaf gCEszf text-capitalize\"]"));
-    }
-    public WebElement lastName(){
+
+    public WebElement lastName() {
         return getDriver().findElement(By.xpath("//*[@name='lastName']"));
     }
-    public WebElement firstName(){
+
+    public WebElement firstName() {
         return getDriver().findElement(By.xpath("//*[@name='firstName']\n"));
     }
-    public WebElement searchBtn(){
+
+    public WebElement searchBtn() {
         return getDriver().findElement(By.cssSelector("[type='submit']"));
     }
-    public WebElement viewButton(){
+
+    public WebElement viewButton() {
         return getDriver().findElement(By.xpath("//*[text()='View']\n"));
     }
-    public WebElement birthDate(){
-        return getDriver().findElement(By.xpath("//*[@name='birthDate']\n"));
-    }
-    public WebElement selectKYC(){
+
+    public WebElement selectKYC() {
         return getDriver().findElement(By.xpath("//*[text()='Select KYC']"));
     }
-    public WebElement contactNumber(){
+
+    public WebElement contactNumber() {
         return getDriver().findElement(By.cssSelector("[name=\"senderOtherInformation.contactNumber\"]"));
     }
-    public WebElement searchReceivers(){return getDriver().findElement(By.xpath("//*[text()='Search Receivers']\n"));}
-    public WebElement name_Text(){return getDriver().findElement(By.xpath("//*[text()=\"Name: \"]\n"));}
 
-    public WebElement selectButton(){return getDriver().findElement(By.xpath("//*[text()= \"Select\"]\n"));}
+    public WebElement searchReceivers() {
+        return getDriver().findElement(By.xpath("//*[text()='Search Receivers']\n"));
+    }
 
-    public WebElement addNewReceivers(){
+    public WebElement name_Text() {
+        return getDriver().findElement(By.xpath("//*[text()=\"Name: \"]\n"));
+    }
+
+    public WebElement selectButton() {
+        return getDriver().findElement(By.xpath("//*[text()= \"Select\"]\n"));
+    }
+
+    public WebElement addNewReceivers() {
         return getDriver().findElement(By.xpath("//*[text()='Add New Receiver']"));
     }
 
-    public WebElement r_LastName(){
+    public WebElement r_LastName() {
         return getDriver().findElement(By.cssSelector("[placeholder=\"Last Name\"]"));
     }
-    public WebElement r_FirstName(){
+
+    public WebElement r_FirstName() {
         return getDriver().findElement(By.cssSelector("[name=\"beneficiary.firstName\"]"));
     }
-    public WebElement r_MiddleName(){
+
+    public WebElement r_MiddleName() {
         return getDriver().findElement(By.cssSelector("[name=\"beneficiary.middleName\"]"));
     }
-    public WebElement r_CityMunicipality(){
+
+    public WebElement r_CityMunicipality() {
         return getDriver().findElement(By.cssSelector("[name=\"beneficiary.address.addressL2Id\"]"));
     }
-    public WebElement r_CityMunicipalitySelected(){
+
+    public WebElement r_CityMunicipalitySelected() {
         return getDriver().findElement(By.cssSelector("[value=\"804\"]"));
     }
-    public WebElement r_ProvinceState(){
+
+    public WebElement r_ProvinceState() {
 
         return getDriver().findElement(By.cssSelector("[name=\"beneficiary.address.addressL1Id\"]"));
     }
-    public WebElement r_ProvinceStateSelect(){
+
+    public WebElement r_ProvinceStateSelect() {
         return getDriver().findElement(By.cssSelector("[value=\"4\"]"));
     }
-    public WebElement r_HouseNoStreetBarangaySitio(){
+
+    public WebElement r_HouseNoStreetBarangaySitio() {
         return getDriver().findElement(By.cssSelector("[name=\"beneficiary.address.otherAddress\"]"));
     }
 
-    public WebElement r_birthdate_Field(){
+    public WebElement r_birthdate_Field() {
         return getDriver().findElement(By.cssSelector("[placeholder='Birth Date']"));
     }
-    public WebElement r_sex_Field(){
+
+    public WebElement r_sex_Field() {
         return getDriver().findElement(By.cssSelector("[name=\"beneficiary.gender\"]"));
     }
-    public WebElement r_selected_Sex_Field(){
+
+    public WebElement r_selected_Sex_Field() {
 
         return getDriver().findElement(By.cssSelector("[value=\"male\"]"));
     }
-    public WebElement no_ContactNo(){
+
+    public WebElement no_ContactNo() {
         return getDriver().findElement(By.cssSelector("[name=\"beneficiary.hasNoContactNumber\"]"));
     }
 
-    public WebElement sourceOfFund(){
+    public WebElement sourceOfFund() {
         return getDriver().findElement(By.cssSelector("[placeholder=\"Source of Fund\"]"));
     }
-    public WebElement purpose(){
+
+    public WebElement purpose() {
         return getDriver().findElement(By.cssSelector("[placeholder=\"Purpose\"]"));
     }
-    public WebElement relationToReceiver(){
+
+    public WebElement relationToReceiver() {
         return getDriver().findElement(By.cssSelector("[name=\"senderOtherInformation.relationshipWithReceiver\"]"));
     }
-    public WebElement messageToReceiver(){
+
+    public WebElement messageToReceiver() {
         return getDriver().findElement(By.cssSelector("[name=\"senderOtherInformation.messageToReceiver\"]"));
     }
-    public WebElement principalAmount(){
+
+    public WebElement principalAmount() {
 
         return getDriver().findElement(By.cssSelector("[id=\"moneyInput\"]"));
     }
-    public WebElement submitSendOut(){ return getDriver().findElement(By.xpath("//*[text()=\"Submit Sendout\"]"));}
 
-    public WebElement totalAmount(){ return getDriver().findElement(By.xpath("//*[label=\"Total Amount\"]"));}
+    public WebElement submitSendOut() {
+        return getDriver().findElement(By.xpath("//*[text()=\"Submit Sendout\"]"));
+    }
 
-    public WebElement confirmSendOutButton(){ return getDriver().findElement(By.xpath("//*[text()='Confirm Sendout']"));}
-    public WebElement proceedToPrinting(){ return getDriver().findElement(By.xpath("//*[text()='Proceed to Printing']"));}
-    public WebElement cancelButtonInReceipt(){ return getDriver().findElement(By.xpath("//*[text()='Cancel']\n"));}
-    public WebElement yesCancelTransaction(){
-        return getDriver().findElement(By.cssSelector("[class=\"swal2-confirm swal2-styled\"]"));}
-    public WebElement noStayOnThisPage(){
-        return getDriver().findElement(By.cssSelector("[class=\"swal2-confirm swal2-styled\"]"));}
-    public WebElement cancelButton(){
-        return getDriver().findElement(By.cssSelector("[class=\"swal2-cancel swal2-styled\"]"));}
+    public WebElement totalAmount() {
+        return getDriver().findElement(By.xpath("//*[label=\"Total Amount\"]"));
+    }
 
-    public WebElement searchKYCdone(){
-        return getDriver().findElement(By.cssSelector("[class=\"sc-dNsVcS ihXJLX\"]"));}
+    public WebElement confirmSendOutButton() {
+        return getDriver().findElement(By.xpath("//*[text()='Confirm Sendout']"));
+    }
 
-    public WebElement senderInformationText(){
-        return getDriver().findElement(By.xpath("//*[text()=\"Sender Information\"]"));}
-    public WebElement lastNameRequiredDangerText(){
-        return getDriver().findElement(By.xpath("//*[text()=\"Last name is a required field\"]"));}
-    public WebElement firstNameRequiredText(){
-        return getDriver().findElement(By.xpath("//label[text()='First Name']/span[contains(@class, 'text-danger')]"));}
+    public WebElement proceedToPrinting() {
+        return getDriver().findElement(By.xpath("//*[text()='Proceed to Printing']"));
+    }
+
+    public WebElement yesCancelTransaction() {
+        return getDriver().findElement(By.cssSelector("[class=\"swal2-confirm swal2-styled\"]"));
+    }
+
+    public WebElement noStayOnThisPage() {
+        return getDriver().findElement(By.cssSelector("[class=\"swal2-cancel swal2-styled\"]"));
+    }
+
+    public WebElement cancelButton() { return getDriver().findElement(By.xpath("//*[text()='Cancel']"));}
+    public WebElement cancelButtoninReceipt() {
+        return getDriver().findElement(By.cssSelector("[class=\"sc-hIUJlX exqbQW btn btn-secondary\"]"));}
+    public WebElement cancelButtoninConfirmation() { return getDriver().findElement(By.xpath("//button[@class='swal2-cancel swal2-styled' and @style='display: inline-block; background-color: rgb(170, 170, 170);' and text()='Cancel']"));}
+
+
+    public WebElement provinceDanger() {
+        return getDriver().findElement(By.xpath("//*[text()='Cancel']"));
+    }
+
+    public WebElement printSendoutReceipt() {
+        return getDriver().findElement(By.cssSelector("//div[@class='sc-jaXxmE fgryXf']"));
+    }
+
+    public WebElement senderInformationText() {
+        return getDriver().findElement(By.xpath("//*[text()=\"Sender Information\"]"));
+    }
+
 }
