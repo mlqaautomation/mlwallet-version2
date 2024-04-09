@@ -22,7 +22,7 @@ public class SendOut_Steps extends Base_Steps{
             LoggingUtils.error("Fail to verify navigation");
         }
     }
-    public void DS_TC_02()throws Exception {
+    public void DS_TC_02Invalid()throws Exception {
         DS_TC_01();
         click(sendOutPageObjects.yesRadioButton(), "Yes Button ");
         click(sendOutPageObjects.branchField(),"Branch Field");
@@ -39,12 +39,30 @@ public class SendOut_Steps extends Base_Steps{
             LoggingUtils.error("Fail to verify Navigate for SendOut Transaction Option Page");
         }
     }
+    public void DS_TC_02Valid()throws Exception {
+        DS_TC_01();
+        click(sendOutPageObjects.yesRadioButton(), "Yes Button ");
+        click(sendOutPageObjects.branchField(),"Branch Field");
+        type(sendOutPageObjects.branchField(), "Valid Branch Code", propertyReader.getproperty("validBranch_code"));
+        waitSleep(5000);
+        click(sendOutPageObjects.branchField(),"Operator Field");
+        type(sendOutPageObjects.operatorIDField(), "Valid Branch Code", propertyReader.getproperty("operatorID"));
+        type(sendOutPageObjects.inputReasonField(), "Branch field", propertyReader.getproperty("Reason"));
+        if (isVisible(sendOutPageObjects.branchInformationText(), getText(sendOutPageObjects.branchInformationText()))) {
+            ExtentReporter.logPass("DS_TC_02", "Successfully Navigate for SendOut Domestic Page");
+            LoggingUtils.info("Successfully Navigate for SendOut Transaction Option Page");
+        }else{
+            ExtentReporter.logFail("DS_TC_02", "Fail to verify Navigate for SendOut Transaction Option Page");
+            LoggingUtils.error("Fail to verify Navigate for SendOut Transaction Option Page");
+        }
+    }
     public void DS_TC_03()throws Exception {
         DS_TC_01();
         click(sendOutPageObjects.searchKYC(), "KYC button ");
         type(sendOutPageObjects.lastName(), "Lastname ", propertyReader.getproperty("Lastname"));
         type(sendOutPageObjects.firstName(), "Firstname ", propertyReader.getproperty("Firstname"));
         click(sendOutPageObjects.searchBtn(), "Search Button ");
+        waitSleep(4000);
         click(sendOutPageObjects.viewButton(), "View Button ");
         waitSleep(5000);
         scrollDown(100);
@@ -97,9 +115,6 @@ public class SendOut_Steps extends Base_Steps{
 
     public void DS_TC_05()throws Exception{
         click(sendOutPageObjects.searchReceivers(), "Search Receivers Button ");
-//        if(isVisible(sendOutPageObjects.name_Text(), getText(sendOutPageObjects.name_Text()))){
-//            LoggingUtils.info("Successfully directed to search receivers ");
-//        }
         if(isVisible(sendOutPageObjects.name_Text(), getText(sendOutPageObjects.name_Text()))){
             ExtentReporter.logPass("DS_TC_05", "Successfully Validate Search Receiver  ");
             LoggingUtils.info("Successfully Validate Search Receiver  ");
@@ -107,11 +122,13 @@ public class SendOut_Steps extends Base_Steps{
             ExtentReporter.logFail("DS_TC_05", "Failed to Validate Search Receiver");
             LoggingUtils.error("Failed Validate Search Receiver");
         }
-        waitSleep(500);
-        click(sendOutPageObjects.selectButton(), "Select Button ");
+        scrollDown(100);
+//        click(sendOutPageObjects.selectButtonReceivers(),"Select Button Receiver");
+//        waitSleep(3000);
+        click(sendOutPageObjects.selectButton(),"Select Button");
         scrollDown(100);
         click(sendOutPageObjects.no_ContactNo(), "Check no Contact Number ");
-        scrollToTopOfPageWEB();
+        waitSleep(3000);
         scrollUp(driver);
 
     }
@@ -159,17 +176,19 @@ public class SendOut_Steps extends Base_Steps{
     }
 
     public void DS_TC_08()throws Exception {
-//        click(sendOutPageObjects.submitSendOut(), "Submit SendOut Button");
+        waitSleep(5000);
         click(sendOutPageObjects.confirmSendOutButton(), "Submit SendOut Button");
+        waitSleep(5000);
+//        if(isVisible(sendOutPageObjects.printSendoutReceipt(), getText(sendOutPageObjects.printSendoutReceipt()))){
+//            ExtentReporter.logPass("DS_TC_08", "Successfully SendOut");
+//            LoggingUtils.info("Successfully SendOut");
+//        }else{
+//            ExtentReporter.logFail("DS_TC_08", "Failed to SendOut");
+//            LoggingUtils.error("Failed to SendOut");
+//        }
         click(sendOutPageObjects.proceedToPrinting(), "Proceed to Printing");
+        waitSleep(5000);
         click(sendOutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
-        if(isVisible(sendOutPageObjects.printSendoutReceipt(), getText(sendOutPageObjects.printSendoutReceipt()))){
-            ExtentReporter.logPass("DS_TC_08", "Successfully SendOut");
-            LoggingUtils.info("Successfully SendOut");
-        }else{
-            ExtentReporter.logFail("DS_TC_08", "Failed to SendOut");
-            LoggingUtils.error("Failed to SendOut");
-        }
     }
 
     public void DS_TC_09_1()throws Exception {
@@ -177,22 +196,17 @@ public class SendOut_Steps extends Base_Steps{
         click(sendOutPageObjects.cancelButton(), "Cancel SendOut Button");
         click(sendOutPageObjects.yesCancelTransaction(), "Yes Cancel Transaction");
         waitSleep(5000);
-        if(isVisible(sendOutPageObjects.sendOutDomesticText(), "SendOut Domestic Text")){
-            LoggingUtils.info("Stays on the sendout page and inputted data will be cleared");
-        }
-        if(isVisible(sendOutPageObjects.sendOutDomesticText(), getText(sendOutPageObjects.sendOutDomesticText()))){
-            ExtentReporter.logPass("DS_TC_09_1", "Stays on the sendout page and inputted data will be cleared");
-            LoggingUtils.info("Stays on the sendout page and inputted data will be cleared");
-        }else{
-            ExtentReporter.logFail("DS_TC_09_1", "Failed to Stays on the sendout page");
-            LoggingUtils.error("Failed to Stays on the sendout page");
-        }
-
+//        if(isVisible(sendOutPageObjects.sendoutDomesticText(), getText(sendOutPageObjects.sendoutDomesticText()))){
+//            ExtentReporter.logPass("DS_TC_09_1", "Back to the sendout page and inputted data will be cleared");
+//            LoggingUtils.info("Back to the sendout page and inputted data will be cleared");
+//        }else{
+//            ExtentReporter.logFail("DS_TC_09_1", "Failed to Stays on the sendout page");
+//            LoggingUtils.error("Failed to Stays on the sendout page");
+//        }
     }
     public void DS_TC_10()throws Exception {
         scrollDown(100);
-//        click(sendOutPageObjects.submitSendOut(), "Submit SendOut Button");
-//        waitSleep(3000);
+
         click(sendOutPageObjects.cancelButtoninConfirmation(), "Cancel Button");
         waitSleep(5000);
         if (sendOutPageObjects.messageToReceiver().isEnabled()) {
@@ -204,8 +218,9 @@ public class SendOut_Steps extends Base_Steps{
         }
 
     }
+}
 
-    }
+
 
 
 

@@ -52,7 +52,7 @@ public class DriverManager {
         options.addArguments("--incognito");
         options.addArguments("use-fake-ui-for-media-stream");
 
-        chromePreferences.put("profile.default_content_setting_values.notifications", 2);
+//        chromePreferences.put("profile.default_content_setting_values.notifications", 2);
         options.setExperimentalOption("prefs", chromePreferences);
 
         options.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);

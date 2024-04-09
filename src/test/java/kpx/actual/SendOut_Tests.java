@@ -20,12 +20,19 @@ public class SendOut_Tests extends BaseTest {
         }
     }
 
-    @Test(dependsOnMethods = "loginGoogle" , priority = 2, description = "Verify SendOut Transaction Option")
-    public void DS_TC_02()throws Exception{
+    @Test(dependsOnMethods = "loginGoogle" , priority = 2, description = "Verify SendOut Transaction Option Invalid Branch Code")
+    public void DS_TC_02Invalid()throws Exception{
         if(this.homeSteps.isInHomePage()){
-            this.sendOutSteps.DS_TC_02();
+            this.sendOutSteps.DS_TC_02Invalid();
         }
     }
+    @Test(dependsOnMethods = "loginGoogle" , priority = 2, description = "Verify SendOut Transaction Option Valid Branch Code")
+    public void DS_TC_02Valid()throws Exception{
+        if(this.homeSteps.isInHomePage()){
+            this.sendOutSteps.DS_TC_02Valid();
+        }
+    }
+
 
     @Test(dependsOnMethods = "loginGoogle" , priority = 3, description = "Verify Search KYC (Sender)")
     public void DS_TC_03()throws Exception{
@@ -38,7 +45,7 @@ public class SendOut_Tests extends BaseTest {
     public void DS_TC_04()throws Exception{
         if(this.homeSteps.isInHomePage()){
             this.sendOutSteps.DS_TC_01();
-            this.sendOutSteps.DS_TC_02();
+            this.sendOutSteps.DS_TC_02Invalid();
             this.sendOutSteps.DS_TC_03();
             this.sendOutSteps.DS_TC_04();
         }
@@ -58,7 +65,7 @@ public class SendOut_Tests extends BaseTest {
         if (this.homeSteps.isInHomePage()) {
             this.sendOutSteps.DS_TC_01();
             this.sendOutSteps.DS_TC_03();
-            this.sendOutSteps.DS_TC_05();
+            this.sendOutSteps.DS_TC_04();
             this.sendOutSteps.DS_TC_06_07();
         }
     }
@@ -68,7 +75,7 @@ public class SendOut_Tests extends BaseTest {
         if (this.homeSteps.isInHomePage()) {
             this.sendOutSteps.DS_TC_01();
             this.sendOutSteps.DS_TC_03();
-            this.sendOutSteps.DS_TC_05();
+            this.sendOutSteps.DS_TC_04();
             this.sendOutSteps.DS_TC_06_07();
             this.sendOutSteps.DS_TC_09();
         }
@@ -80,12 +87,10 @@ public class SendOut_Tests extends BaseTest {
         if (this.homeSteps.isInHomePage()) {
             this.sendOutSteps.DS_TC_01();
             this.sendOutSteps.DS_TC_03();
-            this.sendOutSteps.DS_TC_05();
+            this.sendOutSteps.DS_TC_04();
             this.sendOutSteps.DS_TC_06_07();
             this.sendOutSteps.DS_TC_09_1();
         }
-
-
     }
 
     @Test(dependsOnMethods = "loginGoogle", priority = 9, description = "To Validate Cancel No SendOut Transaction")
@@ -93,24 +98,24 @@ public class SendOut_Tests extends BaseTest {
         if (this.homeSteps.isInHomePage()) {
             this.sendOutSteps.DS_TC_01();
             this.sendOutSteps.DS_TC_03();
-            this.sendOutSteps.DS_TC_05();
+            this.sendOutSteps.DS_TC_04();
             this.sendOutSteps.DS_TC_06_07();
             this.sendOutSteps.DS_TC_10();
         }
 
     }
 
-//    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "To Validate Cancel No SendOut Transaction")
-//    public void DS_TC_8() throws Exception {
-//        if (this.homeSteps.isInHomePage()) {
-//            this.sendOutSteps.DS_TC_01();
-//            this.sendOutSteps.DS_TC_03();
-//            this.sendOutSteps.DS_TC_05();
-//            this.sendOutSteps.DS_TC_06_07();
-//            this.sendOutSteps.DS_TC_08();
-//        }
-//
-//    }
+    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "To Validate Cancel No SendOut Transaction")
+    public void DS_TC_8() throws Exception {
+        if (this.homeSteps.isInHomePage()) {
+            this.sendOutSteps.DS_TC_01();
+            this.sendOutSteps.DS_TC_03();
+            this.sendOutSteps.DS_TC_04();
+            this.sendOutSteps.DS_TC_06_07();
+            this.sendOutSteps.DS_TC_08();
+        }
+
+    }
 }
 
 

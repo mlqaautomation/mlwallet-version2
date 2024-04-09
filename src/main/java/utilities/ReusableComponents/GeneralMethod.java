@@ -272,4 +272,25 @@ public class GeneralMethod extends ExtentReporter{
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("window.scrollTo(0, 0)");
     }
+
+    // Get the generated KPTN
+    public String getGeneratedKPTN() {
+        WebElement kptnElement = driver.findElement(By.id("kptnElementId")); // Replace "kptnElementId" with the actual ID or locator of the element displaying the KPTN
+        String generatedKPTN = kptnElement.getText();
+        return generatedKPTN;
+    }
+
+    // Perform actions using the generated KPTN
+    public void performActionWithGeneratedKPTN() {
+        // Perform actions to generate the KPTN
+        // ...
+
+        String generatedKPTN = getGeneratedKPTN();
+        System.out.println("Generated KPTN: " + generatedKPTN);
+
+        // Use the generated KPTN in your subsequent code
+        // ...
+    }
 }
+
+

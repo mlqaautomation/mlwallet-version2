@@ -11,8 +11,7 @@ public class SendOut_PageObjects {
         return getDriver().findElement(By.xpath("//*[text()='Sendout']"));
     }
 
-    public WebElement sendOutTransaction() {
-        return getDriver().findElement(By.xpath("//*[@class='dropdown-toggle nav-link' and text()='Sendout Transactions']\n"));
+    public WebElement sendOutTransaction() {return getDriver().findElement(By.xpath("//*[@class='dropdown-toggle nav-link' and text()='Sendout Transactions']\n"));
     }
 
     public WebElement yesRadioButton() {
@@ -24,8 +23,10 @@ public class SendOut_PageObjects {
     }
 
     public WebElement branchField() {
-
         return getDriver().findElement(By.cssSelector("[name=\"branchCode\"]"));
+    }
+    public WebElement operatorIDField() {
+        return getDriver().findElement(By.xpath("//input[@autocomplete=\"off\" and @allowedcharacters=\"/^[0-9a-zA-Z]+$|^$/\" and @min=\"0\" and @name=\"\" and @placeholder=\"Operator ID\" and @type=\"search\" and @class=\"form-control-sm form-control\" and @value=\"\" and @required=\"\"]"));
     }
 
     public WebElement branchNotFoundText() {
@@ -40,8 +41,11 @@ public class SendOut_PageObjects {
         return getDriver().findElement(By.xpath("//*[text()='Search KYC']"));
     }
 
-    public WebElement sendOutDomesticText() {
-        return getDriver().findElement(By.cssSelector("[class=\"sc-dExYaf gCEszf text-capitalize\"]"));
+//    public WebElement sendOutDomesticText() {
+//        return getDriver().findElement(By.cssSelector("[class=\"sc-kMribo kcHLYw text-capitalize\"]"));
+//    }
+    public WebElement sendoutDomesticText(){
+        return getDriver().findElement(By.cssSelector("[class=\"sc-kMribo kcHLYw text-capitalize\"]"));
     }
 
     public WebElement lastName() {
@@ -57,7 +61,7 @@ public class SendOut_PageObjects {
     }
 
     public WebElement viewButton() {
-        return getDriver().findElement(By.xpath("//*[text()='View']\n"));
+        return getDriver().findElement(By.xpath("//button[@class=\"mr-3 btn btn-outline-primary btn-sm\" and text()=\"View\"]"));
     }
 
     public WebElement selectKYC() {
@@ -68,16 +72,14 @@ public class SendOut_PageObjects {
         return getDriver().findElement(By.cssSelector("[name=\"senderOtherInformation.contactNumber\"]"));
     }
 
-    public WebElement searchReceivers() {
-        return getDriver().findElement(By.xpath("//*[text()='Search Receivers']\n"));
+    public WebElement searchReceivers() { return getDriver().findElement(By.xpath("//*[text()='Search Receivers']"));
     }
 
     public WebElement name_Text() {
-        return getDriver().findElement(By.xpath("//*[text()=\"Name: \"]\n"));
+        return getDriver().findElement(By.xpath("//*[text()=\"Name: \"]"));
     }
-
-    public WebElement selectButton() {
-        return getDriver().findElement(By.xpath("//*[text()= \"Select\"]\n"));
+    public WebElement selectButton(){
+        return getDriver().findElement(By.xpath("//button[@class=\"sc-lnPyaJ fAafen btn-sm btn btn-primary\" and text()=\"Select\"]"));
     }
 
     public WebElement addNewReceivers() {
@@ -85,6 +87,7 @@ public class SendOut_PageObjects {
     }
 
     public WebElement r_LastName() {
+
         return getDriver().findElement(By.cssSelector("[placeholder=\"Last Name\"]"));
     }
 
@@ -105,11 +108,11 @@ public class SendOut_PageObjects {
     }
 
     public WebElement r_ProvinceState() {
-
         return getDriver().findElement(By.cssSelector("[name=\"beneficiary.address.addressL1Id\"]"));
     }
 
     public WebElement r_ProvinceStateSelect() {
+
         return getDriver().findElement(By.cssSelector("[value=\"4\"]"));
     }
 
@@ -122,6 +125,7 @@ public class SendOut_PageObjects {
     }
 
     public WebElement r_sex_Field() {
+
         return getDriver().findElement(By.cssSelector("[name=\"beneficiary.gender\"]"));
     }
 
@@ -190,11 +194,23 @@ public class SendOut_PageObjects {
     }
 
     public WebElement printSendoutReceipt() {
-        return getDriver().findElement(By.cssSelector("//div[@class='sc-jaXxmE fgryXf']"));
+        return getDriver().findElement(By.xpath("//div[@class='sc-jaXxmE fgryXf']"));
     }
 
     public WebElement senderInformationText() {
         return getDriver().findElement(By.xpath("//*[text()=\"Sender Information\"]"));
     }
+
+
+
+
+
+
+
+
+    public WebElement kptnValue() {
+        return getDriver().findElement(By.cssSelector("[data-testid=\"sendoutKPTN\"]"));
+    }
+
 
 }
