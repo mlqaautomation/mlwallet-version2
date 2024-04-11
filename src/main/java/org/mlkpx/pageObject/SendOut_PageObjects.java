@@ -13,42 +13,23 @@ public class SendOut_PageObjects {
 
     public WebElement sendOutTransaction() {return getDriver().findElement(By.xpath("//*[@class='dropdown-toggle nav-link' and text()='Sendout Transactions']\n"));
     }
-
     public WebElement yesRadioButton() {
         return getDriver().findElement(By.xpath("//*[text()=\"Yes\"]"));
     }
-
-    public WebElement branchInformationText() {
-        return getDriver().findElement(By.xpath("//*[text()=\"Branch Information\"]"));
-    }
-
     public WebElement branchField() {
         return getDriver().findElement(By.cssSelector("[name=\"branchCode\"]"));
     }
     public WebElement branchName(){
         return getDriver().findElement(By.cssSelector("[name='remoteBranch.branchName']"));
     }
-    public WebElement operatorIDField() {
-        return getDriver().findElement(By.xpath("//input[@autocomplete=\"off\" and @allowedcharacters=\"/^[0-9a-zA-Z]+$|^$/\" and @min=\"0\" and @name=\"\" and @placeholder=\"Operator ID\" and @type=\"search\" and @class=\"form-control-sm form-control\" and @value=\"\" and @required=\"\"]"));
-    }
 
     public WebElement branchNotFoundText() {
         return getDriver().findElement(By.xpath("//*[text()=\"Branch not found\"]"));
     }
 
-    public WebElement inputReasonField() {
-        return getDriver().findElement(By.cssSelector("[name=\"remoteBranch.remoteReason\"]"));
-    }
 
     public WebElement searchKYC() {
         return getDriver().findElement(By.xpath("//*[text()='Search KYC']"));
-    }
-
-//    public WebElement sendOutDomesticText() {
-//        return getDriver().findElement(By.cssSelector("[class=\"sc-kMribo kcHLYw text-capitalize\"]"));
-//    }
-    public WebElement sendoutDomesticText(){
-        return getDriver().findElement(By.cssSelector("[class=\"sc-kMribo kcHLYw text-capitalize\"]"));
     }
 
     public WebElement lastName() {
@@ -70,7 +51,6 @@ public class SendOut_PageObjects {
     public WebElement selectKYC() {
         return getDriver().findElement(By.xpath("//*[text()='Select KYC']"));
     }
-
     public WebElement contactNumber() {
         return getDriver().findElement(By.cssSelector("[name=\"senderOtherInformation.contactNumber\"]"));
     }
@@ -81,12 +61,9 @@ public class SendOut_PageObjects {
     public WebElement name_Text(int i) {
         return getDriver().findElement(By.xpath("(//*[contains(text(), 'Name:')]/following-sibling::span)["+i+"]"));
     }
-    public WebElement name_Text2(){
-        return getDriver().findElement(By.cssSelector(".sc-gvZAcH.gZejqK:last-child"));
-    }
 
     public WebElement selectButton(){
-        return getDriver().findElement(By.xpath("//button[@class=\"sc-lnPyaJ fAafen btn-sm btn btn-primary\" and text()=\"Select\"]"));
+        return getDriver().findElement(By.cssSelector("[class=\"sc-kqGoIF edbuQi btn-sm btn btn-primary\"]"));
     }
 
     public WebElement addNewReceivers() {
@@ -174,7 +151,7 @@ public class SendOut_PageObjects {
         return getDriver().findElement(By.xpath("//*[label=\"Total Amount\"]"));
     }
     public WebElement display0Text() {
-        return getDriver().findElement(By.xpath("//*[text()=\"Min allowed amount is PHP 1.00\"]"));
+        return getDriver().findElement(By.xpath("//*[text()=\"Minimum allowed amount is PHP 1.00.\"]"));
     }
     public WebElement negativeDisplayText() {
         return getDriver().findElement(By.xpath("//*[text()=\"Value must be greater than or equal to 0.\"]"));
@@ -210,19 +187,6 @@ public class SendOut_PageObjects {
     public WebElement provinceDanger() {
         return getDriver().findElement(By.xpath("//*[text()='Cancel']"));
     }
-
-    public WebElement printSendoutReceipt() {
-        return getDriver().findElement(By.xpath("//div[@class='sc-jaXxmE fgryXf']"));
-    }
-
-    public WebElement senderInformationText() {
-        return getDriver().findElement(By.xpath("//*[text()=\"Sender Information\"]"));
-    }
-
-    public WebElement kptnValue() {
-        return getDriver().findElement(By.cssSelector("[data-testid=\"sendoutKPTN\"]"));
-    }
-
     public WebElement senderLastName(){
         return getDriver().findElement(By.xpath("(//p[normalize-space()='Last Name'])[1]/parent::div/following-sibling::div/child::p"));
     }
@@ -232,7 +196,5 @@ public class SendOut_PageObjects {
     public WebElement smsCheckbox(){
         return getDriver().findElement(By.cssSelector("[name='senderOtherInformation.receiveSmsNotification']"));
     }
-    public WebElement receiversInfo(){
-        return getDriver().findElement(By.cssSelector("[class='sc-YysOf dijwdn col-md-10']"));
-    }
+
 }
