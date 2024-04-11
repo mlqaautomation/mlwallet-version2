@@ -3,6 +3,7 @@ package mlkpx.testSteps;
 import org.openqa.selenium.Keys;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
+import utilities.ReusableComponents.GeneralMethod;
 
 public class SendOut_Steps extends Base_Steps{
 
@@ -133,7 +134,7 @@ public class SendOut_Steps extends Base_Steps{
 
     }
     public void DS_TC_06_07()throws Exception{
-
+        GeneralMethod generalMethod = new GeneralMethod();
         click(sendOutPageObjects.sourceOfFund(), "Source of Fund field ");
         type(sendOutPageObjects.sourceOfFund(), "Source of Fund field ", propertyReader.getproperty("source_of_fund"));
         click(sendOutPageObjects.purpose(), "Purpose field ");
@@ -144,7 +145,22 @@ public class SendOut_Steps extends Base_Steps{
         type(sendOutPageObjects.messageToReceiver(), "Message to Receiver field ", propertyReader.getproperty("messagetoreceiver"));
         scrollDown(30);
         click(sendOutPageObjects.principalAmount(), "Principal Amount field ");
-        type(sendOutPageObjects.principalAmount(), "Principal Amount field ", propertyReader.getproperty("principal_amount"));
+        type(sendOutPageObjects.principalAmount(), "Principal Amount field ", propertyReader.getproperty("principal_amount_empty"));
+        click(sendOutPageObjects.chargeText(), "Charge Text");
+        if (isVisible(sendOutPageObjects.emptyValueText(), getText((sendOutPageObjects.emptyValueText())))) {
+            ExtentReporter.logPass("Empty Value", "Valid Amount is required");
+        }
+        type(sendOutPageObjects.principalAmount(), "Principal Amount field ", propertyReader.getproperty("principal_amount0"));
+        if (isVisible(sendOutPageObjects.display0Text(), getText((sendOutPageObjects.display0Text())))){
+            ExtentReporter.logPass("Input Amount (Zero)", "Min allowed amount is PHP 1.00");
+        }
+        generalMethod.clearInput(sendOutPageObjects.principalAmount(), "Principal Amount Field");
+        type(sendOutPageObjects.principalAmount(), "Principal Amount field ", propertyReader.getproperty("negative_principal_amount"));
+        if (isVisible(sendOutPageObjects.negativeDisplayText(), getText((sendOutPageObjects.negativeDisplayText())))){
+            ExtentReporter.logPass("Input Amount (Negative Value)", "Value must be greater than or equal to 0");
+        }
+        generalMethod.clearInput(sendOutPageObjects.principalAmount(), "Username Field");
+        type(sendOutPageObjects.principalAmount(), "Valid Principal Amount field ", propertyReader.getproperty("valid_principal_amount"));
         click(sendOutPageObjects.totalAmount(), "Total Amount");
         waitSleep(50);
 //        if(isVisible(sendOutPageObjects.totalAmount(), getText(sendOutPageObjects.totalAmount()))){

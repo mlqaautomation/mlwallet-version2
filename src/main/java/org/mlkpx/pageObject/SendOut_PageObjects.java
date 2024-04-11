@@ -166,7 +166,18 @@ public class SendOut_PageObjects {
     public WebElement totalAmount() {
         return getDriver().findElement(By.xpath("//*[label=\"Total Amount\"]"));
     }
-
+    public WebElement display0Text() {
+        return getDriver().findElement(By.xpath("//*[text()=\"Min allowed amount is PHP 1.00\"]"));
+    }
+    public WebElement negativeDisplayText() {
+        return getDriver().findElement(By.xpath("//*[text()=\"Value must be greater than or equal to 0.\"]"));
+    }
+    public WebElement emptyValueText() {
+        return getDriver().findElement(By.xpath("//*[text()=\"Valid Amount is required\"]"));
+    }
+    public WebElement chargeText() {
+        return getDriver().findElement(By.xpath("//*[text()=\"Charge\"]"));
+    }
     public WebElement confirmSendOutButton() {
         return getDriver().findElement(By.xpath("//*[text()='Confirm Sendout']"));
     }

@@ -291,6 +291,21 @@ public class GeneralMethod extends ExtentReporter{
         // Use the generated KPTN in your subsequent code
         // ...
     }
+
+    public void clearInput(WebElement locator, String elementName) {
+        try {
+            if (isDisplayed(locator)) {
+                WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
+                element.clear();
+                LoggingUtils.info("Cleared input field: " + elementName);
+                ExtentReporter.logInfo("Cleared input field: " + elementName, "");
+            }
+        } catch (NoSuchElementException e) {
+            LoggingUtils.error("Failed to clear input field: " + elementName);
+            ExtentReporter.logFail("Failed to clear input field: " + elementName, "Caused: " + e);
+            throw new AssertionError("Failed to clear input field: " + elementName);
+        }
+    }
 }
 
 

@@ -21,6 +21,8 @@ public class BaseTest {
     protected SendOutCancellation_Steps sendOutCancellationSteps;
     protected Payout_Steps payoutSteps;
     protected SOReprinting_Steps soReprintingSteps;
+    protected RequestForChange_Steps requestForChangeSteps;
+    protected ReturnToSender_Steps returnToSenderSteps;
 
 
 
@@ -45,6 +47,8 @@ public class BaseTest {
         this.sendOutCancellationSteps = new SendOutCancellation_Steps();
         this.payoutSteps = new Payout_Steps();
         this.soReprintingSteps = new SOReprinting_Steps();
+        this.requestForChangeSteps = new RequestForChange_Steps();
+        this.returnToSenderSteps = new ReturnToSender_Steps();
 
     }
     private void initializeDriver(DriverType driverType) {
