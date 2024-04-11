@@ -1,109 +1,62 @@
 package mlkpx.testSteps;
 
+
 import org.openqa.selenium.Keys;
+import org.testng.Assert;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
 
 public class SendOut_Steps extends Base_Steps{
 
-//    public void navigationFOrSendOutDomestic()throws Exception{
-//        click(sendOutPageObjects.sendOutLink(), "SendOut Page ");
-//        if(isVisible(sendOutPageObjects.sendOutTransaction(), getText(sendOutPageObjects.sendOutTransaction()))){
-//            LoggingUtils.info("Successfully Navigate for SendOut Domestic Page ");
-//        }
-//    }
-    public void DS_TC_01()throws Exception{
+    public void navigationFOrSendOutDomestic()throws Exception{
         click(sendOutPageObjects.sendOutLink(), "SendOut Page ");
+    }
+    public void DS_TC_01()throws Exception{ //Test Case for Verify Navigation for SendOut Domestic
+        navigationFOrSendOutDomestic();
         if(isVisible(sendOutPageObjects.sendOutTransaction(), getText(sendOutPageObjects.sendOutTransaction()))){
-            ExtentReporter.logPass("DS_TC_01", "Successfully Navigate for SendOut Domestic Page");
-            LoggingUtils.info("Successfully Navigate for SendOut Domestic Page");
+            ExtentReporter.logPass("DS_TC_01", "Successfully Validated SendOut Domestic Page Navigation");
+            LoggingUtils.info("Successfully Navigate for SendOut Domestic Page ");
         }else{
-            ExtentReporter.logFail("DS_TC_01", "Fail to verify navigation");
-            LoggingUtils.error("Fail to verify navigation");
+            ExtentReporter.logFail("DS_TC_01", "Failed to Validate SendOut Domestic Page Navigation");
+            LoggingUtils.info("Failed to Validate SendOut Domestic Page Navigation ");
         }
     }
-    public void DS_TC_02Invalid()throws Exception {
-        DS_TC_01();
+    public void DS_TC_02()throws Exception { // Test Case for Sendout Transaction Option
+        navigationFOrSendOutDomestic();
         click(sendOutPageObjects.yesRadioButton(), "Yes Button ");
-        click(sendOutPageObjects.branchField(),"Branch Field");
-        type(sendOutPageObjects.branchField(), "Invalid Branch Code", propertyReader.getproperty("invalidBranch_code"));
-        if (isVisible(sendOutPageObjects.branchNotFoundText(), getText(sendOutPageObjects.branchNotFoundText()))) {
-            LoggingUtils.info("Branch not found");
-        }
-        type(sendOutPageObjects.inputReasonField(), "Branch field", propertyReader.getproperty("Reason"));
-        if (isVisible(sendOutPageObjects.branchInformationText(), getText(sendOutPageObjects.branchInformationText()))) {
-            ExtentReporter.logPass("DS_TC_02", "Successfully Navigate for SendOut Domestic Page");
-            LoggingUtils.info("Successfully Navigate for SendOut Transaction Option Page");
-        }else{
-            ExtentReporter.logFail("DS_TC_02", "Fail to verify Navigate for SendOut Transaction Option Page");
-            LoggingUtils.error("Fail to verify Navigate for SendOut Transaction Option Page");
-        }
-    }
-    public void DS_TC_02Valid()throws Exception {
-        DS_TC_01();
-        click(sendOutPageObjects.yesRadioButton(), "Yes Button ");
-        click(sendOutPageObjects.branchField(),"Branch Field");
-        type(sendOutPageObjects.branchField(), "Valid Branch Code", propertyReader.getproperty("validBranch_code"));
-        waitSleep(5000);
-        click(sendOutPageObjects.branchField(),"Operator Field");
-        type(sendOutPageObjects.operatorIDField(), "Valid Branch Code", propertyReader.getproperty("operatorID"));
-        type(sendOutPageObjects.inputReasonField(), "Branch field", propertyReader.getproperty("Reason"));
-        if (isVisible(sendOutPageObjects.branchInformationText(), getText(sendOutPageObjects.branchInformationText()))) {
-            ExtentReporter.logPass("DS_TC_02", "Successfully Navigate for SendOut Domestic Page");
-            LoggingUtils.info("Successfully Navigate for SendOut Transaction Option Page");
-        }else{
-            ExtentReporter.logFail("DS_TC_02", "Fail to verify Navigate for SendOut Transaction Option Page");
-            LoggingUtils.error("Fail to verify Navigate for SendOut Transaction Option Page");
-        }
-    }
-    public void DS_TC_03()throws Exception {
-        DS_TC_01();
-        click(sendOutPageObjects.searchKYC(), "KYC button ");
-        type(sendOutPageObjects.lastName(), "Lastname ", propertyReader.getproperty("Lastname"));
-        type(sendOutPageObjects.firstName(), "Firstname ", propertyReader.getproperty("Firstname"));
-        click(sendOutPageObjects.searchBtn(), "Search Button ");
         waitSleep(4000);
-        click(sendOutPageObjects.viewButton(), "View Button ");
-        waitSleep(5000);
-        scrollDown(100);
-        scrollDown(100);
+        type(sendOutPageObjects.branchField(), "Branch Code Field", propertyReader.getproperty("invalidBranch_code"));
+        waitSleep(2000); //hard wait for 2 seconds
+        isVisible(sendOutPageObjects.branchNotFoundText(), "Branch not found text");
+        clearField(sendOutPageObjects.branchField());
+        type(sendOutPageObjects.branchField(), "Branch Code Field", propertyReader.getproperty("validBranch_code"));
+        waitSleep(4000);
+        LoggingUtils.info(sendOutPageObjects.branchName().getText());
+        assertEqual(getValue(sendOutPageObjects.branchName()), propertyReader.getproperty("BranchName"));
+        ExtentReporter.logPass("DS_TC_02", "Successfully Validated Sendout Transaction Option");
+    }
+
+    public void DS_TC_03()throws Exception {
+        navigationFOrSendOutDomestic();
+        searchKYC();
         click(sendOutPageObjects.selectKYC(), "Select KYC ");
+        waitSleep(2000);
         type(sendOutPageObjects.contactNumber(), "Contact Number ", propertyReader.getproperty("Contact_number"));
-        if(isVisible(sendOutPageObjects.senderInformationText(), getText(sendOutPageObjects.senderInformationText()))){
-            ExtentReporter.logPass("DS_TC_03", "Successfully Navigate for Search Kyc in SendOut Domestic");
-            LoggingUtils.info("Successfully Navigate for Search Kyc in SendOut Domestic");
+        assertEqual(getText(sendOutPageObjects.senderLastName()), propertyReader.getproperty("Lastname"));
+        assertEqual(getText(sendOutPageObjects.senderFirstName()), propertyReader.getproperty("Firstname"));
+        if(isChecked(sendOutPageObjects.smsCheckbox())){
+            LoggingUtils.info("Checkbox is checked!");
         }else{
-            ExtentReporter.logFail("DS_TC_03", "Fail to Navigate for Search Kyc in SendOut Domestic");
-            LoggingUtils.error("Fail to Navigate for Search Kyc in SendOut Domestic");
+            LoggingUtils.info("Checkbox is not checked!");
+            ExtentReporter.logFail("DS_TC_03", "Failed to Validate Search Kyc in SendOut Domestic");
         }
+        ExtentReporter.logPass("DS_TC_03", "Successfully Validated Search Kyc in SendOut Domestic");
     }
 
     public void DS_TC_04()throws Exception{
-        scrollDown(100);
-        click(sendOutPageObjects.searchReceivers(), "Search Receivers Button ");
-        click(sendOutPageObjects.addNewReceivers(), "Add new Receiver ");
-        type(sendOutPageObjects.r_LastName(),"R_Lastname ", propertyReader.getproperty("Receivers_LName"));
-        type(sendOutPageObjects.r_FirstName(),"R_Firstname ", propertyReader.getproperty("Receivers_FName"));
-        type(sendOutPageObjects.r_MiddleName(),"R_Firstname ", propertyReader.getproperty("Receivers_MName"));
-        scrollDown(100);
-        waitSleep(3);
-        click(sendOutPageObjects.r_ProvinceState(), "Receiver Province/State");
-        click(sendOutPageObjects.r_ProvinceStateSelect(), "Receiver Selected Province/State");
-        click(sendOutPageObjects.r_CityMunicipality(), "Receiver City Municipality");
-        click(sendOutPageObjects.r_CityMunicipalitySelected(), "Receiver Selected City Municipality");
-        type(sendOutPageObjects.r_HouseNoStreetBarangaySitio(),"Receiver House No. Street/Barangay/Sitio ", propertyReader.getproperty("HouseNoStreetBarangaySitio"));
-        click(sendOutPageObjects.r_birthdate_Field(), "Receiver Birthdate field ");
-        type(sendOutPageObjects.r_birthdate_Field(), "Receiver Birthdate field ", propertyReader.getproperty("r_birthDate"));
-        sendOutPageObjects.r_birthdate_Field().sendKeys(Keys.ARROW_LEFT);
-        type(sendOutPageObjects.r_birthdate_Field(), "Receiver Birthdate field ", propertyReader.getproperty("r_month"));
-        sendOutPageObjects.r_birthdate_Field().sendKeys(Keys.ARROW_LEFT);
-        sendOutPageObjects.r_birthdate_Field().sendKeys(Keys.ARROW_LEFT);
-        type(sendOutPageObjects.r_birthdate_Field(), "Receiver Birthdate field ", propertyReader.getproperty("r_day"));
-        click(sendOutPageObjects.r_sex_Field(), "Receiver Sex Field ");
-        click(sendOutPageObjects.r_selected_Sex_Field(), "Receiver Selected Sex Field ");
-        click(sendOutPageObjects.no_ContactNo(), "Receiver No Contact No. ");
-        scrollUp(driver);
-        waitSleep(3);
+        navigationFOrSendOutDomestic();
+        searchKYC();
+        addReceiver();
         if(isVisible(sendOutPageObjects.provinceDanger(), getText(sendOutPageObjects.provinceDanger()))){
             ExtentReporter.logPass("DS_TC_04", "Successfully Add New Receiver in Sendout");
             LoggingUtils.info("Successfully Add New Receiver in Sendout");
@@ -114,35 +67,49 @@ public class SendOut_Steps extends Base_Steps{
     }
 
     public void DS_TC_05()throws Exception{
+        navigationFOrSendOutDomestic();
+        searchKYC();
         click(sendOutPageObjects.searchReceivers(), "Search Receivers Button ");
-        if(isVisible(sendOutPageObjects.name_Text(), getText(sendOutPageObjects.name_Text()))){
-            ExtentReporter.logPass("DS_TC_05", "Successfully Validate Search Receiver  ");
-            LoggingUtils.info("Successfully Validate Search Receiver  ");
-        }else{
-            ExtentReporter.logFail("DS_TC_05", "Failed to Validate Search Receiver");
-            LoggingUtils.error("Failed Validate Search Receiver");
-        }
-        scrollDown(100);
-//        click(sendOutPageObjects.selectButtonReceivers(),"Select Button Receiver");
-//        waitSleep(3000);
+        scrollToSpecificScrollPosition(500);
+        scrollToElement(sendOutPageObjects.selectButton());
+        LoggingUtils.info(getText(sendOutPageObjects.name_Text(1)));
+        String selectedReceiverName = getText(sendOutPageObjects.name_Text(1));
         click(sendOutPageObjects.selectButton(),"Select Button");
-        scrollDown(100);
+        scrollToElement(sendOutPageObjects.no_ContactNo());
         click(sendOutPageObjects.no_ContactNo(), "Check no Contact Number ");
         waitSleep(3000);
-        scrollUp(driver);
-
+        String value = getValue(sendOutPageObjects.r_LastName());
+        String[] receiverNames = selectedReceiverName.split(",");
+        boolean containsName = false;
+        for (String name : receiverNames) {
+            if (value.contains(name.trim())) { //loops the lastname text until comma
+                containsName = true;
+                break;
+            }
+        }
+        if(containsName){
+            ExtentReporter.logPass("DS_TC_05", "Successfully Validate Search Receiver  ");
+            LoggingUtils.info("Successfully Validate Search Receiver  " );
+        }else{
+            ExtentReporter.logFail("DS_TC_05", "Failed to Validate Search Receiver  ");
+            LoggingUtils.error("Failed to Validate Search Receiver " + getValue(sendOutPageObjects.r_LastName()) + " Expected " + selectedReceiverName);
+            Assert.fail("Failure due to Incorrect Details"); //assert the script to fail in testng
+        }
     }
     public void DS_TC_06_07()throws Exception{
-
-        click(sendOutPageObjects.sourceOfFund(), "Source of Fund field ");
+        navigationFOrSendOutDomestic();
+        searchKYC();
         type(sendOutPageObjects.sourceOfFund(), "Source of Fund field ", propertyReader.getproperty("source_of_fund"));
-        click(sendOutPageObjects.purpose(), "Purpose field ");
         type(sendOutPageObjects.purpose(), "Purpose field ", propertyReader.getproperty("purpose"));
-        click(sendOutPageObjects.relationToReceiver(), "Relation to Receiver field ");
         type(sendOutPageObjects.relationToReceiver(), "Relation to Receiver field ", propertyReader.getproperty("relationshiptoreceiver"));
-        click(sendOutPageObjects.messageToReceiver(), "Message to Receiver field ");
         type(sendOutPageObjects.messageToReceiver(), "Message to Receiver field ", propertyReader.getproperty("messagetoreceiver"));
-        scrollDown(30);
+        assertEqual(getValue(sendOutPageObjects.sourceOfFund()), propertyReader.getproperty("source_of_fund"));
+        assertEqual(getValue(sendOutPageObjects.purpose()), propertyReader.getproperty("purpose"));
+        assertEqual(getValue(sendOutPageObjects.relationToReceiver()), propertyReader.getproperty("relationshiptoreceiver"));
+        assertEqual(getValue(sendOutPageObjects.messageToReceiver()), propertyReader.getproperty("messagetoreceiver"));
+
+
+        scrollToElement(sendOutPageObjects.principalAmount());
         click(sendOutPageObjects.principalAmount(), "Principal Amount field ");
         type(sendOutPageObjects.principalAmount(), "Principal Amount field ", propertyReader.getproperty("principal_amount"));
         click(sendOutPageObjects.totalAmount(), "Total Amount");
@@ -216,7 +183,49 @@ public class SendOut_Steps extends Base_Steps{
             ExtentReporter.logFail("DS_TC_10", "Failed to redirect to the SendOut Domestic Page");
             LoggingUtils.error("Failed to redirect to the SendOut Domestic Page");
         }
+    }
+    public void searchKYC(){
+        click(sendOutPageObjects.searchKYC(), "Search KYC button ");
+        type(sendOutPageObjects.lastName(), "Lastname ", propertyReader.getproperty("Lastname"));
+        type(sendOutPageObjects.firstName(), "Firstname ", propertyReader.getproperty("Firstname"));
+        click(sendOutPageObjects.searchBtn(), "Search Button ");
+        waitSleep(2000);
+        click(sendOutPageObjects.viewButton(), "View Button ");
+        waitSleep(3000);
+        scrollToElement(sendOutPageObjects.selectKYC());
+        click(sendOutPageObjects.selectKYC(), "Select KYC Button");
+    }
 
+    public void addReceiver(){
+        click(sendOutPageObjects.searchReceivers(), "Search Receivers Button ");
+        click(sendOutPageObjects.addNewReceivers(), "Add new Receiver ");
+        type(sendOutPageObjects.r_LastName(),"R_Lastname ", propertyReader.getproperty("Receivers_LName"));
+        type(sendOutPageObjects.r_FirstName(),"R_Firstname ", propertyReader.getproperty("Receivers_FName"));
+        type(sendOutPageObjects.r_MiddleName(),"R_Firstname ", propertyReader.getproperty("Receivers_MName"));
+        scrollDown(100);
+        waitSleep(3000);
+        click(sendOutPageObjects.r_ProvinceState(), "Receiver Province/State");
+        click(sendOutPageObjects.r_ProvinceStateSelect(), "Receiver Selected Province/State");
+        click(sendOutPageObjects.r_CityMunicipality(), "Receiver City Municipality");
+        click(sendOutPageObjects.r_CityMunicipalitySelected(), "Receiver Selected City Municipality");
+        type(sendOutPageObjects.r_HouseNoStreetBarangaySitio(),"Receiver House No. Street/Barangay/Sitio ", propertyReader.getproperty("HouseNoStreetBarangaySitio"));
+        click(sendOutPageObjects.r_birthdate_Field(), "Receiver Birthdate field ");
+        type(sendOutPageObjects.r_birthdate_Field(), "Receiver Birthdate field ", propertyReader.getproperty("r_birthDate"));
+        sendOutPageObjects.r_birthdate_Field().sendKeys(Keys.ARROW_LEFT);
+        type(sendOutPageObjects.r_birthdate_Field(), "Receiver Birthdate field ", propertyReader.getproperty("r_month"));
+        sendOutPageObjects.r_birthdate_Field().sendKeys(Keys.ARROW_LEFT);
+        sendOutPageObjects.r_birthdate_Field().sendKeys(Keys.ARROW_LEFT);
+        type(sendOutPageObjects.r_birthdate_Field(), "Receiver Birthdate field ", propertyReader.getproperty("r_day"));
+        click(sendOutPageObjects.r_sex_Field(), "Receiver Sex Field ");
+        click(sendOutPageObjects.r_selected_Sex_Field(), "Receiver Selected Sex Field ");
+        click(sendOutPageObjects.no_ContactNo(), "Receiver No Contact No. ");
+        scrollUp(driver);
+        waitSleep(3000);
+    }
+    public void searchReceiver(){
+        click(sendOutPageObjects.searchReceivers(), "Search Receivers Button ");
+        scrollToElement(sendOutPageObjects.selectButton());
+        click(sendOutPageObjects.selectButton(),"Select Button");
     }
 }
 

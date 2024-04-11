@@ -291,6 +291,38 @@ public class GeneralMethod extends ExtentReporter{
         // Use the generated KPTN in your subsequent code
         // ...
     }
+    public void clearField(WebElement locator){
+        try{
+            wait.until(ExpectedConditions.elementToBeClickable(locator));
+            locator.clear();
+            LoggingUtils.info("Element " + locator + " field cleared");
+        }catch (Exception e)
+        {
+            ExtentReporter.logFail("clearField", ""+ e);
+            LoggingUtils.error("Failed to clear element " + locator);
+        }
+    }
+    public boolean isChecked(WebElement locator){
+        try{
+            return locator.isSelected();
+        }catch (Exception e){
+            LoggingUtils.error(""+e);
+            return false;
+        }
+    }
+    public String getValue(WebElement locator){
+        String val = null;
+        try{
+            WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
+            val = element.getAttribute("value");
+        }catch(Exception e){
+            ExtentReporter.logFail("Cannot get value for element" + e.getMessage(), "Caused: "+ e);
+            LoggingUtils.error("Cannot get value for element" + e.getMessage());
+            throw new AssertionError("Cannot get value for element" + e.getMessage());
+        }
+        return val;
+
+    }
 }
 
 
