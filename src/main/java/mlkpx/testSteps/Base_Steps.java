@@ -3,7 +3,7 @@ package mlkpx.testSteps;
 import org.mlkpx.pageObject.*;
 import utilities.ReusableComponents.GeneralMethod;
 import utilities.PropertyReader.propertyReader;
-
+import org.testng.Assert;
 public abstract class Base_Steps extends GeneralMethod {
     Payout_PageObjects payoutPageObjects = new Payout_PageObjects();
     Kyc_PageObjects kycPageObjects = new Kyc_PageObjects();
@@ -17,5 +17,7 @@ public abstract class Base_Steps extends GeneralMethod {
     ReturnToSender_PageObjects returnToSenderPageObjects = new ReturnToSender_PageObjects();
     final String filepath = "src\\test\\java\\resources\\testData.properties";
     propertyReader propertyReader = new propertyReader(filepath);
+
+    Assert anAssert;
 
 }

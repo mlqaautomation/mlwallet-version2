@@ -25,6 +25,9 @@ public class SendOut_PageObjects {
     public WebElement branchField() {
         return getDriver().findElement(By.cssSelector("[name=\"branchCode\"]"));
     }
+    public WebElement branchName(){
+        return getDriver().findElement(By.cssSelector("[name='remoteBranch.branchName']"));
+    }
     public WebElement operatorIDField() {
         return getDriver().findElement(By.xpath("//input[@autocomplete=\"off\" and @allowedcharacters=\"/^[0-9a-zA-Z]+$|^$/\" and @min=\"0\" and @name=\"\" and @placeholder=\"Operator ID\" and @type=\"search\" and @class=\"form-control-sm form-control\" and @value=\"\" and @required=\"\"]"));
     }
@@ -75,9 +78,13 @@ public class SendOut_PageObjects {
     public WebElement searchReceivers() { return getDriver().findElement(By.xpath("//*[text()='Search Receivers']"));
     }
 
-    public WebElement name_Text() {
-        return getDriver().findElement(By.xpath("//*[text()=\"Name: \"]"));
+    public WebElement name_Text(int i) {
+        return getDriver().findElement(By.xpath("(//*[contains(text(), 'Name:')]/following-sibling::span)["+i+"]"));
     }
+    public WebElement name_Text2(){
+        return getDriver().findElement(By.cssSelector(".sc-gvZAcH.gZejqK:last-child"));
+    }
+
     public WebElement selectButton(){
         return getDriver().findElement(By.xpath("//button[@class=\"sc-lnPyaJ fAafen btn-sm btn btn-primary\" and text()=\"Select\"]"));
     }
@@ -212,16 +219,20 @@ public class SendOut_PageObjects {
         return getDriver().findElement(By.xpath("//*[text()=\"Sender Information\"]"));
     }
 
-
-
-
-
-
-
-
     public WebElement kptnValue() {
         return getDriver().findElement(By.cssSelector("[data-testid=\"sendoutKPTN\"]"));
     }
 
-
+    public WebElement senderLastName(){
+        return getDriver().findElement(By.xpath("(//p[normalize-space()='Last Name'])[1]/parent::div/following-sibling::div/child::p"));
+    }
+    public WebElement senderFirstName(){
+        return getDriver().findElement(By.xpath("(//p[normalize-space()='First Name'])[1]/parent::div/following-sibling::div/child::p"));
+    }
+    public WebElement smsCheckbox(){
+        return getDriver().findElement(By.cssSelector("[name='senderOtherInformation.receiveSmsNotification']"));
+    }
+    public WebElement receiversInfo(){
+        return getDriver().findElement(By.cssSelector("[class='sc-YysOf dijwdn col-md-10']"));
+    }
 }
