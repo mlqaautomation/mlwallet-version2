@@ -147,9 +147,6 @@ public class SendOut_PageObjects {
         return getDriver().findElement(By.xpath("//*[text()=\"Submit Sendout\"]"));
     }
 
-    public WebElement totalAmount() {
-        return getDriver().findElement(By.xpath("//*[label=\"Total Amount\"]"));
-    }
     public WebElement display0Text() {
         return getDriver().findElement(By.xpath("//*[text()=\"Minimum allowed amount is PHP 1.00.\"]"));
     }
@@ -195,6 +192,15 @@ public class SendOut_PageObjects {
     }
     public WebElement smsCheckbox(){
         return getDriver().findElement(By.cssSelector("[name='senderOtherInformation.receiveSmsNotification']"));
+    }
+    public WebElement chargeAmount(){
+        return getDriver().findElement(By.xpath("(//p[@class='text-monospace text-right'])[1]"));
+    }
+    public WebElement otherChargeAmount(){
+        return getDriver().findElement(By.xpath("(//p[@class='text-monospace text-right'])[2]"));
+    }
+    public WebElement totalAmount(){
+        return getDriver().findElement(By.cssSelector("[class='pr-1']"));
     }
 
 }
