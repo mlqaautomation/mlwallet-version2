@@ -14,11 +14,26 @@ public class SendOutCancellation_Tests extends BaseTest {
             ExtentReporter.logPass("loginGoogle", "Login, Passed!!");
         }
     }
-    @Test(dependsOnMethods = "loginGoogle" , priority = 1, description = "Verify Navigation of SendOut Cancellation")
-    public void navigatingSendOutPage()throws Exception{
+
+    @Test(dependsOnMethods = "loginGoogle" , priority = 1, description = "Verify Navigation of SendOut Cancellation and Cancellation of Transaction")
+    public void navigatingSendOutCancellationPage()throws Exception{
         if(this.homeSteps.isInHomePage()) {
-            this.sendOutCancellationSteps.DS_TC_01();
             this.sendOutCancellationSteps.SOC_TC_01();
+        }
+
+    }
+    @Test(dependsOnMethods = "loginGoogle" , priority = 2, description = "Verify Cancel Sendout with Non-exisitng KPTN")
+    public void SOC_TC_02()throws Exception{
+        if(this.homeSteps.isInHomePage()) {
+            this.sendOutCancellationSteps.SOC_TC_02();
+
+        }
+
+    }
+    @Test(dependsOnMethods = "loginGoogle" , priority = 3, description = "Verify Cancel Sendout with already cancelled KPTN")
+    public void SOC_TC_03()throws Exception{
+        if(this.homeSteps.isInHomePage()) {
+            this.sendOutCancellationSteps.SOC_TC_03();
 
         }
 

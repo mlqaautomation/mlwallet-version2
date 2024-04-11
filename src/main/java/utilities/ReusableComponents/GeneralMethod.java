@@ -291,6 +291,7 @@ public class GeneralMethod extends ExtentReporter{
         // Use the generated KPTN in your subsequent code
         // ...
     }
+
     public void clearField(WebElement locator){
         try{
             wait.until(ExpectedConditions.elementToBeClickable(locator));
@@ -310,13 +311,13 @@ public class GeneralMethod extends ExtentReporter{
             return false;
         }
     }
-    public String getValue(WebElement locator){
+    public String getValue(WebElement locator) {
         String val = null;
-        try{
+        try {
             WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
             val = element.getAttribute("value");
-        }catch(Exception e){
-            ExtentReporter.logFail("Cannot get value for element" + e.getMessage(), "Caused: "+ e);
+        } catch (Exception e) {
+            ExtentReporter.logFail("Cannot get value for element" + e.getMessage(), "Caused: " + e);
             LoggingUtils.error("Cannot get value for element" + e.getMessage());
             throw new AssertionError("Cannot get value for element" + e.getMessage());
         }

@@ -99,6 +99,7 @@ public class SendOut_Steps extends Base_Steps{
     public void DS_TC_06_07()throws Exception{
         navigationFOrSendOutDomestic();
         searchKYC();
+        click(sendOutPageObjects.sourceOfFund(), "Source of Fund field ");
         type(sendOutPageObjects.sourceOfFund(), "Source of Fund field ", propertyReader.getproperty("source_of_fund"));
         type(sendOutPageObjects.purpose(), "Purpose field ", propertyReader.getproperty("purpose"));
         type(sendOutPageObjects.relationToReceiver(), "Relation to Receiver field ", propertyReader.getproperty("relationshiptoreceiver"));
@@ -108,14 +109,27 @@ public class SendOut_Steps extends Base_Steps{
         assertEqual(getValue(sendOutPageObjects.relationToReceiver()), propertyReader.getproperty("relationshiptoreceiver"));
         assertEqual(getValue(sendOutPageObjects.messageToReceiver()), propertyReader.getproperty("messagetoreceiver"));
 
-
         scrollToElement(sendOutPageObjects.principalAmount());
         click(sendOutPageObjects.principalAmount(), "Principal Amount field ");
-        type(sendOutPageObjects.principalAmount(), "Principal Amount field ", propertyReader.getproperty("principal_amount"));
+        type(sendOutPageObjects.principalAmount(), "Principal Amount field ", propertyReader.getproperty("principal_amount_empty"));
+        click(sendOutPageObjects.chargeText(), "Charge Text");
+        if (isVisible(sendOutPageObjects.emptyValueText(), getText((sendOutPageObjects.emptyValueText())))) {
+            ExtentReporter.logPass("Empty Value", "Valid Amount is required");
+        }
+        type(sendOutPageObjects.principalAmount(), "Principal Amount field ", propertyReader.getproperty("principal_amount0"));
+        if (isVisible(sendOutPageObjects.display0Text(), getText((sendOutPageObjects.display0Text())))){
+            ExtentReporter.logPass("Input Amount (Zero)", "Min allowed amount is PHP 1.00");
+        }
+        clearField(sendOutPageObjects.principalAmount());
+        type(sendOutPageObjects.principalAmount(), "Principal Amount field ", propertyReader.getproperty("negative_principal_amount"));
+        if (isVisible(sendOutPageObjects.negativeDisplayText(), getText((sendOutPageObjects.negativeDisplayText())))){
+            ExtentReporter.logPass("Input Amount (Negative Value)", "Value must be greater than or equal to 0");
+        }
+        clearField(sendOutPageObjects.principalAmount());
+        type(sendOutPageObjects.principalAmount(), "Valid Principal Amount field ", propertyReader.getproperty("valid_principal_amount"));
         click(sendOutPageObjects.totalAmount(), "Total Amount");
-        waitSleep(50);
-//        if(isVisible(sendOutPageObjects.totalAmount(), getText(sendOutPageObjects.totalAmount()))){
-//            LoggingUtils.info("Total Amount");
+        waitSleep(5000);
+
         if(isVisible(sendOutPageObjects.totalAmount(), getText(sendOutPageObjects.totalAmount()))){
             ExtentReporter.logPass("DS_TC_06_07", "Successfully Validate Other information input section");
             LoggingUtils.info("Successfully Validate Other information input section");
@@ -123,9 +137,8 @@ public class SendOut_Steps extends Base_Steps{
             ExtentReporter.logFail("DS_TC_06_07", "Failed to Validate Other information input section");
             LoggingUtils.error("Failed to Validate Other information input section");
         }
-//        }
         click(sendOutPageObjects.submitSendOut(), "Submit SendOut Button");
-        waitSleep(50);
+        waitSleep(5000);
         scrollDown(100);
     }
 
