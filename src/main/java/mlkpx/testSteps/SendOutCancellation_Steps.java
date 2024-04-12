@@ -41,7 +41,7 @@ public class SendOutCancellation_Steps extends Base_Steps{
         if(isVisible(sendOutCancellationPageObjects.cancelSendOutText(), getText(sendOutCancellationPageObjects.cancelSendOutText()))){
             LoggingUtils.info("Successfully Cancel the Transaction");
         }else {
-            ExtentReporter.logFail("SOC_TC_02", "Failed to Cancel the Transaction");
+            ExtentReporter.logFail("SOC_TC_01", "Failed to Cancel the Transaction");
         }
     }
 
@@ -72,7 +72,7 @@ public class SendOutCancellation_Steps extends Base_Steps{
         if(isVisible(sendOutCancellationPageObjects.alreadyCancelledText(), getText(sendOutCancellationPageObjects.alreadyCancelledText()))){
             LoggingUtils.info("Sendout transaction has already been cancelled");
         }else {
-            ExtentReporter.logFail("SOC_TC_02", "Fail");
+            ExtentReporter.logFail("SOC_TC_03", "Fail");
         }
         click(sendOutCancellationPageObjects.okButton(),"OK button");
 

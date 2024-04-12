@@ -23,7 +23,7 @@ public class BaseTest {
     protected SOReprinting_Steps soReprintingSteps;
     protected RequestForChange_Steps requestForChangeSteps;
     protected ReturnToSender_Steps returnToSenderSteps;
-
+    protected ORReprinting_Steps orReprintingSteps;
 
 
     @Parameters("browser")
@@ -49,6 +49,7 @@ public class BaseTest {
         this.soReprintingSteps = new SOReprinting_Steps();
         this.requestForChangeSteps = new RequestForChange_Steps();
         this.returnToSenderSteps = new ReturnToSender_Steps();
+        this.orReprintingSteps = new ORReprinting_Steps();
 
     }
     private void initializeDriver(DriverType driverType) {

@@ -5,16 +5,17 @@ import org.openqa.selenium.WebElement;
 
 import static utilities.Driver.DriverManager.getDriver;
 
-public class SOReprinting_PageObjects {
-    public WebElement soReprintingLink(){return getDriver().findElement(By.xpath("//*[@href='/sendout/reprinting'] [text()='SO Reprinting']"));}
-    public WebElement soReprintText(){return getDriver().findElement(By.xpath("//*[text()=\"Sendout Reprint\"]"));}
+public class ORReprinting_PageObjects {
+    public WebElement orReprintingLink(){return getDriver().findElement(By.xpath("//*[@href='/sendout/or-reprinting'] [text()='OR Reprinting']"));}
+    public WebElement orReprintText(){return getDriver().findElement(By.xpath("//*[text()=\"Sendout OR Reprint\"]"));}
     public WebElement kptnButtonInReprint(){
         return getDriver().findElement(By.cssSelector("[name=\"kptn\"]"));}
-    public WebElement reasonSOReprint(){
+    public WebElement reasonORReprint(){
         return getDriver().findElement(By.cssSelector("[name=\"reason\"]"));}
     public WebElement reprintButton(){
         return getDriver().findElement(By.cssSelector("[class=\"btn-sm btn btn-primary\"]"));}
-    public WebElement printSendoutReceiptText(){return getDriver().findElement(By.xpath("//*[text()=\"Print Sendout Receipt\"]"));}
+    public WebElement printSendoutORReceiptText(){return getDriver().findElement(By.xpath("//*[text()=\"Print Sendout OR Receipt\"]"));}
     public WebElement noTransactionFoundText(){return getDriver().findElement(By.xpath("//*[text()=\"No Transaction Found\"]"));}
+
 
 }
