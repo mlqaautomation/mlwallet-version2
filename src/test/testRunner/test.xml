@@ -9,15 +9,11 @@
     <test name="KYC Input">
         <parameter name="browser" value="chrome">
             <classes>
-<!--                <class name="kpx.actual.Kyc_Tests">-->
-<!--                </class>-->
-                <class name="kpx.actual.SendOut_Tests">
-               </class>
+<!--                <class name="kpx.actual.Kyc_Tests"> </class>-->
+<!--                <class name="kpx.actual.SendOut_Tests"> </class>-->
+                <class name="kpx.actual.RequestForChange_Tests"> </class>
+<!--                <class name="kpx.actual.SOReprinting_Tests"> </class>-->
 <!--                <class name="kpx.actual.SendOutCancellation_Tests"> </class>-->
-<!--                <class name="kpx.actual.Payout_Tests">-->
-<!--                </class>-->
-<!--                <class name="kpx.actual.SOReprinting_Tests">-->
-<!--                </class>-->
             </classes>
         </parameter>
     </test>

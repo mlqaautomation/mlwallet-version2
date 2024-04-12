@@ -15,17 +15,23 @@ public class RequestForChange_Tests extends BaseTest {
     }
 
 
-    @Test(dependsOnMethods = "loginGoogle" , priority = 1, description = "Verify Navigation of Request for Change Page")
+    @Test(dependsOnMethods = "loginGoogle" , priority = 1, description = "Verify Navigation of Request for Change Page and can Request for Change")
     public void rfcNavigation_RFC_TC_01()throws Exception{
         if(this.homeSteps.isInHomePage()){
             this.requestForChangeSteps.RFC_TC_01();
         }
     }
 
-    @Test(dependsOnMethods = "loginGoogle" , priority = 1, description = "Invalid KPTN Code")
+    @Test(dependsOnMethods = "loginGoogle" , priority = 2, description = "Invalid KPTN Code")
     public void invalidKPTN_RFC_TC_02()throws Exception{
         if(this.homeSteps.isInHomePage()){
             this.requestForChangeSteps.RFC_TC_02();
+        }
+    }
+    @Test(dependsOnMethods = "loginGoogle" , priority = 3, description = "Cancelled KPTN Code")
+    public void cancelledKPTN_RFC_TC_03()throws Exception{
+        if(this.homeSteps.isInHomePage()){
+            this.requestForChangeSteps.RFC_TC_03();
         }
     }
 }
