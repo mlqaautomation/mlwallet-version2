@@ -148,7 +148,7 @@ public class SendOut_PageObjects {
     }
 
     public WebElement display0Text() {
-        return getDriver().findElement(By.xpath("//*[text()=\"Minimum allowed amount is PHP 1.00.\"]"));
+        return getDriver().findElement(By.xpath("//*[text()=\"Minimum allowed amount is PHP 0.01.\"]"));
     }
     public WebElement negativeDisplayText() {
         return getDriver().findElement(By.xpath("//*[text()=\"Value must be greater than or equal to 0.\"]"));
@@ -202,5 +202,10 @@ public class SendOut_PageObjects {
     public WebElement totalAmount(){
         return getDriver().findElement(By.cssSelector("[class='pr-1']"));
     }
-
+    public WebElement kptnText(){
+        return getDriver().findElement(By.cssSelector("[data-testid='sendoutKPTN']"));
+    }
+    public WebElement sendOutSuccessMsg(){
+        return getDriver().findElement(By.cssSelector("[class='sc-epALIP bYifLU']"));
+    }
 }

@@ -6,6 +6,11 @@ import org.testng.Assert;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
 public class SendOut_Steps extends Base_Steps{
 
     public void navigationFOrSendOutDomestic()throws Exception{
@@ -112,7 +117,6 @@ public class SendOut_Steps extends Base_Steps{
         assertEqual(getValue(sendOutPageObjects.relationToReceiver()), propertyReader.getproperty("relationshiptoreceiver"));
         assertEqual(getValue(sendOutPageObjects.messageToReceiver()), propertyReader.getproperty("messagetoreceiver"));
         scrollToElement(sendOutPageObjects.principalAmount());
-        click(sendOutPageObjects.principalAmount(), "Principal Amount field ");
         type(sendOutPageObjects.principalAmount(), "Principal Amount field ", propertyReader.getproperty("principal_amount_empty"));
         click(sendOutPageObjects.chargeText(), "Charge Text");
         if(isVisible(sendOutPageObjects.emptyValueText(), getText((sendOutPageObjects.emptyValueText())))) {
@@ -135,10 +139,25 @@ public class SendOut_Steps extends Base_Steps{
 
         type(sendOutPageObjects.principalAmount(), "Valid Principal Amount field ", propertyReader.getproperty("lastAmount"));
         assertEqual(getValue(sendOutPageObjects.chargeAmount()), propertyReader.getproperty("maxCharge"));
-        waitSleep(2000);
+        waitSleep(4000);
 
-        //todo verify total computation if correct
+        if(isTotalCorrect()){
+            ExtentReporter.logPass("Total Computation", "is Correct");
+        }else{
+            ExtentReporter.logFail("Total Computation", "is not Correct");
+        }
     }
+    public boolean isTotalCorrect() throws Exception {
+        double principalAmt = parseTotalValue(getValue(sendOutPageObjects.principalAmount()));
+        double chargeAmt = parseTotalValue(getText(sendOutPageObjects.chargeAmount()));
+        double otherChargeAmt = parseTotalValue(getText(sendOutPageObjects.otherChargeAmount()));
+        double totalAmt = parseTotalValue(getText(sendOutPageObjects.totalAmount()));
+        double expectedTotal = principalAmt + chargeAmt + otherChargeAmt;
+        assertEqual(totalAmt, expectedTotal);
+        LoggingUtils.info("Expected total: " + expectedTotal + ", actual: " + totalAmt);
+        return Math.abs(expectedTotal - totalAmt) < 0.0001;
+    }
+
 
     public void DS_TC_09()throws Exception {
         DS_TC_06_07();
@@ -169,7 +188,9 @@ public class SendOut_Steps extends Base_Steps{
         click(sendOutPageObjects.confirmSendOutButton(), "Submit SendOut Button");
         waitSleep(5000);
         //todo get value of kptn locator and post it to yaml file
-
+        String kptnText = getValue(sendOutPageObjects.kptnText());
+        List<String> kptnValues = Collections.singletonList(kptnText);
+        reader.writeKptnData(kptnValues);
         click(sendOutPageObjects.proceedToPrinting(), "Proceed to Printing");
         waitSleep(5000);
         click(sendOutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
@@ -190,9 +211,9 @@ public class SendOut_Steps extends Base_Steps{
     }
     public void searchKYC(){
         click(sendOutPageObjects.searchKYC(), "Search KYC button ");
-        //todo create method to randomly select lastname and firstname on yaml file
-        type(sendOutPageObjects.lastName(), "Lastname ", propertyReader.getproperty("Lastname"));
-        type(sendOutPageObjects.firstName(), "Firstname ", propertyReader.getproperty("Firstname"));
+        String[] randomName = reader.getRandomName();
+        type(sendOutPageObjects.lastName(), "Lastname ", randomName[1]);
+        type(sendOutPageObjects.firstName(), "Firstname ", randomName[0]);
         click(sendOutPageObjects.searchBtn(), "Search Button ");
         waitSleep(2000);
         click(sendOutPageObjects.viewButton(), "View Button ");
@@ -200,7 +221,6 @@ public class SendOut_Steps extends Base_Steps{
         scrollToElement(sendOutPageObjects.selectKYC());
         scrollDown(100);
         click(sendOutPageObjects.selectKYC(), "Select KYC Button");
-
     }
 
     public void addReceiver(){
@@ -233,7 +253,6 @@ public class SendOut_Steps extends Base_Steps{
         click(sendOutPageObjects.searchReceivers(), "Search Receivers Button ");
         scrollToElement(sendOutPageObjects.selectButton());
         click(sendOutPageObjects.selectButton(),"Select Button");
-        //todo randomly selects receiver
     }
 }
 
