@@ -5,6 +5,7 @@ import utilities.ReusableComponents.GeneralMethod;
 import utilities.PropertyReader.propertyReader;
 
 public abstract class Base_Steps extends GeneralMethod {
+    BillsPay_PageObjects billsPayPageObjects = new BillsPay_PageObjects();
     Payout_PageObjects payoutPageObjects = new Payout_PageObjects();
     Kyc_PageObjects kycPageObjects = new Kyc_PageObjects();
     Home_PageObjects homePageObjects = new Home_PageObjects();

@@ -11,7 +11,9 @@
             <classes>
 <!--                <class name="kpx.actual.Kyc_Tests">-->
 <!--                </class>-->
-                <class name="kpx.actual.Payout_Tests">
+<!--                <class name="kpx.actual.Payout_Tests">-->
+<!--                </class>-->
+                <class name="kpx.actual.BillsPay_Tests">
                 </class>
             </classes>
         </parameter>
