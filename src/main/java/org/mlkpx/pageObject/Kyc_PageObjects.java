@@ -34,25 +34,18 @@ public class Kyc_PageObjects {
     }
     public WebElement lastName_required(){return getDriver().findElement(By.xpath("//*[contains(text(), 'Last name is required.')]"));}
     public WebElement firstName_required(){return getDriver().findElement(By.xpath("//*[contains(text(), 'First name is required.')]"));}
-    public WebElement birthdate1_field(){return getDriver().findElement(By.cssSelector("[max=\"2024-04-01\"]"));}
-    public WebElement birthdate2_field(){return getDriver().findElement(By.cssSelector("[class = form-control-sm form-control]"));}
-
     public WebElement birthDate(){
         return getDriver().findElement(By.xpath("//input[@placeholder='Birth Date']"));
     }
-
-
     public WebElement lastName_max60(){return getDriver().findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/div/form/div/div[1]/div/small"));}
     public WebElement firstName_max60(){return getDriver().findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/div/form/div/div[2]/div/small"));}
     public WebElement middleName_max60(){return getDriver().findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/div/form/div/div[3]/div/small"));}
     public WebElement birthdate_field(){return getDriver().findElement(By.cssSelector("[placeholder='Birth Date']"));}
     public WebElement searchOtherDevice(){return getDriver().findElement(By.xpath("//button[normalize-space()='Search in Other Systems']"));
     }
-
     public WebElement searchInOtherSystemButton() {
         return getDriver().findElement(By.cssSelector("[class='btn btn-primary']"));
     }
-    public WebElement kycNotFoundText(){return getDriver().findElement(By.xpath("//div[@role='alert']"));}
     public WebElement AddLName(){return getDriver().findElement(By.xpath("//input[@placeholder='Last Name']"));}
     public WebElement AddFName(){return getDriver().findElement(By.xpath("//input[@placeholder='First Name']"));}
     public WebElement AddMName(){return getDriver().findElement(By.xpath("//input[@placeholder='Middle Name']"));}
@@ -118,7 +111,5 @@ public class Kyc_PageObjects {
     public WebElement YesActive(){return getDriver().findElement(By.xpath("(//input[@value='1'])[3]"));}
     public WebElement KYCDone(){return getDriver().findElement(By.xpath("//button[normalize-space()='Done']"));}
     public WebElement SaveNewKYC(){return getDriver().findElement(By.xpath("//button[normalize-space()='Save New KYC']"));}
-
-
 
 }

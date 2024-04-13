@@ -1,9 +1,11 @@
 package utilities.Driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import utilities.Logger.LoggingUtils;
 
@@ -14,6 +16,8 @@ import java.util.Set;
 public class DriverManager {
     //thread local for web driver
     private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<> ();
+    private Object driver;
+
     //private static final boolean useRemoteWebDriver = Boolean.getBoolean("remoteDriver");
     public static void createDriver(final DriverType browser){
         switch (browser){
@@ -32,6 +36,8 @@ public class DriverManager {
         LoggingUtils.info("Setting up chrome driver...");
         HashMap<String, Object> chromePreferences = new HashMap<>();
         ChromeOptions options = new ChromeOptions();
+
+        chromePreferences.put("profile.default_content_setting_values.notifications", 2);
 //        options.addArguments("--headless=new");
         options.addArguments("enable-automation");
         options.addArguments("--no-sandbox");
@@ -40,13 +46,16 @@ public class DriverManager {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-browser-side-navigation");
         options.addArguments("--disable-gpu");
-        options.addArguments("--start-maximized");
+        options.addArguments("--window-size=1920,1080");
         options.addArguments("--ignore-certificate-errors");
         options.addArguments("--disable-notifications");
         options.addArguments("--incognito");
         options.addArguments("use-fake-ui-for-media-stream");
 
+//        chromePreferences.put("profile.default_content_setting_values.notifications", 2);
         options.setExperimentalOption("prefs", chromePreferences);
+
+        options.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
         // Create desired capabilities
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
@@ -111,4 +120,9 @@ public static void closeWebBrowser() {
     }
 
     private DriverManager(){}
+
+
+
 }
+
+

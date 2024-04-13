@@ -1,23 +1,20 @@
 package mlkpx.testSteps;
 
-import org.mlkpx.pageObject.Kyc_PageObjects;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ISelect;
-
-import utilities.Driver.DriverManager;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
-import org.openqa.selenium.WebElement;
 public class Kyc_Steps extends Base_Steps {
+
+
+
     public void navigateKycPage()throws Exception{
         try{
             click(kycPageObjects.kyc_link(), "Kyc Page");
             if(isVisible(kycPageObjects.kycPage_h2(), getText(kycPageObjects.kycPage_h2()))){
-                LoggingUtils.info("Navigated to Search KYC Page");
+                LoggingUtils.info("KYC page will display");
             }
         }catch (Exception e){
-            LoggingUtils.info("Failed to Navigate Search KYC Page "+ e);
+            LoggingUtils.info("KYC page will not display "+ e);
         }
     }
 
@@ -46,6 +43,8 @@ public class Kyc_Steps extends Base_Steps {
             ExtentReporter.logFail("searchRegisteredKYC_Invalid",""+e);
         }
     }
+
+
     public void searchRegisteredKYC_Invalid03(){
         try{
             type(kycPageObjects.lastName_field(), "Numeric Last name field", "45645");
@@ -96,7 +95,11 @@ public class Kyc_Steps extends Base_Steps {
             kycPageObjects.birthdate_field().sendKeys(Keys.ARROW_LEFT);
             kycPageObjects.birthdate_field().sendKeys(Keys.ARROW_LEFT);
             type(kycPageObjects.birthdate_field(), "Birthdate field", propertyReader.getproperty("day"));
-            click(kycPageObjects.searchInOtherSystemButton(), "Search in other Systems");
+            click(kycPageObjects.searchInOtherSystemButton(), "Search in other system");
+            waitSleep(10);
+            if(!kycPageObjects.buttonList().isEmpty()){
+                ExtentReporter.logPass("","Loading to be directed to the Add KYC Page.");
+            }
         }
 
     public void AddNewKYC01 () throws Exception{
