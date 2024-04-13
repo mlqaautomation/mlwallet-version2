@@ -94,20 +94,20 @@ public class yamlReader {
     }
     public void writeKptnData(List<String> values) {
         try {
-            FileWriter writer = new FileWriter(yamlFileName, true);
+            Yaml yaml = new Yaml();
+            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
+            Map<String, Object> yamlData = yaml.load(fileInputStream);
 
-            // Create a map with the key "Kptn" and the list of values
-            Map<String, Object> yamlData = new HashMap<>();
-            yamlData.put("Kptn", values);
+            if (yamlData.containsKey("KPTN")) {
+                List<String> existingValues = (List<String>) yamlData.get("KPTN");
+                existingValues.addAll(values);
+            } else {
+                yamlData.put("KPTN", values);
+            }
 
-            // Configure YAML dumper options
-            DumperOptions options = new DumperOptions();
-            options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
-
-            // Create YAML instance and write data to the file
-            Yaml yaml = new Yaml(options);
+            FileWriter writer = new FileWriter(yamlFileName);
             yaml.dump(yamlData, writer);
-
+            LoggingUtils.info(values + " saved to file");
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();

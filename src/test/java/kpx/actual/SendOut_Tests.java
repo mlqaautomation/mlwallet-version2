@@ -13,12 +13,12 @@ public class SendOut_Tests extends BaseTest {
             ExtentReporter.logPass("loginGoogle", "Login, Passed!!");
         }
     }
-    @Test(dependsOnMethods = "loginGoogle" , priority = 1, description = "Verify Navigation of SendOut Domestic")
-    public void DS_TC_01()throws Exception{
-        if(this.homeSteps.isInHomePage()){
-            this.sendOutSteps.DS_TC_01();
-        }
-    }
+//    @Test(dependsOnMethods = "loginGoogle" , priority = 1, description = "Verify Navigation of SendOut Domestic")
+//    public void DS_TC_01()throws Exception{
+//        if(this.homeSteps.isInHomePage()){
+//            this.sendOutSteps.DS_TC_01();
+//        }
+//    }
 
 //    @Test(dependsOnMethods = "DS_TC_01" , priority = 2, description = "Verify SendOut Transaction Option Invalid Branch Code")
 //    public void DS_TC_02()throws Exception{
@@ -72,13 +72,13 @@ public class SendOut_Tests extends BaseTest {
 //
 //    }
 //
-//    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "To Validate Cancel No SendOut Transaction")
-//    public void DS_TC_8() throws Exception {
-//        if (this.homeSteps.isInHomePage()) {
-//            this.sendOutSteps.DS_TC_08();
-//        }
-//
-//    }
+    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "To Validate Cancel No SendOut Transaction")
+    public void DS_TC_8() throws Exception {
+        if (this.homeSteps.isInHomePage()) {
+            this.sendOutSteps.DS_TC_08();
+        }
+
+    }
 }
 
 

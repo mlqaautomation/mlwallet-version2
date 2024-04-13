@@ -188,7 +188,7 @@ public class SendOut_Steps extends Base_Steps{
         click(sendOutPageObjects.confirmSendOutButton(), "Submit SendOut Button");
         waitSleep(5000);
         //todo get value of kptn locator and post it to yaml file
-        String kptnText = getValue(sendOutPageObjects.kptnText());
+        String kptnText = getText(sendOutPageObjects.kptnText());
         List<String> kptnValues = Collections.singletonList(kptnText);
         reader.writeKptnData(kptnValues);
         click(sendOutPageObjects.proceedToPrinting(), "Proceed to Printing");
@@ -253,6 +253,8 @@ public class SendOut_Steps extends Base_Steps{
         click(sendOutPageObjects.searchReceivers(), "Search Receivers Button ");
         scrollToElement(sendOutPageObjects.selectButton());
         click(sendOutPageObjects.selectButton(),"Select Button");
+        scrollToElement(sendOutPageObjects.no_ContactNo());
+        click(sendOutPageObjects.no_ContactNo(), "Contact No Checkbox");
     }
 }
 
