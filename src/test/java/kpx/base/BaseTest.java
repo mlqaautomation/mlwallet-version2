@@ -1,6 +1,10 @@
 package kpx.base;
 
 import mlkpx.testSteps.*;
+import mlkpx.testSteps.Home_Steps;
+import mlkpx.testSteps.Kyc_Steps;
+import mlkpx.testSteps.Login_Steps;
+import mlkpx.testSteps.Payout_Steps;
 import org.testng.annotations.*;
 
 import static utilities.Driver.DriverManager.*;
@@ -12,8 +16,14 @@ public class BaseTest {
     protected Home_Steps homeSteps;
     protected Login_Steps loginSteps;
     protected Kyc_Steps kycSteps;
+    protected SendOut_Steps sendOutSteps;
+    protected SendOutCancellation_Steps sendOutCancellationSteps;
     protected Payout_Steps payoutSteps;
     protected BillsPay_Steps billsPaySteps;
+    protected SOReprinting_Steps soReprintingSteps;
+    protected RequestForChange_Steps requestForChangeSteps;
+    protected ReturnToSender_Steps returnToSenderSteps;
+    protected ORReprinting_Steps orReprintingSteps;
 
 
 
@@ -34,8 +44,14 @@ public class BaseTest {
         this.loginSteps = new Login_Steps();
         this.homeSteps = new Home_Steps();
         this.kycSteps = new Kyc_Steps();
+        this.sendOutSteps = new SendOut_Steps();
+        this.sendOutCancellationSteps = new SendOutCancellation_Steps();
         this.payoutSteps = new Payout_Steps();
         this.billsPaySteps = new BillsPay_Steps();
+        this.soReprintingSteps = new SOReprinting_Steps();
+        this.requestForChangeSteps = new RequestForChange_Steps();
+        this.returnToSenderSteps = new ReturnToSender_Steps();
+        this.orReprintingSteps = new ORReprinting_Steps();
 
     }
     private void initializeDriver(DriverType driverType) {

@@ -119,6 +119,17 @@ public class GeneralMethod extends ExtentReporter{
             throw new AssertionError("Assertion error: "+ e.getMessage());
         }
     }
+    public void assertEqual(double actual, double expected){
+        try{
+            Assert.assertEquals(actual, expected);
+            LoggingUtils.info(actual +  " and " + expected + " are matched");
+            ExtentReporter.logInfo("Assertion: "+actual +  " and " + expected + " are matched" , "asserted values " + actual + " and " + expected);
+        }catch(Exception e){
+            LoggingUtils.error("Assertion error: "+ e.getMessage());
+            ExtentReporter.logFail("Assertion error: "+ e.getMessage(), "Caused: "+ e);
+            throw new AssertionError("Assertion error: "+ e.getMessage());
+        }
+    }
 
     public void waitImplicitly(int seconds){
         try{
@@ -274,4 +285,91 @@ public class GeneralMethod extends ExtentReporter{
     }
 
 
+    public void scrollDown(int scrollPercentage) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        long totalHeight = (long) jsExecutor.executeScript("return document.body.scrollHeight");
+        long scrollHeight = totalHeight * scrollPercentage / 100;
+
+        jsExecutor.executeScript("window.scrollTo(0, " + scrollHeight + ")");
+    }
+
+    public void scrollUp(WebDriver driver) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("window.scrollTo(0, 0)");
+    }
+
+    // Get the generated KPTN
+    public String getGeneratedKPTN() {
+        WebElement kptnElement = driver.findElement(By.id("kptnElementId")); // Replace "kptnElementId" with the actual ID or locator of the element displaying the KPTN
+        String generatedKPTN = kptnElement.getText();
+        return generatedKPTN;
+    }
+
+    // Perform actions using the generated KPTN
+    public void performActionWithGeneratedKPTN() {
+        // Perform actions to generate the KPTN
+        // ...
+
+        String generatedKPTN = getGeneratedKPTN();
+        System.out.println("Generated KPTN: " + generatedKPTN);
+
+        // Use the generated KPTN in your subsequent code
+        // ...
+    }
+
+
+    public void clearInput(WebElement locator, String elementName) {
+        try {
+            if (isDisplayed(locator)) {
+                WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
+                element.clear();
+                LoggingUtils.info("Cleared input field: " + elementName);
+                ExtentReporter.logInfo("Cleared input field: " + elementName, "");
+            }
+        } catch (NoSuchElementException e) {
+            LoggingUtils.error("Failed to clear input field: " + elementName);
+            ExtentReporter.logFail("Failed to clear input field: " + elementName, "Caused: " + e);
+            throw new AssertionError("Failed to clear input field: " + elementName);
+        }
+    }
+
+    public void clearField(WebElement locator){
+        try{
+            wait.until(ExpectedConditions.elementToBeClickable(locator));
+            locator.clear();
+            LoggingUtils.info("Element " + locator + " field cleared");
+        }catch (Exception e)
+        {
+            ExtentReporter.logFail("clearField", ""+ e);
+            LoggingUtils.error("Failed to clear element " + locator);
+        }
+    }
+    public boolean isChecked(WebElement locator){
+        try{
+            return locator.isSelected();
+        }catch (Exception e){
+            LoggingUtils.error(""+e);
+            return false;
+        }
+    }
+    public String getValue(WebElement locator) {
+        String val = null;
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
+            val = element.getAttribute("value");
+        } catch (Exception e) {
+            ExtentReporter.logFail("Cannot get value for element" + e.getMessage(), "Caused: " + e);
+            LoggingUtils.error("Cannot get value for element" + e.getMessage());
+            throw new AssertionError("Cannot get value for element" + e.getMessage());
+        }
+        return val;
+
+    }
+    public double parseTotalValue(String total) {
+        total = total.replaceAll(",", ""); // Remove commas if present
+        String numericPart = total.replaceAll("[^0-9.]", ""); // Extract numeric part by removing non-numeric characters
+        return Double.parseDouble(numericPart);
+    }
 }
+
+

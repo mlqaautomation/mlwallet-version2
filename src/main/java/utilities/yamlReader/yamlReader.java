@@ -1,10 +1,14 @@
 package utilities.yamlReader;
+import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 import utilities.Logger.LoggingUtils;
 
 import java.io.*;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+
 public class yamlReader {
     /** The YAML file name. */
     private String yamlFileName;
@@ -69,6 +73,45 @@ public class yamlReader {
             return roleData.get("kpx_password").toString();
         }
         return null;
+    }
+    public List<Map<String, Object>> getSendersData() {
+        return (List<Map<String, Object>>) yamlData.get("Senders");
+    }
+
+    public Map<String, Object> getRandomSenderData() {
+        List<Map<String, Object>> senders = getSendersData();
+        Random random = new Random();
+        int randomIndex = random.nextInt(senders.size());
+        return senders.get(randomIndex);
+    }
+
+    public String[] getRandomName() {
+        Map<String, Object> randomSender = getRandomSenderData();
+        Map<String, Object> kycData = (Map<String, Object>) randomSender.get("kyc");
+        String firstName = (String) kycData.get("firstName");
+        String lastName = (String) kycData.get("lastName");
+        return new String[]{firstName, lastName};
+    }
+    public void writeKptnData(List<String> values) {
+        try {
+            Yaml yaml = new Yaml();
+            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
+            Map<String, Object> yamlData = yaml.load(fileInputStream);
+
+            if (yamlData.containsKey("KPTN")) {
+                List<String> existingValues = (List<String>) yamlData.get("KPTN");
+                existingValues.addAll(values);
+            } else {
+                yamlData.put("KPTN", values);
+            }
+
+            FileWriter writer = new FileWriter(yamlFileName);
+            yaml.dump(yamlData, writer);
+            LoggingUtils.info(values + " saved to file");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getAccessKey() {
