@@ -83,8 +83,8 @@ public class Kyc_Steps extends Base_Steps {
             ExtentReporter.logFail("searchRegisteredKYC_Invalid05",""+e);
         }
     }
-    public void AddNewKYC_Valid() throws Exception{
-            click(kycPageObjects.kyc_link(), "Kyc Page");
+    public void AddNewKYC_Valid() throws Exception {
+        try {
             type(kycPageObjects.lastName_field(), "Last name field", propertyReader.getproperty("ELName"));
             type(kycPageObjects.firstName_field(), "First name field", propertyReader.getproperty("EFName"));
             click(kycPageObjects.searchBtn(), "Search button");
@@ -99,20 +99,23 @@ public class Kyc_Steps extends Base_Steps {
             waitSleep(10);
             if(!kycPageObjects.buttonList().isEmpty()){
                 ExtentReporter.logPass("","Loading to be directed to the Add KYC Page.");
-            }
+            }  
+        } catch (Exception e) {
+            ExtentReporter.logFail("" + e);
         }
-
-    public void AddNewKYC01 () throws Exception{
-        waitSleep(20000);
+    }
+    public void AddNewKYC01 () {
+        try {
             if (kycPageObjects.AddLName().isEnabled()) {
                 type(kycPageObjects.AddLName(), "Last name field", "Siarot");
+                ExtentReporter.logPass("AddNewKYC01","Inputted Last name will display and editable");
             } else if (kycPageObjects.AddFName().isEnabled()) {
                 type(kycPageObjects.AddFName(), "First name field", "Enrique");
-                waitSleep(5000);
+                ExtentReporter.logPass("AddNewKYC01","Inputted First name will display and editable");
+                wait(5000);
             }
             type(kycPageObjects.AddFName(), "Middle name field", "Alferez");
-            waitSleep(2000);
-            click(kycPageObjects.Checkbox(), "Middle Name Check Box");
+            click(kycPageObjects.Checkbox(), "Check Button");
             click(kycPageObjects.AddSuffix(), "Select Suffix");
             type(kycPageObjects.AddBirthPlace(), "Edit/Input Valid BirthDate", "Bohol, Philippines");
             click(kycPageObjects.SelectNational(), "Select Nationality");
@@ -120,12 +123,13 @@ public class Kyc_Steps extends Base_Steps {
             click(kycPageObjects.SelectGender(), "Select Gender at Birth");
             click(kycPageObjects.SelectCountry(), "Select Country Birth");
 
-            scrollToElement(kycPageObjects.ContactInfo());
             if (kycPageObjects.ContactInfo().getText().contains("Contact Information")) {
                 type(kycPageObjects.MobileField(), "Input Mobile Number", "09203447377");
-                click(kycPageObjects.MobileCheckout(), "Check if No Mobile Number");
                 type(kycPageObjects.TelephoneField(), "Input Telephone", "02454321345");
                 type(kycPageObjects.EmailField(), "Input Email", "testing@gmail.com");
+                WebElement element = kycPageObjects.MobileCheckout();
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+
             }
             if (kycPageObjects.CAddressInfo().getText().contains("CURRENT ADDRESS")) {
                 click(kycPageObjects.SelectProvince(), "Select Province");
@@ -151,36 +155,35 @@ public class Kyc_Steps extends Base_Steps {
                 type(kycPageObjects.IDNumber(), "Input ID Number", "1234567891011");
             }
             if (kycPageObjects.FrontID().getText().contains("ID1")) {
-                scrollToElement(kycPageObjects.Identification());
                 click(kycPageObjects.FCamera(), "Select Camera");
-                waitSleep(2000);
                 click(kycPageObjects.FCapture(), "Select Capture Photo");
-                waitSleep(3000);
+                waitSleep(4);
                 click(kycPageObjects.FSet(), "Select Set Photo");
             }
-//            if (kycPageObjects.BackID().getText().contains("ID2")) {
-//                waitSleep(2000);
-//                click(kycPageObjects.BCamera(), "Select Camera");
-//                click(kycPageObjects.BCapture(), "Select Capture Photo");
-//                waitSleep(3000);
-//                click(kycPageObjects.BSet(), "Select Set Photo");
-//            }
-            if (kycPageObjects.CustomerPhoto().getText().contains("CUSTOMER'S PHOTO")) {
-                click(kycPageObjects.CCamera(), "Select Camera");
-                waitSleep(2000);
-                click(kycPageObjects.CCapture(), "Select Capture Photo");
-                waitSleep(2000);
-                click(kycPageObjects.CSet(), "Select Set Photo");
+            if (kycPageObjects.BackID().getText().contains("ID2")) {
+                click(kycPageObjects.BCamera(), "Select Camera");
+                click(kycPageObjects.BCapture(), "Select Capture Photo");
+                waitSleep(4);
+                click(kycPageObjects.BSet(), "Select Set Photo");
             }
-
+//            if (kycPageObjects.CustomerPhoto().getText().contains("CUSTOMER'S PHOTO")) {
+//                click(kycPageObjects.CCamera(), "Select Camera");
+//                click(kycPageObjects.CCapture(), "Select Capture Photo");
+//                waitSleep(4);
+//                click(kycPageObjects.CSet(), "Select Set Photo");
+//            }
+//
             if (kycPageObjects.ActiveStatus().getText().contains("Is Customer Active?")) {
-                scrollToElement(kycPageObjects.ActiveStatus());
-                waitSleep(2000);
                 click(kycPageObjects.KYCEdit(), "Edit");
                 click(kycPageObjects.YesActive(), "Yes");
                 click(kycPageObjects.KYCDone(), "Done");
                 click(kycPageObjects.SaveNewKYC(), "Save New KYC");
             }
+
+        } catch (Exception e) {
+            ExtentReporter.logFail("AddNewKYC01","" + e);
+        }
+
     }
 
 }

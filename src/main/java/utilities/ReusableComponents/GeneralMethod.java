@@ -47,6 +47,7 @@ public class GeneralMethod extends ExtentReporter{
         } catch (NoSuchElementException e) {
         LoggingUtils.error("Failed to type into field: "+ elementName + ", Value: "+ text);
         ExtentReporter.logFail("Failed to type into field: "+ elementName , " Typed Value:: "+ text);
+
         throw new AssertionError("Failed to type into field: "+ elementName + ", Value: "+ text);
         }
     }
@@ -270,6 +271,19 @@ public class GeneralMethod extends ExtentReporter{
         }
         return outcome;
     }
+    public void scrollDown(int scrollPercentage) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        long totalHeight = (long) jsExecutor.executeScript("return document.body.scrollHeight");
+        long scrollHeight = totalHeight * scrollPercentage / 100;
+
+        jsExecutor.executeScript("window.scrollTo(0, " + scrollHeight + ")");
+    }
+
+    public void scrollUp(WebDriver driver) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("window.scrollTo(0, 0)");
+    }
+
 
     public void scrollDown(int scrollPercentage) {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
