@@ -302,10 +302,10 @@ public class Payout_Steps extends Base_Steps{
             click(payoutPageObjects.PayoutTransaction(), "Payout Transaction");
             click(payoutPageObjects.UnremoteTransaction(), "Un-remote Transaction");
             click(payoutPageObjects.DomesticTransaction(), "Domestic Transaction");
-            type(payoutPageObjects.PayKTPN(), "KTPN Number", propertyReader.getproperty("ClaimKTPNnum"));
-            type(payoutPageObjects.PayAmount(), "Amount", propertyReader.getproperty("InvalidAmount"));
+            type(payoutPageObjects.PayKTPN(), "KTPN Number", "KPNJMLTCPPR");
+            type(payoutPageObjects.PayAmount(), "Amount", "200");
             click(payoutPageObjects.SearchButton(), "Search Button");
-            assertEqual(getText(payoutPageObjects.AmountClaimed()), "Sorry this transaction is already claimed. (version: 6a3815b)");
+            assertEqual(getText(payoutPageObjects.AmountClaimed()), "Sorry this transaction is already claimed. (version: c3dfb6b)");
             if (isVisible(payoutPageObjects.PayoutClaimed(), getText(payoutPageObjects.payoutClaim_h5()))) {
                 assertEqual(getText(payoutPageObjects.payoutClaim_h5()), "Payout Claimed");
             }
@@ -328,10 +328,10 @@ public class Payout_Steps extends Base_Steps{
             type(payoutPageObjects.OperatorID(), "Search Operator ID", "2023639709");
             type(payoutPageObjects.ReasonRemote(), "Reason", "Testing");
             click(payoutPageObjects.DomesticTransaction(), "Domestic Transaction");
-            type(payoutPageObjects.PayKTPN(), "KTPN Number", propertyReader.getproperty("ClaimKTPNnum"));
-            type(payoutPageObjects.PayAmount(), "Amount", propertyReader.getproperty("InvalidAmount"));
+            type(payoutPageObjects.PayKTPN(), "KTPN Number", "KPNHMSMDUPZ");
+            type(payoutPageObjects.PayAmount(), "Amount", "100");
             click(payoutPageObjects.SearchButton(), "Search Button");
-            assertEqual(getText(payoutPageObjects.AmountClaimed()), "Sorry this transaction is already claimed. (version: 6a3815b)");
+            assertEqual(getText(payoutPageObjects.AmountClaimed()), "Sorry this transaction is already claimed. (version: c3dfb6b)");
 
             if (isVisible(payoutPageObjects.PayoutClaimed(), getText(payoutPageObjects.payoutClaim_h5()))) {
                 assertEqual(getText(payoutPageObjects.payoutClaim_h5()), "Payout Claimed");
@@ -450,7 +450,7 @@ public class Payout_Steps extends Base_Steps{
             LoggingUtils.info("Navigated the Payout Cancellation page");
 
         }
-        type(payoutPageObjects.CancelKTPN(), "KTPN Number","KPNKTNZQEQM");
+        type(payoutPageObjects.CancelKTPN(), "KTPN Number","KPNJMLTCPPR");
         click(payoutPageObjects.SearchButton(), "Search Button");
         if(isVisible(payoutPageObjects.PayoutCancellationAmountInfo(), getText(payoutPageObjects.PayoutCancellationAmountInfo()))){
             type(payoutPageObjects.IRNum(), "KTPN Number", "2111111111212");
@@ -542,10 +542,10 @@ public class Payout_Steps extends Base_Steps{
             LoggingUtils.info("Navigated the Payout Cancellation page");
 
         }
-        type(payoutPageObjects.CancelKTPN(), "KTPN Number", propertyReader.getproperty("RUnclaimKTPNnum"));
+        type(payoutPageObjects.CancelKTPN(), "KTPN Number", "KPNJUGPIVZI");
         click(payoutPageObjects.SearchButton(), "Search Button");
         if(isVisible(payoutPageObjects.PayoutCancellationAmountInfo(), getText(payoutPageObjects.PayoutCancellationAmountInfo()))){
-            type(payoutPageObjects.IRNum(), "KTPN Number", "");
+            type(payoutPageObjects.IRNum(), "IR Number", "");
             click(payoutPageObjects.CancelButton(), "Cancel Payout");
 
             assertEqual(getText(payoutPageObjects.IRNumRequired()), "IR Number is required");
@@ -568,7 +568,7 @@ public class Payout_Steps extends Base_Steps{
         wait.until(ExpectedConditions.elementToBeClickable(payoutPageObjects.BranchCode()));
 
         type(payoutPageObjects.BranchCode(), "Search Branch Code", "12R33A180912");
-        WebDriverWait waits = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait waits = new WebDriverWait(driver, Duration.ofSeconds(15));
 
         waits.until(ExpectedConditions.elementToBeClickable(payoutPageObjects.OperatorID()));
         type(payoutPageObjects.OperatorID(), "Search Operator ID", "2023639709");
@@ -616,7 +616,7 @@ public class Payout_Steps extends Base_Steps{
         wait.until(ExpectedConditions.elementToBeClickable(payoutPageObjects.BranchCode()));
 
         type(payoutPageObjects.BranchCode(), "Search Branch Code", "12R33A180912");
-        WebDriverWait waits = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait waits = new WebDriverWait(driver, Duration.ofSeconds(15));
 
         waits.until(ExpectedConditions.elementToBeClickable(payoutPageObjects.OperatorID()));
         type(payoutPageObjects.OperatorID(), "Search Operator ID", "2023639709");
@@ -643,7 +643,7 @@ public class Payout_Steps extends Base_Steps{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(payoutPageObjects.BranchCode()));
 
-        type(payoutPageObjects.BranchCode(), "Search Branch Code", "12R33A180912");
+        type(payoutPageObjects.BranchCode(), "Search Branch Code", "12R33A1840912");
 
         assertEqual(getText(payoutPageObjects.BranchNotFound()), "Branch not found");
     }
@@ -662,10 +662,10 @@ public class Payout_Steps extends Base_Steps{
         wait.until(ExpectedConditions.elementToBeClickable(payoutPageObjects.BranchCode()));
 
         type(payoutPageObjects.BranchCode(), "Search Branch Code", "12R33A180912");
-        WebDriverWait waits = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait waits = new WebDriverWait(driver, Duration.ofSeconds(15));
 
         waits.until(ExpectedConditions.elementToBeClickable(payoutPageObjects.OperatorID()));
-        type(payoutPageObjects.OperatorID(), "Search Operator ID", "2023639709");
+        type(payoutPageObjects.OperatorID(), "Search Operator ID", "20236379709");
         assertEqual(getText(payoutPageObjects.OperatorNotFound()), "Operator not found");
     }
     public void validateCannotCancelPayout()throws Exception{

@@ -31,21 +31,17 @@ public class BillsPay_PageObjects {
         return getDriver().findElement(By.xpath("//input[@value='1']"));
     }
     public WebElement BPPartners(){
-        return getDriver().findElement(By.xpath("//div[@class=' css-1uccc91-singleValue']"));
+        return getDriver().findElement(By.xpath("//div[@class=' css-yk16xz-control']"));
     }
-    public WebElement BPClickPartners() {
-        return getDriver().findElement(By.xpath("//input[@name='partner']"));
-    }
-//    public WebElement BPChoosePartners(String option) {
-//        return getDriver().findElement(By.xpath("//*[contains(text(),'"+option+"')]"));
-//
+//    public WebElement BPChoosePartners(){
+//        return getDriver().findElement(By.xpath("//div[@class=' css-1uccc91-singleValue' or @name='MERALCO RTP (ELECTRICITY)']"));
 //    }
+
+
+
     public WebElement BPChoosePartners(String option) {
-        String xpath = "//*[contains(text(),'" + option + "')]";
+        String xpath = "//div[contains(text(),'" + option + "')]";
         return getDriver().findElement(By.xpath(xpath));
-    }
-    public WebElement BPSelectPartners() {
-        return getDriver().findElement(By.xpath("//div[@class=' css-1wa3eu0-placeholder']"));
     }
     public WebElement BPAccNum(){
         return getDriver().findElement(By.xpath("//input[@name='accountNumber']"));
@@ -107,6 +103,9 @@ public class BillsPay_PageObjects {
     public WebElement InitiatedBy(){
         return getDriver().findElement(By.xpath("//option[@value='CUSTOMER']"));
     }
+    public WebElement NoInitiatedBy(){
+        return getDriver().findElement(By.xpath("//option[@value='']"));
+    }
     public WebElement ReasonCancel(){
         return getDriver().findElement(By.xpath("//textarea[@placeholder='Reason for Cancellation']"));
     }
@@ -118,6 +117,15 @@ public class BillsPay_PageObjects {
     }
     public WebElement YesCancelPayment(){
         return getDriver().findElement(By.xpath("//button[normalize-space()='Yes, Cancel Payment']"));
+    }
+    public WebElement NoCancelPayment(){
+        return getDriver().findElement(By.xpath("//button[normalize-space()='No, Keep Transaction']"));
+    }
+    public WebElement KeepTransaction(){
+        return getDriver().findElement(By.xpath("//button[normalize-space()='Keep Transaction']"));
+    }
+    public WebElement YesKeepTransaction(){
+        return getDriver().findElement(By.xpath("//button[normalize-space()='Yes, Keep Transaction']"));
     }
 
     public WebElement BranchCode(){return getDriver().findElement(By.xpath("//input[@name='branchCode']"));
@@ -131,6 +139,12 @@ public class BillsPay_PageObjects {
     public WebElement InvalidKTPN(){return getDriver().findElement(By.xpath("//h5[contains(text(),'No Transaction Found')]"));
     }
     public WebElement CancelledRefNum(){return getDriver().findElement(By.xpath("//h5[contains(text(),'Bills Payment Cancelled')]"));
+    }
+    public WebElement InvalidIRNum(){return getDriver().findElement(By.xpath("//small[contains(text(),'Please enter valid IR No.')]"));
+    }
+    public WebElement NoIRNum(){return getDriver().findElement(By.xpath("//small[contains(text(),'IR Number is required')]"));
+    }
+    public WebElement NoReason(){return getDriver().findElement(By.xpath("//small[contains(text(),'Reason for Cancellation is required')]"));
     }
     public WebElement Page_h5(){
         return getDriver().findElement(By.xpath("//h5[contains(text(),'No Transaction Found')]"));
