@@ -15,7 +15,7 @@ public class SOReprinting_Tests extends BaseTest {
     }
 
     @Test(dependsOnMethods = "loginGoogle" , priority = 1, description = "Validate SO Reprinting")
-    public void navigatingSOReprintingPage()throws Exception{
+    public void navigatingSOReprintingPageandPrintingValidKPTN()throws Exception{
         if(this.homeSteps.isInHomePage()) {
             this.soReprintingSteps.SOR_TC_01();
 

@@ -4,10 +4,7 @@ import org.yaml.snakeyaml.Yaml;
 import utilities.Logger.LoggingUtils;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class yamlReader {
     /** The YAML file name. */
@@ -28,6 +25,9 @@ public class yamlReader {
             Yaml yaml = new Yaml();
             FileInputStream fileInputStream = new FileInputStream(yamlFileName);
             yamlData = yaml.load(fileInputStream);
+            if (yamlData == null) {
+                yamlData = new LinkedHashMap<>();
+            }
         }catch (FileNotFoundException e){
             LoggingUtils.error(e.getMessage());
         }
@@ -77,6 +77,10 @@ public class yamlReader {
     public List<Map<String, Object>> getSendersData() {
         return (List<Map<String, Object>>) yamlData.get("Senders");
     }
+    public List<Map<String, Object>> getKPTNData() {
+
+        return (List<Map<String, Object>>) yamlData.get("KPTN");
+    }
 
     public Map<String, Object> getRandomSenderData() {
         List<Map<String, Object>> senders = getSendersData();
@@ -84,7 +88,6 @@ public class yamlReader {
         int randomIndex = random.nextInt(senders.size());
         return senders.get(randomIndex);
     }
-
     public String[] getRandomName() {
         Map<String, Object> randomSender = getRandomSenderData();
         Map<String, Object> kycData = (Map<String, Object>) randomSender.get("kyc");
@@ -92,6 +95,50 @@ public class yamlReader {
         String lastName = (String) kycData.get("lastName");
         return new String[]{firstName, lastName};
     }
+
+//    public String getRandomKPTN() {
+//        try {
+//            Yaml yaml = new Yaml();
+//            InputStream inputStream = new FileInputStream(filePath);
+//            Map<String, List<String>> data = yaml.load(inputStream);
+//            List<String> kptnList = data.get("KPTN");
+//            String randomKPTN = kptnList.get(new Random().nextInt(kptnList.size()));
+//            return randomKPTN;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
+public String getRandomKPTN() {
+    try {
+        List<String> kptnList = (List<String>) yamlData.get("KPTN");
+
+        if (kptnList == null || kptnList.isEmpty()) {
+            System.out.println("No KPTN values available.");
+            return null;
+        }
+
+        int randomIndex = new Random().nextInt(kptnList.size());
+        String randomKPTN = kptnList.get(randomIndex);
+        kptnList.remove(randomIndex);
+        saveYamlData();
+        return randomKPTN;
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+}
+    private void saveYamlData() {
+        try {
+            Yaml yaml = new Yaml();
+            Writer writer = new FileWriter(yamlFileName);
+            yaml.dump(yamlData, writer);
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void writeKptnData(List<String> values) {
         try {
             Yaml yaml = new Yaml();

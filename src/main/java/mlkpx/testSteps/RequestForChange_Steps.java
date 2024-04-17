@@ -1,5 +1,6 @@
 package mlkpx.testSteps;
 
+import org.testng.Assert;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
 
@@ -8,13 +9,18 @@ public class RequestForChange_Steps extends Base_Steps{
         click(sendOutPageObjects.sendOutLink(), "SendOut Page ");
         click(requestForChangePageObjects.rfcLink(),"Request for Change Link");
         click(requestForChangePageObjects.domesticRFClink(), "Domestic RFC Link");
+//        click(requestForChangePageObjects.idTypeDropDown(),"ID Type DropDown");
+//        click(requestForChangePageObjects.idTypeSelected(),"Selected ID Type ");
         click(requestForChangePageObjects.kptnField(),"RFC KPTN Field");
-        type(requestForChangePageObjects.kptnField(), "RFC KPTN Field ", propertyReader.getproperty("kptnvalidcode"));
+//        String randomKPTN = reader.getRandomKPTN(); // Call the getRandomKPTN function
+//        type(requestForChangePageObjects.kptnField(), "KPTN Field", randomKPTN); // Use the random KPTN value
+        type(requestForChangePageObjects.kptnField(), "RFC KPTN Field ", propertyReader.getproperty("rfcKPTN"));
         click(requestForChangePageObjects.searchButton(), "RFC Search Button");
         if(isVisible(requestForChangePageObjects.rfcText(), getText(requestForChangePageObjects.rfcText()))){
             ExtentReporter.logPass("RFC_TC_01", "Successfully Navigate for RFC Page");
         }else{
             ExtentReporter.logFail("RFC_TC_01", "Fail to verify navigation");
+            Assert.fail("Fail to verify navigation");
         }
         click(requestForChangePageObjects.senderProvinceChange(),"Sender Province Field");
         click(requestForChangePageObjects.senderNewProvince(),"Sender New Province");
@@ -44,11 +50,14 @@ public class RequestForChange_Steps extends Base_Steps{
         click(requestForChangePageObjects.rfcSubmitButton(),"RFC Submit Button");
         click(requestForChangePageObjects.noKeepTransactionButton(),"No Keep Transaction");
         click(requestForChangePageObjects.rfcSubmitButton(),"RFC Submit Button");
+        waitSleep(3000);
         click(requestForChangePageObjects.yesChangeDetailsButton(),"Yes Change Details");
+        waitSleep(3000);
         if(isVisible(requestForChangePageObjects.detailsChangeText(), getText(requestForChangePageObjects.detailsChangeText()))){
             ExtentReporter.logPass("RFC_TC_01", "Successfully Change Details");
         }else{
             ExtentReporter.logFail("RFC_TC_01", "Fail to Change Details");
+            Assert.fail("Fail to Change Details");
         }
         click(requestForChangePageObjects.rfcProceedToPrinting(),"Proceed to Printing");
         click(requestForChangePageObjects.rfcCancelButton(),"Cancel button");
@@ -65,6 +74,7 @@ public class RequestForChange_Steps extends Base_Steps{
             ExtentReporter.logPass("RFC_TC_02", "Validate Request for Change with Non-existing KPTN");
         } else {
             ExtentReporter.logFail("RFC_TC_02", "Fail");
+            Assert.fail("Fail");
         }
     }
     public void RFC_TC_03()throws Exception {
@@ -79,6 +89,7 @@ public class RequestForChange_Steps extends Base_Steps{
             ExtentReporter.logPass("RFC_TC_03", "Sendout transaction has already been cancelled");
         } else {
             ExtentReporter.logFail("RFC_TC_03", "Fail");
+            Assert.fail("Fail");
         }
         click(requestForChangePageObjects.cancelOKButton(),"Cancel OK Button");
     }
