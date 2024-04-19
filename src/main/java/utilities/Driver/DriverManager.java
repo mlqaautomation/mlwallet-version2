@@ -9,6 +9,10 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import utilities.Logger.LoggingUtils;
 
+import org.openqa.selenium.UnexpectedAlertBehaviour;
+
+import org.openqa.selenium.remote.CapabilityType;
+
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Set;
@@ -51,8 +55,10 @@ public class DriverManager {
         options.addArguments("--disable-notifications");
         options.addArguments("--incognito");
         options.addArguments("use-fake-ui-for-media-stream");
+        chromePreferences.put("profile.default_content_setting_values.notifications", 2);
+        options.setExperimentalOption("prefs", chromePreferences);
 
-//        chromePreferences.put("profile.default_content_setting_values.notifications", 2);
+        options.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
         options.setExperimentalOption("prefs", chromePreferences);
 
         options.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
@@ -120,8 +126,6 @@ public static void closeWebBrowser() {
     }
 
     private DriverManager(){}
-
-
 
 }
 

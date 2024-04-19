@@ -13,6 +13,9 @@ public class Kyc_PageObjects {
     public WebElement kycPage_h2(){
         return getDriver().findElement(By.xpath("//h2"));
     }
+    public WebElement kycPage_h4(){
+        return getDriver().findElement(By.xpath("//h4"));
+    }
     public WebElement lastName_field(){
         return getDriver().findElement(By.name("lastName"));
     }
@@ -58,7 +61,7 @@ public class Kyc_PageObjects {
     public WebElement SelectCountry(){return getDriver().findElement(By.xpath("//option[@value='PHILIPPINES']"));}
     public WebElement ContactInfo(){return getDriver().findElement(By.xpath("//h5[contains(text(),'Contact Information')]"));}
     public WebElement MobileField(){return getDriver().findElement(By.xpath("//input[@name='cellphoneNumber']"));}
-    public WebElement MobileCheckout(){return getDriver().findElement(By.cssSelector("[name='hasNoMobileNumber'"));}
+    public WebElement MobileCheckout(){return getDriver().findElement(By.cssSelector("[name='hasNoMobileNumber']"));}
     public WebElement TelephoneField(){return getDriver().findElement(By.xpath("//input[@name='telephoneNumber']"));}
     public WebElement EmailField(){return getDriver().findElement(By.xpath("//input[@name='email']"));}
 
