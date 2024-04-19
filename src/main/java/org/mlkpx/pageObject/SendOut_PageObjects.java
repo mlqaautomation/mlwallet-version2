@@ -148,7 +148,7 @@ public class SendOut_PageObjects {
     }
 
     public WebElement display0Text() {
-        return getDriver().findElement(By.xpath("//*[text()=\"Minimum allowed amount is PHP 0.01.\"]"));
+        return getDriver().findElement(By.xpath("//*[text()=\"Minimum allowed amount is PHP 1.00.\"]"));
     }
     public WebElement negativeDisplayText() {
         return getDriver().findElement(By.xpath("//*[text()=\"Value must be greater than or equal to 0.\"]"));
@@ -179,30 +179,22 @@ public class SendOut_PageObjects {
     public WebElement cancelButtoninReceipt() {
         return getDriver().findElement(By.cssSelector("[class=\"sc-hIUJlX exqbQW btn btn-secondary\"]"));}
     public WebElement cancelButtoninConfirmation() { return getDriver().findElement(By.xpath("//button[@class='swal2-cancel swal2-styled' and @style='display: inline-block; background-color: rgb(170, 170, 170);' and text()='Cancel']"));}
-
-
     public WebElement provinceDanger() {
         return getDriver().findElement(By.xpath("//*[text()='Cancel']"));
     }
-    public WebElement senderLastName(){
-        return getDriver().findElement(By.xpath("(//p[normalize-space()='Last Name'])[1]/parent::div/following-sibling::div/child::p"));
-    }
-    public WebElement senderFirstName(){
-        return getDriver().findElement(By.xpath("(//p[normalize-space()='First Name'])[1]/parent::div/following-sibling::div/child::p"));
-    }
+    public WebElement senderLastName(){ return getDriver().findElement(By.xpath("(//p[normalize-space()='Last Name'])[1]/parent::div/following-sibling::div/child::p")); }
+    public WebElement senderFirstName(){ return getDriver().findElement(By.xpath("(//p[normalize-space()='First Name'])[1]/parent::div/following-sibling::div/child::p")); }
     public WebElement smsCheckbox(){
         return getDriver().findElement(By.cssSelector("[name='senderOtherInformation.receiveSmsNotification']"));
     }
-    public WebElement chargeAmount(){
-        return getDriver().findElement(By.xpath("(//p[@class='text-monospace text-right'])[1]"));
-    }
-    public WebElement otherChargeAmount(){
-        return getDriver().findElement(By.xpath("(//p[@class='text-monospace text-right'])[2]"));
-    }
+    public WebElement chargeAmount(){ return getDriver().findElement(By.xpath("(//p[@class=\"text-monospace text-right\"])[1]")); }
+    public WebElement otherChargeAmount(){ return getDriver().findElement(By.xpath("(//p[@class='text-monospace text-right'])[2]")); }
     public WebElement totalAmount(){
+
         return getDriver().findElement(By.cssSelector("[class='pr-1']"));
     }
     public WebElement kptnText(){
+
         return getDriver().findElement(By.cssSelector("[data-testid='sendoutKPTN']"));
     }
     public WebElement sendOutSuccessMsg(){
