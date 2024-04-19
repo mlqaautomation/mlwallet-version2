@@ -115,6 +115,23 @@ public String getRandomKPTN() {
         return null;
     }
 }
+    public String getRandomCashOutReferenceNum() {
+        try {
+            List<String> cashOutReferenceNumList = (List<String>) yamlData.get("cashOutReferenceNum");
+            if (cashOutReferenceNumList == null || cashOutReferenceNumList.isEmpty()) {
+                System.out.println("No Reference Number available.");
+                return null;
+            }
+            int randomIndex = new Random().nextInt(cashOutReferenceNumList.size());
+            String randomCashOutReferenceNum = cashOutReferenceNumList.get(randomIndex);
+            cashOutReferenceNumList.remove(randomIndex);
+            saveYamlData();
+            return randomCashOutReferenceNum;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     public String getRandomReferenceNum() {
         try {
             List<String> referenceNumList = (List<String>) yamlData.get("referenceNum");
@@ -197,6 +214,28 @@ public String getRandomKPTN() {
                 existingValues.addAll(values);
             } else {
                 yamlData.put("tenderAmount", values);
+            }
+
+            FileWriter writer = new FileWriter(yamlFileName);
+            yaml.dump(yamlData, writer);
+            LoggingUtils.info(values + " saved to file");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeCashOutData(List<String> values) {
+        try {
+            Yaml yaml = new Yaml();
+            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
+            Map<String, Object> yamlData = yaml.load(fileInputStream);
+
+            if (yamlData.containsKey("cashOutReferenceNum")) {
+                List<String> existingValues = (List<String>) yamlData.get("cashOutReferenceNum");
+                existingValues.addAll(values);
+            } else {
+                yamlData.put("cashOutReferenceNum", values);
             }
 
             FileWriter writer = new FileWriter(yamlFileName);

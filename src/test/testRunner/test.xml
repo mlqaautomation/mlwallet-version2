@@ -16,7 +16,8 @@
 <!--                <class name="kpx.actual.SendOutCancellation_Tests"> </class>-->
 <!--                <class name="kpx.actual.SOReprinting_Tests"> </class>-->
 <!--                <class name="kpx.actual.ORReprinting_Tests"> </class>-->
-                <class name="kpx.actual.WS_CashInToOwnAccount_Tests"> </class>
+<!--                <class name="kpx.actual.WS_CashInToOwnAccount_Tests"> </class>-->
+                <class name="kpx.actual.WS_CashOut_Tests"> </class>
             </classes>
         </parameter>
     </test>
