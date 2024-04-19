@@ -24,6 +24,8 @@ public class BaseTest {
     protected RequestForChange_Steps requestForChangeSteps;
     protected ReturnToSender_Steps returnToSenderSteps;
     protected ORReprinting_Steps orReprintingSteps;
+    protected WS_CashInToOwnAccount_Steps wsCashInToOwnAccountSteps;
+    protected WS_CashOut_Steps wsCashOutSteps;
 
 
 
@@ -52,6 +54,8 @@ public class BaseTest {
         this.requestForChangeSteps = new RequestForChange_Steps();
         this.returnToSenderSteps = new ReturnToSender_Steps();
         this.orReprintingSteps = new ORReprinting_Steps();
+        this.wsCashInToOwnAccountSteps = new WS_CashInToOwnAccount_Steps();
+        this.wsCashOutSteps = new WS_CashOut_Steps();
 
     }
     private void initializeDriver(DriverType driverType) {

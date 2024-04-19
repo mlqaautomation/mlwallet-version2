@@ -79,4 +79,10 @@ public class RequestForChange_PageObjects {
     public WebElement cancelOKButton(){
         return getDriver().findElement(By.cssSelector("[class=\"swal2-confirm swal2-styled\"]"));
     }
+    public WebElement idTypeDropDown(){
+        return getDriver().findElement(By.cssSelector("[name=\"senderNew.id.idType\"]"));
+    }
+    public WebElement idTypeSelected(){
+        return getDriver().findElement(By.xpath("(//option[@value=\"3\"])[1]"));
+    }
 }
