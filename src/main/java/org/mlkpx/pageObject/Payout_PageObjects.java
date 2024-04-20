@@ -42,9 +42,11 @@ public class Payout_PageObjects {
     public WebElement ReprintPayoutReceipt(){
         return getDriver().findElement(By.xpath("//h3[contains(text(),'Reprint Payout Receipt')]"));
     }
+
     public WebElement NoTransactionFound(){
         return getDriver().findElement(By.xpath("//h5[contains(text(),'No Transaction Found')]"));
     }
+
     public WebElement UnremoteTransaction(){
         return getDriver().findElement(By.xpath("//input[@value='0']"));
     }

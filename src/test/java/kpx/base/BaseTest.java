@@ -14,6 +14,7 @@ public class BaseTest {
     protected Kyc_Steps kycSteps;
     protected Payout_Steps payoutSteps;
     protected BillsPay_Steps billsPaySteps;
+    protected WalletServices_Steps walletServicesSteps;
 
 
 
@@ -36,6 +37,7 @@ public class BaseTest {
         this.kycSteps = new Kyc_Steps();
         this.payoutSteps = new Payout_Steps();
         this.billsPaySteps = new BillsPay_Steps();
+        this.walletServicesSteps = new WalletServices_Steps();
 
     }
     private void initializeDriver(DriverType driverType) {

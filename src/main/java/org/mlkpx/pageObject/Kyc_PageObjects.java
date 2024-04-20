@@ -45,9 +45,9 @@ public class Kyc_PageObjects {
     }
 
 
-    public WebElement lastName_max60(){return getDriver().findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/div/form/div/div[1]/div/small"));}
-    public WebElement firstName_max60(){return getDriver().findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/div/form/div/div[2]/div/small"));}
-    public WebElement middleName_max60(){return getDriver().findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/div/form/div/div[3]/div/small"));}
+    public WebElement lastName_max60(){return getDriver().findElement(By.xpath("//small[contains(text(),'Maximum of 60 characters.')]"));}
+    public WebElement firstName_max60(){return getDriver().findElement(By.xpath("//small[contains(text(),'Maximum of 60 characters.')]"));}
+    public WebElement middleName_max60(){return getDriver().findElement(By.xpath("//small[contains(text(),'Maximum of 60 characters.')]"));}
     public WebElement birthdate_field(){return getDriver().findElement(By.cssSelector("[placeholder='Birth Date']"));}
     public WebElement searchOtherDevice(){return getDriver().findElement(By.xpath("//button[normalize-space()='Search in Other Systems']"));
     }

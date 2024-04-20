@@ -13,7 +13,9 @@
 <!--                </class>-->
 <!--                <class name="kpx.actual.Payout_Tests">-->
 <!--                </class>-->
-                <class name="kpx.actual.BillsPay_Tests">
+<!--                <class name="kpx.actual.BillsPay_Tests">-->
+<!--                </class>-->
+                <class name="kpx.actual.WalletServices_Tests">
                 </class>
             </classes>
         </parameter>
