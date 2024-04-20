@@ -18,6 +18,7 @@ public abstract class Base_Steps extends GeneralMethod {
     ORReprinting_PageObjects orReprintingPageObjects = new ORReprinting_PageObjects();
     WS_CashInToOwnAccount_PageObjects wsCashInToOwnAccountPageObjects = new WS_CashInToOwnAccount_PageObjects();
     WS_CashOut_PageObjects wsCashOutPageObjects = new WS_CashOut_PageObjects();
+    WS_KwartaPadalaPayOut_PageObjects wsKwartaPadalaPayOutPageObjects = new WS_KwartaPadalaPayOut_PageObjects();
     final String filepath = "src\\test\\java\\resources\\testData.properties";
     propertyReader propertyReader = new propertyReader(filepath);
 
