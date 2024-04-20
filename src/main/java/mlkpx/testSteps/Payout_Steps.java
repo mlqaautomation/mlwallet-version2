@@ -1,18 +1,19 @@
 package mlkpx.testSteps;
 
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.Test;
 import java.time.Duration;
 public class Payout_Steps extends Base_Steps{
 
     //P A Y O U T    T R A N S A C T I O N
+    // todo
+    //  use method in yamlReader to retrieve random KPTN
+    //  use method in yamlReader to retrieve random KYC
+    //  parameterize test data for branch code
+    //  add Assert.fail() for failed tc
+    //  optimize code ** create method for common steps such as searching kyc and etc ** to reuse again.
     public void navigatePayoutPage()throws Exception{
         try{
             click(payoutPageObjects.payout_link(), "Payout");
@@ -24,10 +25,11 @@ public class Payout_Steps extends Base_Steps{
         }
     }
     public void validateSuccessfulDomesticPayout()throws Exception{
-
             click(payoutPageObjects.PayoutTransaction(), "Payout Transaction");
             click(payoutPageObjects.UnremoteTransaction(), "Un-remote Transaction");
             click(payoutPageObjects.DomesticTransaction(), "Domestic Transaction");
+
+            //todo
             type(payoutPageObjects.PayKTPN(), "KTPN Number", "KPNJMLTCPPR");
             type(payoutPageObjects.PayAmount(), "Amount","200" );
             click(payoutPageObjects.SearchButton(), "Search Button");
@@ -35,6 +37,7 @@ public class Payout_Steps extends Base_Steps{
             click(payoutPageObjects.SearchKYC(), "Search KYC");
             waitSleep(2);
             payoutPageObjects.SearchLName().clear();
+            // todo
             type(payoutPageObjects.SearchLName(), "Last name field", "AMOCTEST");
             payoutPageObjects.SearchFName().clear();
             type(payoutPageObjects.SearchFName(), "First name field", "ROSELYNTESTEST");
@@ -70,7 +73,7 @@ public class Payout_Steps extends Base_Steps{
 
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.elementToBeClickable(payoutPageObjects.BranchCode()));
-
+            //todo
             type(payoutPageObjects.BranchCode(), "Search Branch Code", "12R33A180912");
             WebDriverWait waits = new WebDriverWait(driver, Duration.ofSeconds(10));
 
@@ -146,7 +149,6 @@ public class Payout_Steps extends Base_Steps{
             LoggingUtils.info("Navigated to View Payout Information's");
             click(payoutPageObjects.ClaimAmount(), "Select Claim Amount");
         }
-
 
         if (payoutPageObjects.PayoutConfirm().isEnabled()) {
             click(payoutPageObjects.ConfirmPayout(), "Click Confirm Payout");

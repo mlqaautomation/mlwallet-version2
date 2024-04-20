@@ -285,19 +285,6 @@ public class GeneralMethod extends ExtentReporter{
     }
 
 
-    public void scrollDown(int scrollPercentage) {
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        long totalHeight = (long) jsExecutor.executeScript("return document.body.scrollHeight");
-        long scrollHeight = totalHeight * scrollPercentage / 100;
-
-        jsExecutor.executeScript("window.scrollTo(0, " + scrollHeight + ")");
-    }
-
-    public void scrollUp(WebDriver driver) {
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("window.scrollTo(0, 0)");
-    }
-
     // Get the generated KPTN
     public String getGeneratedKPTN() {
         WebElement kptnElement = driver.findElement(By.id("kptnElementId")); // Replace "kptnElementId" with the actual ID or locator of the element displaying the KPTN

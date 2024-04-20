@@ -104,7 +104,6 @@ public String getRandomKPTN() {
             System.out.println("No KPTN values available.");
             return null;
         }
-
         int randomIndex = new Random().nextInt(kptnList.size());
         String randomKPTN = kptnList.get(randomIndex);
         kptnList.remove(randomIndex);
