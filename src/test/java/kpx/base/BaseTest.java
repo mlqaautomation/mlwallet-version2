@@ -26,7 +26,7 @@ public class BaseTest {
     protected ORReprinting_Steps orReprintingSteps;
     protected WS_CashInToOwnAccount_Steps wsCashInToOwnAccountSteps;
     protected WS_CashOut_Steps wsCashOutSteps;
-
+    protected WS_ShopSafe_Steps wsShopSafeSteps;
 
 
     @Parameters("browser")
