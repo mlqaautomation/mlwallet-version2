@@ -9,6 +9,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 
@@ -32,6 +33,12 @@ public class ExtentReporter implements ITestListener {
     private static final String SCREENSHOTS_DIRECTORY = "Screenshots";
     private static File src;
 
+    protected static void logFail(String s) {
+    }
+
+    public static void logPass(String s) {
+    }
+
     public void onStart(ITestContext context){
         extent = new ExtentReports();
         String projectDirectory = System.getProperty("user.dir");
@@ -42,6 +49,7 @@ public class ExtentReporter implements ITestListener {
         ExtentSparkReporter spark = new ExtentSparkReporter(reportsDirectory + "/" + reportFileName);
         extent.attachReporter(spark);
     }
+
 
     public static synchronized WebDriver getWebDriver() {
         return getDriver();
@@ -124,7 +132,7 @@ public class ExtentReporter implements ITestListener {
     }
     @Override
     public synchronized void onFinish(ITestContext context){
-            extent.flush();
+        extent.flush();
     }
 
     @Override

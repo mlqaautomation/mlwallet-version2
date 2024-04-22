@@ -1,7 +1,6 @@
 package kpx.base;
 
 import mlkpx.testSteps.*;
-
 import mlkpx.testSteps.Home_Steps;
 import mlkpx.testSteps.Kyc_Steps;
 import mlkpx.testSteps.Login_Steps;
@@ -20,6 +19,7 @@ public class BaseTest {
     protected SendOut_Steps sendOutSteps;
     protected SendOutCancellation_Steps sendOutCancellationSteps;
     protected Payout_Steps payoutSteps;
+    protected BillsPay_Steps billsPaySteps;
     protected SOReprinting_Steps soReprintingSteps;
     protected RequestForChange_Steps requestForChangeSteps;
     protected ReturnToSender_Steps returnToSenderSteps;
@@ -27,6 +27,7 @@ public class BaseTest {
     protected WS_CashInToOwnAccount_Steps wsCashInToOwnAccountSteps;
     protected WS_CashOut_Steps wsCashOutSteps;
     protected WS_KwartaPadalaPayOut_Steps wsKwartaPadalaPayOutSteps;
+
 
 
     @Parameters("browser")
@@ -49,6 +50,7 @@ public class BaseTest {
         this.sendOutSteps = new SendOut_Steps();
         this.sendOutCancellationSteps = new SendOutCancellation_Steps();
         this.payoutSteps = new Payout_Steps();
+        this.billsPaySteps = new BillsPay_Steps();
         this.soReprintingSteps = new SOReprinting_Steps();
         this.requestForChangeSteps = new RequestForChange_Steps();
         this.returnToSenderSteps = new ReturnToSender_Steps();

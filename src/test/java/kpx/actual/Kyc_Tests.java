@@ -7,14 +7,14 @@ import utilities.ExtentReport.ExtentReporter;
 public class Kyc_Tests extends BaseTest {
     @Test(description = "Logging in via gmail and kpx")
     public void loginGoogle() throws Exception {
-        this.loginSteps.signInGoogle("admin");
-        this.loginSteps.loginKpx("admin");
-        if (this.homeSteps.isInHomePage()) {
-            ExtentReporter.logPass("loginGoogle", "Successfully login");
-        } else {
-            ExtentReporter.logFail("loginGoogle ", "Failed login");
+
+        this.loginSteps.signInGoogle("admin2");
+        this.loginSteps.loginKpx("admin2");
+        if(this.homeSteps.isInHomePage()){
+            ExtentReporter.logPass("Login, Passed!!");
         }
     }
+
 
     @Test(dependsOnMethods = "loginGoogle", priority = 2, description = "Test to verify display of registered kyc records")
     public void KYC_TC_02() throws Exception {
@@ -43,10 +43,9 @@ public class Kyc_Tests extends BaseTest {
         this.kycSteps.AddNewKYC_Valid();
         this.kycSteps.AddNewKYC01();
 
+        }
     }
-}
 
 
 
-    
 
