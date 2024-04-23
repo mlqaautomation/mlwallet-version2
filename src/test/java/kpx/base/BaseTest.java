@@ -27,7 +27,7 @@ public class BaseTest {
     protected WS_CashInToOwnAccount_Steps wsCashInToOwnAccountSteps;
     protected WS_CashOut_Steps wsCashOutSteps;
     protected WS_KwartaPadalaPayOut_Steps wsKwartaPadalaPayOutSteps;
-
+    protected WS_ShopSafe_Steps wsShopSafeSteps;
 
 
     @Parameters("browser")

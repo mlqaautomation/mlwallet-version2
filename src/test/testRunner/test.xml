@@ -25,6 +25,8 @@
                 <class name="kpx.actual.WS_CashInToOwnAccount_Tests"> </class>
                 <class name="kpx.actual.WS_CashOut_Tests"> </class>
                 <class name="kpx.actual.WS_KwartaPadalaPayOut_Tests"> </class>
+<!--                <class name="kpx.actual.WS_CashInToOwnAccount_Tests"> </class>-->
+<!--                <class name="kpx.actual.WS_CashOut_Tests"> </class>-->
             </classes>
         </parameter>
     </test>
