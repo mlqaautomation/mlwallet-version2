@@ -8,8 +8,8 @@ public class Kyc_Tests extends BaseTest {
     @Test(description = "Logging in via gmail and kpx")
     public void loginGoogle() throws Exception {
 
-        this.loginSteps.signInGoogle("teller");
-        this.loginSteps.loginKpx("teller");
+        this.loginSteps.signInGoogle("admin2");
+        this.loginSteps.loginKpx("admin2");
         if(this.homeSteps.isInHomePage()){
             ExtentReporter.logPass("Login, Passed!!");
         }
@@ -46,7 +46,7 @@ public class Kyc_Tests extends BaseTest {
         }
     }
 
-
+}
 
 
 

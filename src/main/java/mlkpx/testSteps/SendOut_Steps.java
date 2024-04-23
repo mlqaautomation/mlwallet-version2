@@ -49,9 +49,6 @@ public class SendOut_Steps extends Base_Steps{
         navigationFOrSendOutDomestic();
         searchKYC();
         waitSleep(2000);
-//        type(sendOutPageObjects.contactNumber(), "Contact Number ", propertyReader.getproperty("Contact_number"));
-//        assertEqual(getText(sendOutPageObjects.senderLastName()), propertyReader.getproperty("Lastname"));
-//        assertEqual(getText(sendOutPageObjects.senderFirstName()), propertyReader.getproperty("Firstname"));
         if(isChecked(sendOutPageObjects.smsCheckbox())){
             LoggingUtils.info("Checkbox is checked!");
         }else{
@@ -201,6 +198,13 @@ public class SendOut_Steps extends Base_Steps{
         click(sendOutPageObjects.proceedToPrinting(), "Proceed to Printing");
         waitSleep(2000);
         click(sendOutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
+        if(isVisible(sendOutPageObjects.sendOutTransaction(), getText(sendOutPageObjects.sendOutTransaction()))){
+            ExtentReporter.logPass("DS_TC_01", "Successfully Validated SendOut Domestic Page Navigation");
+            LoggingUtils.info("Successfully Navigate for SendOut Domestic Page ");
+        }else{
+            ExtentReporter.logFail("DS_TC_01", "Failed to Validate SendOut Domestic Page Navigation");
+            LoggingUtils.info("Failed to Validate SendOut Domestic Page Navigation ");
+        }
     }
     public void DS_TC_11()throws Exception {
         navigationFOrSendOutDomestic();

@@ -85,11 +85,9 @@ public class SendOut_Tests extends BaseTest {
     public void DS_TC_11() throws Exception {
         if (this.homeSteps.isInHomePage()) {
             this.sendOutSteps.DS_TC_11();
-
-
         }
-
     }
+
 }
 
 
