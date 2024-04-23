@@ -24,5 +24,6 @@ public class WS_CashOut_PageObjects {
     public WebElement invalidReferenceNum(){return getDriver().findElement(By.cssSelector("[class=\"sc-gEvEer lkAUft\"]"));}
     public WebElement okButton(){return getDriver().findElement(By.cssSelector("[class=\"swal2-confirm swal2-styled\"]"));}
     public WebElement claimedTransactionText(){return getDriver().findElement(By.cssSelector("[class=\"sc-gEvEer lkAUft\"]"));}
+    public WebElement cashoutText(){return getDriver().findElement(By.cssSelector("[class=\"mb-4 col\"]"));}
 
 }

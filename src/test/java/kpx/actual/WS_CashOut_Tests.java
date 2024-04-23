@@ -39,7 +39,7 @@ public class WS_CashOut_Tests extends BaseTest {
         }
 
     }
-    @Test(dependsOnMethods = "loginGoogle", priority = 3, description = "Validate reference no")
+    @Test(dependsOnMethods = "loginGoogle", priority = 3, description = "Validate invalid reference no")
     public void CO_TC_04() throws Exception {
         if (this.homeSteps.isInHomePage()) {
             this.wsCashOutSteps.CO_TC_04();

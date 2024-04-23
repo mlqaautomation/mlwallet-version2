@@ -72,7 +72,7 @@ public class SendOut_Tests extends BaseTest {
 
     }
 
-    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "To Validate Cancel No SendOut Transaction")
+    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "To Validate Submit then Cancel SendOut Transaction")
     public void DS_TC_8() throws Exception {
         if (this.homeSteps.isInHomePage()) {
             this.sendOutSteps.DS_TC_08();

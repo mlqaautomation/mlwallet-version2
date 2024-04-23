@@ -26,7 +26,8 @@ public class BaseTest {
     protected ORReprinting_Steps orReprintingSteps;
     protected WS_CashInToOwnAccount_Steps wsCashInToOwnAccountSteps;
     protected WS_CashOut_Steps wsCashOutSteps;
-
+    protected WS_KwartaPadalaPayOut_Steps wsKwartaPadalaPayOutSteps;
+    protected WS_ShopSafe_Steps wsShopSafeSteps;
 
 
     @Parameters("browser")
@@ -56,6 +57,7 @@ public class BaseTest {
         this.orReprintingSteps = new ORReprinting_Steps();
         this.wsCashInToOwnAccountSteps = new WS_CashInToOwnAccount_Steps();
         this.wsCashOutSteps = new WS_CashOut_Steps();
+        this.wsKwartaPadalaPayOutSteps = new WS_KwartaPadalaPayOut_Steps();
 
     }
     private void initializeDriver(DriverType driverType) {

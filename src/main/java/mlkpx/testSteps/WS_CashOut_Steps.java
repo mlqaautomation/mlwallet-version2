@@ -6,13 +6,14 @@ public class WS_CashOut_Steps extends Base_Steps{
 
     public void navigationWalletServices()throws Exception{
         click(wsCashInToOwnAccountPageObjects.walletServicesLink(), "Wallet Services Page ");
-        if(isVisible(wsCashInToOwnAccountPageObjects.walletServicesText(), getText(wsCashInToOwnAccountPageObjects.walletServicesText()))){
-            ExtentReporter.logPass("Wallet Services navigation", "Successfully Validated Wallet Services Page");
-        }else{
-            ExtentReporter.logFail("Wallet Services navigation", "Failed to Validate Wallet Services Page");
-            Assert.fail("Failed to Validate Wallet Services Page");
-        }
+
         click(wsCashOutPageObjects.cashOutNavLink(), "Cash Out Nav Link");
+        if(isVisible(wsCashOutPageObjects.cashoutText(), getText(wsCashInToOwnAccountPageObjects.walletServicesText()))){
+            ExtentReporter.logPass("Navigated to Cashout Page", "Successfully Navigate to Cashout Page");
+        }else{
+            ExtentReporter.logFail("Navigated to Cashout Page", "Failed to Navigate to Cashout Page");
+            Assert.fail("Failed to Navigate to Cashout Page");
+        }
 
     }
     public void CO_TC_01()throws Exception{
@@ -35,10 +36,10 @@ public class WS_CashOut_Steps extends Base_Steps{
             ExtentReporter.logFail("CO_TC_01", "Failed to Review the Transactions");
             Assert.fail("Failed to Review the Transactions");
         }
-        click(wsCashOutPageObjects.cancelButton(),"Cancel BUtton");
+        click(wsCashOutPageObjects.cancelButton(),"Cancel Button");
         click(wsCashOutPageObjects.noStayOnThisPageButton(),"No Stay On this Posistion");
         click(wsCashOutPageObjects.proceedButton(),"Proceed Button");
-        click(wsCashOutPageObjects.cancelButtonInProceed(), "Cancel BUtton");
+        click(wsCashOutPageObjects.cancelButtonInProceed(), "Cancel Button");
         click(wsCashOutPageObjects.proceedButton(),"Proceed Button");
         click(wsCashOutPageObjects.confirmCashOut(),"Confirm Cash Out");
         waitSleep(4000);
@@ -71,7 +72,7 @@ public class WS_CashOut_Steps extends Base_Steps{
     }
 
 //    public void CO_TC_05()throws Exception{
-//        navigationWalletServices();
+//        QRCODE
 //    }
 
 

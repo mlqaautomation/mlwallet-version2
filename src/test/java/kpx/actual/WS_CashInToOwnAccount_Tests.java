@@ -19,9 +19,7 @@ public class WS_CashInToOwnAccount_Tests extends BaseTest {
     public void CIOA_TC_01() throws Exception {
         if (this.homeSteps.isInHomePage()) {
             this.wsCashInToOwnAccountSteps.CIOA_TC_01();
-
         }
-
     }
 //    @Test(dependsOnMethods = "loginGoogle" , priority = 5, description = "Cash In to Own Account using scan QR Code")
 //    public void CIOA_TC_02()throws Exception{

@@ -118,7 +118,7 @@ public String getRandomKPTN() {
         try {
             List<String> cashOutReferenceNumList = (List<String>) yamlData.get("cashOutReferenceNum");
             if (cashOutReferenceNumList == null || cashOutReferenceNumList.isEmpty()) {
-                System.out.println("No Reference Number available.");
+                System.out.println("No Random Cash Out Reference Number available.");
                 return null;
             }
             int randomIndex = new Random().nextInt(cashOutReferenceNumList.size());
@@ -143,6 +143,23 @@ public String getRandomKPTN() {
             referenceNumList.remove(randomIndex);
             saveYamlData();
             return randomReferenceNum;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public String getRandomKPPReferenceNum() {
+        try {
+            List<String> kppReferenceNumList = (List<String>) yamlData.get("KPPReferenceNum");
+            if (kppReferenceNumList == null || kppReferenceNumList.isEmpty()) {
+                System.out.println("No KPPP Reference Number available.");
+                return null;
+            }
+            int randomIndex = new Random().nextInt(kppReferenceNumList.size());
+            String randomKPPReferenceNum = kppReferenceNumList.get(randomIndex);
+            kppReferenceNumList.remove(randomIndex);
+            saveYamlData();
+            return randomKPPReferenceNum;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
