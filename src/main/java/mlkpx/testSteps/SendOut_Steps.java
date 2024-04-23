@@ -2,10 +2,13 @@ package mlkpx.testSteps;
 
 
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -16,6 +19,7 @@ public class SendOut_Steps extends Base_Steps{
     public void navigationFOrSendOutDomestic()throws Exception{
         click(sendOutPageObjects.sendOutLink(), "SendOut Page ");
     }
+
     public void DS_TC_01()throws Exception{ //Test Case for Verify Navigation for SendOut Domestic
         navigationFOrSendOutDomestic();
         if(isVisible(sendOutPageObjects.sendOutTransaction(), getText(sendOutPageObjects.sendOutTransaction()))){
@@ -178,6 +182,7 @@ public class SendOut_Steps extends Base_Steps{
         navigationFOrSendOutDomestic();
         searchKYC();
         searchReceiver();
+        waitSleep(5000);
         type(sendOutPageObjects.sourceOfFund(), "Source of Fund field ", propertyReader.getproperty("source_of_fund"));
         type(sendOutPageObjects.purpose(), "Purpose field ", propertyReader.getproperty("purpose"));
         type(sendOutPageObjects.relationToReceiver(), "Relation to Receiver field ", propertyReader.getproperty("relationshiptoreceiver"));
@@ -200,6 +205,42 @@ public class SendOut_Steps extends Base_Steps{
             ExtentReporter.logFail("DS_TC_01", "Failed to Validate SendOut Domestic Page Navigation");
             LoggingUtils.info("Failed to Validate SendOut Domestic Page Navigation ");
         }
+    }
+    public void DS_TC_11()throws Exception {
+        navigationFOrSendOutDomestic();
+        click(sendOutPageObjects.RemoteTransaction(), "Remote Transaction");
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(sendOutPageObjects.BranchCode()));
+        //todo
+        type(sendOutPageObjects.BranchCode(), "Search Branch Code", "12R33A180912");
+        WebDriverWait waits = new WebDriverWait(driver, Duration.ofSeconds(12));
+
+        waits.until(ExpectedConditions.elementToBeClickable(sendOutPageObjects.OperatorID()));
+        type(sendOutPageObjects.OperatorID(), "Search Operator ID", "2023639709");
+        type(sendOutPageObjects.ReasonRemote(), "Reason", "Testing");
+
+        searchKYC();
+        scrollDown(100);
+        waitSleep(3000);
+        scrollDown(100);
+        searchReceiver();
+        waitSleep(5000);
+        type(sendOutPageObjects.sourceOfFund(), "Source of Fund field ", propertyReader.getproperty("source_of_fund"));
+        type(sendOutPageObjects.purpose(), "Purpose field ", propertyReader.getproperty("purpose"));
+        type(sendOutPageObjects.relationToReceiver(), "Relation to Receiver field ", propertyReader.getproperty("relationshiptoreceiver"));
+        type(sendOutPageObjects.messageToReceiver(), "Message to Receiver field ", propertyReader.getproperty("messagetoreceiver"));
+        type(sendOutPageObjects.principalAmount(), "Principal Amount field ", propertyReader.getproperty("valid_principal_amount"));
+        click(sendOutPageObjects.submitSendOut(),"Submit SendOut Button");
+        click(sendOutPageObjects.confirmSendOutButton(), "Confirm SendOut Button");
+        waitSleep(3000);
+        //todo get value of kptn locator and post it to yaml file
+        String kptnTexts = getText(sendOutPageObjects.kptnText());
+        List<String> kptnValuess = Collections.singletonList(kptnTexts);
+        reader.writeRemoteKptnData(kptnValuess);
+        click(sendOutPageObjects.proceedToPrinting(), "Proceed to Printing");
+        waitSleep(2000);
+        click(sendOutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
     }
 
     public void DS_TC_10()throws Exception {

@@ -5,6 +5,7 @@ import utilities.ReusableComponents.GeneralMethod;
 import utilities.PropertyReader.propertyReader;
 import org.testng.Assert;
 public abstract class Base_Steps extends GeneralMethod {
+    WalletServices_PageObjects walletServicesPageObjects = new WalletServices_PageObjects();
     BillsPay_PageObjects billsPayPageObjects = new BillsPay_PageObjects();
     Payout_PageObjects payoutPageObjects = new Payout_PageObjects();
     Kyc_PageObjects kycPageObjects = new Kyc_PageObjects();

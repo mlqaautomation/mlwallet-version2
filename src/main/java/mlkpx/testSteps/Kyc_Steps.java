@@ -17,7 +17,6 @@ public class Kyc_Steps extends Base_Steps {
             LoggingUtils.info("KYC page will not display "+ e);
         }
     }
-
     public void searchRegisteredKYC_Valid()throws Exception{
         try{
 
@@ -31,7 +30,6 @@ public class Kyc_Steps extends Base_Steps {
             ExtentReporter.logFail("searchRegisteredKYC_Valid",""+e);
         }
     }
-
     public void searchRegisteredKYC_Invalid(){
         try{
             type(kycPageObjects.lastName_field(), "Last name field", "");
@@ -56,7 +54,6 @@ public class Kyc_Steps extends Base_Steps {
             ExtentReporter.logFail("searchRegisteredKYC_Invalid03",""+e);
         }
     }
-
     public void searchRegisteredKYC_Invalid04() {
         try {
             type(kycPageObjects.lastName_field(), "Special Character Last name field", "#$%@$%%#^^");
@@ -68,7 +65,6 @@ public class Kyc_Steps extends Base_Steps {
             ExtentReporter.logFail( "searchRegisteredKYC_Invalid04",""+e);
         }
     }
-
     public void searchRegisteredKYC_Invalid05() {
         try {
             type(kycPageObjects.lastName_field(), "60 Character Last name field", propertyReader.getproperty("MLast_name"));
