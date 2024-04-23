@@ -20,6 +20,7 @@ public class BaseTest {
     protected SendOutCancellation_Steps sendOutCancellationSteps;
     protected Payout_Steps payoutSteps;
     protected BillsPay_Steps billsPaySteps;
+    protected WalletServices_Steps walletServicesSteps;
     protected SOReprinting_Steps soReprintingSteps;
     protected RequestForChange_Steps requestForChangeSteps;
     protected ReturnToSender_Steps returnToSenderSteps;

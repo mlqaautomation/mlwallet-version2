@@ -357,6 +357,7 @@ public class GeneralMethod extends ExtentReporter{
         String numericPart = total.replaceAll("[^0-9.]", ""); // Extract numeric part by removing non-numeric characters
         return Double.parseDouble(numericPart);
     }
+
 }
 
 

@@ -42,9 +42,14 @@ public class Payout_PageObjects {
     public WebElement ReprintPayoutReceipt(){
         return getDriver().findElement(By.xpath("//h3[contains(text(),'Reprint Payout Receipt')]"));
     }
+
     public WebElement NoTransactionFound(){
         return getDriver().findElement(By.xpath("//h5[contains(text(),'No Transaction Found')]"));
     }
+
+
+
+
     public WebElement UnremoteTransaction(){
         return getDriver().findElement(By.xpath("//input[@value='0']"));
     }
@@ -87,10 +92,14 @@ public class Payout_PageObjects {
     public WebElement YesCancelButton(){
         return getDriver().findElement(By.xpath("//button[normalize-space()='Yes, Cancel Payout']"));
     }
+    public WebElement kptnText(){return getDriver().findElement(By.cssSelector("[data-testid='sendoutKPTN']"));
+    }
     public WebElement PayAmount(){return getDriver().findElement(By.xpath("//input[@step='0.01' and @name='amount']"));}
     public WebElement SearchButton(){return getDriver().findElement(By.xpath("//button[normalize-space()='Search']"));
     }
     public WebElement Reprint(){return getDriver().findElement(By.xpath("//button[normalize-space()='Reprint']"));
+    }
+    public WebElement OKay(){return getDriver().findElement(By.xpath("//button[normalize-space()='OK']"));
     }
     public WebElement BranchCode(){return getDriver().findElement(By.xpath("//input[@name='branchCode']"));
     }
@@ -98,7 +107,18 @@ public class Payout_PageObjects {
     }
     public WebElement ReasonRemote(){return getDriver().findElement(By.xpath("//input[@name='remoteBranch.remoteReason']"));
     }
+    public WebElement proceedToPrinting() {
+        return getDriver().findElement(By.xpath("//*[text()='Proceed to Printing']"));
+    }
+    public WebElement cancelButtoninReceipt() {
+        return getDriver().findElement(By.cssSelector("[class=\"sc-hIUJlX exqbQW btn btn-secondary\"]"));}
 
+
+    public WebElement payoutKptn() {
+        return getDriver().findElement(By.xpath("(//p[@class='sc-iowXnY cjiyKT'])[4]"));
+    }
+
+    public WebElement KtpnInfo(){return getDriver().findElement(By.xpath("//p[contains(text(),'KPTN')]"));}
     public WebElement SearchKYC(){return getDriver().findElement(By.xpath("//button[normalize-space()='Search KYC']"));
     }
     public WebElement SearchLName(){return getDriver().findElement(By.xpath("//input[@name='lastName']"));
@@ -130,6 +150,8 @@ public class Payout_PageObjects {
     public WebElement ConfirmPayout(){return getDriver().findElement(By.xpath("//button[normalize-space()='Confirm Payout']"));
     }
     public WebElement SuccessfulPay(){return getDriver().findElement(By.xpath("//h5[contains(text(),'Payout Successful')]"));
+    }
+    public WebElement SuccessfulCancelPay(){return getDriver().findElement(By.xpath("//h5[contains(text(),'Payout Cancelled')]"));
     }
     public WebElement InvalidKTPN(){return getDriver().findElement(By.xpath("//h5[contains(text(),'No Transaction Found')]"));
     }

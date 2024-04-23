@@ -49,7 +49,7 @@ public class SendOut_PageObjects {
     }
 
     public WebElement selectKYC() {
-        return getDriver().findElement(By.xpath("//*[text()='Select KYC']"));
+        return getDriver().findElement(By.xpath("(//button[normalize-space()='Select KYC'][1])"));
     }
     public WebElement contactNumber() {
         return getDriver().findElement(By.cssSelector("[name=\"senderOtherInformation.contactNumber\"]"));
@@ -197,7 +197,17 @@ public class SendOut_PageObjects {
 
         return getDriver().findElement(By.cssSelector("[data-testid='sendoutKPTN']"));
     }
+
     public WebElement sendOutSuccessMsg(){
         return getDriver().findElement(By.cssSelector("[class='sc-epALIP bYifLU']"));
+    }
+    public WebElement RemoteTransaction(){
+        return getDriver().findElement(By.xpath("//input[@value='1']"));
+    }
+    public WebElement BranchCode(){return getDriver().findElement(By.xpath("//input[@name='branchCode']"));
+    }
+    public WebElement OperatorID(){return getDriver().findElement(By.xpath("//input[@placeholder='Operator ID']"));
+    }
+    public WebElement ReasonRemote(){return getDriver().findElement(By.xpath("//input[@name='remoteBranch.remoteReason']"));
     }
 }
