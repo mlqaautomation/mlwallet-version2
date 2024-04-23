@@ -22,7 +22,7 @@ public class WS_ShopSafe_Steps extends Base_Steps{
     public void To_Validate_Valid_Reference_Number_WS_SS_02()throws Exception{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
-        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field", );
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
 
         if(isVisible(wsShopSafePageObjects.shopsafeText(), getText(wsShopSafePageObjects.shopsafeText()))){
             ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validated Shop Safe Page");
