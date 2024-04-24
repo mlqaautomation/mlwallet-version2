@@ -37,7 +37,10 @@ public class SendOut_PageObjects {
     }
 
     public WebElement firstName() {
-        return getDriver().findElement(By.xpath("//*[@name='firstName']\n"));
+        return getDriver().findElement(By.xpath("//*[@name='firstName']"));
+    }
+    public WebElement middleName() {
+        return getDriver().findElement(By.cssSelector("[name=\"middleName\"]"));
     }
 
     public WebElement searchBtn() {
@@ -64,6 +67,9 @@ public class SendOut_PageObjects {
 
     public WebElement selectButton(){
         return getDriver().findElement(By.cssSelector("[class=\"sc-kqGoIF edbuQi btn-sm btn btn-primary\"]"));
+    }
+    public WebElement selectButton2Attempt(){
+        return getDriver().findElement(By.cssSelector("[class=\"sc-iapWAC gRiCAy btn-sm btn btn-primary\"]"));
     }
 
     public WebElement addNewReceivers() {
@@ -199,5 +205,17 @@ public class SendOut_PageObjects {
     }
     public WebElement sendOutSuccessMsg(){
         return getDriver().findElement(By.cssSelector("[class='sc-epALIP bYifLU']"));
+    }
+    public WebElement theSameTransactionText(){
+        return getDriver().findElement(By.cssSelector("[class=\"sc-gEvEer lkAUft\"]"));
+    }
+    public WebElement theSameTransactionOKButton(){
+        return getDriver().findElement(By.cssSelector("[class=\"swal2-confirm swal2-styled\"]"));
+    }
+    public WebElement complianceText(){
+        return getDriver().findElement(By.cssSelector("[class=\"sc-aXZVg FiXoI\"]"));
+    }
+    public WebElement complianceOKButton(){
+        return getDriver().findElement(By.cssSelector("[class=\"swal2-confirm swal2-styled\"]"));
     }
 }

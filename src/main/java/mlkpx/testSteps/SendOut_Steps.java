@@ -39,6 +39,39 @@ public class SendOut_Steps extends Base_Steps{
         LoggingUtils.info(sendOutPageObjects.branchName().getText());
         assertEqual(getValue(sendOutPageObjects.branchName()), propertyReader.getproperty("BranchName"));
         ExtentReporter.logPass("DS_TC_02", "Successfully Validated Sendout Transaction Option");
+        type(wsKwartaPadalaPayOutPageObjects.operatorIDField(),"Operator ID Field", propertyReader.getproperty("operatorID"));
+        type(wsKwartaPadalaPayOutPageObjects.reasonField(),"Reason Field", propertyReader.getproperty("Reason"));
+
+        click(sendOutPageObjects.searchKYC(), "Search KYC button ");
+        type(sendOutPageObjects.lastName(), "Lastname ", propertyReader.getproperty("Lastname"));
+        type(sendOutPageObjects.firstName(), "Firstname ", propertyReader.getproperty("Firstname"));
+        click(sendOutPageObjects.searchBtn(), "Search Button ");
+        waitSleep(2000);
+        click(sendOutPageObjects.viewButton(), "View Button ");
+        waitSleep(5000);
+        scrollToElement(sendOutPageObjects.selectKYC());
+        scrollDown(100);
+        click(sendOutPageObjects.selectKYC(), "Select KYC Button");
+
+        waitSleep(300);
+        scrollToElement(sendOutPageObjects.searchReceivers());
+        searchReceiver();
+        scrollToElement(sendOutPageObjects.sourceOfFund());
+        type(sendOutPageObjects.sourceOfFund(), "Source of Fund field ", propertyReader.getproperty("source_of_fund"));
+        type(sendOutPageObjects.purpose(), "Purpose field ", propertyReader.getproperty("purpose"));
+        type(sendOutPageObjects.relationToReceiver(), "Relation to Receiver field ", propertyReader.getproperty("relationshiptoreceiver"));
+        type(sendOutPageObjects.messageToReceiver(), "Message to Receiver field ", propertyReader.getproperty("messagetoreceiver"));
+        type(sendOutPageObjects.principalAmount(), "Principal Amount field ", propertyReader.getproperty("valid_principal_amount"));
+        click(sendOutPageObjects.submitSendOut(),"Submit SendOut Button");
+        click(sendOutPageObjects.confirmSendOutButton(), "Confirm SendOut Button");
+        waitSleep(3000);
+        //todo get value of kptn locator and post it to yaml file
+        String kptnText = getText(sendOutPageObjects.kptnText());
+        List<String> kptnValues = Collections.singletonList(kptnText);
+        reader.writeKptnData(kptnValues);
+        click(sendOutPageObjects.proceedToPrinting(), "Proceed to Printing");
+        waitSleep(2000);
+        click(sendOutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
     }
 
     public void DS_TC_03()throws Exception {
@@ -101,8 +134,6 @@ public class SendOut_Steps extends Base_Steps{
         navigationFOrSendOutDomestic();
         searchKYC();
         searchReceiver();
-//        scrollToElement(sendOutPageObjects.no_ContactNo());
-//        click(sendOutPageObjects.no_ContactNo(), "Check no Contact Number ");
         scrollUp(driver);
         click(sendOutPageObjects.sourceOfFund(), "Source of Fund field ");
         type(sendOutPageObjects.sourceOfFund(), "Source of Fund field ", propertyReader.getproperty("source_of_fund"));
@@ -147,32 +178,9 @@ public class SendOut_Steps extends Base_Steps{
             Assert.fail("Total Computation is not correct");
         }
     }
-    public boolean isTotalCorrect() throws Exception {
-        double principalAmt = parseTotalValue(getValue(sendOutPageObjects.principalAmount()));
-        double chargeAmt = parseTotalValue(getText(sendOutPageObjects.chargeAmount()));
-        double otherChargeAmt = parseTotalValue(getText(sendOutPageObjects.otherChargeAmount()));
-        double totalAmt = parseTotalValue(getText(sendOutPageObjects.totalAmount()));
-        double expectedTotal = principalAmt + chargeAmt + otherChargeAmt;
-        assertEqual(totalAmt, expectedTotal);
-        LoggingUtils.info("Expected total: " + expectedTotal + ", actual: " + totalAmt);
-        return Math.abs(expectedTotal - totalAmt) < 0.0001;
-    }
 
 
-    public void DS_TC_09()throws Exception {
-        DS_TC_06_07();
-        click(sendOutPageObjects.cancelButton(), "Cancel SendOut Button");
-        click(sendOutPageObjects.noStayOnThisPage(), "No Stay On This Page");
-        waitSleep(3000);
-        if(isVisible(sendOutPageObjects.messageToReceiver(), getText(sendOutPageObjects.messageToReceiver()))){
-            ExtentReporter.logPass("DS_TC_09", "Successfully Stay on the sendout page and inputted data will not be cleared");
-        }else{
-            ExtentReporter.logFail("DS_TC_09", "Failed to Stay on the sendout page and inputted data will not be cleared");
-            Assert.fail("Failed Stay on the sendout page and inputted data will not be cleared");
-        }
-        click(sendOutPageObjects.cancelButton(), "Cancel SendOut Button");
-        click(sendOutPageObjects.yesCancelTransaction(), "Yes Cancel Transaction");
-    }
+
 
     public void DS_TC_08()throws Exception {
         navigationFOrSendOutDomestic();
@@ -194,12 +202,26 @@ public class SendOut_Steps extends Base_Steps{
         waitSleep(2000);
         click(sendOutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
         if(isVisible(sendOutPageObjects.sendOutTransaction(), getText(sendOutPageObjects.sendOutTransaction()))){
-            ExtentReporter.logPass("DS_TC_01", "Successfully Validated SendOut Domestic Page Navigation");
+            ExtentReporter.logPass("DS_TC_08", "Successfully Validated SendOut Domestic Page Navigation");
             LoggingUtils.info("Successfully Navigate for SendOut Domestic Page ");
         }else{
-            ExtentReporter.logFail("DS_TC_01", "Failed to Validate SendOut Domestic Page Navigation");
+            ExtentReporter.logFail("DS_TC_08", "Failed to Validate SendOut Domestic Page Navigation");
             LoggingUtils.info("Failed to Validate SendOut Domestic Page Navigation ");
         }
+    }
+    public void DS_TC_09()throws Exception {
+        DS_TC_06_07();
+        click(sendOutPageObjects.cancelButton(), "Cancel SendOut Button");
+        click(sendOutPageObjects.noStayOnThisPage(), "No Stay On This Page");
+        waitSleep(3000);
+        if(isVisible(sendOutPageObjects.messageToReceiver(), getText(sendOutPageObjects.messageToReceiver()))){
+            ExtentReporter.logPass("DS_TC_09", "Successfully Stay on the sendout page and inputted data will not be cleared");
+        }else{
+            ExtentReporter.logFail("DS_TC_09", "Failed to Stay on the sendout page and inputted data will not be cleared");
+            Assert.fail("Failed Stay on the sendout page and inputted data will not be cleared");
+        }
+        click(sendOutPageObjects.cancelButton(), "Cancel SendOut Button");
+        click(sendOutPageObjects.yesCancelTransaction(), "Yes Cancel Transaction");
     }
 
     public void DS_TC_10()throws Exception {
@@ -215,6 +237,109 @@ public class SendOut_Steps extends Base_Steps{
             Assert.fail("Failed to redirect to the SendOut Domestic Page");
         }
     }
+    public void DS_TC_11()throws Exception {
+        navigationFOrSendOutDomestic();
+        searchWatchListKYC();
+        searchReceiver();
+        type(sendOutPageObjects.sourceOfFund(), "Source of Fund field ", propertyReader.getproperty("source_of_fund"));
+        type(sendOutPageObjects.purpose(), "Purpose field ", propertyReader.getproperty("purpose"));
+        type(sendOutPageObjects.relationToReceiver(), "Relation to Receiver field ", propertyReader.getproperty("relationshiptoreceiver"));
+        type(sendOutPageObjects.messageToReceiver(), "Message to Receiver field ", propertyReader.getproperty("messagetoreceiver"));
+        type(sendOutPageObjects.principalAmount(), "Principal Amount field ", propertyReader.getproperty("valid_principal_amount"));
+        click(sendOutPageObjects.submitSendOut(),"Submit SendOut Button");
+        click(sendOutPageObjects.confirmSendOutButton(), "Confirm SendOut Button");
+        waitSleep(4000);
+        if(isVisible(sendOutPageObjects.complianceText(), getText(sendOutPageObjects.complianceText()))){
+            ExtentReporter.logPass("DS_TC_11", "Successfully validate kyc from the Watch List");
+        }else{
+            ExtentReporter.logFail("DS_TC_11", "Failed to validate kyc from the Watch List");
+            Assert.fail("Failed to validate kyc from the Watch List");
+        }
+        click(sendOutPageObjects.complianceOKButton(),"Compliance Button");
+
+    }
+    public void DS_TC_12()throws Exception {
+        navigationFOrSendOutDomestic();
+        click(sendOutPageObjects.searchKYC(), "Search KYC button ");
+        type(sendOutPageObjects.lastName(), "Lastname Field", propertyReader.getproperty("theSameTransactionLastName"));
+        type(sendOutPageObjects.firstName(), "Firstname Field", propertyReader.getproperty("theSameTransactionFirstName"));
+        type(sendOutPageObjects.middleName(), "Middlename Field", propertyReader.getproperty("theSameTransactionMiddleName"));
+        click(sendOutPageObjects.searchBtn(), "Search Button ");
+        waitSleep(2000);
+        click(sendOutPageObjects.viewButton(), "View Button ");
+        waitSleep(5000);
+        scrollToElement(sendOutPageObjects.selectKYC());
+        scrollDown(100);
+        click(sendOutPageObjects.selectKYC(), "Select KYC Button");
+        click(sendOutPageObjects.searchReceivers(), "Search Receivers Button ");
+        waitSleep(5000);
+        scrollToElement(sendOutPageObjects.selectButton());
+        click(sendOutPageObjects.selectButton(),"Select Button");
+        scrollToElement(sendOutPageObjects.no_ContactNo());
+        click(sendOutPageObjects.no_ContactNo(), "Contact No Checkbox");
+        type(sendOutPageObjects.sourceOfFund(), "Source of Fund field ", propertyReader.getproperty("source_of_fund"));
+        waitSleep(3000);
+        type(sendOutPageObjects.purpose(), "Purpose field ", propertyReader.getproperty("purpose"));
+        type(sendOutPageObjects.relationToReceiver(), "Relation to Receiver field ", propertyReader.getproperty("relationshiptoreceiver"));
+        type(sendOutPageObjects.messageToReceiver(), "Message to Receiver field ", propertyReader.getproperty("messagetoreceiver"));
+        type(sendOutPageObjects.principalAmount(), "Principal Amount field ", propertyReader.getproperty("valid_principal_amount"));
+        waitSleep(3000);
+        click(sendOutPageObjects.submitSendOut(),"Submit SendOut Button");
+        click(sendOutPageObjects.confirmSendOutButton(), "Confirm SendOut Button");
+        click(sendOutPageObjects.proceedToPrinting(), "Proceed to Printing");
+        waitSleep(2000);
+        click(sendOutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
+        waitSleep(10000);
+
+        navigationFOrSendOutDomestic();
+        click(sendOutPageObjects.searchKYC(), "Search KYC button ");
+        type(sendOutPageObjects.lastName(), "Lastname Field", propertyReader.getproperty("theSameTransactionLastName"));
+        type(sendOutPageObjects.firstName(), "Firstname Field", propertyReader.getproperty("theSameTransactionFirstName"));
+        type(sendOutPageObjects.middleName(), "Middlename Field", propertyReader.getproperty("theSameTransactionMiddleName"));
+        click(sendOutPageObjects.searchBtn(), "Search Button ");
+        waitSleep(2000);
+        click(sendOutPageObjects.viewButton(), "View Button ");
+        waitSleep(5000);
+        scrollToElement(sendOutPageObjects.selectKYC());
+        scrollDown(100);
+        click(sendOutPageObjects.selectKYC(), "Select KYC Button");
+        click(sendOutPageObjects.searchReceivers(), "Search Receivers Button ");
+        waitSleep(5000);
+        scrollToElement(sendOutPageObjects.selectButton2Attempt());
+        click(sendOutPageObjects.selectButton2Attempt(),"Select Button");
+        scrollToElement(sendOutPageObjects.no_ContactNo());
+        click(sendOutPageObjects.no_ContactNo(), "Contact No Checkbox");
+        type(sendOutPageObjects.sourceOfFund(), "Source of Fund field ", propertyReader.getproperty("source_of_fund"));
+        waitSleep(3000);
+        type(sendOutPageObjects.purpose(), "Purpose field ", propertyReader.getproperty("purpose"));
+        type(sendOutPageObjects.relationToReceiver(), "Relation to Receiver field ", propertyReader.getproperty("relationshiptoreceiver"));
+        type(sendOutPageObjects.messageToReceiver(), "Message to Receiver field ", propertyReader.getproperty("messagetoreceiver"));
+        type(sendOutPageObjects.principalAmount(), "Principal Amount field ", propertyReader.getproperty("valid_principal_amount"));
+        waitSleep(3000);
+        click(sendOutPageObjects.submitSendOut(),"Submit SendOut Button");
+        click(sendOutPageObjects.confirmSendOutButton(), "Confirm SendOut Button");
+        waitSleep(3000);
+        if(isVisible(sendOutPageObjects.theSameTransactionText(), getText(sendOutPageObjects.theSameTransactionText()))){
+            ExtentReporter.logPass("DS_TC_12", "Successfully validate the same transaction");
+        }else{
+            ExtentReporter.logFail("DS_TC_12", "Failed to validate the same transaction");
+            Assert.fail("Failed to validate kyc from the Watch List");
+        }
+        click(sendOutPageObjects.theSameTransactionOKButton(),"The same Transaction Button");
+    }
+
+
+    public boolean isTotalCorrect() throws Exception {
+        double principalAmt = parseTotalValue(getValue(sendOutPageObjects.principalAmount()));
+        double chargeAmt = parseTotalValue(getText(sendOutPageObjects.chargeAmount()));
+        double otherChargeAmt = parseTotalValue(getText(sendOutPageObjects.otherChargeAmount()));
+        double totalAmt = parseTotalValue(getText(sendOutPageObjects.totalAmount()));
+        double expectedTotal = principalAmt + chargeAmt + otherChargeAmt;
+        assertEqual(totalAmt, expectedTotal);
+        LoggingUtils.info("Expected total: " + expectedTotal + ", actual: " + totalAmt);
+        return Math.abs(expectedTotal - totalAmt) < 0.0001;
+    }
+
     public void searchKYC(){
         click(sendOutPageObjects.searchKYC(), "Search KYC button ");
         String[] randomName = reader.getRandomName();
@@ -228,6 +353,51 @@ public class SendOut_Steps extends Base_Steps{
         scrollDown(100);
         click(sendOutPageObjects.selectKYC(), "Select KYC Button");
     }
+    public void searchWatchListKYC(){
+        click(sendOutPageObjects.searchKYC(), "Search KYC button ");
+        type(sendOutPageObjects.lastName(), "Lastname Field", propertyReader.getproperty("watchListKYCLastName"));
+        type(sendOutPageObjects.firstName(), "Firstname Field", propertyReader.getproperty("watchListKYCFirstName"));
+        type(sendOutPageObjects.middleName(), "Middlename Field", propertyReader.getproperty("watchListKYCMiddleName"));
+        click(sendOutPageObjects.searchBtn(), "Search Button ");
+        waitSleep(2000);
+        click(sendOutPageObjects.viewButton(), "View Button ");
+        waitSleep(5000);
+        scrollToElement(sendOutPageObjects.selectKYC());
+        scrollDown(100);
+        click(sendOutPageObjects.selectKYC(), "Select KYC Button");
+    }
+//    public void theSameTransaction() throws Exception{
+//        navigationFOrSendOutDomestic();
+//        click(sendOutPageObjects.searchKYC(), "Search KYC button ");
+//        type(sendOutPageObjects.lastName(), "Lastname Field", propertyReader.getproperty("theSameTransactionLastName"));
+//        type(sendOutPageObjects.firstName(), "Firstname Field", propertyReader.getproperty("theSameTransactionFirstName"));
+//        type(sendOutPageObjects.middleName(), "Middlename Field", propertyReader.getproperty("theSameTransactionMiddleName"));
+//        click(sendOutPageObjects.searchBtn(), "Search Button ");
+//        waitSleep(2000);
+//        click(sendOutPageObjects.viewButton(), "View Button ");
+//        waitSleep(5000);
+//        scrollToElement(sendOutPageObjects.selectKYC());
+//        scrollDown(100);
+//        click(sendOutPageObjects.selectKYC(), "Select KYC Button");
+//        click(sendOutPageObjects.searchReceivers(), "Search Receivers Button ");
+//        waitSleep(5000);
+//        scrollToElement(sendOutPageObjects.selectButton());
+//        click(sendOutPageObjects.selectButton(),"Select Button");
+//        scrollToElement(sendOutPageObjects.no_ContactNo());
+//        click(sendOutPageObjects.no_ContactNo(), "Contact No Checkbox");
+//        type(sendOutPageObjects.sourceOfFund(), "Source of Fund field ", propertyReader.getproperty("source_of_fund"));
+//        waitSleep(3000);
+//        type(sendOutPageObjects.purpose(), "Purpose field ", propertyReader.getproperty("purpose"));
+//        type(sendOutPageObjects.relationToReceiver(), "Relation to Receiver field ", propertyReader.getproperty("relationshiptoreceiver"));
+//        type(sendOutPageObjects.messageToReceiver(), "Message to Receiver field ", propertyReader.getproperty("messagetoreceiver"));
+//        type(sendOutPageObjects.principalAmount(), "Principal Amount field ", propertyReader.getproperty("valid_principal_amount"));
+//        waitSleep(3000);
+//        click(sendOutPageObjects.submitSendOut(),"Submit SendOut Button");
+//        click(sendOutPageObjects.confirmSendOutButton(), "Confirm SendOut Button");
+//        click(sendOutPageObjects.proceedToPrinting(), "Proceed to Printing");
+//        waitSleep(2000);
+//        click(sendOutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
+//    }
 
     public void addReceiver(){
         click(sendOutPageObjects.searchReceivers(), "Search Receivers Button ");
