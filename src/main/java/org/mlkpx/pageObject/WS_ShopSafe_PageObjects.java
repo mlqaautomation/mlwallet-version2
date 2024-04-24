@@ -16,7 +16,10 @@ public class WS_ShopSafe_PageObjects {
     public WebElement searchBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Search\"])"));}
     public WebElement scanQRCodeBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Scan QR Code\"])[1]"));}
     //Negative
-    public WebElement errorMessage(){return getDriver().findElement(By.xpath("(//*[text()=\"Reference Number is required.\"])"));}
+    public WebElement OkBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"OK\"])"));}
+    public WebElement warningText(){return getDriver().findElement(By.xpath("(//*[text()=\"Warning\"])"));}
+    public WebElement emptyErrorMessage(){return getDriver().findElement(By.xpath("(//*[text()=\"Reference Number is required.\"])"));}
+    public WebElement invaliderrorMessage(){return getDriver().findElement(By.xpath("(//*[text()=\"Transaction reference number not found. (version: 9098428)\"])"));}
 
 //----------------ShopSafe Next Page
     public WebElement shopsafeTextNextheader(){return getDriver().findElement(By.xpath("(//*[text()=\"Shop Safe\"])[3]"));}
@@ -95,6 +98,12 @@ public class WS_ShopSafe_PageObjects {
     public WebElement BackBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Back\"])"));}
     public WebElement UpdateStatusBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Update Status\"])"));}
     public WebElement PrintReceiptTxtBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Please click here to print a receipt.\"])"));}
+    //-------------Negative Test
+    public WebElement CancelShopSafeUpdateText(){return getDriver().findElement(By.xpath("(//*[text()=\"Cancel Shop Safe Update\"])"));}
+    public WebElement CancelShopSafeUpdateNoteText(){return getDriver().findElement(By.xpath("(//*[text()=\"Any changes made to this transaction will not be saved.\"])"));}
+    public WebElement YesDoNotUpdateBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Yes, do not update\"])"));}
+    public WebElement NoStayOnThisPageBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"No, stay on this page\"])"));}
+
     //-------------Complete Transaction
     public WebElement CompleteBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Complete\"])"));}
     public WebElement ReturnParcelBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Return Parcel\"])"));}

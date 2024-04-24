@@ -25,6 +25,7 @@ public class WS_ShopSafe_Steps extends Base_Steps{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
         type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
             isVisible(wsShopSafePageObjects.TransactInfoText(),"");
@@ -69,6 +70,7 @@ public class WS_ShopSafe_Steps extends Base_Steps{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
         type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
             isVisible(wsShopSafePageObjects.OriginBranchVal(),"");
@@ -100,6 +102,7 @@ public class WS_ShopSafe_Steps extends Base_Steps{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
         type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
             scrollToElement(wsShopSafePageObjects.ItemPhotosVal());
@@ -115,6 +118,7 @@ public class WS_ShopSafe_Steps extends Base_Steps{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
         type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
             scrollToElement(wsShopSafePageObjects.IdFrontSellerVal());
@@ -132,6 +136,7 @@ public class WS_ShopSafe_Steps extends Base_Steps{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
         type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
             scrollToElement(wsShopSafePageObjects.IdFrontBuyerVal());
@@ -149,6 +154,7 @@ public class WS_ShopSafe_Steps extends Base_Steps{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
         type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
             scrollToElement(wsShopSafePageObjects.IdTypeBuyerVal());
@@ -171,6 +177,7 @@ public class WS_ShopSafe_Steps extends Base_Steps{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
         type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
             scrollToElement(wsShopSafePageObjects.ItemPriceVal());
@@ -191,6 +198,7 @@ public class WS_ShopSafe_Steps extends Base_Steps{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
         type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
             scrollToElement(wsShopSafePageObjects.StatusText());
@@ -206,6 +214,7 @@ public class WS_ShopSafe_Steps extends Base_Steps{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
         type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
             scrollToElement(wsShopSafePageObjects.PrintReceiptTxtBtn());
@@ -224,8 +233,9 @@ public class WS_ShopSafe_Steps extends Base_Steps{
 
     public void To_Validate_Update_Status_By_Clicking_Yes_Button_For_Transit_WS_SS_11()throws Exception{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
-        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "");
         type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
             scrollToElement(wsShopSafePageObjects.PrintReceiptTxtBtn());
@@ -247,6 +257,7 @@ public class WS_ShopSafe_Steps extends Base_Steps{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
         type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
             scrollToElement(wsShopSafePageObjects.StatusText());
@@ -262,6 +273,7 @@ public class WS_ShopSafe_Steps extends Base_Steps{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
         type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
             scrollToElement(wsShopSafePageObjects.PrintReceiptTxtBtn());
@@ -282,6 +294,7 @@ public class WS_ShopSafe_Steps extends Base_Steps{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
         type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
             scrollToElement(wsShopSafePageObjects.PrintReceiptTxtBtn());
@@ -303,6 +316,7 @@ public class WS_ShopSafe_Steps extends Base_Steps{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
         type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
             scrollToElement(wsShopSafePageObjects.PrintReceiptTxtBtn());
@@ -321,6 +335,147 @@ public class WS_ShopSafe_Steps extends Base_Steps{
     }
 
 //-----------------Negative  Test
+    public void To_Validate_Empty_Reference_Number_WS_RR_01()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeText(), "")){
+            isVisible(wsShopSafePageObjects.emptyErrorMessage(),"");
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validated Empty Reference Number");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Empty Reference Number");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
 
+    public void To_Validate_Invalid_Reference_Number_WS_RR_02()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeText(), "")){
+
+            isVisible(wsShopSafePageObjects.warningText(),"");
+            isVisible(wsShopSafePageObjects.invaliderrorMessage(),"");
+            isVisible(wsShopSafePageObjects.OkBtn(),"");
+            click(wsShopSafePageObjects.OkBtn(), "");
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validated Empty Reference Number");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Empty Reference Number");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+
+    public void To_Validate_Empty_Tracking_Number_WS_RR_03()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
+            scrollToElement(wsShopSafePageObjects.UpdateStatusBtn());
+            click(wsShopSafePageObjects.UpdateStatusBtn(), "");
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validated Empty Tracking Number");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Empty Tracking Number");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+
+    public void To_Validate_Modal_Display_By_Clicking_Back_Button_WS_RR_04()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
+            scrollToElement(wsShopSafePageObjects.BackBtn());
+            click(wsShopSafePageObjects.BackBtn(),"");
+            isVisible(wsShopSafePageObjects.CancelShopSafeUpdateText(),"");
+            isVisible(wsShopSafePageObjects.CancelShopSafeUpdateNoteText(),"");
+            isVisible(wsShopSafePageObjects.YesDoNotUpdateBtn(),"");
+            isVisible(wsShopSafePageObjects.NoStayOnThisPageBtn(),"");
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validated Modal Display By Clicking Back Button");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Modal Display By Clicking Back Button");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+
+    public void To_Validate_Back_To_Wallet_Services_Page_WS_RR_05()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
+            scrollToElement(wsShopSafePageObjects.BackBtn());
+            click(wsShopSafePageObjects.BackBtn(),"");
+            click(wsShopSafePageObjects.YesDoNotUpdateBtn(),"");
+            isVisible(wsShopSafePageObjects.shopsafeTextheader(), "");
+            isVisible(wsShopSafePageObjects.referenceNoTxtbox(), "" );
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validated Modal Display By Clicking Back Button");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Modal Display By Clicking Back Button");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+
+    public void To_Validate_Stay_In_The_Page_WS_RR_06()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
+            scrollToElement(wsShopSafePageObjects.BackBtn());
+            click(wsShopSafePageObjects.BackBtn(),"");
+            click(wsShopSafePageObjects.NoStayOnThisPageBtn(),"");
+            isVisible(wsShopSafePageObjects.BackBtn(), "");
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validated Modal Display By Clicking Back Button");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Modal Display By Clicking Back Button");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+//------------------------------------------Continue
+    public void To_Validate_Stay_In_The_Page_WS_RR_07()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
+            scrollToElement(wsShopSafePageObjects.BackBtn());
+            click(wsShopSafePageObjects.BackBtn(),"");
+            click(wsShopSafePageObjects.NoStayOnThisPageBtn(),"");
+            isVisible(wsShopSafePageObjects.BackBtn(), "");
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validated Modal Display By Clicking Back Button");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Modal Display By Clicking Back Button");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+
+    public void To_Validate_Stay_In_The_Page_WS_RR_08()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "");
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
+            scrollToElement(wsShopSafePageObjects.BackBtn());
+            click(wsShopSafePageObjects.BackBtn(),"");
+            click(wsShopSafePageObjects.NoStayOnThisPageBtn(),"");
+            isVisible(wsShopSafePageObjects.BackBtn(), "");
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validated Modal Display By Clicking Back Button");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Modal Display By Clicking Back Button");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
 
 }
