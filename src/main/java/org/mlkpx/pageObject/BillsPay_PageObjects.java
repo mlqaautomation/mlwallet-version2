@@ -37,9 +37,9 @@ public class BillsPay_PageObjects {
 //        String xpath = "//div[contains(text(),'" + option + "')]";
 //        return getDriver().findElement(By.xpath(xpath));
 //    }
-//    public WebElement BPChoosePartners(){
-//        return getDriver().findElement(By.xpath("//div[@class=' css-1uccc91-singleValue' or @name='MERALCO RTP (ELECTRICITY)']"));
-//    }
+    public WebElement BPChoosePartners(){
+        return getDriver().findElement(By.xpath("//div[@class=' css-1wa3eu0-placeholder']"));
+    }
 
     public WebElement RefRequired(){
         return getDriver().findElement(By.xpath("//small[contains(text(),'Reference number is required')]"));
