@@ -366,38 +366,6 @@ public class SendOut_Steps extends Base_Steps{
         scrollDown(100);
         click(sendOutPageObjects.selectKYC(), "Select KYC Button");
     }
-//    public void theSameTransaction() throws Exception{
-//        navigationFOrSendOutDomestic();
-//        click(sendOutPageObjects.searchKYC(), "Search KYC button ");
-//        type(sendOutPageObjects.lastName(), "Lastname Field", propertyReader.getproperty("theSameTransactionLastName"));
-//        type(sendOutPageObjects.firstName(), "Firstname Field", propertyReader.getproperty("theSameTransactionFirstName"));
-//        type(sendOutPageObjects.middleName(), "Middlename Field", propertyReader.getproperty("theSameTransactionMiddleName"));
-//        click(sendOutPageObjects.searchBtn(), "Search Button ");
-//        waitSleep(2000);
-//        click(sendOutPageObjects.viewButton(), "View Button ");
-//        waitSleep(5000);
-//        scrollToElement(sendOutPageObjects.selectKYC());
-//        scrollDown(100);
-//        click(sendOutPageObjects.selectKYC(), "Select KYC Button");
-//        click(sendOutPageObjects.searchReceivers(), "Search Receivers Button ");
-//        waitSleep(5000);
-//        scrollToElement(sendOutPageObjects.selectButton());
-//        click(sendOutPageObjects.selectButton(),"Select Button");
-//        scrollToElement(sendOutPageObjects.no_ContactNo());
-//        click(sendOutPageObjects.no_ContactNo(), "Contact No Checkbox");
-//        type(sendOutPageObjects.sourceOfFund(), "Source of Fund field ", propertyReader.getproperty("source_of_fund"));
-//        waitSleep(3000);
-//        type(sendOutPageObjects.purpose(), "Purpose field ", propertyReader.getproperty("purpose"));
-//        type(sendOutPageObjects.relationToReceiver(), "Relation to Receiver field ", propertyReader.getproperty("relationshiptoreceiver"));
-//        type(sendOutPageObjects.messageToReceiver(), "Message to Receiver field ", propertyReader.getproperty("messagetoreceiver"));
-//        type(sendOutPageObjects.principalAmount(), "Principal Amount field ", propertyReader.getproperty("valid_principal_amount"));
-//        waitSleep(3000);
-//        click(sendOutPageObjects.submitSendOut(),"Submit SendOut Button");
-//        click(sendOutPageObjects.confirmSendOutButton(), "Confirm SendOut Button");
-//        click(sendOutPageObjects.proceedToPrinting(), "Proceed to Printing");
-//        waitSleep(2000);
-//        click(sendOutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
-//    }
 
     public void addReceiver(){
         click(sendOutPageObjects.searchReceivers(), "Search Receivers Button ");
