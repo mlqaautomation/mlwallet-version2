@@ -4,6 +4,8 @@ import org.testng.Assert;
 import utilities.ExtentReport.ExtentReporter;
 
 public class WS_ShopSafe_Steps extends Base_Steps{
+
+//-------------------Positive Test
     public void To_Validate_Shop_Safe_Page_WS_SS_01()throws Exception{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
@@ -85,6 +87,7 @@ public class WS_ShopSafe_Steps extends Base_Steps{
             isVisible(wsShopSafePageObjects.ModelNoVal(),"");
             isVisible(wsShopSafePageObjects.CategoryVal(),"");
             isVisible(wsShopSafePageObjects.WeightVal(),"");
+            scrollToElement(wsShopSafePageObjects.NoItemsVal());
             isVisible(wsShopSafePageObjects.NoItemsVal(),"");
             ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validate Transaction Information");
         }else{
@@ -93,18 +96,231 @@ public class WS_ShopSafe_Steps extends Base_Steps{
         }
     }
 
-    public void To_Validate_Transaction_Information_WS_SS_04()throws Exception{
+    public void To_Validate_Item_Photo_WS_SS_04()throws Exception{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
         type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
-
-            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validate Transaction Information");
+            scrollToElement(wsShopSafePageObjects.ItemPhotosVal());
+            isVisible(wsShopSafePageObjects.ItemPhotosVal(),"");
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validate Item Photo");
         }else{
-            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Transaction Information");
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Item Photo");
             Assert.fail("Failed to Validate Shop Safe Page");
         }
     }
+
+    public void To_Validate_Sellers_Photo_WS_SS_05()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
+            scrollToElement(wsShopSafePageObjects.IdFrontSellerVal());
+            isVisible(wsShopSafePageObjects.IdFrontSellerVal(),"");
+            isVisible(wsShopSafePageObjects.IdBackSellerVal(),"");
+            isVisible(wsShopSafePageObjects.CustomerPhotoSellerVal(),"");
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validate Sellers Photo");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Sellers Photo");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+
+    public void To_Validate_Buyer_Photo_WS_SS_06()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
+            scrollToElement(wsShopSafePageObjects.IdFrontBuyerVal());
+            isVisible(wsShopSafePageObjects.IdFrontBuyerVal(),"");
+            isVisible(wsShopSafePageObjects.IdBackBuyerVal(),"");
+            isVisible(wsShopSafePageObjects.CustomerPhotoBuyerVal(),"");
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validate Buyer Photo");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Buyer Photo");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+
+    public void To_Validate_Transaction_Details_WS_SS_07()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
+            scrollToElement(wsShopSafePageObjects.IdTypeBuyerVal());
+            isVisible(wsShopSafePageObjects.IdTypeBuyerVal(),"");
+            isVisible(wsShopSafePageObjects.IdNoBuyerVal(),"");
+            isVisible(wsShopSafePageObjects.ExpiryDateBuyerVal(),"");
+            isVisible(wsShopSafePageObjects.VerficationLevelBuyerVal(),"");
+            isVisible(wsShopSafePageObjects.IdTypeSellerVal(),"");
+            isVisible(wsShopSafePageObjects.IdNoSellerVal(),"");
+            isVisible(wsShopSafePageObjects.ExpiryDateSellerVal(),"");
+            isVisible(wsShopSafePageObjects.VerficationLevelSellerVal(),"");
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validate Transaction Details");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Transaction Details");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+
+    public void To_Validate_Amount_Information_WS_SS_08()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
+            scrollToElement(wsShopSafePageObjects.ItemPriceVal());
+            isVisible(wsShopSafePageObjects.ItemPriceVal(),"");
+            isVisible(wsShopSafePageObjects.ShippingFeeVal(),"");
+            isVisible(wsShopSafePageObjects.ReturnShippingAndDepositVal(),"");
+            isVisible(wsShopSafePageObjects.InsuranceFeeVal(),"");
+            isVisible(wsShopSafePageObjects.ServiceFeeVal(),"");
+            isVisible(wsShopSafePageObjects.TotalAmountVal(),"");
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validate Amount Information");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Amount Information");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+
+    public void To_Validate_Parcel_Status_As_Transit_WS_SS_09()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
+            scrollToElement(wsShopSafePageObjects.StatusText());
+            isVisible(wsShopSafePageObjects.StatusText(),"");
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validate Parcel Status As Transit");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Parcel Status As Transit");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+
+    public void To_Validate_Input_Tracking_Number_And_Remarks_WS_SS_10()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
+            scrollToElement(wsShopSafePageObjects.PrintReceiptTxtBtn());
+            type(wsShopSafePageObjects.TrackingNoTextbox(), "Tracking Number Field","" );
+            type(wsShopSafePageObjects.RemarksTxtbox(), "Remarks Field","" );
+            click(wsShopSafePageObjects.UpdateStatusBtn(), "");
+
+            // status modal
+
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validate Input Tracking Number And Remarks");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Input Tracking Number And Remarks");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+
+    public void To_Validate_Update_Status_By_Clicking_Yes_Button_For_Transit_WS_SS_11()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
+            scrollToElement(wsShopSafePageObjects.PrintReceiptTxtBtn());
+            type(wsShopSafePageObjects.TrackingNoTextbox(), "Tracking Number Field","" );
+            type(wsShopSafePageObjects.RemarksTxtbox(), "Remarks Field","" );
+            click(wsShopSafePageObjects.UpdateStatusBtn(), "");
+            //click(wsShopSafePageObjects.YesBtn(), "");
+
+            // status modal
+
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validate Update Status By Clicking Yes Button");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Update Status By Clicking Yes Button");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+
+    public void To_Validate_Parcel_Status_As_Ready_for_Pick_Up_WS_SS_12()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
+            scrollToElement(wsShopSafePageObjects.StatusText());
+            isVisible(wsShopSafePageObjects.StatusText(),"");
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validate Parcel Status As Ready for Pick-Up");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Parcel Status As Ready for Pick-Up");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+
+    public void To_Validate_Input_Remarks_And_Clicking_Update_Status_Button_For_PickUp_WS_SS_13()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
+            scrollToElement(wsShopSafePageObjects.PrintReceiptTxtBtn());
+            type(wsShopSafePageObjects.TrackingNoTextbox(), "Tracking Number Field","" );
+            type(wsShopSafePageObjects.RemarksTxtbox(), "Remarks Field","" );
+            click(wsShopSafePageObjects.UpdateStatusBtn(), "");
+
+            // status modal
+
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validate Parcel Status As Transit");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Parcel Status As Transit");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+
+    public void To_Validate_Parcel_Status_As_Transit_WS_SS_14()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
+            scrollToElement(wsShopSafePageObjects.PrintReceiptTxtBtn());
+            type(wsShopSafePageObjects.TrackingNoTextbox(), "Tracking Number Field","" );
+            type(wsShopSafePageObjects.RemarksTxtbox(), "Remarks Field","" );
+            click(wsShopSafePageObjects.UpdateStatusBtn(), "");
+            //click(wsShopSafePageObjects.YesBtn(), "");
+
+            // status modal
+
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validate Parcel Status As Transit");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Parcel Status As Transit");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+
+    public void To_Validate_Clicking_Complete_Button_For_PickUp_WS_SS_15()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeTextheader(), "Shop Safe Header");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "")){
+            scrollToElement(wsShopSafePageObjects.PrintReceiptTxtBtn());
+            type(wsShopSafePageObjects.TrackingNoTextbox(), "Tracking Number Field","" );
+            type(wsShopSafePageObjects.RemarksTxtbox(), "Remarks Field","" );
+            click(wsShopSafePageObjects.UpdateStatusBtn(), "");
+            click(wsShopSafePageObjects.CompleteBtn(), "");
+
+            // status modal
+
+            ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validate Parcel Status As Transit");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Parcel Status As Transit");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+
+//-----------------Negative  Test
+
 
 }

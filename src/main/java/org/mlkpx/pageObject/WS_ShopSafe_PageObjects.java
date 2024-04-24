@@ -87,7 +87,7 @@ public class WS_ShopSafe_PageObjects {
     //----------------Total Amount
     public WebElement TotalAmountText(){return getDriver().findElement(By.xpath("(//*[text()=\"Total Amount\"])"));}
     public WebElement TotalAmountVal(){return getDriver().findElement(By.xpath("(//*[@class=\"text-right text-monospace col-md-6\"])[6]"));}
-    //----------------Parcel Status
+    //----------------Parcel Status Transit And
     public WebElement ParcelStatusText(){return getDriver().findElement(By.xpath("(//*[text()=\"Parcel Status\"])"));}
     public WebElement StatusText(){return getDriver().findElement(By.xpath("(//*[@name=\"parcelStatus\"])"));}
     public WebElement TrackingNoTextbox(){return getDriver().findElement(By.xpath("(//*[@name=\"trackingNumber\"])"));}
@@ -95,4 +95,8 @@ public class WS_ShopSafe_PageObjects {
     public WebElement BackBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Back\"])"));}
     public WebElement UpdateStatusBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Update Status\"])"));}
     public WebElement PrintReceiptTxtBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Please click here to print a receipt.\"])"));}
+    //-------------Complete Transaction
+    public WebElement CompleteBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Complete\"])"));}
+    public WebElement ReturnParcelBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Return Parcel\"])"));}
+
 }
