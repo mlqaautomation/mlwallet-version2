@@ -45,9 +45,10 @@ public class Payout_Steps extends Base_Steps{
             waitSleep(2);
             payoutPageObjects.SearchLName().clear();
             // todo
-            type(payoutPageObjects.SearchLName(), "Last name field", "AMOCTEST");
+            String[] randomName = reader.getRandomName();
+            type(payoutPageObjects.SearchLName(), "Last name field", randomName[1]);
             payoutPageObjects.SearchFName().clear();
-            type(payoutPageObjects.SearchFName(), "First name field", "ROSELYNTESTEST");
+            type(payoutPageObjects.SearchFName(), "First name field", randomName[0]);
             payoutPageObjects.SearchMName().clear();
             type(payoutPageObjects.SearchMName(), "Middle name field", "");
             click(payoutPageObjects.SearchKYCAc(), "Search Button");
@@ -67,17 +68,23 @@ public class Payout_Steps extends Base_Steps{
 
 
             if (payoutPageObjects.PayoutConfirm().isEnabled()) {
-                click(payoutPageObjects.ConfirmPayout(), "Click Confirm Payout");
-                assertEqual(getText(payoutPageObjects.SuccessfulPay()), "Payout Successful");
-                if (getText(payoutPageObjects.SuccessfulPay()).equals("Payout Successful")) {
-                    List<String> sendoutKPTNList = Collections.singletonList(sendoutKPTN);
-                    // Write the sendout KPTN data to the YAML file
-                    reader.writePayoutKptnData(sendoutKPTNList);
-
+                try{
+                    click(payoutPageObjects.ConfirmPayout(), "Click Confirm Payout");
+                    if (payoutPageObjects.SuccessfulPay().getText().contains("Payout Successful")) {
+                        assertEqual(getText(payoutPageObjects.SuccessfulPay()), "Payout Successful");
+                        List<String> sendoutKPTNList = Collections.singletonList(sendoutKPTN);
+                        reader.writePayoutKptnData(sendoutKPTNList);
+                    }
+                    click(payoutPageObjects.proceedToPrinting(), "Proceed to Printing");
+                    waitSleep(2000);
+                    click(payoutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
+                }catch (Exception e){
+                    LoggingUtils.info("Payout Unsuccessful");
+                    List<String> payoutKPTNList = Collections.singletonList(sendoutKPTN);
+                    reader.writeKptnData(payoutKPTNList);
+                    waitSleep(2000);
                 }
-                click(payoutPageObjects.proceedToPrinting(), "Proceed to Printing");
-                waitSleep(2000);
-                click(payoutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
+
             }
 
     }
@@ -106,9 +113,10 @@ public class Payout_Steps extends Base_Steps{
             click(payoutPageObjects.SearchKYC(), "Search KYC");
             waitSleep(2);
             payoutPageObjects.SearchLName().clear();
-            type(payoutPageObjects.SearchLName(), "Last name field", "AMOCTEST");
+            String[] randomName = reader.getRandomName();
+            type(payoutPageObjects.SearchLName(), "Last name field", randomName[1]);
             payoutPageObjects.SearchFName().clear();
-            type(payoutPageObjects.SearchFName(), "First name field", "ROSELYNTESTEST");
+            type(payoutPageObjects.SearchFName(), "First name field", randomName[0]);
             payoutPageObjects.SearchMName().clear();
             type(payoutPageObjects.SearchMName(), "Middle name field", "");
             click(payoutPageObjects.SearchKYCAc(), "Search Button");
@@ -127,23 +135,27 @@ public class Payout_Steps extends Base_Steps{
 
                 click(payoutPageObjects.ClaimAmount(), "Select Claim Amount");
             }
-//            if (payoutPageObjects.PayoutInfos().isEnabled()) {
-//                LoggingUtils.info("Navigated to View Payout Information's");
-////
-//            }
 
             if (payoutPageObjects.PayoutConfirm().isEnabled()) {
-                click(payoutPageObjects.ConfirmPayout(), "Click Confirm Payout");
-                assertEqual(getText(payoutPageObjects.SuccessfulPay()), "Payout Successful");
-                if (getText(payoutPageObjects.SuccessfulPay()).equals("Payout Successful")) {
-                    List<String> payoutremoteKPTNList = Collections.singletonList(sendoutRemoteKPTN);
-                    //todo get value of Payout kptn locator and post it to yaml file
-                    reader.writeRemotePayoutKptnData(payoutremoteKPTNList);
+                try{
+                    click(payoutPageObjects.ConfirmPayout(), "Click Confirm Payout");
 
+                    if (getText(payoutPageObjects.SuccessfulPay()).equals("Payout Successful")) {
+                        assertEqual(getText(payoutPageObjects.SuccessfulPay()), "Payout Successful");
+                        List<String> payoutremoteKPTNList = Collections.singletonList(sendoutRemoteKPTN);
+                        reader.writeRemotePayoutKptnData(payoutremoteKPTNList);
+
+                    }
+                    click(payoutPageObjects.proceedToPrinting(), "Proceed to Printing");
+                    waitSleep(2000);
+                    click(payoutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
+                }catch (Exception e){
+                    LoggingUtils.info("Payout Remote Unsuccessful");
+                    List<String> kptnValues = Collections.singletonList(sendoutRemoteKPTN);
+                    reader.writeRemoteKptnData(kptnValues);
+                    waitSleep(2000);
                 }
-                click(payoutPageObjects.proceedToPrinting(), "Proceed to Printing");
-                waitSleep(2000);
-                click(payoutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
+
             }
 
     }

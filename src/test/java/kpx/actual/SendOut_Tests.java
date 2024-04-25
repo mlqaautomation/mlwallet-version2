@@ -72,21 +72,21 @@ public class SendOut_Tests extends BaseTest {
 //
 //    }
 
-//    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "To Validate Success SendOut Transaction")
-//    public void DS_TC_8() throws Exception {
-//        if (this.homeSteps.isInHomePage()) {
-//            this.sendOutSteps.DS_TC_08();
-//
-//
-//        }
-//
-//    }
-    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "To Validate Success Remote SendOut Transaction")
-    public void DS_TC_11() throws Exception {
+    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "To Validate Success SendOut Transaction")
+    public void DS_TC_8() throws Exception {
         if (this.homeSteps.isInHomePage()) {
-            this.sendOutSteps.DS_TC_11();
+            this.sendOutSteps.DS_TC_08();
+
+
         }
     }
+//
+//    @Test(dependsOnMethods = "loginGoogle", priority = 11, description = "To Validate Success Remote SendOut Transaction")
+//    public void DS_TC_11() throws Exception {
+//        if (this.homeSteps.isInHomePage()) {
+//            this.sendOutSteps.DS_TC_11();
+//        }
+//    }
 
 }
 

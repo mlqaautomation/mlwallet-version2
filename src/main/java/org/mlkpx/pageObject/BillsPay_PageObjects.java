@@ -12,6 +12,12 @@ public class BillsPay_PageObjects {
     public WebElement billsPay_h2(){
         return getDriver().findElement(By.xpath("//h2"));
     }
+    public WebElement billsPay_PayInfo(){
+        return getDriver().findElement(By.xpath("//h5[contains(text(),'Payor Information')]"));
+    }
+    public WebElement billsPay_ConfiInfo(){
+        return getDriver().findElement(By.xpath("//h4[contains(text(),'Bills Pay Confirmation')]"));
+    }
     public WebElement BPSendout(){
         return getDriver().findElement(By.xpath("(//a[@href='/bills/payments'])[2]"));
     }
@@ -29,6 +35,10 @@ public class BillsPay_PageObjects {
     }
     public WebElement RemoteTransaction(){
         return getDriver().findElement(By.xpath("//input[@value='1']"));
+    }
+    public WebElement kptnText(){
+
+        return getDriver().findElement(By.cssSelector("[data-testid='payout-success-ref-num']"));
     }
     public WebElement BPPartners(){
         return getDriver().findElement(By.xpath("//div[@class=' css-tlfecz-indicatorContainer']"));
@@ -50,6 +60,39 @@ public class BillsPay_PageObjects {
     public WebElement OnlyLettersP(){
         return getDriver().findElement(By.xpath("//small[contains(text(),'Only letters are allowed.')]"));
     }
+    public WebElement SelectPartners(){
+        return getDriver().findElement(By.xpath("//span[contains(text(),'Please select the partner that will receive the payment.')]"));
+    }
+    public WebElement EmptyAccount(){
+        return getDriver().findElement(By.xpath("//small[contains(text(),'Account number is a required field')]"));
+    }
+    public WebElement EmptyLastname(){
+        return getDriver().findElement(By.xpath("//small[contains(text(),'Account last name is a required field')]"));
+    }
+    public WebElement EmptyFirstname(){
+        return getDriver().findElement(By.xpath("//small[contains(text(),'Account first name is a required field')]"));
+    }
+    public WebElement EmptyLPayor(){
+        return getDriver().findElement(By.xpath("//small[contains(text(),'Payor last name is a required field')]"));
+    }
+    public WebElement EmptyFPayor(){
+        return getDriver().findElement(By.xpath("//small[contains(text(),'Payor first name is a required field')]"));
+    }
+    public WebElement EmptyAddress(){
+        return getDriver().findElement(By.xpath("//small[contains(text(),'Payor address is a required field')]"));
+    }
+    public WebElement EmptyContact(){
+        return getDriver().findElement(By.xpath("//small[contains(text(),'Payor contact number is a required field')]"));
+    }
+    public WebElement EmptyAmount(){
+        return getDriver().findElement(By.xpath("//span[contains(text(),'Payment amount must have a valid value')]"));
+    }
+    public WebElement InvalidAccountNum(){
+        return getDriver().findElement(By.xpath("//h5[contains(text(),'Incorrect Payment Details')]"));
+    }
+    public WebElement InvalidContact(){
+        return getDriver().findElement(By.xpath("//small[contains(text(),'Must start with 639|09|9 followed by 9 digits.')]"));
+    }
 
 
     public WebElement BPAccNum(){
@@ -69,22 +112,22 @@ public class BillsPay_PageObjects {
     }
     //payor infos
     public WebElement PayorLastName(){
-        return getDriver().findElement(By.xpath("//input[@name='payorInformation.payorLastName']"));
+        return getDriver().findElement(By.xpath("//input[@name='payorLastName']"));
     }
     public WebElement PayorFirstName(){
-        return getDriver().findElement(By.xpath("//input[@name='payorInformation.payorFirstName']"));
+        return getDriver().findElement(By.xpath("//input[@name='payorFirstName']"));
     }
     public WebElement PayorMiddleName(){
-        return getDriver().findElement(By.xpath("//input[@name='payorInformation.payorMiddleName']"));
+        return getDriver().findElement(By.xpath("//input[@name='payorMiddleName']"));
     }
     public WebElement PayInformation(){
         return getDriver().findElement(By.xpath("(//h5[@class='mt-5'][2])"));
     }
     public WebElement PayorAddress(){
-        return getDriver().findElement(By.xpath("//input[@name='payorInformation.payorAddress']"));
+        return getDriver().findElement(By.xpath("//input[@name='payorAddress']"));
     }
     public WebElement PayorContact(){
-        return getDriver().findElement(By.xpath("//input[@name='payorInformation.payorContactNumber']"));
+        return getDriver().findElement(By.xpath("//input[@name='payorContactNumber']"));
     }
     public WebElement BPPage_h2(){
         return getDriver().findElement(By.xpath("//h5[contains(text(),'Account Information')]"));
@@ -93,13 +136,26 @@ public class BillsPay_PageObjects {
     //payment infos
 
     public WebElement PaymentAmount(){
-        return getDriver().findElement(By.xpath("//input[@id='moneyInput']"));
+        return getDriver().findElement(By.xpath("//input[@name='paymentAmount']"));
     }
     public WebElement PaymentDetails(){
         return getDriver().findElement(By.xpath("//textarea[@name='otherDetails']"));
     }
     public WebElement SubmitBillsPay(){
         return getDriver().findElement(By.xpath("//button[normalize-space()='Submit Bills Pay']"));
+    }
+
+    public WebElement ConfirmSubmitBillsPay(){
+        return getDriver().findElement(By.xpath("//button[normalize-space()='Confirm Payment']"));
+    }
+    public WebElement SuccessfulBillsPay(){return getDriver().findElement(By.xpath("//h5[contains(text(),'Bills Pay Successful')]"));
+    }
+    public WebElement DuplicateBillsPay(){return getDriver().findElement(By.xpath("//h5[contains(text(),'Duplicate Bills Payment')]"));
+    }
+    public WebElement OKCom(){return getDriver().findElement(By.xpath("//button[normalize-space()='OK']"));
+    }
+    public WebElement ReviewBillsPay(){
+        return getDriver().findElement(By.xpath("//input[@type='checkbox']"));
     }
     public WebElement BillsPayText(){
         return getDriver().findElement(By.xpath("//h2[contains(text(),'Bills Pay Cancellation')]"));
@@ -110,6 +166,12 @@ public class BillsPay_PageObjects {
     public WebElement BillsPayPrint(){
         return getDriver().findElement(By.xpath("//h2[contains(text(),'Bills Pay Reprint')]"));
     }
+    public WebElement proceedToPrinting() {
+        return getDriver().findElement(By.xpath("//*[text()='Proceed to Printing']"));
+    }
+    public WebElement cancelButtoninReceipt() {
+        return getDriver().findElement(By.cssSelector("[class=\"sc-hIUJlX exqbQW btn btn-secondary\"]"));}
+
     public WebElement RepKTPN(){
         return getDriver().findElement(By.xpath("//input[@name='refNo']"));
     }
@@ -211,7 +273,12 @@ public class BillsPay_PageObjects {
     }
     public WebElement OKButton(){return getDriver().findElement(By.xpath("//button[normalize-space()='OK']"));
     }
-
+    public WebElement ClickOption(){
+        return getDriver().findElement(By.cssSelector ( "[width='20']" ));
+    }
+    public WebElement ChooseOption(){
+        return getDriver().findElement(By.xpath( "(//*[@class=' css-26l3qy-menu']//img)[2]" ));
+    }
 
 
 }

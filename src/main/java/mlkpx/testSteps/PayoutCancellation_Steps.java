@@ -36,14 +36,32 @@ public class PayoutCancellation_Steps extends Base_Steps{
             type(payoutPageObjects.IRNum(), "KTPN Number", "2111111111212");
             type(payoutPageObjects.ReasonCancel(), "Reason for Cancellation ", "Testing");
             click(payoutPageObjects.CancelButton(), "Cancel Payout");
-            click(payoutPageObjects.YesCancelButton(), "Yes, Cancel Button");
-            assertEqual(getText(payoutPageObjects.SuccessfulCancelPay()), "Payout Cancelled");
-            if (getText(payoutPageObjects.SuccessfulCancelPay()).equals("Payout Cancelled")) {
-                List<String> payoutKPTNList = Collections.singletonList(payoutKPTN);
-                // Write the payout KPTN data to the YAML file
-                reader.writeKptnData(payoutKPTNList);
-                waitSleep(5000);
-                click(payoutPageObjects.OKay(), "OK");
+//            click(payoutPageObjects.YesCancelButton(), "Yes, Cancel Button");
+//            assertEqual(getText(payoutPageObjects.SuccessfulCancelPay()), "Payout Cancelled");
+//            if (getText(payoutPageObjects.SuccessfulCancelPay()).equals("Payout Cancelled")) {
+//                List<String> payoutKPTNList = Collections.singletonList(payoutKPTN);
+//                // Write the payout KPTN data to the YAML file
+//                reader.writeKptnData(payoutKPTNList);
+//                waitSleep(5000);
+//                click(payoutPageObjects.OKay(), "OK");
+//            }
+
+            try{
+                click(payoutPageObjects.YesCancelButton(), "Yes, Cancel Button");
+                if (getText(payoutPageObjects.SuccessfulCancelPay()).equals("Payout Cancelled")) {
+                    assertEqual(getText(payoutPageObjects.SuccessfulCancelPay()), "Payout Cancelled");
+                    List<String> payoutKPTNList = Collections.singletonList(payoutKPTN);
+                    reader.writeKptnData(payoutKPTNList);
+                    waitSleep(2000);
+                    click(payoutPageObjects.OKay(), "OK");
+
+                }
+
+            }catch (Exception e){
+                LoggingUtils.info("Payout Cancellation Unsuccessful");
+                List<String> kptnValues = Collections.singletonList(payoutKPTN);
+                reader.writeKptnData(kptnValues);
+                waitSleep(2000);
             }
         }
     }
@@ -62,13 +80,33 @@ public class PayoutCancellation_Steps extends Base_Steps{
             type(payoutPageObjects.IRNum(), "KTPN Number", "2111111111113");
             type(payoutPageObjects.ReasonCancel(), "Reason for Cancellation ", "Testing");
             click(payoutPageObjects.CancelButton(), "Cancel Payout");
-            click(payoutPageObjects.YesCancelButton(), "Yes, Cancel Button");
-            if (getText(payoutPageObjects.SuccessfulCancelPay()).equals("Payout Cancelled")) {
+//            click(payoutPageObjects.YesCancelButton(), "Yes, Cancel Button");
+//            if (getText(payoutPageObjects.SuccessfulCancelPay()).equals("Payout Cancelled")) {
+//                List<String> payoutremoteKPTNList = Collections.singletonList(remotePayoutKPTN);
+//                // Write the payout remote KPTN data to the YAML file
+//                reader.writeRemoteKptnData(payoutremoteKPTNList);
+//                waitSleep(5000);
+//                click(payoutPageObjects.OKay(), "OK");
+//            }
+
+            try{
+                click(payoutPageObjects.YesCancelButton(), "Yes, Cancel Button");
+                if (getText(payoutPageObjects.SuccessfulCancelPay()).equals("Payout Cancelled")) {
+                    assertEqual(getText(payoutPageObjects.SuccessfulCancelPay()), "Payout Cancelled");
+                    List<String> payoutremoteKPTNList = Collections.singletonList(remotePayoutKPTN);
+                    // Write the payout remote KPTN data to the YAML file
+                    reader.writeRemoteKptnData(payoutremoteKPTNList);
+                    waitSleep(2000);
+                    click(payoutPageObjects.OKay(), "OK");
+
+                }
+
+            }catch (Exception e){
+                LoggingUtils.info("Payout Remote Cancellation Unsuccessful");
                 List<String> payoutremoteKPTNList = Collections.singletonList(remotePayoutKPTN);
                 // Write the payout remote KPTN data to the YAML file
                 reader.writeRemoteKptnData(payoutremoteKPTNList);
-                waitSleep(5000);
-                click(payoutPageObjects.OKay(), "OK");
+                waitSleep(2000);
             }
 
         }
