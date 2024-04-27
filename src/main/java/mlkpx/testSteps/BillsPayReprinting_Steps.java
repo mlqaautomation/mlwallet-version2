@@ -19,7 +19,8 @@ public class BillsPayReprinting_Steps extends Base_Steps{
         if(isVisible(billsPayPageObjects.BillsPayPrint(), getText(billsPayPageObjects.BillsPayPrint()))) {
             LoggingUtils.info("Navigated the BillsPay Reprinting page");
         }
-        type(billsPayPageObjects.RefNum(), "Reference Number","KBPTLEFUPGI");
+        String BillsPayKPTN = reader.getBillsPayKPTN();
+        type(billsPayPageObjects.RefNum(), "Reference Number",BillsPayKPTN);
         type(billsPayPageObjects.ReasonReprinting(), "Reason for Reprinting ", "Testings");
         click(billsPayPageObjects.Reprint(), "Search Button");
         if(isVisible(billsPayPageObjects.ReprintBillsReceipt(), getText(billsPayPageObjects.ReprintBillsReceipt()))){
@@ -27,6 +28,23 @@ public class BillsPayReprinting_Steps extends Base_Steps{
             click(billsPayPageObjects.PrintReceipt(), "Print Receipt");
 //            click(payoutPageObjects.PrintButton(), "Print");
             LoggingUtils.info("Successful in printing BillsPay Receipt");
+
+        }
+    }
+    public void validateSuccessfulRemoteBillsPayReprinting()throws Exception{
+        click(billsPayPageObjects.BPReprinting(), "Bills Pay Reprinting");
+        if(isVisible(billsPayPageObjects.BillsPayPrint(), getText(billsPayPageObjects.BillsPayPrint()))) {
+            LoggingUtils.info("Navigated the BillsPay Reprinting page");
+        }
+        String RemoteBillsPayKPTN = reader.getRemoteBillsPayKPTN();
+        type(billsPayPageObjects.RefNum(), "Reference Number",RemoteBillsPayKPTN);
+        type(billsPayPageObjects.ReasonReprinting(), "Reason for Reprinting ", "Testings");
+        click(billsPayPageObjects.Reprint(), "Search Button");
+        if(isVisible(billsPayPageObjects.ReprintBillsReceipt(), getText(billsPayPageObjects.ReprintBillsReceipt()))){
+            LoggingUtils.info("Navigated the Bills Pay Reprint Receipt page");
+            click(billsPayPageObjects.PrintReceipt(), "Print Receipt");
+//            click(payoutPageObjects.PrintButton(), "Print");
+            LoggingUtils.info("Successful in printing Remote BillsPay Receipt");
 
         }
     }

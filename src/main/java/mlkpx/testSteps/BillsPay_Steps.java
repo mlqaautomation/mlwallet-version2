@@ -60,12 +60,12 @@ public class BillsPay_Steps extends Base_Steps{
             click(billsPayPageObjects.ConfirmSubmitBillsPay(), "Confirm Payment");
             waitSleep(5000);
             assertEqual(getText(billsPayPageObjects.SuccessfulBillsPay()), "Bills Pay Successful");
-            LoggingUtils.info("Bills Pay Successful" +
-                    "The payment was successfully created." +
-                    "Please prepare printer to print document.");
             String kptnText = getText(billsPayPageObjects.kptnText());
             List<String> kptnValues = Collections.singletonList(kptnText);
             reader.writeBillsPayKptnData(kptnValues);
+            LoggingUtils.info("Bills Pay Successful" +
+                    "The payment was successfully created." +
+                    "Please prepare printer to print document.");
             click(billsPayPageObjects.proceedToPrinting(), "Proceed to Printing");
             waitSleep(2000);
             click(billsPayPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
@@ -146,12 +146,12 @@ public class BillsPay_Steps extends Base_Steps{
             click(billsPayPageObjects.ConfirmSubmitBillsPay(), "Confirm Payment");
             waitSleep(5000);
             assertEqual(getText(billsPayPageObjects.SuccessfulBillsPay()), "Bills Pay Successful");
-            LoggingUtils.info("Remote Bills Pay Successful" +
-                    "The payment was successfully created." +
-                    "Please prepare printer to print document.");
             String kptnText = getText(billsPayPageObjects.kptnText());
             List<String> kptnValues = Collections.singletonList(kptnText);
             reader.writeRemoteBillsPayKptnData(kptnValues);
+            LoggingUtils.info("Remote Bills Pay Successful" +
+                    "The payment was successfully created." +
+                    "Please prepare printer to print document.");
             waitSleep(2000);
             click(billsPayPageObjects.proceedToPrinting(), "Proceed to Printing");
             waitSleep(2000);
@@ -373,10 +373,11 @@ public class BillsPay_Steps extends Base_Steps{
             type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
             type(billsPayPageObjects.PayorAddress(), "Payor Address", "Cebu City");
             type(billsPayPageObjects.PayorContact(), "Payor Contact", "09635129781");
-            type(billsPayPageObjects.PaymentAmount(), "Payment Amount", ".");
+            type(billsPayPageObjects.PaymentAmount(), "Payment Amount", " ");
             type(billsPayPageObjects.PaymentDetails(), "Payment Details", "Testing Testing");
-            click(billsPayPageObjects.SubmitBillsPay(), "Submit Bills Pay Button");
             assertEqual(getText(billsPayPageObjects.EmptyAmount()), "Payment amount must have a valid value");
+            type(billsPayPageObjects.PaymentAmount(), "Payment Amount", "0");
+            assertEqual(getText(billsPayPageObjects.ZeroAmount()), "Minimum amount is 1");
         }
 
     }
@@ -408,7 +409,6 @@ public class BillsPay_Steps extends Base_Steps{
             LoggingUtils.info("Incorrect Payment Details" +
                     "The account number provided is invalid. Please try entering this again. (version: f6ec269)");
         }
-
     }
     public void validateInvalidFourNumTransaction()throws Exception {
         click(billsPayPageObjects.BPSendout(), "Bills Pay Sendout Transaction");
@@ -440,6 +440,35 @@ public class BillsPay_Steps extends Base_Steps{
         }
 
     }
+    public void validateBelow20AmountTransaction()throws Exception {
+        click(billsPayPageObjects.BPSendout(), "Bills Pay Sendout Transaction");
+        click(billsPayPageObjects.NoRemoteTransaction(), "No remote Transaction");
+        waitSleep(5000);
+        click(billsPayPageObjects.ClickOption(), "Option");
+        waitSleep(2000);
+        click(billsPayPageObjects.ChooseOption(), "Choose Partners");
+        waitSleep(5000);
+        type(billsPayPageObjects.BPAccNum(), "BP Account Number", "62725870");
+        type(billsPayPageObjects.BPLastName(), "BP Last Name", "AGUILARTEST");
+        type(billsPayPageObjects.BPFirstName(), "BP First Name", "ANGELYTEST");
+        type(billsPayPageObjects.BPMiddleName(), "BP Middle Name", "TESTING");
+
+        //Payor Information
+        if(isVisible(billsPayPageObjects.billsPay_PayInfo(), getText(billsPayPageObjects.billsPay_PayInfo()))){
+            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "AGUILARTEST");
+            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "ANGELYTEST");
+            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
+            type(billsPayPageObjects.PayorAddress(), "Payor Address", "Cebu City");
+            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09635129781");
+            type(billsPayPageObjects.PaymentAmount(), "Payment Amount", "19");
+            type(billsPayPageObjects.PaymentDetails(), "Payment Details", "Testing Testing");
+            click(billsPayPageObjects.SubmitBillsPay(), "Submit Bills Pay Button");
+            waitSleep(5000);
+            assertEqual(getText(billsPayPageObjects.InvalidAccountNum()), "Incorrect Payment Details");
+            LoggingUtils.info("The minimum amount for payments must be at least Php20.00. Please enter a higher amount.");
+        }
+
+    }
     public void validateInvalidContactBillsPay()throws Exception {
         click(billsPayPageObjects.BPSendout(), "Bills Pay Sendout Transaction");
         click(billsPayPageObjects.NoRemoteTransaction(), "No remote Transaction");
@@ -467,7 +496,34 @@ public class BillsPay_Steps extends Base_Steps{
         }
 
     }
+    public void validateMaxAmountTransaction()throws Exception {
+        click(billsPayPageObjects.BPSendout(), "Bills Pay Sendout Transaction");
+        click(billsPayPageObjects.NoRemoteTransaction(), "No remote Transaction");
+        waitSleep(5000);
+        click(billsPayPageObjects.ClickOption(), "Option");
+        waitSleep(2000);
+        click(billsPayPageObjects.ChooseOption(), "Choose Partners");
+        waitSleep(5000);
+        type(billsPayPageObjects.BPAccNum(), "BP Account Number", "62725870");
+        type(billsPayPageObjects.BPLastName(), "BP Last Name", "AGUILARTEST");
+        type(billsPayPageObjects.BPFirstName(), "BP First Name", "ANGELYTEST");
+        type(billsPayPageObjects.BPMiddleName(), "BP Middle Name", "TESTING");
 
+        //Payor Information
+        if(isVisible(billsPayPageObjects.billsPay_PayInfo(), getText(billsPayPageObjects.billsPay_PayInfo()))){
+            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "AGUILARTEST");
+            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "ANGELYTEST");
+            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
+            type(billsPayPageObjects.PayorAddress(), "Payor Address", "Cebu City");
+            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09635129781");
+            type(billsPayPageObjects.PaymentAmount(), "Payment Amount", "500000");
+            type(billsPayPageObjects.PaymentDetails(), "Payment Details", "Testing Testing");
+            click(billsPayPageObjects.SubmitBillsPay(), "Submit Bills Pay Button");
+            waitSleep(5000);
+            assertEqual(getText(billsPayPageObjects.InvalidAccountNum()), "Incorrect Payment Details");
+            LoggingUtils.info("The maximum amount for payments is Php100,000.00. Please enter a lower amount.");
+        }
+    }
 
 
 

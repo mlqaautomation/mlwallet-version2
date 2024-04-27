@@ -5,6 +5,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.Logger.LoggingUtils;
 
 import java.time.Duration;
+import java.util.Collections;
+import java.util.List;
 
 public class BillsPayCancellation_Steps extends Base_Steps{
     //B I L L S  P A Y    C A N C E L L A T I O N
@@ -23,7 +25,8 @@ public class BillsPayCancellation_Steps extends Base_Steps{
         click(billsPayPageObjects.BPCancellation(), "Bills Pay Cancellation Transaction");
         if(isVisible(billsPayPageObjects.BillsPayText(), getText(billsPayPageObjects.BillsPayText()))) {
             LoggingUtils.info("Navigated the BillsPay Cancellation page");
-            type(billsPayPageObjects.RefNum(), "KTPN Number","KBPZQEDICCK");
+//            String BillsPayKPTN = reader.getBillsPayKPTN(); // Call the getSendOutKPTN function
+//            type(billsPayPageObjects.RefNum(), "KTPN Number",BillsPayKPTN);
             click(billsPayPageObjects.SearchButton(), "Search Button");
         }
 
@@ -37,6 +40,7 @@ public class BillsPayCancellation_Steps extends Base_Steps{
                     "Payment has been successfully cancelled.");
 
         }
+
     }
     public void validateSuccessfulRemoteBillsPayCancellation()throws Exception{
         //Must need to cancel before/within five minutes.

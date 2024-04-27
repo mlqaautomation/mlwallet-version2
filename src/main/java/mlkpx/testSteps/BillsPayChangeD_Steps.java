@@ -22,12 +22,12 @@ public class BillsPayChangeD_Steps extends Base_Steps{
         click(billsPayPageObjects.BPChangeDetails(), "Bills Pay Change Details");
         if(isVisible(billsPayPageObjects.BillsPayChange(), getText(billsPayPageObjects.BillsPayChange()))) {
             LoggingUtils.info("Navigated the BillsPay Change Details page");
-            type(billsPayPageObjects.RefNum(), "KTPN Number","KBPTLEFUPGI");
+            String BillsPayKPTN = reader.getBillsPayKPTN();
+            type(billsPayPageObjects.RefNum(), "KTPN Number",BillsPayKPTN);
             click(billsPayPageObjects.SearchButton(), "Search Button");
         }
         if(isVisible(billsPayPageObjects.BillsPayChange(), getText(billsPayPageObjects.BillsPayChange()))){
             //Payor Information
-
             billsPayPageObjects.PayorLastName().clear();
             type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "TESTSs");
             billsPayPageObjects.PayorFirstName().clear();
@@ -53,7 +53,8 @@ public class BillsPayChangeD_Steps extends Base_Steps{
         click(billsPayPageObjects.BPChangeDetails(), "Bills Pay Change Details");
         if(isVisible(billsPayPageObjects.BillsPayChange(), getText(billsPayPageObjects.BillsPayChange()))) {
             LoggingUtils.info("Navigated the BillsPay Change Details page");
-            type(billsPayPageObjects.RefNum(), "KTPN Number","KBPTLEFUPGI");
+            String RemoteBillsPayKPTN = reader.getRemoteBillsPayKPTN();
+            type(billsPayPageObjects.RefNum(), "KTPN Number",RemoteBillsPayKPTN);
             click(billsPayPageObjects.SearchButton(), "Search Button");
         }
         if(isVisible(billsPayPageObjects.PayInformation(), getText(billsPayPageObjects.PayInformation()))){

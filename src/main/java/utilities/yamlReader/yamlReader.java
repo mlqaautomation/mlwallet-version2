@@ -5,6 +5,7 @@ import utilities.Logger.LoggingUtils;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class yamlReader {
     /** The YAML file name. */
@@ -129,6 +130,44 @@ public String getRandomKPTN() {
             sendOutKptnList.remove(randomIndex);
             saveYamlData();
             return randomSendOutKptn;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public String getBillsPayKPTN() {
+        try {
+            List<String> BillsPayKptnList = (List<String>) yamlData.get("billsPayKTPN");
+
+            if (BillsPayKptnList == null || BillsPayKptnList.isEmpty()) {
+                System.out.println("No BillsPay KPTN values available.");
+                return null;
+            }
+
+            int randomIndex = new Random().nextInt(BillsPayKptnList.size());
+            String randomBillsPayKptn = BillsPayKptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
+            saveYamlData();
+            return randomBillsPayKptn;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public String getRemoteBillsPayKPTN() {
+        try {
+            List<String> RemoteBillsPayKptnList = (List<String>) yamlData.get("remoteBillsPayKTPN");
+
+            if (RemoteBillsPayKptnList == null || RemoteBillsPayKptnList.isEmpty()) {
+                System.out.println("No Remote BillsPay KPTN values available.");
+                return null;
+            }
+
+            int randomIndex = new Random().nextInt(RemoteBillsPayKptnList.size());
+            String randomBillsPayKptn = RemoteBillsPayKptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
+            saveYamlData();
+            return randomBillsPayKptn;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -398,38 +437,60 @@ public String getRandomKPTN() {
             e.printStackTrace();
         }
     }
-    public void writeBillsPayKptnData(List<String> values) {
-        try {
-            Yaml yaml = new Yaml();
-            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
-            Map<String, Object> yamlData = yaml.load(fileInputStream);
 
-            if (yamlData.containsKey("billsPayKTPN")) {
-                List<String> existingValues = (List<String>) yamlData.get("billsPayKTPN");
-                existingValues.addAll(values);
-            } else {
-                yamlData.put("billsPayKTPN", values);
+public void writeBillsPayKptnData(List<String> values) {
+    try {
+        Yaml yaml = new Yaml();
+        FileInputStream fileInputStream = new FileInputStream(yamlFileName);
+        Map<String, Object> yamlData = yaml.load(fileInputStream);
+
+        if (yamlData.containsKey("billsPayKTPN")) {
+            List<String> existingValues = (List<String>) yamlData.get("billsPayKTPN");
+            for (String value : values) {
+                existingValues.add(value.replace(" ", ""));
             }
-
-            FileWriter writer = new FileWriter(yamlFileName);
-            yaml.dump(yamlData, writer);
-            LoggingUtils.info(values + " saved to file");
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } else {
+            List<String> trimmedValues = new ArrayList<>();
+            for (String value : values) {
+                trimmedValues.add(value.replace(" ", ""));
+            }
+            yamlData.put("billsPayKTPN", trimmedValues);
         }
+        FileWriter writer = new FileWriter(yamlFileName);
+        yaml.dump(yamlData, writer);
+        LoggingUtils.info(values + " saved to file");
+        writer.close();
+
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
+
+
+
     public void writeRemoteBillsPayKptnData(List<String> values) {
         try {
             Yaml yaml = new Yaml();
             FileInputStream fileInputStream = new FileInputStream(yamlFileName);
             Map<String, Object> yamlData = yaml.load(fileInputStream);
 
+//            if (yamlData.containsKey("remoteBillsPayKTPN")) {
+//                List<String> existingValues = (List<String>) yamlData.get("remoteBillsPayKTPN");
+//                existingValues.addAll(values);
+//            } else {
+//                yamlData.put("remoteBillsPayKTPN", values);
+//            }
             if (yamlData.containsKey("remoteBillsPayKTPN")) {
                 List<String> existingValues = (List<String>) yamlData.get("remoteBillsPayKTPN");
-                existingValues.addAll(values);
+                for (String value : values) {
+                    existingValues.add(value.replace(" ", ""));
+                }
             } else {
-                yamlData.put("remoteBillsPayKTPN", values);
+                List<String> trimmedValues = new ArrayList<>();
+                for (String value : values) {
+                    trimmedValues.add(value.replace(" ", ""));
+                }
+                yamlData.put("remoteBillsPayKTPN", trimmedValues);
             }
 
             FileWriter writer = new FileWriter(yamlFileName);

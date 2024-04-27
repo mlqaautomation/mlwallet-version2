@@ -87,6 +87,9 @@ public class BillsPay_PageObjects {
     public WebElement EmptyAmount(){
         return getDriver().findElement(By.xpath("//span[contains(text(),'Payment amount must have a valid value')]"));
     }
+    public WebElement ZeroAmount(){
+        return getDriver().findElement(By.xpath("//span[contains(text(),'Minimum amount is 1')]"));
+    }
     public WebElement InvalidAccountNum(){
         return getDriver().findElement(By.xpath("//h5[contains(text(),'Incorrect Payment Details')]"));
     }
@@ -96,38 +99,38 @@ public class BillsPay_PageObjects {
 
 
     public WebElement BPAccNum(){
-        return getDriver().findElement(By.xpath("//input[@name='accountNumber']"));
+        return getDriver().findElement(By.xpath("//input[@name='accountInformation.billAccountNumber']"));
     }
     public WebElement BPLastName(){
-        return getDriver().findElement(By.xpath("//input[@name='accountLastName']"));
+        return getDriver().findElement(By.xpath("//input[@name='accountInformation.billLastName']"));
     }
     public WebElement BPFirstName(){
-        return getDriver().findElement(By.xpath("//input[@name='accountFirstName']"));
+        return getDriver().findElement(By.xpath("//input[@name='accountInformation.billFirstName']"));
     }
     public WebElement BPMiddleName(){
-        return getDriver().findElement(By.xpath("//input[@name='accountMiddleName']"));
+        return getDriver().findElement(By.xpath("//input[@name='accountInformation.billMiddleName']"));
     }
     public WebElement AccountNum(){
         return getDriver().findElement(By.xpath("//input[@name='accountInformation.billAccountNumber']"));
     }
     //payor infos
     public WebElement PayorLastName(){
-        return getDriver().findElement(By.xpath("//input[@name='payorLastName']"));
+        return getDriver().findElement(By.xpath("//input[@name='payorInformation.payorLastName']"));
     }
     public WebElement PayorFirstName(){
-        return getDriver().findElement(By.xpath("//input[@name='payorFirstName']"));
+        return getDriver().findElement(By.xpath("//input[@name='payorInformation.payorFirstName']"));
     }
     public WebElement PayorMiddleName(){
-        return getDriver().findElement(By.xpath("//input[@name='payorMiddleName']"));
+        return getDriver().findElement(By.xpath("//input[@name='payorInformation.payorMiddleName']"));
     }
     public WebElement PayInformation(){
         return getDriver().findElement(By.xpath("(//h5[@class='mt-5'][2])"));
     }
     public WebElement PayorAddress(){
-        return getDriver().findElement(By.xpath("//input[@name='payorAddress']"));
+        return getDriver().findElement(By.xpath("//input[@name='payorInformation.payorAddress']"));
     }
     public WebElement PayorContact(){
-        return getDriver().findElement(By.xpath("//input[@name='payorContactNumber']"));
+        return getDriver().findElement(By.xpath("//input[@name='payorInformation.payorContactNumber']"));
     }
     public WebElement BPPage_h2(){
         return getDriver().findElement(By.xpath("//h5[contains(text(),'Account Information')]"));

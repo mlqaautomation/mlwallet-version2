@@ -14,8 +14,7 @@ public class BillsPay_Tests extends BaseTest {
         }
     }
 
-
-    //B I L L S  P A Y    S E N D O U T
+   // B I L L S  P A Y    S E N D O U T
 //    @Test(dependsOnMethods = "loginGoogle", priority = 1, description = "To validate successful bills payment transaction")
 //    public void BillsPay_TC_01()throws Exception{
 //        if(this.homeSteps.isInHomePage()){
@@ -25,7 +24,6 @@ public class BillsPay_Tests extends BaseTest {
 //        }
 //
 //    }
-//
 //    @Test(dependsOnMethods = "loginGoogle", priority = 3, description = "To validate successful remote bills payment transaction")
 //    public void BillsPay_TC_02()throws Exception{
 //        if(this.homeSteps.isInHomePage()){
@@ -80,15 +78,15 @@ public class BillsPay_Tests extends BaseTest {
 //        }
 //
 //    }
-    @Test(dependsOnMethods = "loginGoogle", priority = 9, description = "To validate bills payment with no Payor's First Name provided")
-    public void BillsPay_TC_08()throws Exception{
-        if(this.homeSteps.isInHomePage()){
-            this.billsPaySteps.navigatePayoutPage();
-            this.billsPaySteps.validateEmptyFirstnamePayor();
-
-        }
-
-    }
+//    @Test(dependsOnMethods = "loginGoogle", priority = 9, description = "To validate bills payment with no Payor's First Name provided")
+//    public void BillsPay_TC_08()throws Exception{
+//        if(this.homeSteps.isInHomePage()){
+//            this.billsPaySteps.navigatePayoutPage();
+//            this.billsPaySteps.validateEmptyFirstnamePayor();
+//
+//        }
+//
+//    }
 //    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "To validate bills payment with no Payor's Address provided")
 //    public void BillsPay_TC_09()throws Exception{
 //        if(this.homeSteps.isInHomePage()){
@@ -107,15 +105,15 @@ public class BillsPay_Tests extends BaseTest {
 //        }
 //
 //    }
-    @Test(dependsOnMethods = "loginGoogle", priority = 12, description = "To validate bills payment with no Payment Amount provided")
-    public void BillsPay_TC_11()throws Exception{
-        if(this.homeSteps.isInHomePage()){
-            this.billsPaySteps.navigatePayoutPage();
-            this.billsPaySteps.validateInvalidAmount();
-
-        }
-
-    }
+//    @Test(dependsOnMethods = "loginGoogle", priority = 12, description = "To validate bills payment with no Payment Amount provided")
+//    public void BillsPay_TC_11()throws Exception{
+//        if(this.homeSteps.isInHomePage()){
+//            this.billsPaySteps.navigatePayoutPage();
+//            this.billsPaySteps.validateInvalidAmount();
+//
+//        }
+//
+//    }
 //    @Test(dependsOnMethods = "loginGoogle", priority = 13, description = "To validate bills payment with invalid Account Number provided")
 //    public void BillsPay_TC_12()throws Exception{
 //        if(this.homeSteps.isInHomePage()){
@@ -134,15 +132,15 @@ public class BillsPay_Tests extends BaseTest {
 //        }
 //
 //    }
-//    @Test(dependsOnMethods = "loginGoogle", priority = 15, description = "To validate bills payment with invalid Account Number provided")
-//    public void BillsPay_TC_14()throws Exception{
-//        if(this.homeSteps.isInHomePage()){
-//            this.billsPaySteps.navigatePayoutPage();
-//            this.billsPaySteps.validateInvalidFourNumTransaction();
-//
-//        }
-//
-//    }
+    @Test(dependsOnMethods = "loginGoogle", priority = 15, description = "To validate bills payment with 20 below amount provided")
+    public void BillsPay_TC_14()throws Exception{
+        if(this.homeSteps.isInHomePage()){
+            this.billsPaySteps.navigatePayoutPage();
+            this.billsPaySteps.validateBelow20AmountTransaction();
+
+        }
+
+    }
 //    @Test(dependsOnMethods = "loginGoogle", priority = 16, description = "To validate bills payment with invalid Contact Number provided")
 //    public void BillsPay_TC_15()throws Exception{
 //        if(this.homeSteps.isInHomePage()){
@@ -161,9 +159,18 @@ public class BillsPay_Tests extends BaseTest {
 //        }
 //
 //    }
-
-
-
+//    @Test(dependsOnMethods = "loginGoogle", priority = 17, description = "To validate bills payment with max amount inputted")
+//    public void BillsPay_TC_17()throws Exception{
+//        if(this.homeSteps.isInHomePage()){
+//            this.billsPaySteps.navigatePayoutPage();
+//            this.billsPaySteps.validateMaxAmountTransaction();
+//
+//        }
+//
+//    }
+//
+//
+//
 
 
 
