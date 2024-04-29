@@ -59,6 +59,8 @@ public class BaseTest {
         this.wsCashInToOwnAccountSteps = new WS_CashInToOwnAccount_Steps();
         this.wsCashOutSteps = new WS_CashOut_Steps();
         this.wsKwartaPadalaPayOutSteps = new WS_KwartaPadalaPayOut_Steps();
+        this.wsShopSafeSteps = new WS_ShopSafe_Steps();
+
 
     }
     private void initializeDriver(DriverType driverType) {

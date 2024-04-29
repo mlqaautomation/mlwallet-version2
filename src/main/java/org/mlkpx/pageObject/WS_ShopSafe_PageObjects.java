@@ -12,14 +12,9 @@ public class WS_ShopSafe_PageObjects {
     public WebElement shopsafeText(){return getDriver().findElement(By.xpath("(//*[text()=\"Shop Safe\"])[2]"));}
     public WebElement shopsafeTextheader(){return getDriver().findElement(By.xpath("(//*[text()=\"Shop Safe\"])[3]"));}
     public WebElement referenceNoText(){return getDriver().findElement(By.xpath("(//*[text()=\"Reference No.\"])"));}
-    public WebElement referenceNoTxtbox(){return getDriver().findElement(By.xpath("[name=\"referenceNumber\"]"));}
+    public WebElement referenceNoTxtbox(){return getDriver().findElement(By.cssSelector("[name=\"referenceNumber\"]"));}
     public WebElement searchBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Search\"])"));}
     public WebElement scanQRCodeBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Scan QR Code\"])[1]"));}
-    //Negative
-    public WebElement OkBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"OK\"])"));}
-    public WebElement warningText(){return getDriver().findElement(By.xpath("(//*[text()=\"Warning\"])"));}
-    public WebElement emptyErrorMessage(){return getDriver().findElement(By.xpath("(//*[text()=\"Reference Number is required.\"])"));}
-    public WebElement invaliderrorMessage(){return getDriver().findElement(By.xpath("(//*[text()=\"Transaction reference number not found. (version: 9098428)\"])"));}
 
 //----------------ShopSafe Next Page
     public WebElement shopsafeTextNextheader(){return getDriver().findElement(By.xpath("(//*[text()=\"Shop Safe\"])[3]"));}
@@ -27,32 +22,32 @@ public class WS_ShopSafe_PageObjects {
     public WebElement TransactInfoText(){return getDriver().findElement(By.xpath("(//*[text()=\"Transaction Information\"])"));}
     //----------------Origin Details
     public WebElement OriginText(){return getDriver().findElement(By.xpath("(//*[text()=\"Origin\"])"));}
-    public WebElement OriginBranchVal(){return getDriver().findElement(By.xpath("(//*[@class=\"sc-cVzyXs BZQgh\"])[2]"));}
-    public WebElement OperatorOriginVal(){return getDriver().findElement(By.xpath("(//*[@class=\"sc-cVzyXs BZQgh\"])[3]"));}
-    public WebElement DateTimeOriginVal(){return getDriver().findElement(By.xpath("(//*[@class=\"sc-cVzyXs BZQgh\"])[4]"));}
+    public WebElement OriginBranchVal(){return getDriver().findElement(By.xpath("(//*[contains(text(),'Origin Branch')])[1]/parent::div/following-sibling::div/child::p"));}
+    public WebElement OperatorOriginVal(){return getDriver().findElement(By.xpath("(//*[contains(text(),'Operator')])[1]/parent::div/following-sibling::div/child::p"));}
+    public WebElement DateTimeOriginVal(){return getDriver().findElement(By.xpath("(//*[contains(text(),'Date & Time')])[1]/parent::div/following-sibling::div/child::p"));}
 
     //----------------Destination Details
     public WebElement DestinationText(){return getDriver().findElement(By.xpath("(//*[text()=\"Destination\"])"));}
-    public WebElement DestinationBranchVal(){return getDriver().findElement(By.xpath("(//*[@class=\"sc-cVzyXs BZQgh\"])[5]"));}
-    public WebElement OperatorDestinationVal(){return getDriver().findElement(By.xpath("(//*[@class=\"sc-cVzyXs BZQgh\"])[6]"));}
-    public WebElement DateTimeDestinationVal(){return getDriver().findElement(By.xpath("(//*[@class=\"sc-cVzyXs BZQgh\"])[7]"));}
+    public WebElement DestinationBranchVal(){return getDriver().findElement(By.xpath("(//*[contains(text(),'Destination Branch')])[1]/parent::div/following-sibling::div/child::p"));}
+    public WebElement OperatorDestinationVal(){return getDriver().findElement(By.xpath("(//*[contains(text(),'Operator')])[2]/parent::div/following-sibling::div/child::p"));}
+    public WebElement DateTimeDestinationVal(){return getDriver().findElement(By.xpath("(//*[contains(text(),'Date & Time')])[2]/parent::div/following-sibling::div/child::p"));}
     //----------------Seller Details
     public WebElement SellerText(){return getDriver().findElement(By.xpath("(//*[text()=\"Seller\"])"));}
-    public WebElement SellerNameVal(){return getDriver().findElement(By.xpath("(//*[@class=\"sc-cVzyXs BZQgh\"])[8]"));}
-    public WebElement SellerContactNoVal(){return getDriver().findElement(By.xpath("(//*[@class=\"sc-cVzyXs BZQgh\"])[9]"));}
+    public WebElement SellerNameVal(){return getDriver().findElement(By.xpath("(//*[contains(text(),'Name')])[1]/parent::div/following-sibling::div/child::p"));}
+    public WebElement SellerContactNoVal(){return getDriver().findElement(By.xpath("(//*[contains(text(),'Contact No.')])[1]/parent::div/following-sibling::div/child::p"));}
     //----------------Buyer Details
     public WebElement BuyerText(){return getDriver().findElement(By.xpath("(//*[text()=\"Buyer\"])"));}
-    public WebElement BuyerNameVal(){return getDriver().findElement(By.xpath("(//*[@class=\"sc-cVzyXs BZQgh\"])[10]"));}
-    public WebElement BuyerContactNoVal(){return getDriver().findElement(By.xpath("(//*[@class=\"sc-cVzyXs BZQgh\"])[11]"));}
+    public WebElement BuyerNameVal(){return getDriver().findElement(By.xpath("(//*[contains(text(),'Name')])[2]/parent::div/following-sibling::div/child::p"));}
+    public WebElement BuyerContactNoVal(){return getDriver().findElement(By.xpath("(//*[contains(text(),'Contact No.')])[2]/parent::div/following-sibling::div/child::p"));}
     //---------------- Items Details
     public WebElement ItemDetailsText(){return getDriver().findElement(By.xpath("(//*[text()=\"Item Details\"])"));}
-    public WebElement ItemNameVal(){return getDriver().findElement(By.xpath("(//*[@class=\"sc-cVzyXs BZQgh\"])[12]"));}
-    public WebElement ItemDescriptionVal(){return getDriver().findElement(By.xpath("(//*[@class=\"sc-cVzyXs BZQgh\"])[13]"));}
-    public WebElement BrandVal(){return getDriver().findElement(By.xpath("(//*[@class=\"sc-cVzyXs BZQgh\"])[14]"));}
-    public WebElement ModelNoVal(){return getDriver().findElement(By.xpath("(//*[@class=\"sc-cVzyXs BZQgh\"])[15]"));}
-    public WebElement CategoryVal(){return getDriver().findElement(By.xpath("(//*[@class=\"sc-cVzyXs BZQgh\"])[16]"));}
-    public WebElement WeightVal(){return getDriver().findElement(By.xpath("(//*[@class=\"sc-cVzyXs BZQgh\"])[17]"));}
-    public WebElement NoItemsVal(){return getDriver().findElement(By.xpath("(//*[@class=\"sc-cVzyXs BZQgh\"])[18]"));}
+    public WebElement ItemNameVal(){return getDriver().findElement(By.xpath("(//*[contains(text(),'Item Name')])[1]/parent::div/following-sibling::div/child::p"));}
+    public WebElement ItemDescriptionVal(){return getDriver().findElement(By.xpath("(//*[contains(text(),'Item Description')])[1]/parent::div/following-sibling::div/child::p"));}
+    public WebElement BrandVal(){return getDriver().findElement(By.xpath("(//*[contains(text(),'Brand')])[1]/parent::div/following-sibling::div/child::p"));}
+    public WebElement ModelNoVal(){return getDriver().findElement(By.xpath("(//*[contains(text(),'Model No.')])[1]/parent::div/following-sibling::div/child::p"));}
+    public WebElement CategoryVal(){return getDriver().findElement(By.xpath("(//*[contains(text(),'Category')])[1]/parent::div/following-sibling::div/child::p"));}
+    public WebElement WeightVal(){return getDriver().findElement(By.xpath("(//*[contains(text(),'Weight')])[1]/parent::div/following-sibling::div/child::p"));}
+    public WebElement NoItemsVal(){return getDriver().findElement(By.xpath("(//*[contains(text(),'No. of Items')])[1]/parent::div/following-sibling::div/child::p"));}
     //----------------Item Photos
     public WebElement PhotosText(){return getDriver().findElement(By.xpath("(//*[text()=\"Photos\"])"));}
     public WebElement ItemPhotosVal(){return getDriver().findElement(By.xpath("(//*[@class=\"mt-4 col-md-6\"]/child::*)[2]"));}
@@ -98,14 +93,25 @@ public class WS_ShopSafe_PageObjects {
     public WebElement BackBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Back\"])"));}
     public WebElement UpdateStatusBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Update Status\"])"));}
     public WebElement PrintReceiptTxtBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Please click here to print a receipt.\"])"));}
+    //-------------Complete Transaction
+    public WebElement CompleteBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Complete\"])"));}
+    public WebElement ReturnParcelBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Return Parcel\"])"));}
+    //-----------Update Status
+    public WebElement UpdateStatus(){return getDriver().findElement(By.xpath("(//*[text()=\"Update Status\"])"));}
+    public WebElement UpdateInfoText(){return getDriver().findElement(By.xpath("(//*[text()=\"Are you sure you want to update the transaction?\"])"));}
+    public WebElement YesBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Yes\"])"));}
+    public WebElement NoBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"No\"])"));}
+
+
     //-------------Negative Test
     public WebElement CancelShopSafeUpdateText(){return getDriver().findElement(By.xpath("(//*[text()=\"Cancel Shop Safe Update\"])"));}
     public WebElement CancelShopSafeUpdateNoteText(){return getDriver().findElement(By.xpath("(//*[text()=\"Any changes made to this transaction will not be saved.\"])"));}
     public WebElement YesDoNotUpdateBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Yes, do not update\"])"));}
     public WebElement NoStayOnThisPageBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"No, stay on this page\"])"));}
-
-    //-------------Complete Transaction
-    public WebElement CompleteBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Complete\"])"));}
-    public WebElement ReturnParcelBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Return Parcel\"])"));}
-
+    public WebElement NotFoundText(){return getDriver().findElement(By.xpath("(//*[text()=\"Not Found\"])"));}
+    public WebElement ReferenceNoNotFound(){return getDriver().findElement(By.xpath("(//*[text()=\"Reference Number not found. \"])"));}
+    public WebElement OkBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"OK\"])"));}
+    public WebElement warningText(){return getDriver().findElement(By.xpath("(//*[text()=\"Warning\"])"));}
+    public WebElement emptyErrorMessage(){return getDriver().findElement(By.xpath("(//*[text()=\"Reference Number is required.\"])"));}
+    public WebElement invaliderrorMessage(){return getDriver().findElement(By.xpath("(//*[text()=\"Transaction reference number not found. (version: 9098428)\"])"));}
 }
