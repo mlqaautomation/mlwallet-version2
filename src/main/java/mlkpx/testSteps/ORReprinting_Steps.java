@@ -22,6 +22,7 @@ public class ORReprinting_Steps extends Base_Steps{
             ExtentReporter.logFail("OR_TC_01", "Fail to Validate OR Reprinting");
             Assert.fail("Fail to Validate OR Reprinting");
         }
+
     }
 
     public void OR_TC_02()throws Exception{

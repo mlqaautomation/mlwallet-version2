@@ -52,7 +52,7 @@ public class SendOut_PageObjects {
     }
 
     public WebElement selectKYC() {
-        return getDriver().findElement(By.xpath("//*[text()='Select KYC']"));
+        return getDriver().findElement(By.xpath("(//button[normalize-space()='Select KYC'][1])"));
     }
     public WebElement contactNumber() {
         return getDriver().findElement(By.cssSelector("[name=\"senderOtherInformation.contactNumber\"]"));
@@ -66,11 +66,14 @@ public class SendOut_PageObjects {
     }
 
     public WebElement selectButton(){
-        return getDriver().findElement(By.cssSelector("[class=\"sc-kqGoIF edbuQi btn-sm btn btn-primary\"]"));
+        return getDriver().findElement(By.xpath("(//button[contains(text(), 'Select')])[1]"));
     }
-    public WebElement selectButton2Attempt(){
-        return getDriver().findElement(By.cssSelector("[class=\"sc-iapWAC gRiCAy btn-sm btn btn-primary\"]"));
+    public WebElement mainOperator(){
+        return getDriver().findElement(By.xpath("//p/span[contains(text(), 'AMOC, ROSELYN SWRM TEST')]"));
     }
+//    public WebElement selectButton2Attempt(){
+//        return getDriver().findElement(By.cssSelector("[class=\"sc-iapWAC gRiCAy btn-sm btn btn-primary\"]"));
+//    }
 
     public WebElement addNewReceivers() {
         return getDriver().findElement(By.xpath("//*[text()='Add New Receiver']"));
@@ -183,7 +186,7 @@ public class SendOut_PageObjects {
 
     public WebElement cancelButton() { return getDriver().findElement(By.xpath("//*[text()='Cancel']"));}
     public WebElement cancelButtoninReceipt() {
-        return getDriver().findElement(By.cssSelector("[class=\"sc-hIUJlX exqbQW btn btn-secondary\"]"));}
+        return getDriver().findElement(By.cssSelector("[class=\"sc-jnOGJG blZoWd btn btn-secondary\"]"));}
     public WebElement cancelButtoninConfirmation() { return getDriver().findElement(By.xpath("//button[@class='swal2-cancel swal2-styled' and @style='display: inline-block; background-color: rgb(170, 170, 170);' and text()='Cancel']"));}
     public WebElement provinceDanger() {
         return getDriver().findElement(By.xpath("//*[text()='Cancel']"));
@@ -195,6 +198,7 @@ public class SendOut_PageObjects {
     }
     public WebElement chargeAmount(){ return getDriver().findElement(By.xpath("(//p[@class=\"text-monospace text-right\"])[1]")); }
     public WebElement otherChargeAmount(){ return getDriver().findElement(By.xpath("(//p[@class='text-monospace text-right'])[2]")); }
+    public WebElement receiversMaximumLettersDangerText(){ return getDriver().findElement(By.xpath("//*[text()=\"Maximum of 60 characters.\"]")); }
     public WebElement totalAmount(){
 
         return getDriver().findElement(By.cssSelector("[class='pr-1']"));
@@ -203,9 +207,11 @@ public class SendOut_PageObjects {
 
         return getDriver().findElement(By.cssSelector("[data-testid='sendoutKPTN']"));
     }
+
     public WebElement sendOutSuccessMsg(){
         return getDriver().findElement(By.cssSelector("[class='sc-epALIP bYifLU']"));
     }
+
     public WebElement theSameTransactionText(){
         return getDriver().findElement(By.cssSelector("[class=\"sc-gEvEer lkAUft\"]"));
     }
@@ -215,7 +221,18 @@ public class SendOut_PageObjects {
     public WebElement complianceText(){
         return getDriver().findElement(By.cssSelector("[class=\"sc-aXZVg FiXoI\"]"));
     }
-    public WebElement complianceOKButton(){
+    public WebElement complianceOKButton() {
         return getDriver().findElement(By.cssSelector("[class=\"swal2-confirm swal2-styled\"]"));
+    }
+
+    public WebElement RemoteTransaction(){
+        return getDriver().findElement(By.xpath("//input[@value='1']"));
+    }
+    public WebElement BranchCode(){return getDriver().findElement(By.xpath("//input[@name='branchCode']"));
+    }
+    public WebElement OperatorID(){return getDriver().findElement(By.xpath("//input[@placeholder='Operator ID']"));
+    }
+    public WebElement ReasonRemote(){return getDriver().findElement(By.xpath("//input[@name='remoteBranch.remoteReason']"));
+
     }
 }
