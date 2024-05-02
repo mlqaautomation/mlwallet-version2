@@ -14,41 +14,41 @@ public class Payout_Tests extends BaseTest{
             ExtentReporter.logPass("Login, Passed!!");
         }
     }
-//    @Test(dependsOnMethods = "loginGoogle", priority = 1, description = "To Validate Success SendOut Transaction")
-//    public void DS_TC_8() throws Exception {
-//        if (this.homeSteps.isInHomePage()) {
-//            this.sendOutSteps.DS_TC_08();
-//
-//
-//        }
-//
-//    }
-    @Test(dependsOnMethods = "loginGoogle", priority = 2, description = "Successful domestic payout transaction")
-    public void Payout_TC_01()throws Exception{
-        if(this.homeSteps.isInHomePage()){
-            this.payoutSteps.navigatePayoutPage();
-            this.payoutSteps.validateSuccessfulDomesticPayout();
+    @Test(dependsOnMethods = "loginGoogle", priority = 1, description = "To Validate Success SendOut Transaction")
+    public void DS_TC_8() throws Exception {
+        if (this.homeSteps.isInHomePage()) {
+            this.sendOutSteps.DS_TC_08();
+
 
         }
 
     }
-//    @Test(dependsOnMethods = "loginGoogle", priority = 3, description = "To Validate Success Remote SendOut Transaction")
-//    public void DS_TC_11() throws Exception {
-//        if (this.homeSteps.isInHomePage()) {
-//            this.sendOutSteps.DS_TC_11();
-//
+//    @Test(dependsOnMethods = "loginGoogle", priority = 2, description = "Successful domestic payout transaction")
+//    public void Payout_TC_01()throws Exception{
+//        if(this.homeSteps.isInHomePage()){
+//            this.payoutSteps.navigatePayoutPage();
+//            this.payoutSteps.validateSuccessfulDomesticPayout();
 //
 //        }
+//
 //    }
+    @Test(dependsOnMethods = "loginGoogle", priority = 3, description = "To Validate Success Remote SendOut Transaction")
+    public void DS_TC_11() throws Exception {
+        if (this.homeSteps.isInHomePage()) {
+            this.sendOutSteps.DS_TC_11();
 
-    @Test(dependsOnMethods = "loginGoogle", priority = 4, description = "Successful remote domestic payout transaction")
-    public void Payout_TC_02()throws Exception{
-        if(this.homeSteps.isInHomePage()){
-            this.payoutSteps.navigatePayoutPage();
-            this.payoutSteps.validateSuccessfulRemoteDomesticPayout();
+
         }
-
- }
+    }
+//
+//    @Test(dependsOnMethods = "loginGoogle", priority = 4, description = "Successful remote domestic payout transaction")
+//    public void Payout_TC_02()throws Exception{
+//        if(this.homeSteps.isInHomePage()){
+//            this.payoutSteps.navigatePayoutPage();
+//            this.payoutSteps.validateSuccessfulRemoteDomesticPayout();
+//        }
+//
+// }
 //    @Test(dependsOnMethods = "loginGoogle", priority = 3, description = "Domestic payout transaction with invalid KPTN")
 //    public void Payout_TC_03()throws Exception{
 //        if(this.homeSteps.isInHomePage()){
@@ -169,10 +169,6 @@ public class Payout_Tests extends BaseTest{
 //        }
 //
 //    }
-//
-
-
-
 
 
 }

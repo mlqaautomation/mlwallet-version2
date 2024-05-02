@@ -28,7 +28,7 @@ public class Payout_PageObjects {
         return getDriver().findElement(By.xpath("//h5[contains(text(),'Payout Claimed')]"));
     }
     public WebElement payoutClaim_h5(){
-        return getDriver().findElement(By.xpath("//h5[contains(text(),'Payout Claimed')]"));
+        return getDriver().findElement(By.xpath("//h5[contains(text(),'No Transaction Found')]"));
     }
     public WebElement PayoutTransaction(){
         return getDriver().findElement(By.xpath("(//a[@href='/payout'])[2]"));

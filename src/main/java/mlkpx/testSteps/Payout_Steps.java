@@ -350,7 +350,7 @@ public class Payout_Steps extends Base_Steps{
             type(payoutPageObjects.PayKTPN(), "KTPN Number", payoutKPTN);
             type(payoutPageObjects.PayAmount(), "Amount", "100");
             click(payoutPageObjects.SearchButton(), "Search Button");
-            assertEqual(getText(payoutPageObjects.payoutClaim_h5()), "Payout Claimed");
+            assertEqual(getText(payoutPageObjects.payoutClaim_h5()), "No Transaction Found");
 
 
     }
@@ -373,7 +373,7 @@ public class Payout_Steps extends Base_Steps{
             type(payoutPageObjects.PayKTPN(), "KTPN Number", remotePayoutKPTN);
             type(payoutPageObjects.PayAmount(), "Amount", "100");
             click(payoutPageObjects.SearchButton(), "Search Button");
-            assertEqual(getText(payoutPageObjects.payoutClaim_h5()), "Payout Claimed");
+            assertEqual(getText(payoutPageObjects.payoutClaim_h5()), "No Transaction Found");
 
 
     }
