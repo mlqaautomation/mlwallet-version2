@@ -69,16 +69,16 @@ public class BillsPayChangeD_Steps extends Base_Steps{
             type(billsPayPageObjects.OperatorID(), "Search Operator ID", "2023639709");
             type(billsPayPageObjects.ReasonRemote(), "Reason", "Testing");
             //Payor Information
-            billsPayPageObjects.PayorLastName().clear();
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "TEST TEST");
-            billsPayPageObjects.PayorFirstName().clear();
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "TEST TEST");
-            billsPayPageObjects.PayorMiddleName().clear();
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING TEST");
-            billsPayPageObjects.PayorAddress().clear();
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "BOHOL TEST");
-            billsPayPageObjects.PayorContact().clear();
-            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09077629345");
+            billsPayPageObjects.ChangePayorLastName().clear();
+            type(billsPayPageObjects.ChangePayorLastName(), "Payor Last Name", "TEST TEST");
+            billsPayPageObjects.ChangePayorFirstName().clear();
+            type(billsPayPageObjects.ChangePayorFirstName(), "Payor First Name", "TEST TEST");
+            billsPayPageObjects.ChangePayorMiddleName().clear();
+            type(billsPayPageObjects.ChangePayorMiddleName(), "Payor Middle Name", "TESTING TEST");
+            billsPayPageObjects.ChangePayorAddress().clear();
+            type(billsPayPageObjects.ChangePayorAddress(), "Payor Address", "BOHOL TEST");
+            billsPayPageObjects.ChangePayorContact().clear();
+            type(billsPayPageObjects.ChangePayorContact(), "Payor Contact", "09077629345");
             type(billsPayPageObjects.IRNum(), "IR Number", "2122214441262");
             type(billsPayPageObjects.ReasonChange(), "Reason for Change ", "TestingTest");
             click(billsPayPageObjects.InitiatedBy(), "Initiated By");
@@ -100,6 +100,7 @@ public class BillsPayChangeD_Steps extends Base_Steps{
         }
     }
     public void validateBillsPayChangeDetailsInvalidRef()throws Exception{
+        waitSleep(2000);
         click(billsPayPageObjects.BPChangeDetails(), "Bills Pay Change Details");
         if(isVisible(billsPayPageObjects.BillsPayChange(), getText(billsPayPageObjects.BillsPayChange()))) {
             LoggingUtils.info("Navigated the BillsPay Change Details page");
@@ -120,16 +121,16 @@ public class BillsPayChangeD_Steps extends Base_Steps{
         }
         if(isVisible(billsPayPageObjects.PayInformation(), getText(billsPayPageObjects.PayInformation()))){
             //Payor Information
-            billsPayPageObjects.PayorLastName().clear();
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "TEST");
-            billsPayPageObjects.PayorFirstName().clear();
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "TEST");
-            billsPayPageObjects.PayorMiddleName().clear();
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
-            billsPayPageObjects.PayorAddress().clear();
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "BOHOL Clarin");
-            billsPayPageObjects.PayorContact().clear();
-            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09077629355");
+            billsPayPageObjects.ChangePayorLastName().clear();
+            type(billsPayPageObjects.ChangePayorLastName(), "Payor Last Name", "TEST");
+            billsPayPageObjects.ChangePayorFirstName().clear();
+            type(billsPayPageObjects.ChangePayorFirstName(), "Payor First Name", "TEST");
+            billsPayPageObjects.ChangePayorMiddleName().clear();
+            type(billsPayPageObjects.ChangePayorMiddleName(), "Payor Middle Name", "TESTING");
+            billsPayPageObjects.ChangePayorAddress().clear();
+            type(billsPayPageObjects.ChangePayorAddress(), "Payor Address", "BOHOL Clarin");
+            billsPayPageObjects.ChangePayorContact().clear();
+            type(billsPayPageObjects.ChangePayorContact(), "Payor Contact", "09077629355");
             type(billsPayPageObjects.IRNum(), "IR Number", "");
             click(billsPayPageObjects.SaveChanges(), "Save Changes");
             click(billsPayPageObjects.SaveChanges(), "Save Changes");
@@ -146,16 +147,16 @@ public class BillsPayChangeD_Steps extends Base_Steps{
         }
         if(isVisible(billsPayPageObjects.PayInformation(), getText(billsPayPageObjects.PayInformation()))){
             //Payor Information
-            billsPayPageObjects.PayorLastName().clear();
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "TEST");
-            billsPayPageObjects.PayorFirstName().clear();
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "TEST");
-            billsPayPageObjects.PayorMiddleName().clear();
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
-            billsPayPageObjects.PayorAddress().clear();
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "BOHOL Clarin");
-            billsPayPageObjects.PayorContact().clear();
-            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09077629355");
+            billsPayPageObjects.ChangePayorLastName().clear();
+            type(billsPayPageObjects.ChangePayorLastName(), "Payor Last Name", "TEST");
+            billsPayPageObjects.ChangePayorFirstName().clear();
+            type(billsPayPageObjects.ChangePayorFirstName(), "Payor First Name", "TEST");
+            billsPayPageObjects.ChangePayorMiddleName().clear();
+            type(billsPayPageObjects.ChangePayorMiddleName(), "Payor Middle Name", "TESTING");
+            billsPayPageObjects.ChangePayorAddress().clear();
+            type(billsPayPageObjects.ChangePayorAddress(), "Payor Address", "BOHOL Clarin");
+            billsPayPageObjects.ChangePayorContact().clear();
+            type(billsPayPageObjects.ChangePayorContact(), "Payor Contact", "09077629355");
             type(billsPayPageObjects.IRNum(), "IR Number", "4464664");
             click(billsPayPageObjects.SaveChanges(), "Save Changes");
             assertEqual(getText(billsPayPageObjects.InvalidIRNum()), "Please enter a valid IR No.");
@@ -171,16 +172,16 @@ public class BillsPayChangeD_Steps extends Base_Steps{
         }
         if(isVisible(billsPayPageObjects.PayInformation(), getText(billsPayPageObjects.PayInformation()))){
             //Payor Information
-            billsPayPageObjects.PayorLastName().clear();
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "TEST");
-            billsPayPageObjects.PayorFirstName().clear();
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "TEST");
-            billsPayPageObjects.PayorMiddleName().clear();
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
-            billsPayPageObjects.PayorAddress().clear();
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "BOHOL Clarin");
-            billsPayPageObjects.PayorContact().clear();
-            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09077629355");
+            billsPayPageObjects.ChangePayorLastName().clear();
+            type(billsPayPageObjects.ChangePayorLastName(), "Payor Last Name", "TEST");
+            billsPayPageObjects.ChangePayorFirstName().clear();
+            type(billsPayPageObjects.ChangePayorFirstName(), "Payor First Name", "TEST");
+            billsPayPageObjects.ChangePayorMiddleName().clear();
+            type(billsPayPageObjects.ChangePayorMiddleName(), "Payor Middle Name", "TESTING");
+            billsPayPageObjects.ChangePayorAddress().clear();
+            type(billsPayPageObjects.ChangePayorAddress(), "Payor Address", "BOHOL Clarin");
+            billsPayPageObjects.ChangePayorContact().clear();
+            type(billsPayPageObjects.ChangePayorContact(), "Payor Contact", "09077629355");
             type(billsPayPageObjects.IRNum(), "IR Number", "5345555555555");
             type(billsPayPageObjects.ReasonChange(), "Reason for Change ", "");
             click(billsPayPageObjects.SaveChanges(), "Save Changes");
@@ -208,16 +209,16 @@ public class BillsPayChangeD_Steps extends Base_Steps{
             type(billsPayPageObjects.OperatorID(), "Search Operator ID", "2023639709");
             type(billsPayPageObjects.ReasonRemote(), "Reason", "Testing");
             //Payor Information
-            billsPayPageObjects.PayorLastName().clear();
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "TEST");
-            billsPayPageObjects.PayorFirstName().clear();
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "TEST");
-            billsPayPageObjects.PayorMiddleName().clear();
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
-            billsPayPageObjects.PayorAddress().clear();
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "BOHOL Clarin");
-            billsPayPageObjects.PayorContact().clear();
-            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09077629355");
+            billsPayPageObjects.ChangePayorLastName().clear();
+            type(billsPayPageObjects.ChangePayorLastName(), "Payor Last Name", "TEST");
+            billsPayPageObjects.ChangePayorFirstName().clear();
+            type(billsPayPageObjects.ChangePayorFirstName(), "Payor First Name", "TEST");
+            billsPayPageObjects.ChangePayorMiddleName().clear();
+            type(billsPayPageObjects.ChangePayorMiddleName(), "Payor Middle Name", "TESTING");
+            billsPayPageObjects.ChangePayorAddress().clear();
+            type(billsPayPageObjects.ChangePayorAddress(), "Payor Address", "BOHOL Clarin");
+            billsPayPageObjects.ChangePayorContact().clear();
+            type(billsPayPageObjects.ChangePayorContact(), "Payor Contact", "09077629355");
             type(billsPayPageObjects.IRNum(), "IR Number", "5345555555555");
             type(billsPayPageObjects.ReasonChange(), "Reason for Change ", "");
             click(billsPayPageObjects.SaveChanges(), "Save Changes");
@@ -235,16 +236,16 @@ public class BillsPayChangeD_Steps extends Base_Steps{
         }
         if(isVisible(billsPayPageObjects.PayInformation(), getText(billsPayPageObjects.PayInformation()))){
             //Payor Information
-            billsPayPageObjects.PayorLastName().clear();
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "TEST");
-            billsPayPageObjects.PayorFirstName().clear();
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "TEST");
-            billsPayPageObjects.PayorMiddleName().clear();
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
-            billsPayPageObjects.PayorAddress().clear();
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "BOHOL Clarin");
-            billsPayPageObjects.PayorContact().clear();
-            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09077629355");
+            billsPayPageObjects.ChangePayorLastName().clear();
+            type(billsPayPageObjects.ChangePayorLastName(), "Payor Last Name", "TEST");
+            billsPayPageObjects.ChangePayorFirstName().clear();
+            type(billsPayPageObjects.ChangePayorFirstName(), "Payor First Name", "TEST");
+            billsPayPageObjects.ChangePayorMiddleName().clear();
+            type(billsPayPageObjects.ChangePayorMiddleName(), "Payor Middle Name", "TESTING");
+            billsPayPageObjects.ChangePayorAddress().clear();
+            type(billsPayPageObjects.ChangePayorAddress(), "Payor Address", "BOHOL Clarin");
+            billsPayPageObjects.ChangePayorContact().clear();
+            type(billsPayPageObjects.ChangePayorContact(), "Payor Contact", "09077629355");
             type(billsPayPageObjects.IRNum(), "IR Number", "5345555555555");
             type(billsPayPageObjects.ReasonChange(), "Reason for Change ", "TestingTest");
             click(billsPayPageObjects.NoInitiatedBy(), "Initiated By");
@@ -262,16 +263,16 @@ public class BillsPayChangeD_Steps extends Base_Steps{
         }
         if(isVisible(billsPayPageObjects.PayInformation(), getText(billsPayPageObjects.PayInformation()))){
             //Payor Information
-            billsPayPageObjects.PayorLastName().clear();
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "TEST");
-            billsPayPageObjects.PayorFirstName().clear();
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "TEST");
-            billsPayPageObjects.PayorMiddleName().clear();
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
-            billsPayPageObjects.PayorAddress().clear();
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "BOHOL");
-            billsPayPageObjects.PayorContact().clear();
-            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09077629355");
+            billsPayPageObjects.ChangePayorLastName().clear();
+            type(billsPayPageObjects.ChangePayorLastName(), "Payor Last Name", "TEST");
+            billsPayPageObjects.ChangePayorFirstName().clear();
+            type(billsPayPageObjects.ChangePayorFirstName(), "Payor First Name", "TEST");
+            billsPayPageObjects.ChangePayorMiddleName().clear();
+            type(billsPayPageObjects.ChangePayorMiddleName(), "Payor Middle Name", "TESTING");
+            billsPayPageObjects.ChangePayorAddress().clear();
+            type(billsPayPageObjects.ChangePayorAddress(), "Payor Address", "BOHOL");
+            billsPayPageObjects.ChangePayorContact().clear();
+            type(billsPayPageObjects.ChangePayorContact(), "Payor Contact", "09077629355");
             type(billsPayPageObjects.IRNum(), "IR Number", "2111114441262");
             type(billsPayPageObjects.ReasonChange(), "Reason for Change ", "TestingTest");
             click(billsPayPageObjects.InitiatedBy(), "Initiated By");
@@ -291,16 +292,16 @@ public class BillsPayChangeD_Steps extends Base_Steps{
         }
         if(isVisible(billsPayPageObjects.PayInformation(), getText(billsPayPageObjects.PayInformation()))){
             //Payor Information
-            billsPayPageObjects.PayorLastName().clear();
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "TEST");
-            billsPayPageObjects.PayorFirstName().clear();
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "TEST");
-            billsPayPageObjects.PayorMiddleName().clear();
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
-            billsPayPageObjects.PayorAddress().clear();
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "BOHOL");
-            billsPayPageObjects.PayorContact().clear();
-            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09077629355");
+            billsPayPageObjects.ChangePayorLastName().clear();
+            type(billsPayPageObjects.ChangePayorLastName(), "Payor Last Name", "TEST");
+            billsPayPageObjects.ChangePayorFirstName().clear();
+            type(billsPayPageObjects.ChangePayorFirstName(), "Payor First Name", "TEST");
+            billsPayPageObjects.ChangePayorMiddleName().clear();
+            type(billsPayPageObjects.ChangePayorMiddleName(), "Payor Middle Name", "TESTING");
+            billsPayPageObjects.ChangePayorAddress().clear();
+            type(billsPayPageObjects.ChangePayorAddress(), "Payor Address", "BOHOL");
+            billsPayPageObjects.ChangePayorContact().clear();
+            type(billsPayPageObjects.ChangePayorContact(), "Payor Contact", "09077629355");
             type(billsPayPageObjects.IRNum(), "IR Number", "2111114441262");
             type(billsPayPageObjects.ReasonChange(), "Reason for Change ", "TestingTest");
             click(billsPayPageObjects.InitiatedBy(), "Initiated By");
@@ -321,16 +322,16 @@ public class BillsPayChangeD_Steps extends Base_Steps{
         if(isVisible(billsPayPageObjects.PayInformation(), getText(billsPayPageObjects.PayInformation
                 ()))){
             //Payor Information
-            billsPayPageObjects.PayorLastName().clear();
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "TEST TEST");
-            billsPayPageObjects.PayorFirstName().clear();
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "TEST TEST");
-            billsPayPageObjects.PayorMiddleName().clear();
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING TEST");
-            billsPayPageObjects.PayorAddress().clear();
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "BOHOL TEST");
-            billsPayPageObjects.PayorContact().clear();
-            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09077629345");
+            billsPayPageObjects.ChangePayorLastName().clear();
+            type(billsPayPageObjects.ChangePayorLastName(), "Payor Last Name", "TEST TEST");
+            billsPayPageObjects.ChangePayorFirstName().clear();
+            type(billsPayPageObjects.ChangePayorFirstName(), "Payor First Name", "TEST TEST");
+            billsPayPageObjects.ChangePayorMiddleName().clear();
+            type(billsPayPageObjects.ChangePayorMiddleName(), "Payor Middle Name", "TESTING TEST");
+            billsPayPageObjects.ChangePayorAddress().clear();
+            type(billsPayPageObjects.ChangePayorAddress(), "Payor Address", "BOHOL TEST");
+            billsPayPageObjects.ChangePayorContact().clear();
+            type(billsPayPageObjects.ChangePayorContact(), "Payor Contact", "09077629345");
             type(billsPayPageObjects.IRNum(), "IR Number", "2122214441262");
             type(billsPayPageObjects.ReasonChange(), "Reason for Change ", "TestingTest");
             click(billsPayPageObjects.InitiatedBy(), "Initiated By");
@@ -342,6 +343,7 @@ public class BillsPayChangeD_Steps extends Base_Steps{
         }
     }
     public void validateStayPageBillsPayOnlyLetters()throws Exception{
+        waitSleep(2000);
         click(billsPayPageObjects.BPChangeDetails(), "Bills Pay Change Details");
         if(isVisible(billsPayPageObjects.BillsPayChange(), getText(billsPayPageObjects.BillsPayChange()))) {
             LoggingUtils.info("Navigated the BillsPay Change Details page");
@@ -351,16 +353,16 @@ public class BillsPayChangeD_Steps extends Base_Steps{
         if(isVisible(billsPayPageObjects.PayInformation(), getText(billsPayPageObjects.PayInformation
                 ()))){
             //Payor Information
-            billsPayPageObjects.PayorLastName().clear();
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "TEST");
-            billsPayPageObjects.PayorFirstName().clear();
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "TEST");
-            billsPayPageObjects.PayorMiddleName().clear();
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
-            billsPayPageObjects.PayorAddress().clear();
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "BOHOL");
-            billsPayPageObjects.PayorContact().clear();
-            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09077629355");
+            billsPayPageObjects.ChangePayorLastName().clear();
+            type(billsPayPageObjects.ChangePayorLastName(), "Payor Last Name", "TEST");
+            billsPayPageObjects.ChangePayorFirstName().clear();
+            type(billsPayPageObjects.ChangePayorFirstName(), "Payor First Name", "TEST");
+            billsPayPageObjects.ChangePayorMiddleName().clear();
+            type(billsPayPageObjects.ChangePayorMiddleName(), "Payor Middle Name", "TESTING");
+            billsPayPageObjects.ChangePayorAddress().clear();
+            type(billsPayPageObjects.ChangePayorAddress(), "Payor Address", "BOHOL");
+            billsPayPageObjects.ChangePayorContact().clear();
+            type(billsPayPageObjects.ChangePayorContact(), "Payor Contact", "09077629355");
             type(billsPayPageObjects.IRNum(), "IR Number", "2111114441262");
             type(billsPayPageObjects.ReasonChange(), "Reason for Change ", "15345TestingTest");
             click(billsPayPageObjects.SaveChanges(), "Save Changes");

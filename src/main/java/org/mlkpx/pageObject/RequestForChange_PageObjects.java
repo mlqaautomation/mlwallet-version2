@@ -71,8 +71,9 @@ public class RequestForChange_PageObjects {
         return getDriver().findElement(By.cssSelector("[class=\"swal2-confirm swal2-styled\"]"));
     }
     public WebElement rfcCancelButton(){
-        return getDriver().findElement(By.cssSelector("[class=\"sc-hIUJlX exqbQW btn btn-secondary\"]"));
+        return getDriver().findElement(By.cssSelector("[class=\"sc-jnOGJG blZoWd btn btn-secondary\"]"));
     }
+
     public WebElement sendoutCancelledText(){ return getDriver().findElement(By.xpath("//*[text()=\"Sendout Cancelled\"]")); }
     public WebElement noTransactionFoundText(){ return getDriver().findElement(By.xpath("//*[text()=\"No Transaction Found\"]")); }
     public WebElement detailsChange(){ return getDriver().findElement(By.xpath("//*[text()=\"Details Changed\"]")); }

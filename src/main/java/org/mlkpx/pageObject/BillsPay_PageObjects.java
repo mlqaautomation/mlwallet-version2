@@ -272,8 +272,12 @@ public class BillsPay_PageObjects {
     }
     public WebElement CancelledRefNum(){return getDriver().findElement(By.xpath("//h5[contains(text(),'Bills Payment Cancelled')]"));
     }
-    public WebElement InvalidIRNum(){return getDriver().findElement(By.xpath("//small[contains(text(),'Please enter valid IR No.')]"));
+    public WebElement InvalidIRNum(){return getDriver().findElement(By.xpath("//small[contains(text(),'Please enter a valid IR No.')]"));
     }
+    public WebElement InvalidIR(){return getDriver().findElement(By.xpath("//small[contains(text(),'Please enter valid IR No.')]"));
+    }
+
+
     public WebElement SuccessChanges(){return getDriver().findElement(By.xpath("//p[contains(text(),'Details have been successfully updated.')]"));
     }
     public WebElement NoEditChanges(){return getDriver().findElement(By.xpath("//h5[text()='No Changes Have Been Made']"));

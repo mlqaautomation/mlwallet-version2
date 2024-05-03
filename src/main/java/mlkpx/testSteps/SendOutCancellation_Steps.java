@@ -13,7 +13,7 @@ public class SendOutCancellation_Steps extends Base_Steps{
         if(isVisible(sendOutCancellationPageObjects.cancelSendOutText(), getText(sendOutCancellationPageObjects.cancelSendOutText()))){
             LoggingUtils.info("Successfully Navigate for SendOut Cancellation Page ");
         }
-        String randomKPTN = reader.getRandomKPTN(); // Call the getRandomKPTN function
+        String randomKPTN = reader.getSendOutKPTN(); // Call the getSendOutKPTN function
         type(sendOutCancellationPageObjects.kptnField(), "KPTN Field", randomKPTN); // Use the random KPTN value
 //        String randomKPTN = YAMLUtils.getRandomKPTN("testData.yaml"); // Call the getRandomKPTN function
 //        type(sendOutCancellationPageObjects.kptnField(), "KPTN Field", randomKPTN); // Use the random KPTN value

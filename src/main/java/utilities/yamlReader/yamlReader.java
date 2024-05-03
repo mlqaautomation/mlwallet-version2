@@ -78,10 +78,6 @@ public class yamlReader {
     public List<Map<String, Object>> getSendersData() {
         return (List<Map<String, Object>>) yamlData.get("Senders");
     }
-//    public List<Map<String, Object>> getKPTNData() {
-//
-//        return (List<Map<String, Object>>) yamlData.get("KPTN");
-//    }
 
     public Map<String, Object> getRandomSenderData() {
         List<Map<String, Object>> senders = getSendersData();
@@ -97,24 +93,24 @@ public class yamlReader {
         return new String[]{firstName, lastName};
     }
 
-public String getRandomKPTN() {
-    try {
-        List<String> kptnList = (List<String>) yamlData.get("KPTN");
-
-        if (kptnList == null || kptnList.isEmpty()) {
-            System.out.println("No KPTN values available.");
-            return null;
-        }
-        int randomIndex = new Random().nextInt(kptnList.size());
-        String randomKPTN = kptnList.get(randomIndex);
-        kptnList.remove(randomIndex);
-        saveYamlData();
-        return randomKPTN;
-    } catch (Exception e) {
-        e.printStackTrace();
-        return null;
-    }
-}
+//public String getRandomKPTN() {
+//    try {
+//        List<String> kptnList = (List<String>) yamlData.get("KPTN");
+//
+//        if (kptnList == null || kptnList.isEmpty()) {
+//            System.out.println("No KPTN values available.");
+//            return null;
+//        }
+//        int randomIndex = new Random().nextInt(kptnList.size());
+//        String randomKPTN = kptnList.get(randomIndex);
+//        kptnList.remove(randomIndex);
+//        saveYamlData();
+//        return randomKPTN;
+//    } catch (Exception e) {
+//        e.printStackTrace();
+//        return null;
+//    }
+//}
     public String getSendOutKPTN() {
         try {
             List<String> sendOutKptnList = (List<String>) yamlData.get("sendOutKPTN");
@@ -546,27 +542,6 @@ public void writeBillsPayKptnData(List<String> values) {
         }
     }
 
-    public void writeCashOutData(List<String> values) {
-        try {
-            Yaml yaml = new Yaml();
-            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
-            Map<String, Object> yamlData = yaml.load(fileInputStream);
-
-            if (yamlData.containsKey("cashOutReferenceNum")) {
-                List<String> existingValues = (List<String>) yamlData.get("cashOutReferenceNum");
-                existingValues.addAll(values);
-            } else {
-                yamlData.put("cashOutReferenceNum", values);
-            }
-
-            FileWriter writer = new FileWriter(yamlFileName);
-            yaml.dump(yamlData, writer);
-            LoggingUtils.info(values + " saved to file");
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public String getAccessKey() {
         return (String) yamlData.get("AccessKey");
