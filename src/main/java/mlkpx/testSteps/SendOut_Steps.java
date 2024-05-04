@@ -85,7 +85,7 @@ public class SendOut_Steps extends Base_Steps {
         //todo get value of kptn locator and post it to yaml file
         String  kptnText = getText(sendOutPageObjects.kptnText());
         List<String> kptnValues = Collections.singletonList(kptnText);
-        reader.writeKptnData(kptnValues);
+        reader.writeRemoteKptnData(kptnValues);
         click(sendOutPageObjects.proceedToPrinting(), "Proceed to Printing");
         waitSleep(3000);
         if(isVisible(sendOutPageObjects.mainOperator(), getText(sendOutPageObjects.mainOperator()))){

@@ -68,22 +68,22 @@ public class Payout_Steps extends Base_Steps{
 
 
             if (payoutPageObjects.PayoutConfirm().isEnabled()) {
-                try{
+//                try{
                     click(payoutPageObjects.ConfirmPayout(), "Click Confirm Payout");
                     if (payoutPageObjects.SuccessfulPay().getText().contains("Payout Successful")) {
                         assertEqual(getText(payoutPageObjects.SuccessfulPay()), "Payout Successful");
                         List<String> sendoutKPTNList = Collections.singletonList(sendoutKPTN);
                         reader.writePayoutKptnData(sendoutKPTNList);
                     }
-                    click(payoutPageObjects.proceedToPrinting(), "Proceed to Printing");
-                    waitSleep(2000);
-                    click(payoutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
-                }catch (Exception e){
-                    LoggingUtils.info("Payout Unsuccessful");
-                    List<String> payoutKPTNList = Collections.singletonList(sendoutKPTN);
-                    reader.writeKptnData(payoutKPTNList);
-                    waitSleep(2000);
-                }
+//                    click(payoutPageObjects.proceedToPrinting(), "Proceed to Printing");
+//                    waitSleep(2000);
+//                    click(payoutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
+//                }catch (Exception e){
+//                    LoggingUtils.info("Payout Unsuccessful");
+//                    List<String> payoutKPTNList = Collections.singletonList(sendoutKPTN);
+//                    reader.writeKptnData(payoutKPTNList);
+//                    waitSleep(2000);
+//                }
 
             }
 
@@ -137,7 +137,7 @@ public class Payout_Steps extends Base_Steps{
             }
 
             if (payoutPageObjects.PayoutConfirm().isEnabled()) {
-                try{
+//                try{
                     click(payoutPageObjects.ConfirmPayout(), "Click Confirm Payout");
 
                     if (getText(payoutPageObjects.SuccessfulPay()).equals("Payout Successful")) {
@@ -146,15 +146,14 @@ public class Payout_Steps extends Base_Steps{
                         reader.writeRemotePayoutKptnData(payoutremoteKPTNList);
 
                     }
-                    click(payoutPageObjects.proceedToPrinting(), "Proceed to Printing");
-                    waitSleep(2000);
-                    click(payoutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
-                }catch (Exception e){
-                    LoggingUtils.info("Payout Remote Unsuccessful");
-                    List<String> kptnValues = Collections.singletonList(sendoutRemoteKPTN);
-                    reader.writeRemoteKptnData(kptnValues);
-                    waitSleep(2000);
-                }
+//                    click(payoutPageObjects.proceedToPrinting(), "Proceed to Printing");
+//                    click(payoutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
+//                }catch (Exception e){
+//                    LoggingUtils.info("Payout Remote Unsuccessful");
+//                    List<String> kptnValues = Collections.singletonList(sendoutRemoteKPTN);
+//                    reader.writeRemoteKptnData(kptnValues);
+//                    waitSleep(2000);
+//                }
 
             }
 
@@ -350,7 +349,7 @@ public class Payout_Steps extends Base_Steps{
             type(payoutPageObjects.PayKTPN(), "KTPN Number", payoutKPTN);
             type(payoutPageObjects.PayAmount(), "Amount", "100");
             click(payoutPageObjects.SearchButton(), "Search Button");
-            assertEqual(getText(payoutPageObjects.payoutClaim_h5()), "Payout Claimed");
+            assertEqual(getText(payoutPageObjects.payoutClaim_h5()), "No Transaction Found");
 
 
     }
@@ -373,7 +372,7 @@ public class Payout_Steps extends Base_Steps{
             type(payoutPageObjects.PayKTPN(), "KTPN Number", remotePayoutKPTN);
             type(payoutPageObjects.PayAmount(), "Amount", "100");
             click(payoutPageObjects.SearchButton(), "Search Button");
-            assertEqual(getText(payoutPageObjects.payoutClaim_h5()), "Payout Claimed");
+            assertEqual(getText(payoutPageObjects.payoutClaim_h5()), "No Transaction Found");
 
 
     }

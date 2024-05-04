@@ -25,15 +25,17 @@ public class BaseTest {
     protected BillsPayCancellation_Steps billsPayCancellationSteps;
     protected BillsPayChangeD_Steps billsPayChangeDSteps;
     protected BillsPayReprinting_Steps billsPayReprintingSteps;
-    protected WalletServices_Steps walletServicesSteps;
     protected SOReprinting_Steps soReprintingSteps;
     protected RequestForChange_Steps requestForChangeSteps;
     protected ReturnToSender_Steps returnToSenderSteps;
     protected ORReprinting_Steps orReprintingSteps;
     protected WS_CashInToOwnAccount_Steps wsCashInToOwnAccountSteps;
+    protected WS_CashInToAnotherAccount wsCashInToAnotherAccount;
     protected WS_CashOut_Steps wsCashOutSteps;
     protected WS_KwartaPadalaPayOut_Steps wsKwartaPadalaPayOutSteps;
+    protected WS_Reprinting_Steps wsReprintingSteps;
     protected WS_ShopSafe_Steps wsShopSafeSteps;
+
 
 
     @Parameters("browser")
@@ -67,10 +69,11 @@ public class BaseTest {
         this.returnToSenderSteps = new ReturnToSender_Steps();
         this.orReprintingSteps = new ORReprinting_Steps();
         this.wsCashInToOwnAccountSteps = new WS_CashInToOwnAccount_Steps();
+        this.wsCashInToAnotherAccount = new WS_CashInToAnotherAccount();
         this.wsCashOutSteps = new WS_CashOut_Steps();
         this.wsKwartaPadalaPayOutSteps = new WS_KwartaPadalaPayOut_Steps();
+        this.wsReprintingSteps = new WS_Reprinting_Steps();
         this.wsShopSafeSteps = new WS_ShopSafe_Steps();
-
 
     }
     private void initializeDriver(DriverType driverType) {
