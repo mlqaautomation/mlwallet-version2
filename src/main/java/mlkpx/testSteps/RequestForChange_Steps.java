@@ -60,7 +60,7 @@ public class RequestForChange_Steps extends Base_Steps{
             Assert.fail("Fail to Change Details");
         }
         click(requestForChangePageObjects.rfcProceedToPrinting(),"Proceed to Printing");
-        click(requestForChangePageObjects.rfcCancelButton(),"Cancel button");
+        click(sendOutPageObjects.cancelButtoninReceipt(),"Cancel button");
     }
     public void RFC_TC_02()throws Exception {
         click(sendOutPageObjects.sendOutLink(), "SendOut Page ");

@@ -8,6 +8,8 @@ public abstract class Base_Steps extends GeneralMethod {
     WalletServices_PageObjects walletServicesPageObjects = new WalletServices_PageObjects();
     BillsPay_PageObjects billsPayPageObjects = new BillsPay_PageObjects();
     Payout_PageObjects payoutPageObjects = new Payout_PageObjects();
+    PayoutCancellation_PageObjects payoutCancellationPageObjects = new PayoutCancellation_PageObjects();
+    PayoutReprinting_PageObjects payoutReprintingPageObjects = new PayoutReprinting_PageObjects();
     Kyc_PageObjects kycPageObjects = new Kyc_PageObjects();
     Home_PageObjects homePageObjects = new Home_PageObjects();
     Login_PageObjects loginPageObjects = new Login_PageObjects();

@@ -9,7 +9,7 @@ public class ReturnToSender_Steps extends Base_Steps{
     public void RTS_TC_01()throws Exception{
         click(sendOutPageObjects.sendOutLink(), "SendOut Page ");
         click(returnToSenderPageObjects.rtsNavlink(),"Return to Sender Nav Link");
-        String randomKPTN = reader.getRandomKPTN(); // Call the getRandomKPTN function
+        String randomKPTN = reader.getSendOutKPTN(); // Call the getSendOutKPTN function
         type(sendOutCancellationPageObjects.kptnField(), "KPTN Field", randomKPTN); // Use the random KPTN value
 //        type(returnToSenderPageObjects.rtsKPTNField(), "RTS KPTN Field ", propertyReader.getproperty("rtsKPTN"));
         click(returnToSenderPageObjects.searchButton(), "RTS Search Button");
@@ -32,7 +32,7 @@ public class ReturnToSender_Steps extends Base_Steps{
             Assert.fail("Fail to Return To Sender");
         }
         click(returnToSenderPageObjects.rtsProceedToPrinting(),"Proceed to Printing");
-        click(returnToSenderPageObjects.rtsCancelButton(),"Cancel button");
+        click(sendOutPageObjects.cancelButtoninReceipt(),"Cancel button");
     }
 
     public void RTS_TC_02()throws Exception{
