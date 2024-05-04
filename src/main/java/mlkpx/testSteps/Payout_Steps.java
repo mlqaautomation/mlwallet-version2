@@ -21,14 +21,11 @@ public class Payout_Steps extends Base_Steps{
     //  optimize code ** create method for common steps such as searching kyc and etc ** to reuse again.
 
     public void navigatePayoutPage()throws Exception{
-        try{
+
             click(payoutPageObjects.payout_link(), "Payout");
             if(isVisible(payoutPageObjects.payoutPage_h2(), getText(payoutPageObjects.payoutPage_h2()))){
                 LoggingUtils.info("Navigated to Payout Page");
             }
-        }catch (Exception e){
-            LoggingUtils.info("Failed to Navigate Payout Page "+ e);
-        }
     }
     public void validateSuccessfulDomesticPayout()throws Exception{
             click(payoutPageObjects.PayoutTransaction(), "Payout Transaction");
@@ -36,7 +33,7 @@ public class Payout_Steps extends Base_Steps{
             click(payoutPageObjects.DomesticTransaction(), "Domestic Transaction");
             waitSleep(3000);
             //todo
-            String sendoutKPTN = reader.getSendOutKPTN(); // Call the getSendOutKPTN function
+            String sendoutKPTN = reader.getPayoutKPTN(); // Call the getPayoutKPTN method
             type(payoutPageObjects.PayKTPN(), "KTPN", sendoutKPTN);
             type(payoutPageObjects.PayAmount(), "Amount", "100");
             click(payoutPageObjects.SearchButton(), "Search Button");
@@ -65,29 +62,18 @@ public class Payout_Steps extends Base_Steps{
             if (payoutPageObjects.KtpnInfo().getText().contains("KPTN")) {
                 click(payoutPageObjects.ClaimAmount(), "Select Claim Amount");
             }
-
-
-            if (payoutPageObjects.PayoutConfirm().isEnabled()) {
-                try{
-                    click(payoutPageObjects.ConfirmPayout(), "Click Confirm Payout");
-                    if (payoutPageObjects.SuccessfulPay().getText().contains("Payout Successful")) {
-                        assertEqual(getText(payoutPageObjects.SuccessfulPay()), "Payout Successful");
-                        List<String> sendoutKPTNList = Collections.singletonList(sendoutKPTN);
-                        reader.writePayoutKptnData(sendoutKPTNList);
-                    }
-                    click(payoutPageObjects.proceedToPrinting(), "Proceed to Printing");
-                    waitSleep(2000);
-                    click(payoutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
-                }catch (Exception e){
-                    LoggingUtils.info("Payout Unsuccessful");
-                    List<String> payoutKPTNList = Collections.singletonList(sendoutKPTN);
-                    reader.writeKptnData(payoutKPTNList);
-                    waitSleep(2000);
-                }
-
+            click(payoutPageObjects.ConfirmPayout(), "Click Confirm Payout");
+            if (payoutPageObjects.SuccessfulPay().getText().contains("Payout Successful")) {
+                assertEqual(getText(payoutPageObjects.SuccessfulPay()), "Payout Successful");
+                List<String> payoutKPTNList = Collections.singletonList(sendoutKPTN);
+                reader.writePayoutKptnData(payoutKPTNList);
             }
-
+            click(payoutPageObjects.proceedToPrinting(), "Proceed to Printing");
+            click(payoutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
     }
+
+
+
     public void validateSuccessfulRemoteDomesticPayout()throws Exception{
 
             click(payoutPageObjects.PayoutTransaction(), "Payout Transaction");
@@ -137,7 +123,6 @@ public class Payout_Steps extends Base_Steps{
             }
 
             if (payoutPageObjects.PayoutConfirm().isEnabled()) {
-                try{
                     click(payoutPageObjects.ConfirmPayout(), "Click Confirm Payout");
 
                     if (getText(payoutPageObjects.SuccessfulPay()).equals("Payout Successful")) {
@@ -149,16 +134,10 @@ public class Payout_Steps extends Base_Steps{
                     click(payoutPageObjects.proceedToPrinting(), "Proceed to Printing");
                     waitSleep(2000);
                     click(payoutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
-                }catch (Exception e){
-                    LoggingUtils.info("Payout Remote Unsuccessful");
-                    List<String> kptnValues = Collections.singletonList(sendoutRemoteKPTN);
-                    reader.writeRemoteKptnData(kptnValues);
-                    waitSleep(2000);
                 }
 
             }
 
-    }
     public void validateComplianceAssistance()throws Exception{
 
         click(payoutPageObjects.PayoutTransaction(), "Payout Transaction");
@@ -246,18 +225,13 @@ public class Payout_Steps extends Base_Steps{
             LoggingUtils.info("Navigated to View Payout Information's");
             click(payoutPageObjects.ClaimAmount(), "Select Claim Amount");
         }
-
-
         if (payoutPageObjects.PayoutConfirm().isEnabled()) {
             click(payoutPageObjects.ConfirmPayout(), "Click Confirm Payout");
             WebDriverWait ca = new WebDriverWait(driver, Duration.ofSeconds(10));
             ca.until(ExpectedConditions.elementToBeClickable(payoutPageObjects.OKCom()));
             assertEqual(getText(payoutPageObjects.ComplianceAss()), "For Compliance Assistance");
             click(payoutPageObjects.OKCom(), "Click OK");
-
         }
-
-
     }
     public void validateInvalidKTPN()throws Exception{
 
@@ -272,25 +246,18 @@ public class Payout_Steps extends Base_Steps{
                 assertEqual(getText(payoutPageObjects.payoutPage_h5()), "No Transaction Found");
             }
             click(payoutPageObjects.OKInvalidKTPN(), "OK");
-
-
     }
     public void validateRemoteInvalidKTPN()throws Exception{
 
             click(payoutPageObjects.PayoutTransaction(), "Payout Transaction");
-
             click(payoutPageObjects.RemoteTransaction(), "Remote Transaction");
-
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.elementToBeClickable(payoutPageObjects.BranchCode()));
-
             type(payoutPageObjects.BranchCode(), "Search Branch Code", "12R33A180912");
             WebDriverWait waits = new WebDriverWait(driver, Duration.ofSeconds(10));
-
             waits.until(ExpectedConditions.elementToBeClickable(payoutPageObjects.OperatorID()));
             type(payoutPageObjects.OperatorID(), "Search Operator ID", "2023639709");
             type(payoutPageObjects.ReasonRemote(), "Reason", "Testing");
-
             click(payoutPageObjects.DomesticTransaction(), "Domestic Transaction");
             type(payoutPageObjects.PayKTPN(), "KTPN Number", propertyReader.getproperty("InvalidKTPNnum"));
             type(payoutPageObjects.PayAmount(), "Amount", propertyReader.getproperty("PayAmount"));
@@ -300,11 +267,6 @@ public class Payout_Steps extends Base_Steps{
                 assertEqual(getText(payoutPageObjects.payoutPage_h5()), "No Transaction Found");
             }
             click(payoutPageObjects.OKInvalidKTPN(), "OK");
-
-
-
-
-
     }
     public void validateInvalidAmountDPT()throws Exception{
 
@@ -315,31 +277,23 @@ public class Payout_Steps extends Base_Steps{
             type(payoutPageObjects.PayAmount(), "Amount", propertyReader.getproperty("InvalidAmount"));
             click(payoutPageObjects.SearchButton(), "Search Button");
             assertEqual(getText(payoutPageObjects.InvalidAmount()), "Amount entered does not match amount in KPTN / reference no.");
-
-
     }
     public void validateInvalidAmountRemoteDPT()throws Exception{
 
             click(payoutPageObjects.PayoutTransaction(), "Payout Transaction");
             click(payoutPageObjects.RemoteTransaction(), "Remote Transaction");
-
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.elementToBeClickable(payoutPageObjects.BranchCode()));
-
             type(payoutPageObjects.BranchCode(), "Search Branch Code", "12R33A180912");
             WebDriverWait waits = new WebDriverWait(driver, Duration.ofSeconds(10));
-
             waits.until(ExpectedConditions.elementToBeClickable(payoutPageObjects.OperatorID()));
-            type(payoutPageObjects.OperatorID(), "Search Operator ID", "2023639709");
-            type(payoutPageObjects.ReasonRemote(), "Reason", "Testing");
+            type(payoutPageObjects.OperatorID(), "Search Operator ID", "2023639709");type(payoutPageObjects.ReasonRemote(), "Reason", "Testing");
 
             click(payoutPageObjects.DomesticTransaction(), "Domestic Transaction");
             type(payoutPageObjects.PayKTPN(), "KTPN Number", propertyReader.getproperty("UnclaimKTPNnum"));
             type(payoutPageObjects.PayAmount(), "Amount", propertyReader.getproperty("InvalidAmount"));
             click(payoutPageObjects.SearchButton(), "Search Button");
             assertEqual(getText(payoutPageObjects.InvalidAmount()), "Amount entered does not match amount in KPTN / reference no.");
-
-
     }
     public void validateClaimedDomesticPayout()throws Exception{
 
@@ -350,9 +304,7 @@ public class Payout_Steps extends Base_Steps{
             type(payoutPageObjects.PayKTPN(), "KTPN Number", payoutKPTN);
             type(payoutPageObjects.PayAmount(), "Amount", "100");
             click(payoutPageObjects.SearchButton(), "Search Button");
-            assertEqual(getText(payoutPageObjects.payoutClaim_h5()), "Payout Claimed");
-
-
+            assertEqual(getText(payoutPageObjects.payoutClaim_h5()), "No Transaction Found");
     }
     public void validateClaimedRemoteDomesticPayout()throws Exception{
 
@@ -373,9 +325,7 @@ public class Payout_Steps extends Base_Steps{
             type(payoutPageObjects.PayKTPN(), "KTPN Number", remotePayoutKPTN);
             type(payoutPageObjects.PayAmount(), "Amount", "100");
             click(payoutPageObjects.SearchButton(), "Search Button");
-            assertEqual(getText(payoutPageObjects.payoutClaim_h5()), "Payout Claimed");
-
-
+            assertEqual(getText(payoutPageObjects.payoutClaim_h5()), "No Transaction Found");
     }
     public void validateDPTwithoutKTPNInput()throws Exception{
 
@@ -386,8 +336,6 @@ public class Payout_Steps extends Base_Steps{
             type(payoutPageObjects.PayAmount(), "Amount", propertyReader.getproperty("PayAmount"));
             click(payoutPageObjects.SearchButton(), "Search Button");
             assertEqual(getText(payoutPageObjects.RequiredKTPN()), "KPTN is required");
-
-
     }
     public void validateRemoteDPTwithoutKTPNInput()throws Exception{
 
@@ -409,8 +357,6 @@ public class Payout_Steps extends Base_Steps{
             type(payoutPageObjects.PayAmount(), "Amount", propertyReader.getproperty("PayAmount"));
             click(payoutPageObjects.SearchButton(), "Search Button");
             assertEqual(getText(payoutPageObjects.RequiredKTPN()), "KPTN is required");
-
-
     }
     public void validateDPTwithoutAmountInput()throws Exception{
 
@@ -421,8 +367,6 @@ public class Payout_Steps extends Base_Steps{
             type(payoutPageObjects.PayAmount(), "Amount", "");
             click(payoutPageObjects.SearchButton(), "Search Button");
             assertEqual(getText(payoutPageObjects.AmountShouldBeNumber()), "Amount should be a number");
-
-
     }
     public void validateRemoteDPTWithoutAmountInput()throws Exception{
 
@@ -443,8 +387,6 @@ public class Payout_Steps extends Base_Steps{
             type(payoutPageObjects.PayAmount(), "Amount", "");
             click(payoutPageObjects.SearchButton(), "Search Button");
             assertEqual(getText(payoutPageObjects.AmountShouldBeNumber()), "Amount should be a number");
-
-
     }
     public void validateRemoteInvalidBranchCode()throws Exception{
 
@@ -473,15 +415,7 @@ public class Payout_Steps extends Base_Steps{
             waits.until(ExpectedConditions.elementToBeClickable(payoutPageObjects.OperatorID()));
             type(payoutPageObjects.OperatorID(), "Search Operator ID", "20236709");
             ExtentReporter.logPass("validateRemoteInvalidOperatorID","Operator not found");
-
-
     }
-
-
-
-
-
-
 }
 
 

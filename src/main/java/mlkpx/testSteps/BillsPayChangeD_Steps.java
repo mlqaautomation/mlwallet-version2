@@ -28,16 +28,17 @@ public class BillsPayChangeD_Steps extends Base_Steps{
         }
         if(isVisible(billsPayPageObjects.BillsPayChange(), getText(billsPayPageObjects.BillsPayChange()))){
             //Payor Information
-            billsPayPageObjects.PayorLastName().clear();
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "TESTSs");
-            billsPayPageObjects.PayorFirstName().clear();
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "TEST");
-            billsPayPageObjects.PayorMiddleName().clear();
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
-            billsPayPageObjects.PayorAddress().clear();
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "BOHOL");
-            billsPayPageObjects.PayorContact().clear();
-            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09077629355");
+            scrollToElement(billsPayPageObjects.ChangePayorLastName());
+            billsPayPageObjects.ChangePayorLastName().clear();
+            type(billsPayPageObjects.ChangePayorLastName(), "Payor Last Name", "TESTSs");
+            billsPayPageObjects.ChangePayorFirstName().clear();
+            type(billsPayPageObjects.ChangePayorFirstName(), "Payor First Name", "TEST");
+            billsPayPageObjects.ChangePayorMiddleName().clear();
+            type(billsPayPageObjects.ChangePayorMiddleName(), "Payor Middle Name", "TESTING");
+            billsPayPageObjects.ChangePayorAddress().clear();
+            type(billsPayPageObjects.ChangePayorAddress(), "Payor Address", "BOHOL");
+            billsPayPageObjects.ChangePayorContact().clear();
+            type(billsPayPageObjects.ChangePayorContact(), "Payor Contact", "09077629355");
             type(billsPayPageObjects.IRNum(), "IR Number", "2111114441262");
             type(billsPayPageObjects.ReasonChange(), "Reason for Change ", "TestingTest");
             click(billsPayPageObjects.InitiatedBy(), "Initiated By");
@@ -69,6 +70,7 @@ public class BillsPayChangeD_Steps extends Base_Steps{
             type(billsPayPageObjects.OperatorID(), "Search Operator ID", "2023639709");
             type(billsPayPageObjects.ReasonRemote(), "Reason", "Testing");
             //Payor Information
+            scrollDown(100);
             billsPayPageObjects.PayorLastName().clear();
             type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "TEST TEST");
             billsPayPageObjects.PayorFirstName().clear();

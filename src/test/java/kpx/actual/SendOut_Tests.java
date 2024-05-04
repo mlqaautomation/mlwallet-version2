@@ -27,7 +27,7 @@ public class SendOut_Tests extends BaseTest {
         }
     }
 
-    @Test(dependsOnMethods = "loginGoogle" , priority = 3, description = "Verify SendOut Transaction Option Valid Branch Code")
+    @Test(dependsOnMethods = "loginGoogle" , priority = 3, description = "Verify Remote SendOut Transaction Option Valid Branch Code")
         public void DS_TC_02_1()throws Exception{
             if(this.homeSteps.isInHomePage()){
                 this.sendOutSteps.DS_TC_02_1();
@@ -79,7 +79,7 @@ public class SendOut_Tests extends BaseTest {
             this.sendOutSteps.DS_TC_07();
         }
     }
-    @Test(dependsOnMethods = "loginGoogle", priority = 11, description = "To Validate Submit then Cancel SendOut Transaction")
+    @Test(dependsOnMethods = "loginGoogle", priority = 14, description = "To Validate Submit SendOut Transaction")
     public void DS_TC_8() throws Exception {
         if (this.homeSteps.isInHomePage()) {
             this.sendOutSteps.DS_TC_08();
@@ -91,11 +91,9 @@ public class SendOut_Tests extends BaseTest {
         if (this.homeSteps.isInHomePage()) {
             this.sendOutSteps.DS_TC_09();
         }
-
     }
 
-
-    @Test(dependsOnMethods = "loginGoogle", priority = 12, description = "To Validate Cancel No SendOut Transaction")
+    @Test(dependsOnMethods = "loginGoogle", priority = 11, description = "To Validate Cancel No SendOut Transaction")
     public void DS_TC_10() throws Exception {
         if (this.homeSteps.isInHomePage()) {
             this.sendOutSteps.DS_TC_10();
@@ -103,17 +101,14 @@ public class SendOut_Tests extends BaseTest {
 
     }
 
-
-
-
-    @Test(dependsOnMethods = "loginGoogle", priority = 13, description = "To Validate kyc from the Watch List")
+    @Test(dependsOnMethods = "loginGoogle", priority = 12, description = "To Validate kyc from the Watch List")
     public void DS_TC_11() throws Exception {
         if (this.homeSteps.isInHomePage()) {
             this.sendOutSteps.DS_TC_11();
         }
 
     }
-    @Test(dependsOnMethods = "loginGoogle", priority = 14, description = "To Validate The Same Transaction")
+    @Test(dependsOnMethods = "loginGoogle", priority = 13, description = "To Validate The Same Transaction")
     public void DS_TC_12() throws Exception {
         if (this.homeSteps.isInHomePage()) {
             this.sendOutSteps.DS_TC_12();

@@ -28,7 +28,7 @@
         <log4japi.version>2.23.1</log4japi.version>
         <log4jcore.version>2.23.1</log4jcore.version>
         <targetUrl>https://wanwan.mlhuillier.com/</targetUrl>
-        <homeUrl>https://ml-kpx-qa.df.r.appspot.com/home</homeUrl>
+        <homeUrl>https://wanwan.mlhuillier.com/home</homeUrl>
         <threads>1</threads>
         <browser>chrome</browser>
         <headless>false</headless>
@@ -116,13 +116,6 @@
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>2.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
-            <scope>provided</scope>
         </dependency>
 
     </dependencies>

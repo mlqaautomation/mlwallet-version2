@@ -28,7 +28,7 @@ public class Payout_PageObjects {
         return getDriver().findElement(By.xpath("//h5[contains(text(),'Payout Claimed')]"));
     }
     public WebElement payoutClaim_h5(){
-        return getDriver().findElement(By.xpath("//h5[contains(text(),'Payout Claimed')]"));
+        return getDriver().findElement(By.xpath("//h5[contains(text(),'No Transaction Found')]"));
     }
     public WebElement PayoutTransaction(){
         return getDriver().findElement(By.xpath("(//a[@href='/payout'])[2]"));
@@ -111,7 +111,7 @@ public class Payout_PageObjects {
         return getDriver().findElement(By.xpath("//*[text()='Proceed to Printing']"));
     }
     public WebElement cancelButtoninReceipt() {
-        return getDriver().findElement(By.cssSelector("[class=\"sc-hIUJlX exqbQW btn btn-secondary\"]"));}
+        return getDriver().findElement(By.cssSelector("[class=\"sc-jnOGJG blZoWd btn btn-secondary\"]"));}
 
 
     public WebElement payoutKptn() {

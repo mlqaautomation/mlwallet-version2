@@ -41,19 +41,15 @@ public class BillsPay_Steps extends Base_Steps{
         type(billsPayPageObjects.BPLastName(), "BP Last Name", "AGUILARTEST");
         type(billsPayPageObjects.BPFirstName(), "BP First Name", "ANGELYTEST");
         type(billsPayPageObjects.BPMiddleName(), "BP Middle Name", "TESTING");
-
-        //Payor Information
-        if(isVisible(billsPayPageObjects.billsPay_PayInfo(), getText(billsPayPageObjects.billsPay_PayInfo()))){
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "AGUILARTEST");
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "ANGELYTEST");
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "Cebu City");
-            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09635129781");
-            type(billsPayPageObjects.PaymentAmount(), "Payment Amount", "100");
-            type(billsPayPageObjects.PaymentDetails(), "Payment Details", "Testing Testing");
-            click(billsPayPageObjects.SubmitBillsPay(), "Submit Bills Pay Button");
-            waitSleep(5000);
-        }
+        type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "AGUILARTEST");
+        type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "ANGELYTEST");
+        type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
+        type(billsPayPageObjects.PayorAddress(), "Payor Address", "Cebu City");
+        type(billsPayPageObjects.PayorContact(), "Payor Contact", "09635129781");
+        type(billsPayPageObjects.PaymentAmount(), "Payment Amount", "100");
+        type(billsPayPageObjects.PaymentDetails(), "Payment Details", "Testing Testing");
+        click(billsPayPageObjects.SubmitBillsPay(), "Submit Bills Pay Button");
+        waitSleep(5000);
         if(isVisible(billsPayPageObjects.billsPay_ConfiInfo(), getText(billsPayPageObjects.billsPay_ConfiInfo()))) {
             LoggingUtils.info("Bills Pay Confirmation");
             click(billsPayPageObjects.ReviewBillsPay(), "Reviewed Bills Payment Input");
@@ -84,19 +80,16 @@ public class BillsPay_Steps extends Base_Steps{
         type(billsPayPageObjects.BPLastName(), "BP Last Name", "AGUILARTEST");
         type(billsPayPageObjects.BPFirstName(), "BP First Name", "ANGELYTEST");
         type(billsPayPageObjects.BPMiddleName(), "BP Middle Name", "TESTING");
+        type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "AGUILARTEST");
+        type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "ANGELYTEST");
+        type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
+        type(billsPayPageObjects.PayorAddress(), "Payor Address", "Cebu City");
+        type(billsPayPageObjects.PayorContact(), "Payor Contact", "09635129781");
+        type(billsPayPageObjects.PaymentAmount(), "Payment Amount", "100");
+        type(billsPayPageObjects.PaymentDetails(), "Payment Details", "Testing Testing");
+        click(billsPayPageObjects.SubmitBillsPay(), "Submit Bills Pay Button");
+        waitSleep(5000);
 
-        //Payor Information
-        if(isVisible(billsPayPageObjects.billsPay_PayInfo(), getText(billsPayPageObjects.billsPay_PayInfo()))){
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "AGUILARTEST");
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "ANGELYTEST");
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "Cebu City");
-            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09635129781");
-            type(billsPayPageObjects.PaymentAmount(), "Payment Amount", "100");
-            type(billsPayPageObjects.PaymentDetails(), "Payment Details", "Testing Testing");
-            click(billsPayPageObjects.SubmitBillsPay(), "Submit Bills Pay Button");
-            waitSleep(5000);
-        }
         if(isVisible(billsPayPageObjects.billsPay_ConfiInfo(), getText(billsPayPageObjects.billsPay_ConfiInfo()))) {
             LoggingUtils.info("Bills Pay Confirmation");
             click(billsPayPageObjects.ReviewBillsPay(), "Reviewed Bills Payment Input");
@@ -180,6 +173,8 @@ public class BillsPay_Steps extends Base_Steps{
             assertEqual(getText(billsPayPageObjects.SelectPartners()), "Please select the partner that will receive the payment.");
         }
 
+
+
     }
     public void validateEmptyAccountNumBillsPay()throws Exception {
         click(billsPayPageObjects.BPSendout(), "Bills Pay Sendout Transaction");
@@ -211,25 +206,9 @@ public class BillsPay_Steps extends Base_Steps{
     public void validateEmptyLastnameBillsPay()throws Exception {
         click(billsPayPageObjects.BPSendout(), "Bills Pay Sendout Transaction");
         click(billsPayPageObjects.NoRemoteTransaction(), "No remote Transaction");
-        waitSleep(5000);
-        click(billsPayPageObjects.ClickOption(), "Option");
-        waitSleep(2000);
-        click(billsPayPageObjects.ChooseOption(), "Choose Partners");
-        waitSleep(5000);
-        type(billsPayPageObjects.BPAccNum(), "BP Account Number", "62725870");
         type(billsPayPageObjects.BPLastName(), "BP Last Name", "");
-        type(billsPayPageObjects.BPFirstName(), "BP First Name", "ANGELYTEST");
-        type(billsPayPageObjects.BPMiddleName(), "BP Middle Name", "TESTING");
-
         //Payor Information
         if(isVisible(billsPayPageObjects.billsPay_PayInfo(), getText(billsPayPageObjects.billsPay_PayInfo()))){
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "AGUILARTEST");
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "ANGELYTEST");
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "Cebu City");
-            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09635129781");
-            type(billsPayPageObjects.PaymentAmount(), "Payment Amount", "100");
-            type(billsPayPageObjects.PaymentDetails(), "Payment Details", "Testing Testing");
             click(billsPayPageObjects.SubmitBillsPay(), "Submit Bills Pay Button");
             assertEqual(getText(billsPayPageObjects.EmptyLastname()), "Account last name is a required field");
         }
@@ -238,25 +217,11 @@ public class BillsPay_Steps extends Base_Steps{
     public void validateEmptyFirstnameBillsPay()throws Exception {
         click(billsPayPageObjects.BPSendout(), "Bills Pay Sendout Transaction");
         click(billsPayPageObjects.NoRemoteTransaction(), "No remote Transaction");
-        waitSleep(5000);
-        click(billsPayPageObjects.ClickOption(), "Option");
-        waitSleep(2000);
-        click(billsPayPageObjects.ChooseOption(), "Choose Partners");
-        waitSleep(5000);
-        type(billsPayPageObjects.BPAccNum(), "BP Account Number", "62725870");
-        type(billsPayPageObjects.BPLastName(), "BP Last Name", "AGUILARTEST");
         type(billsPayPageObjects.BPFirstName(), "BP First Name", "");
         type(billsPayPageObjects.BPMiddleName(), "BP Middle Name", "TESTING");
 
         //Payor Information
         if(isVisible(billsPayPageObjects.billsPay_PayInfo(), getText(billsPayPageObjects.billsPay_PayInfo()))){
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "AGUILARTEST");
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "ANGELYTEST");
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "Cebu City");
-            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09635129781");
-            type(billsPayPageObjects.PaymentAmount(), "Payment Amount", "100");
-            type(billsPayPageObjects.PaymentDetails(), "Payment Details", "Testing Testing");
             click(billsPayPageObjects.SubmitBillsPay(), "Submit Bills Pay Button");
             assertEqual(getText(billsPayPageObjects.EmptyFirstname()), "Account first name is a required field");
         }
@@ -265,15 +230,6 @@ public class BillsPay_Steps extends Base_Steps{
     public void validateEmptyLastnamePayor()throws Exception {
         click(billsPayPageObjects.BPSendout(), "Bills Pay Sendout Transaction");
         click(billsPayPageObjects.NoRemoteTransaction(), "No remote Transaction");
-        waitSleep(5000);
-        click(billsPayPageObjects.ClickOption(), "Option");
-        waitSleep(2000);
-        click(billsPayPageObjects.ChooseOption(), "Choose Partners");
-        waitSleep(5000);
-        type(billsPayPageObjects.BPAccNum(), "BP Account Number", "62725870");
-        type(billsPayPageObjects.BPLastName(), "BP Last Name", "AGUILARTEST");
-        type(billsPayPageObjects.BPFirstName(), "BP First Name", "ANGELYTEST");
-        type(billsPayPageObjects.BPMiddleName(), "BP Middle Name", "TESTING");
 
         //Payor Information
         if(isVisible(billsPayPageObjects.billsPay_PayInfo(), getText(billsPayPageObjects.billsPay_PayInfo()))){
@@ -286,19 +242,10 @@ public class BillsPay_Steps extends Base_Steps{
     public void validateEmptyFirstnamePayor()throws Exception {
         click(billsPayPageObjects.BPSendout(), "Bills Pay Sendout Transaction");
         click(billsPayPageObjects.NoRemoteTransaction(), "No remote Transaction");
-        waitSleep(5000);
-        click(billsPayPageObjects.ClickOption(), "Option");
-        waitSleep(2000);
-        click(billsPayPageObjects.ChooseOption(), "Choose Partners");
-        waitSleep(5000);
-        type(billsPayPageObjects.BPAccNum(), "BP Account Number", "62725870");
-        type(billsPayPageObjects.BPLastName(), "BP Last Name", "AGUILARTEST");
-        type(billsPayPageObjects.BPFirstName(), "BP First Name", "ANGELYTEST");
-        type(billsPayPageObjects.BPMiddleName(), "BP Middle Name", "TESTING");
 
         //Payor Information
         if(isVisible(billsPayPageObjects.billsPay_PayInfo(), getText(billsPayPageObjects.billsPay_PayInfo()))){
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "AGUILARTEST");
+//            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "AGUILARTEST");
             type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "");
             click(billsPayPageObjects.SubmitBillsPay(), "Submit Bills Pay Button");
             assertEqual(getText(billsPayPageObjects.EmptyFPayor()), "Payor first name is a required field");
@@ -307,21 +254,9 @@ public class BillsPay_Steps extends Base_Steps{
     public void validateEmptyAddressPayor()throws Exception {
         click(billsPayPageObjects.BPSendout(), "Bills Pay Sendout Transaction");
         click(billsPayPageObjects.NoRemoteTransaction(), "No remote Transaction");
-        waitSleep(5000);
-        click(billsPayPageObjects.ClickOption(), "Option");
-        waitSleep(2000);
-        click(billsPayPageObjects.ChooseOption(), "Choose Partners");
-        waitSleep(5000);
-        type(billsPayPageObjects.BPAccNum(), "BP Account Number", "62725870");
-        type(billsPayPageObjects.BPLastName(), "BP Last Name", "AGUILARTEST");
-        type(billsPayPageObjects.BPFirstName(), "BP First Name", "ANGELYTEST");
-        type(billsPayPageObjects.BPMiddleName(), "BP Middle Name", "TESTING");
 
         //Payor Information
         if(isVisible(billsPayPageObjects.billsPay_PayInfo(), getText(billsPayPageObjects.billsPay_PayInfo()))){
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "AGUILARTEST");
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "ANGELYTEST");
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
             type(billsPayPageObjects.PayorAddress(), "Payor Address", "");
             click(billsPayPageObjects.SubmitBillsPay(), "Submit Bills Pay Button");
             assertEqual(getText(billsPayPageObjects.EmptyAddress()), "Payor address is a required field");
@@ -331,22 +266,9 @@ public class BillsPay_Steps extends Base_Steps{
     public void validateEmptyContactPayor()throws Exception {
         click(billsPayPageObjects.BPSendout(), "Bills Pay Sendout Transaction");
         click(billsPayPageObjects.NoRemoteTransaction(), "No remote Transaction");
-        waitSleep(5000);
-        click(billsPayPageObjects.ClickOption(), "Option");
-        waitSleep(2000);
-        click(billsPayPageObjects.ChooseOption(), "Choose Partners");
-        waitSleep(5000);
-        type(billsPayPageObjects.BPAccNum(), "BP Account Number", "62725870");
-        type(billsPayPageObjects.BPLastName(), "BP Last Name", "AGUILARTEST");
-        type(billsPayPageObjects.BPFirstName(), "BP First Name", "ANGELYTEST");
-        type(billsPayPageObjects.BPMiddleName(), "BP Middle Name", "TESTING");
 
         //Payor Information
         if(isVisible(billsPayPageObjects.billsPay_PayInfo(), getText(billsPayPageObjects.billsPay_PayInfo()))){
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "AGUILARTEST");
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "ANGELYTEST");
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "Bohol");
             type(billsPayPageObjects.PayorContact(), "Payor Contact", "");
             click(billsPayPageObjects.SubmitBillsPay(), "Submit Bills Pay Button");
             assertEqual(getText(billsPayPageObjects.EmptyContact()), "Payor contact number is a required field");
@@ -356,23 +278,10 @@ public class BillsPay_Steps extends Base_Steps{
     public void validateInvalidAmount()throws Exception {
         click(billsPayPageObjects.BPSendout(), "Bills Pay Sendout Transaction");
         click(billsPayPageObjects.NoRemoteTransaction(), "No remote Transaction");
-        waitSleep(5000);
-        click(billsPayPageObjects.ClickOption(), "Option");
-        waitSleep(2000);
-        click(billsPayPageObjects.ChooseOption(), "Choose Partners");
-        waitSleep(5000);
-        type(billsPayPageObjects.BPAccNum(), "BP Account Number", "62725870");
-        type(billsPayPageObjects.BPLastName(), "BP Last Name", "AGUILARTEST");
-        type(billsPayPageObjects.BPFirstName(), "BP First Name", "ANGELYTEST");
-        type(billsPayPageObjects.BPMiddleName(), "BP Middle Name", "TESTING");
 
         //Payor Information
         if(isVisible(billsPayPageObjects.billsPay_PayInfo(), getText(billsPayPageObjects.billsPay_PayInfo()))){
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "AGUILARTEST");
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "ANGELYTEST");
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "Cebu City");
-            type(billsPayPageObjects.PayorContact(), "Payor Contact", "09635129781");
+
             type(billsPayPageObjects.PaymentAmount(), "Payment Amount", " ");
             type(billsPayPageObjects.PaymentDetails(), "Payment Details", "Testing Testing");
             assertEqual(getText(billsPayPageObjects.EmptyAmount()), "Payment amount must have a valid value");
@@ -472,22 +381,9 @@ public class BillsPay_Steps extends Base_Steps{
     public void validateInvalidContactBillsPay()throws Exception {
         click(billsPayPageObjects.BPSendout(), "Bills Pay Sendout Transaction");
         click(billsPayPageObjects.NoRemoteTransaction(), "No remote Transaction");
-        waitSleep(5000);
-        click(billsPayPageObjects.ClickOption(), "Option");
-        waitSleep(2000);
-        click(billsPayPageObjects.ChooseOption(), "Choose Partners");
-        waitSleep(5000);
-        type(billsPayPageObjects.BPAccNum(), "BP Account Number", "62725870");
-        type(billsPayPageObjects.BPLastName(), "BP Last Name", "AGUILARTEST");
-        type(billsPayPageObjects.BPFirstName(), "BP First Name", "ANGELYTEST");
-        type(billsPayPageObjects.BPMiddleName(), "BP Middle Name", "TESTING");
 
         //Payor Information
         if(isVisible(billsPayPageObjects.billsPay_PayInfo(), getText(billsPayPageObjects.billsPay_PayInfo()))){
-            type(billsPayPageObjects.PayorLastName(), "Payor Last Name", "AGUILARTEST");
-            type(billsPayPageObjects.PayorFirstName(), "Payor First Name", "ANGELYTEST");
-            type(billsPayPageObjects.PayorMiddleName(), "Payor Middle Name", "TESTING");
-            type(billsPayPageObjects.PayorAddress(), "Payor Address", "Cebu City");
             type(billsPayPageObjects.PayorContact(), "Payor Contact", "08635129781");
 
             click(billsPayPageObjects.SubmitBillsPay(), "Submit Bills Pay Button");
