@@ -73,6 +73,7 @@ public class BaseTest {
         this.wsCashOutSteps = new WS_CashOut_Steps();
         this.wsKwartaPadalaPayOutSteps = new WS_KwartaPadalaPayOut_Steps();
         this.wsReprintingSteps = new WS_Reprinting_Steps();
+        this.wsShopSafeSteps = new WS_ShopSafe_Steps();
 
     }
     private void initializeDriver(DriverType driverType) {

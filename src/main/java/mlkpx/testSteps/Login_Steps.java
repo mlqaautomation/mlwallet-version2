@@ -12,7 +12,7 @@ public class Login_Steps extends Base_Steps {
             switchToNextTab();
             typeEnter(googlePageObjects.emailField(), "Email Field", reader.getEmailByRole(role));
             typeEnter(googlePageObjects.passwordField(), "Password Field", reader.getPasswordByRole(role));
-            click(googlePageObjects.anotherWayButton(), "Another way");
+//            click(googlePageObjects.anotherWayButton(), "Another way");
             click(googlePageObjects.selectGoogleAuthenticator(), "Google Auth Option");
             typeEnter(googlePageObjects.codeField(), "Auth Key Field", TOTPGenerator.getTwoFactorCode());
             switchToPreviousTab();
@@ -22,6 +22,7 @@ public class Login_Steps extends Base_Steps {
             switchToPreviousTab();
         }
     }
+
     public void signInGoogleV2()throws Exception{
         // logging in google via clicking the email, this only happens when browser is not closed
         try{
