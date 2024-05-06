@@ -11,7 +11,7 @@ public class Payout_Tests extends BaseTest{
         this.loginSteps.signInGoogle("teller");
         this.loginSteps.loginKpx("teller");
         if(this.homeSteps.isInHomePage()){
-            ExtentReporter.logPass("Login, Passed!!");
+            ExtentReporter.logPass("loginGoogle","Login, Passed!!");
         }
     }
 

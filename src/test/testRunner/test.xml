@@ -7,7 +7,7 @@
     </listeners>
 
     <test name="KYC Input">
-        <parameter name="browser" value="chrome">
+        <parameter name="type" value="web">
             <classes>
 <!--                <class name="kpx.actual.Kyc_Tests"> </class>-->
 <!--                <class name="kpx.actual.SendOut_Tests"> </class>-->
@@ -33,8 +33,6 @@
 <!--                <class name="kpx.actual.WS_CashOut_Tests"> </class>-->
 <!--                <class name="kpx.actual.WS_KwartaPadalaPayOut_Tests"> </class>-->
 <!--                <class name="kpx.actual.WS_Reprinting_Tests"> </class>-->
-
-
             </classes>
         </parameter>
     </test>

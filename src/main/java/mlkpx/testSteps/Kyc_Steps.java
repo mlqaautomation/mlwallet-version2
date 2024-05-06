@@ -97,7 +97,7 @@ public class Kyc_Steps extends Base_Steps {
                 ExtentReporter.logPass("","Loading to be directed to the Add KYC Page.");
             }  
         } catch (Exception e) {
-            ExtentReporter.logFail("" + e);
+            ExtentReporter.logFail("", ""+  e);
         }
     }
     public void AddNewKYC01 () {
