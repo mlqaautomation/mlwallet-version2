@@ -6,6 +6,7 @@ import mlkpx.testSteps.Home_Steps;
 import mlkpx.testSteps.Kyc_Steps;
 import mlkpx.testSteps.Login_Steps;
 import mlkpx.testSteps.Payout_Steps;
+import mlwallet.testSteps.Cash_In;
 import mlwallet.testSteps.Login;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
@@ -44,6 +45,7 @@ public class BaseTest {
     protected WS_Reprinting_Steps wsReprintingSteps;
     protected WS_ShopSafe_Steps wsShopSafeSteps;
     protected Login loginWalletSteps;
+    protected Cash_In cashInSteps;
 
     @Parameters("type")
     @BeforeClass (alwaysRun = true)
@@ -51,7 +53,7 @@ public class BaseTest {
         if(type.equals("mobile")){
             AppiumDriverManager.setupServer();
             AppiumDriverManager.startActivity();
-            this.loginWalletSteps = new Login();
+            initWallet();
         }else if(type.equals("web")){
             final String browser ="chrome";
             initializeDriver(DriverType.valueOf(browser.toUpperCase()));
@@ -122,7 +124,9 @@ public class BaseTest {
         this.wsKwartaPadalaPayOutSteps = new WS_KwartaPadalaPayOut_Steps();
         this.wsReprintingSteps = new WS_Reprinting_Steps();
         this.wsShopSafeSteps = new WS_ShopSafe_Steps();
-
-
+    }
+    public void initWallet(){
+        this.loginWalletSteps = new Login();
+        this.cashInSteps = new Cash_In();
     }
 }

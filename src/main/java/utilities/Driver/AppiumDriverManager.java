@@ -28,7 +28,7 @@ public class AppiumDriverManager {
                 .setApp(Apk.API_DEMOS_APK.toString())
                 .autoGrantPermissions()
                 .setAutomationName("uiautomator2")
-                .setNoReset(true)
+                .setNoReset(false)
                 .eventTimings();
         driver = new AndroidDriver(service.getUrl(), options);
     }

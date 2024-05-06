@@ -541,6 +541,32 @@ public void writeBillsPayKptnData(List<String> values) {
             e.printStackTrace();
         }
     }
+    public void writeCashIn_Kptn(List<String> values) {
+        try {
+            Yaml yaml = new Yaml();
+            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
+            Map<String, Object> yamlData = yaml.load(fileInputStream);
+
+            // Check if yamlData is null or empty
+            if (yamlData == null) {
+                yamlData = new HashMap<>();
+            }
+
+            if (yamlData.containsKey("CI")) {
+                List<String> existingValues = (List<String>) yamlData.get("CI");
+                existingValues.addAll(values);
+            } else {
+                yamlData.put("CI", values);
+            }
+
+            FileWriter writer = new FileWriter(yamlFileName);
+            yaml.dump(yamlData, writer);
+            LoggingUtils.info(values + " saved to file");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public String getAccessKey() {
