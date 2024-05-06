@@ -105,6 +105,7 @@ public class MobileGeneralMethod extends ExtentReporter {
             swipe.addAction(finger.createPointerMove(Duration.ofMillis(600), PointerInput.Origin.viewport(), startX, endY));
             swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
             driver.perform(Arrays.asList(swipe));
+            ExtentReporter.logInfo("Swipe test", ".");
         }catch (Exception e){
 
         }
