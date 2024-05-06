@@ -1,5 +1,6 @@
 package kpx.base;
 
+import kpx.actual.SendOutTransactional_Tests;
 import mlkpx.testSteps.*;
 import mlkpx.testSteps.Home_Steps;
 import mlkpx.testSteps.Kyc_Steps;
@@ -35,6 +36,8 @@ public class BaseTest {
     protected WS_KwartaPadalaPayOut_Steps wsKwartaPadalaPayOutSteps;
     protected WS_Reprinting_Steps wsReprintingSteps;
     protected WS_ShopSafe_Steps wsShopSafeSteps;
+    protected SendOutTransactional_Steps sendOutTransactionalSteps;
+    protected SendOutNegativeTest_Steps sendOutNegativeTestSteps;
 
 
 
@@ -74,6 +77,8 @@ public class BaseTest {
         this.wsKwartaPadalaPayOutSteps = new WS_KwartaPadalaPayOut_Steps();
         this.wsReprintingSteps = new WS_Reprinting_Steps();
         this.wsShopSafeSteps = new WS_ShopSafe_Steps();
+        this.sendOutTransactionalSteps = new SendOutTransactional_Steps();
+        this.sendOutNegativeTestSteps = new SendOutNegativeTest_Steps();
 
     }
     private void initializeDriver(DriverType driverType) {

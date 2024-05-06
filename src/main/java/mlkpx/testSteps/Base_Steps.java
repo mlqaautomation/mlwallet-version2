@@ -25,6 +25,8 @@ public abstract class Base_Steps extends GeneralMethod {
     WS_CashOut_PageObjects wsCashOutPageObjects = new WS_CashOut_PageObjects();
     WS_KwartaPadalaPayOut_PageObjects wsKwartaPadalaPayOutPageObjects = new WS_KwartaPadalaPayOut_PageObjects();
     WS_ShopSafe_PageObjects wsShopSafePageObjects = new WS_ShopSafe_PageObjects();
+    SendOutNegativeTest_PageObject sendOutNegativeTestPageObject = new SendOutNegativeTest_PageObject();
+
     final String filepath = "src\\test\\java\\resources\\testData.properties";
     propertyReader propertyReader = new propertyReader(filepath);
     Assert anAssert;
