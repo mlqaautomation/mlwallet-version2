@@ -11,6 +11,7 @@ import mlkpx.testSteps.Kyc_Steps;
 import mlkpx.testSteps.Login_Steps;
 import mlkpx.testSteps.Payout_Steps;
 import mlwallet.testSteps.Cash_In;
+import mlwallet.testSteps.Kwarta_Padala;
 import mlwallet.testSteps.Login;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
@@ -54,8 +55,12 @@ public class BaseTest {
 
     protected Login loginWalletSteps;
     protected Cash_In cashInSteps;
+
     protected WalletServicesNegativeTest_Steps walletServicesNegativeTestSteps;
     protected WalletServicesTransactional_Steps walletServicesTransactionalSteps;
+
+
+    protected Kwarta_Padala kwartaPadala;
 
 
     @Parameters("type")
@@ -146,5 +151,6 @@ public class BaseTest {
     public void initWallet(){
         this.loginWalletSteps = new Login();
         this.cashInSteps = new Cash_In();
+        this.kwartaPadala = new Kwarta_Padala();
     }
 }
