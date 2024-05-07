@@ -5,6 +5,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.Logger.LoggingUtils;
 
 import java.time.Duration;
+import java.util.Collections;
+import java.util.List;
 
 public class WS_CashInToAnotherAccount extends Base_Steps{
     // WALLET SERVICES / CASH IN TO ANOTHER ACCOUNT
@@ -56,6 +58,9 @@ public class WS_CashInToAnotherAccount extends Base_Steps{
         if (walletServicesPageObjects.SendMoneyConfirmation().isEnabled()) {
             click(walletServicesPageObjects.ConfirmSendMoney(), "Confirm Send Money");
             assertEqual(getText(walletServicesPageObjects.SuccessfulSendMoney()), "Send Money Successful");
+            String kptnText = getText(walletServicesPageObjects.kptnText());
+            List<String> kptnValues = Collections.singletonList(kptnText);
+            reader.writeCIAPrintKTPN(kptnValues);
             click(walletServicesPageObjects.ProceedToPrint(), "Proceed to Printing");
 //            click(walletServicesPageObjects.PrintReceipt(), "Print Receipt");
 //            click(payoutPageObjects.PrintButton(), "Print");
@@ -115,6 +120,9 @@ public class WS_CashInToAnotherAccount extends Base_Steps{
         if (walletServicesPageObjects.SendMoneyConfirmation().isEnabled()) {
             click(walletServicesPageObjects.ConfirmSendMoney(), "Confirm Send Money");
             assertEqual(getText(walletServicesPageObjects.SuccessfulSendMoney()), "Send Money Successful");
+            String kptnText = getText(walletServicesPageObjects.kptnText());
+            List<String> kptnValues = Collections.singletonList(kptnText);
+            reader.writeCIAPrintKTPN(kptnValues);
             click(walletServicesPageObjects.ProceedToPrint(), "Proceed to Printing");
 //            click(walletServicesPageObjects.PrintReceipt(), "Print Receipt");
 //            click(payoutPageObjects.PrintButton(), "Print");

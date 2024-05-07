@@ -10,7 +10,10 @@ public class WS_KwartaPadalaPayOut_PageObjects {
     public WebElement kwartaPadalaPayoutText(){return getDriver().findElement(By.xpath("(//*[text()=\"Kwarta Padala Payout\"])[3]"));}
     public WebElement searchKYCText(){return getDriver().findElement(By.xpath("//*[text()=\"Search Registered KYC\"]"));}
     public WebElement referenceNumField(){return getDriver().findElement(By.cssSelector("[name=\"kptn\"]"));}
+    public WebElement kptnText(){
 
+        return getDriver().findElement(By.cssSelector("[data-testid='sendoutKPTN']"));
+    }
     public WebElement searchButton(){return getDriver().findElement(By.cssSelector("[class=\"btn-sm mt-3 btn btn-primary\"]"));}
     public WebElement amountField(){return getDriver().findElement(By.cssSelector("[name=\"amount\"]"));}
     public WebElement searchKYCButton(){return getDriver().findElement(By.cssSelector("[class=\"btn-sm btn btn-primary disabled\"]"));}
