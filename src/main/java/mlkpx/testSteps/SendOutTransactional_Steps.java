@@ -359,6 +359,8 @@ public class SendOutTransactional_Steps extends Base_Steps{
         }
     }
 
+
+
     public boolean isTotalCorrect () throws Exception {
         double principalAmt = parseTotalValue(getValue(sendOutPageObjects.principalAmount()));
         double chargeAmt = parseTotalValue(getText(sendOutPageObjects.chargeAmount()));

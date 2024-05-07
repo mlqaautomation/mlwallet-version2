@@ -10,7 +10,6 @@
         <parameter name="browser" value="chrome">
             <classes>
                 <class name="kpx.actual.SendOutTransactional_Tests"> </class>
-
             </classes>
         </parameter>
     </test>

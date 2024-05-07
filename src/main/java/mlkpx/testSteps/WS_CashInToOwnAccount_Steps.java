@@ -19,17 +19,59 @@ public class WS_CashInToOwnAccount_Steps extends Base_Steps{
             Assert.fail("Failed to Validate Wallet Services Page");
         }
     }
-    public void CIOA_TC_01()throws Exception{
+    public void CIOA_TC_01()throws Exception {
         navigationWalletServices();
-        CIOA_TC_03();
+        String randomReferenceNum = reader.getRandomWriteCashIn_Kptn();
+        type(wsCashInToOwnAccountPageObjects.referenceNumField(), "Reference Number Field", randomReferenceNum);
+        click(wsCashInToOwnAccountPageObjects.searchButton(), "Search Button");
+        waitSleep(3000);
+        if (isVisible(wsCashInToOwnAccountPageObjects.cashInText(), getText(wsCashInToOwnAccountPageObjects.cashInText()))) {
+            ExtentReporter.logPass("CIOA_TC_01", "Successfully Redirected to Cash In Transaction Information");
+        } else {
+            ExtentReporter.logFail("CIOA_TC_01", "Failed to Redirected to Cash In Transaction Information");
+            Assert.fail("Failed to Redirected to Cash In Transaction Information");
+        }
+        String totalAmountText = getText(wsCashInToOwnAccountPageObjects.totalAmount());
+        List<String> totalAmountValues = Collections.singletonList(totalAmountText);
+        totalAmountText = totalAmountText.replaceAll("[^\\d.]", "").replace(",", ".");
+        double totalAmount = Double.parseDouble(totalAmountText);
+        reader.writeTotalAmountData(totalAmountValues);
+
+        String tenderAmount = propertyReader.getproperty("tenderAmount");
+        List<String> updatedTenderAmountValues = Collections.singletonList(tenderAmount);
+        tenderAmount = tenderAmount.replaceAll("[^\\d.]", "").replace(",", ".");
+        double tenderAmountValue = Double.parseDouble(tenderAmount);
+//        double updatedTenderAmount = tenderAmountValue + Double.parseDouble(totalAmountText);
+        double updatedTenderAmount = tenderAmountValue + totalAmount;
+
+        String updatedTenderAmountText = String.valueOf(updatedTenderAmount);
+        type(wsCashInToOwnAccountPageObjects.tenderAmountField(), "Tender Amount Field", updatedTenderAmountText);
+        updatedTenderAmountValues = Collections.singletonList(updatedTenderAmountText);
+        reader.writeTenderAmountData(updatedTenderAmountValues);
+        click(wsCashInToOwnAccountPageObjects.cancelButton(), "Cancel Button");
+        click(wsCashInToOwnAccountPageObjects.noStayOnThisPageButton(), "No, Stay On This Page Button");
+        click(wsCashInToOwnAccountPageObjects.proceedButton(), "Proceed Button");
+        click(wsCashInToOwnAccountPageObjects.cancelInProceedButton(), "Cancel Button");
+        click(wsCashInToOwnAccountPageObjects.proceedButton(), "Proceed Button");
+        click(wsCashInToOwnAccountPageObjects.confirmCashInButton(), "Confirm Cash In Button");
+        waitSleep(2000);
+        if (isVisible(wsCashInToOwnAccountPageObjects.cashInSuccessfulText(), getText(wsCashInToOwnAccountPageObjects.cashInSuccessfulText()))) {
+            ExtentReporter.logPass("Cash In Successful", "Successfully Cash In");
+        } else {
+            ExtentReporter.logFail("Cash In Successful", "Failed to Cash In");
+            Assert.fail("Failed to Cash In");
+        }
+        click(wsCashInToOwnAccountPageObjects.proceedToPrintingButton(), "Proceed To Printing Button");
+        waitSleep(3000);
         click(wsCashInToOwnAccountPageObjects.cancelReceiptButton(), "Cancel Button");
+
     }
 //    public void CIOA_TC_02()throws Exception{
 //        QRCODE
 //    }
     public void CIOA_TC_03()throws Exception{
         navigationWalletServices();
-        String randomReferenceNum = reader.getRandomReferenceNum();
+        String randomReferenceNum = reader.getRandomWriteCashIn_Kptn();
         type(wsCashInToOwnAccountPageObjects.referenceNumField(), "Reference Number Field", randomReferenceNum);
         click(wsCashInToOwnAccountPageObjects.searchButton(), "Search Button");
         waitSleep(3000);
@@ -63,19 +105,14 @@ public class WS_CashInToOwnAccount_Steps extends Base_Steps{
         click(wsCashInToOwnAccountPageObjects.proceedButton(), "Proceed Button");
         click(wsCashInToOwnAccountPageObjects.confirmCashInButton(), "Confirm Cash In Button");
         waitSleep(2000);
-        if(isVisible(wsCashInToOwnAccountPageObjects.cashInSuccessfulText(), getText(wsCashInToOwnAccountPageObjects.cashInSuccessfulText()))){
-            ExtentReporter.logPass("Cash In Successful", "Successfully Cash In");
-        }else{
-            ExtentReporter.logFail("Cash In Successful", "Failed to Cash In");
-            Assert.fail("Failed to Cash In");
-        }
         click(wsCashInToOwnAccountPageObjects.proceedToPrintingButton(), "Proceed To Printing Button");
         if(isVisible(wsCashInToOwnAccountPageObjects.detailsReceipt(), getText(wsCashInToOwnAccountPageObjects.detailsReceipt()))){
-            ExtentReporter.logPass("Cash In Successful", "Successfully Cash In");
+            ExtentReporter.logPass("Cash In Successful", "Successfully Cash In Verify Receipt");
         }else{
-            ExtentReporter.logFail("Cash In Successful", "Failed to Cash In");
+            ExtentReporter.logFail("Cash In Successful", "Failed to Cash In Verify Receipt");
             Assert.fail("Failed to Cash In");
         }
+        click(wsCashInToOwnAccountPageObjects.cancelReceiptButton(), "Cancel Button");
 
     }
 
@@ -136,7 +173,7 @@ public class WS_CashInToOwnAccount_Steps extends Base_Steps{
     }
     public void CIOA_TC_09()throws Exception {
         navigationWalletServices();
-        String randomReferenceNum = reader.getRandomReferenceNum();
+        String randomReferenceNum = reader.getRandomWriteCashIn_Kptn();
         type(wsCashInToOwnAccountPageObjects.referenceNumField(), "Reference Number Field", randomReferenceNum);
         click(wsCashInToOwnAccountPageObjects.searchButton(), "Search Button");
         waitSleep(3000);
@@ -180,6 +217,9 @@ public class WS_CashInToOwnAccount_Steps extends Base_Steps{
             Assert.fail("Failed to  validate again the cash in transaction if its being processed or not");
         }
     }
+
+
+
 
 
 }

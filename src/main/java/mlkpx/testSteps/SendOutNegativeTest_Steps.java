@@ -232,6 +232,114 @@ public class SendOutNegativeTest_Steps extends Base_Steps{
     }
 
 
+
+    public void SOC_TC_02()throws Exception{
+        click(sendOutPageObjects.sendOutLink(), "SendOut Page ");
+        click(sendOutCancellationPageObjects.sendOutCancellationLink(), "SendOut Cancellation Page ");
+        click(sendOutCancellationPageObjects.cancelDropdown(), "Cancel Dropdown");
+        click(sendOutCancellationPageObjects.kptnField(), "KPTN Field");
+        type(sendOutCancellationPageObjects.kptnField(), "KPTN Field ", propertyReader.getproperty("invalidkptnfield"));
+        click(sendOutCancellationPageObjects.searchButton(), "Search Button");
+        if(isVisible(sendOutCancellationPageObjects.noTransactionFoundText(), getText(sendOutCancellationPageObjects.noTransactionFoundText()))){
+            LoggingUtils.info("No Transaction Found ");
+        }else {
+            ExtentReporter.logFail("SOC_TC_02", "Failed to go Back to the Cancel Sendout Page");
+            Assert.fail("Failed to go Back to the Cancel Sendout Page");
+        }
+        click(sendOutCancellationPageObjects.okButton(),"OK button");
+
+    }
+    public void SOC_TC_03()throws Exception{
+        click(sendOutPageObjects.sendOutLink(), "SendOut Page ");
+        click(sendOutCancellationPageObjects.sendOutCancellationLink(), "SendOut Cancellation Page ");
+        click(sendOutCancellationPageObjects.cancelDropdown(), "Cancel Dropdown");
+        click(sendOutCancellationPageObjects.kptnField(), "KPTN Field");
+        type(sendOutCancellationPageObjects.kptnField(), "KPTN Field ", propertyReader.getproperty("kptCancelCode"));
+        click(sendOutCancellationPageObjects.searchButton(), "Search Button");
+        if(isVisible(sendOutCancellationPageObjects.alreadyCancelledText(), getText(sendOutCancellationPageObjects.alreadyCancelledText()))){
+            LoggingUtils.info("Sendout transaction has already been cancelled");
+        }else {
+            ExtentReporter.logFail("SOC_TC_03", "Fail");
+            Assert.fail("Fail");
+        }
+        click(sendOutCancellationPageObjects.okButton(),"OK button");
+
+    }
+    public void RFC_TC_02()throws Exception {
+        click(sendOutPageObjects.sendOutLink(), "SendOut Page ");
+        click(requestForChangePageObjects.rfcLink(), "Request for Change Link");
+        click(requestForChangePageObjects.domesticRFClink(), "Domestic RFC Link");
+        waitSleep(3000);
+        click(requestForChangePageObjects.kptnField(), "RFC KPTN Field");
+        type(requestForChangePageObjects.kptnField(), "RFC KPTN Field ", propertyReader.getproperty("invalidkptnfield"));
+        click(requestForChangePageObjects.searchButton(), "RFC Search Button");
+        if (isVisible(requestForChangePageObjects.noTransactionFoundText(), getText(requestForChangePageObjects.noTransactionFoundText()))) {
+            ExtentReporter.logPass("RFC_TC_02", "Validate Request for Change with Non-existing KPTN");
+        } else {
+            ExtentReporter.logFail("RFC_TC_02", "Fail");
+            Assert.fail("Fail");
+        }
+    }
+    public void RFC_TC_03()throws Exception {
+        click(sendOutPageObjects.sendOutLink(), "SendOut Page ");
+        click(requestForChangePageObjects.rfcLink(), "Request for Change Link");
+        click(requestForChangePageObjects.domesticRFClink(), "Domestic RFC Link");
+        waitSleep(3000);
+        click(requestForChangePageObjects.kptnField(), "RFC KPTN Field");
+        type(requestForChangePageObjects.kptnField(), "RFC KPTN Field ", propertyReader.getproperty("cancelledkptn"));
+        click(requestForChangePageObjects.searchButton(), "RFC Search Button");
+        if (isVisible(requestForChangePageObjects.sendoutCancelledText(), getText(requestForChangePageObjects.sendoutCancelledText()))) {
+            ExtentReporter.logPass("RFC_TC_03", "Sendout transaction has already been cancelled");
+        } else {
+            ExtentReporter.logFail("RFC_TC_03", "Fail");
+            Assert.fail("Fail");
+        }
+        click(requestForChangePageObjects.cancelOKButton(),"Cancel OK Button");
+    }
+
+    public void RTS_TC_02()throws Exception{
+        click(sendOutPageObjects.sendOutLink(), "SendOut Page ");
+        click(returnToSenderPageObjects.rtsNavlink(),"Return to Sender Nav Link");
+        type(returnToSenderPageObjects.rtsKPTNField(), "RTS KPTN Field ", propertyReader.getproperty("invalidkptnfield"));
+        click(returnToSenderPageObjects.searchButton(), "RTS Search Button");
+        if(isVisible(returnToSenderPageObjects.returnToSenderText(), getText(returnToSenderPageObjects.returnToSenderText()))){
+            ExtentReporter.logPass("RTS_TC_02", "Non-existing KPTN");
+        }else{
+            ExtentReporter.logFail("RTS_TC_02", "Fail");
+            Assert.fail("Fail");
+        }
+    }
+
+    public void RTS_TC_03()throws Exception{
+        click(sendOutPageObjects.sendOutLink(), "SendOut Page ");
+        click(returnToSenderPageObjects.rtsNavlink(),"Return to Sender Nav Link");
+        type(returnToSenderPageObjects.rtsKPTNField(), "RTS KPTN Field ", propertyReader.getproperty("cancelledkptn"));
+        click(returnToSenderPageObjects.searchButton(), "RTS Search Button");
+        if(isVisible(returnToSenderPageObjects.returnToSenderText(), getText(returnToSenderPageObjects.returnToSenderText()))){
+            ExtentReporter.logPass("RTS_TC_03", "Cancelled KPTN");
+        }else{
+            ExtentReporter.logFail("RTS_TC_03", "Fail");
+            Assert.fail("Fail");
+        }
+    }
+
+    public void SOR_TC_02()throws Exception{
+        click(sendOutPageObjects.sendOutLink(), "SendOut Page ");
+        click(soReprintingPageObjects.soReprintingLink(), "SendOut Page ");
+        if(isVisible(soReprintingPageObjects.soReprintText(), getText(soReprintingPageObjects.soReprintText()))){
+            LoggingUtils.info("Successfully Navigate for SendOut Reprint Page ");
+        }
+        type(soReprintingPageObjects.kptnButtonInReprint(), "KPTN SOReprint field ", propertyReader.getproperty("invalidkptnfield"));
+        type(soReprintingPageObjects.reasonSOReprint(), "Reason SOReprint field ", propertyReader.getproperty("reason_ORandSOReprint"));
+        click(soReprintingPageObjects.reprintButton(), "Reprint Button");
+        if(isVisible(soReprintingPageObjects.noTransactionFoundText(), getText(soReprintingPageObjects.noTransactionFoundText()))){
+            ExtentReporter.logPass("SOR_TC_02", "Successfully Validate SO Reprinting with Non-Existing KPTN");
+        }else{
+            ExtentReporter.logFail("SOR_TC_02", "Fail to Validate SO Reprinting with Non-Existing KPTN");
+            Assert.fail("Fail to Validate SO Reprinting with Non-Existing KPTN");
+        }
+    }
+
     public void principalAmount() throws Exception {
         navigationFOrSendOutDomestic();
         searchKYC();
