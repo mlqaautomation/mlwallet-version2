@@ -289,7 +289,7 @@ public class yamlReader {
             }
             public String getRandomCashOutReferenceNum () {
                 try {
-                    List<String> cashOutReferenceNumList = (List<String>) yamlData.get("cashOutReferenceNum");
+                    List<String> cashOutReferenceNumList = (List<String>) yamlData.get("CashOutKTPN");
                     if (cashOutReferenceNumList == null || cashOutReferenceNumList.isEmpty()) {
                         System.out.println("No Random Cash Out Reference Number available.");
                         return null;
@@ -603,30 +603,7 @@ public class yamlReader {
                     e.printStackTrace();
                 }
             }
-            public void writeCashIn_Kptn (List < String > values) {
-                try {
-                    Yaml yaml = new Yaml();
-                    FileInputStream fileInputStream = new FileInputStream(yamlFileName);
-                    Map<String, Object> yamlData = yaml.load(fileInputStream);
-                    // Check if yamlData is null or empty
-                    if (yamlData == null) {
-                        yamlData = new HashMap<>();
-                    }
-                    if (yamlData.containsKey("CashInKTPN")) {
-                        List<String> existingValues = (List<String>) yamlData.get("CashInKTPN");
 
-                        existingValues.addAll(values);
-                    } else {
-                        yamlData.put("CashInKTPN", values);
-                    }
-                    FileWriter writer = new FileWriter(yamlFileName);
-                    yaml.dump(yamlData, writer);
-                    LoggingUtils.info(values + " saved to file");
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
             public void writeKP_Kptn (List < String > values) {
                 try {
                     Yaml yaml = new Yaml();
@@ -698,10 +675,35 @@ public class yamlReader {
                 }
             }
 
+    public void writeCashIn_Kptn (List < String > values) {
+        try {
+            Yaml yaml = new Yaml();
+            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
+            Map<String, Object> yamlData = yaml.load(fileInputStream);
+            // Check if yamlData is null or empty
+            if (yamlData == null) {
+                yamlData = new HashMap<>();
+            }
+            if (yamlData.containsKey("CashInKTPN")) {
+                List<String> existingValues = (List<String>) yamlData.get("CashInKTPN");
+
+                existingValues.addAll(values);
+            } else {
+                yamlData.put("CashInKTPN", values);
+            }
+            FileWriter writer = new FileWriter(yamlFileName);
+            yaml.dump(yamlData, writer);
+            LoggingUtils.info(values + " saved to file");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
             public String getRandomWriteCashIn_Kptn () {
                 try {
-                    List<String> referenceNumList = (List<String>) yamlData.get("CI");
+                    List<String> referenceNumList = (List<String>) yamlData.get("CashInKTPN");
                     if (referenceNumList == null || referenceNumList.isEmpty()) {
                         System.out.println("No Cash In KPTN available.");
                         return null;

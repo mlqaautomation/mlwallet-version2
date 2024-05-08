@@ -170,7 +170,31 @@ public class WalletServicesTransactional_Steps extends Base_Steps{
 
 
     public void CO_TC_01()throws Exception{
-        CO_TC_03();
+        navigationWalletServices();
+        String randomReferenceNum = reader.getRandomCashOutReferenceNum();
+        type(wsCashOutPageObjects.referenceNumField(), "Reference Number Field", randomReferenceNum);
+        click(wsCashOutPageObjects.searchButton(),"Search Button");
+        if(isVisible(wsCashOutPageObjects.informationText(), getText(wsCashOutPageObjects.informationText()))){
+            ExtentReporter.logPass("CO_TC_01", "Successfully Review the Transactions");
+        }else{
+            ExtentReporter.logFail("CO_TC_01", "Failed to Review the Transactions");
+            Assert.fail("Failed to Review the Transactions");
+        }
+        click(wsCashOutPageObjects.cancelButton(),"Cancel Button");
+        click(wsCashOutPageObjects.noStayOnThisPageButton(),"No Stay On this Posistion");
+        click(wsCashOutPageObjects.proceedButton(),"Proceed Button");
+        click(wsCashOutPageObjects.cancelButtonInProceed(), "Cancel Button");
+        click(wsCashOutPageObjects.proceedButton(),"Proceed Button");
+        click(wsCashOutPageObjects.confirmCashOut(),"Confirm Cash Out");
+        waitSleep(4000);
+        if(isVisible(wsCashOutPageObjects.cashOutSuccessfulText(), getText(wsCashOutPageObjects.cashOutSuccessfulText()))){
+            ExtentReporter.logPass("CO_TC_01", "Transaction successfully process.");
+        }else{
+            ExtentReporter.logFail("CO_TC_01", "Failed to process Transactions");
+            Assert.fail("Failed to process Transactions");
+        }
+        click(wsCashOutPageObjects.proceedButtonToReceipt(),"Proceed To Printing");
+        click(wsCashOutPageObjects.cancelButtonInReceipt(),"Cancel Button Receipt");
     }
 
 

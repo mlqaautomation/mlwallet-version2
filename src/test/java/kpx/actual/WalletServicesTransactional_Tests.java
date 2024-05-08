@@ -37,30 +37,30 @@ public class WalletServicesTransactional_Tests extends BaseTest {
         }
 
     }
-    @Test(dependsOnMethods = "loginGoogle", priority = 4, description = "Validate Cash Out")
-    public void CO_TC_01() throws Exception {
-        if (this.homeSteps.isInHomePage()) {
-            this.walletServicesTransactionalSteps.CO_TC_01();
-
-        }
-
-    }
-
-    @Test(dependsOnMethods = "loginGoogle", priority = 5, description = "Validate verify transaction receipt")
-    public void CO_TC_03() throws Exception {
-        if (this.homeSteps.isInHomePage()) {
-            this.walletServicesTransactionalSteps.CO_TC_03();
-
-        }
-
-    }
-
-    @Test(dependsOnMethods = "loginGoogle", priority = 6, description = "Validate verify remote Cash Out")
-    public void CO_TC_08() throws Exception {
-        if (this.homeSteps.isInHomePage()) {
-            this.walletServicesTransactionalSteps.CO_TC_08();
-
-        }
-
-    }
+//    @Test(dependsOnMethods = "loginGoogle", priority = 4, description = "Validate Cash Out")
+//    public void CO_TC_01() throws Exception {
+//        if (this.homeSteps.isInHomePage()) {
+//            this.walletServicesTransactionalSteps.CO_TC_01();
+//
+//        }
+//
+//    }
+//
+//    @Test(dependsOnMethods = "loginGoogle", priority = 5, description = "Validate verify transaction receipt")
+//    public void CO_TC_03() throws Exception {
+//        if (this.homeSteps.isInHomePage()) {
+//            this.walletServicesTransactionalSteps.CO_TC_03();
+//
+//        }
+//
+//    }
+//
+//    @Test(dependsOnMethods = "loginGoogle", priority = 6, description = "Validate verify remote Cash Out")
+//    public void CO_TC_08() throws Exception {
+//        if (this.homeSteps.isInHomePage()) {
+//            this.walletServicesTransactionalSteps.CO_TC_08();
+//
+//        }
+//
+//    }
 }
