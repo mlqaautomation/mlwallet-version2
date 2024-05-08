@@ -11,7 +11,7 @@ public class Kyc_Tests extends BaseTest {
         this.loginSteps.signInGoogle("teller");
         this.loginSteps.loginKpx("teller");
         if(this.homeSteps.isInHomePage()){
-            ExtentReporter.logPass("Login, Passed!!");
+            ExtentReporter.logPass("loginGoogle","Login, Passed!!");
         }
     }
     @Test(dependsOnMethods = "loginGoogle", priority = 2, description = "Test to verify display of registered kyc records")
