@@ -18,3 +18,4 @@ for %%I in (%DEVICE_IPS%) do (
 )
 
 echo Installation completed on all devices.
+

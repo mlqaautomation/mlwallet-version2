@@ -23,12 +23,17 @@ public class WalletService extends BaseTest {
 //        cashInSteps.cashIn();
 //    }
 
-    @Test(dependsOnMethods="loginTest" ,description = "Test to get KwartaPadala KPTN")
+    @Test(dependsOnMethods="loginTest", priority = 1 ,description = "Test to get KwartaPadala KPTN")
     public void kwartaPadala(){
         kwartaPadala.kwartaPadala();
     }
+//    @Test(dependsOnMethods="loginTest", priority = 2 ,description = "Test to get CashOut KPTN")
+//    public void cashOut(){
+//        cashOut.cashOut();
+//    }
 
 
 
 
 }
+

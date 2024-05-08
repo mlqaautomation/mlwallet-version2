@@ -74,7 +74,8 @@ public class WS_Reprinting_Steps extends Base_Steps{
         if(isVisible(walletServicesPageObjects.BranchCashInPage(), getText(walletServicesPageObjects.BranchCashInPage()))){
             LoggingUtils.info("Navigated the Cash In to Another Account Receipt page");
         }
-        type(walletServicesPageObjects.RefKTPN(), "Reference Number","ACALDSSQYXH");
+        String CIAKPTN = reader.getCIAReprintKPTN();
+        type(walletServicesPageObjects.RefKTPN(), "Reference Number",CIAKPTN);
         click(walletServicesPageObjects.Reprint(), "Search Button");
         if(isVisible(walletServicesPageObjects.ReprintBranchCashInReceipt(), getText(walletServicesPageObjects.ReprintBranchCashInReceipt()))){
             LoggingUtils.info("Navigated the Cash In to Another Account Receipt page");
@@ -180,7 +181,8 @@ public class WS_Reprinting_Steps extends Base_Steps{
         if(isVisible(walletServicesPageObjects.KPPayoutPage(), getText(walletServicesPageObjects.KPPayoutPage()))){
             LoggingUtils.info("Navigated the Kwarta Padala Payout Receipt page");
         }
-        type(walletServicesPageObjects.RefKTPN(), "Reference Number","AKPCKWDKPXZ");
+        String KPKPTN = reader.getKPReprintKPTN();
+        type(walletServicesPageObjects.RefKTPN(), "Reference Number",KPKPTN);
         click(walletServicesPageObjects.Reprint(), "Search Button");
         if(isVisible(walletServicesPageObjects.ReprintKPPayoutReceipt(), getText(walletServicesPageObjects.ReprintKPPayoutReceipt()))){
             LoggingUtils.info("Navigated the Kwarta Padala Payout Receipt page");

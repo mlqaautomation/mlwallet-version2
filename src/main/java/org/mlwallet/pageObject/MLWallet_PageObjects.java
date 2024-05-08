@@ -31,6 +31,7 @@ public class MLWallet_PageObjects extends AppiumDriverManager{
     public WebElement cashIn_icon(){
         return driver.findElement(AppiumBy.ByAccessibilityId.accessibilityId("Cash In"));
     }
+
     public WebElement sendMoney_icon(){
         return driver.findElement(AppiumBy.ByAccessibilityId.accessibilityId("Send"));
     }
@@ -46,6 +47,9 @@ public class MLWallet_PageObjects extends AppiumDriverManager{
     public WebElement next_btn(){
         return driver.findElement(AppiumBy.ByAccessibilityId.accessibilityId("Next"));
     }
+    public WebElement next_next(){
+        return driver.findElement(By.xpath("//android.widget.TextView[@text=\"Next\"]"));
+    }
     public WebElement continue_btn(){
         return driver.findElement(AppiumBy.ByAccessibilityId.accessibilityId("Continue"));
     }
@@ -58,6 +62,7 @@ public class MLWallet_PageObjects extends AppiumDriverManager{
     public WebElement cashIn_KPTN(){
         return driver.findElement(By.xpath("//android.widget.TextView[@resource-id='0QMRD2']"));
     }
+
     public WebElement cashIn_TotalAmount(){
         return driver.findElement(AppiumBy.ById.id("08HQ6G"));
     }
@@ -86,7 +91,24 @@ public class MLWallet_PageObjects extends AppiumDriverManager{
     public WebElement confirm_Btn(){
         return driver.findElement(AppiumBy.ByAccessibilityId.accessibilityId("Confirm"));
     }
-    public WebElement kp_Kptn(){
-        return driver.findElement(By.xpath("///android.widget.TextView[@resource-id='56FWEC']"));
+
+    public WebElement kwartaPadala_KPTN(){
+        return driver.findElement(By.xpath("//android.widget.TextView[@resource-id='56FWEC']"));
+    }
+    public WebElement BacktoHome(){
+        return driver.findElement(By.xpath("//android.widget.TextView[@text=\"Back To Home\"]"));
+    }
+
+    public WebElement cashOut_icon(){
+        return driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"Withdraw\"]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/com.horcrux.svg.SvgView/com.horcrux.svg.GroupView/com.horcrux.svg.PathView"));
+    }
+    public WebElement cashOut_MLBranch(){
+        return driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"To any ML Branch, \uE5CC\"]/android.view.ViewGroup"));
+    }
+    public WebElement ContinueToCashOut(){
+        return driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"Continue\"]"));
+    }
+    public WebElement CashOut_KPTN(){
+        return driver.findElement(By.xpath("//android.widget.TextView[@resource-id=\"transaction-code\"]"));
     }
 }
