@@ -125,4 +125,8 @@ public class WalletServices_PageObjects {
     }
     public WebElement ReprintCashOutReceipt(){return getDriver().findElement(By.xpath("//h3[contains(text(),'Reprint Cash Out Receipt')]"));
     }
+    public WebElement kptnText(){
+
+        return getDriver().findElement(By.cssSelector("[data-testid='sendoutKPTN']"));
+    }
 }

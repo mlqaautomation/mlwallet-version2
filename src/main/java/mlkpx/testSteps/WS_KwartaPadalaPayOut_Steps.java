@@ -4,6 +4,9 @@ import org.testng.Assert;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
 
+import java.util.Collections;
+import java.util.List;
+
 public class WS_KwartaPadalaPayOut_Steps extends Base_Steps {
 
     public void navigationWalletServicesToKwartaPadalaPayout() throws Exception {
@@ -24,12 +27,15 @@ public class WS_KwartaPadalaPayOut_Steps extends Base_Steps {
         waitSleep(3000);
         if (isVisible(wsKwartaPadalaPayOutPageObjects.payoutSuccessfulText(), getText(wsKwartaPadalaPayOutPageObjects.payoutSuccessfulText()))) {
             ExtentReporter.logPass("KPP_TC_01", "Successfully validate successful Wallet Services Kwarta Padala Payout");
+            String  kptnText = getText(wsKwartaPadalaPayOutPageObjects.kptnText());
+            List<String> kptnValues = Collections.singletonList(kptnText);
+            reader.writeKPPrintKTPN(kptnValues);
         } else {
             ExtentReporter.logFail("KPP_TC_01", "Failed to validate successful Wallet Services Kwarta Padala Payout");
             Assert.fail("Failed to validate successful Wallet Services Kwarta Padala Payout");
         }
-        click(wsKwartaPadalaPayOutPageObjects.proceedToPrintingButton(),"Proceed TO printing Button");
-        click(wsKwartaPadalaPayOutPageObjects.cancelButtonReceipt(),"Cancel Button In Receipt");
+//        click(wsKwartaPadalaPayOutPageObjects.proceedToPrintingButton(),"Proceed TO printing Button");
+//        click(wsKwartaPadalaPayOutPageObjects.cancelButtonReceipt(),"Cancel Button In Receipt");
     }
 
     public void KPP_TC_02() throws Exception {
@@ -48,12 +54,15 @@ public class WS_KwartaPadalaPayOut_Steps extends Base_Steps {
         waitSleep(3000);
         if (isVisible(wsKwartaPadalaPayOutPageObjects.payoutSuccessfulText(), getText(wsKwartaPadalaPayOutPageObjects.payoutSuccessfulText()))) {
             ExtentReporter.logPass("KPP_TC_02", "Successfully validate successful remote Wallet Services Kwarta Padala Payout");
+            String  kptnText = getText(wsKwartaPadalaPayOutPageObjects.kptnText());
+            List<String> kptnValues = Collections.singletonList(kptnText);
+            reader.writeKPPrintKTPN(kptnValues);
         } else {
             ExtentReporter.logFail("KPP_TC_02", "Failed to validate successful remote Wallet Services Kwarta Padala Payout");
             Assert.fail("Failed to validate successful remote Wallet Services Kwarta Padala Payout");
         }
-        click(wsKwartaPadalaPayOutPageObjects.proceedToPrintingButton(),"Proceed TO printing Button");
-        click(wsKwartaPadalaPayOutPageObjects.cancelButtonReceipt(),"Cancel Button In Receipt");
+//        click(wsKwartaPadalaPayOutPageObjects.proceedToPrintingButton(),"Proceed TO printing Button");
+//        click(wsKwartaPadalaPayOutPageObjects.cancelButtonReceipt(),"Cancel Button In Receipt");
     }
 
     public void KPP_TC_03() throws Exception {
