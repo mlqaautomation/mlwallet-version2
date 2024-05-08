@@ -281,23 +281,7 @@ public class yamlReader {
             return null;
         }
     }
-    public String getRandomReferenceNum() {
-        try {
-            List<String> referenceNumList = (List<String>) yamlData.get("referenceNum");
-            if (referenceNumList == null || referenceNumList.isEmpty()) {
-                System.out.println("No Reference Number available.");
-                return null;
-            }
-            int randomIndex = new Random().nextInt(referenceNumList.size());
-            String randomReferenceNum = referenceNumList.get(randomIndex);
-            referenceNumList.remove(randomIndex);
-            saveYamlData();
-            return randomReferenceNum;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+
     public String getRandomKPPReferenceNum() {
         try {
             List<String> kppReferenceNumList = (List<String>) yamlData.get("KwartaPadalaKTPN");
@@ -600,19 +584,17 @@ public class yamlReader {
             Yaml yaml = new Yaml();
             FileInputStream fileInputStream = new FileInputStream(yamlFileName);
             Map<String, Object> yamlData = yaml.load(fileInputStream);
-
             // Check if yamlData is null or empty
             if (yamlData == null) {
                 yamlData = new HashMap<>();
             }
-
             if (yamlData.containsKey("CashInKTPN")) {
                 List<String> existingValues = (List<String>) yamlData.get("CashInKTPN");
+
                 existingValues.addAll(values);
             } else {
                 yamlData.put("CashInKTPN", values);
             }
-
             FileWriter writer = new FileWriter(yamlFileName);
             yaml.dump(yamlData, writer);
             LoggingUtils.info(values + " saved to file");
@@ -689,6 +671,23 @@ public class yamlReader {
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
+
+    public String getRandomWriteCashIn_Kptn() {
+        try {
+            List<String> referenceNumList = (List<String>) yamlData.get("CI");
+            if (referenceNumList == null || referenceNumList.isEmpty()) {
+                System.out.println("No Cash In KPTN available.");
+                return null;
+            }
+            int randomIndex = new Random().nextInt(referenceNumList.size());
+            String randomWriteCashIn_Kptn = referenceNumList.get(randomIndex);
+            referenceNumList.remove(randomIndex);
+            saveYamlData();
+            return randomWriteCashIn_Kptn;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+
         }
     }
     public String getAccessKey() {

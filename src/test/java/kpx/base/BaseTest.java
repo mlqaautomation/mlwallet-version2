@@ -1,6 +1,10 @@
 package kpx.base;
 
+
+import kpx.actual.SendOutTransactional_Tests;
+
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+
 import mlkpx.testSteps.*;
 import mlkpx.testSteps.Home_Steps;
 import mlkpx.testSteps.Kyc_Steps;
@@ -46,10 +50,20 @@ public class BaseTest {
     protected WS_KwartaPadalaPayOut_Steps wsKwartaPadalaPayOutSteps;
     protected WS_Reprinting_Steps wsReprintingSteps;
     protected WS_ShopSafe_Steps wsShopSafeSteps;
+
+    protected SendOutTransactional_Steps sendOutTransactionalSteps;
+    protected SendOutNegativeTest_Steps sendOutNegativeTestSteps;
+
     protected Login loginWalletSteps;
     protected Cash_In cashInSteps;
+
+    protected WalletServicesNegativeTest_Steps walletServicesNegativeTestSteps;
+    protected WalletServicesTransactional_Steps walletServicesTransactionalSteps;
+
+
     protected Kwarta_Padala kwartaPadala;
     protected Cash_Out cashOut;
+
 
     @Parameters("type")
     @BeforeClass (alwaysRun = true)
@@ -128,6 +142,13 @@ public class BaseTest {
         this.wsKwartaPadalaPayOutSteps = new WS_KwartaPadalaPayOut_Steps();
         this.wsReprintingSteps = new WS_Reprinting_Steps();
         this.wsShopSafeSteps = new WS_ShopSafe_Steps();
+
+        this.sendOutTransactionalSteps = new SendOutTransactional_Steps();
+        this.sendOutNegativeTestSteps = new SendOutNegativeTest_Steps();
+
+        this.walletServicesNegativeTestSteps = new WalletServicesNegativeTest_Steps();
+        this.walletServicesTransactionalSteps = new WalletServicesTransactional_Steps();
+
     }
     public void initWallet(){
         this.loginWalletSteps = new Login();
