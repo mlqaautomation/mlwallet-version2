@@ -31,6 +31,14 @@ public class WS_CashOut_Tests extends BaseTest {
 //        }
 //
 //    }
+@Test(dependsOnMethods = "loginGoogle", priority = 6, description = "Validate verify remote Cash Out")
+public void CO_TC_08() throws Exception {
+    if (this.homeSteps.isInHomePage()) {
+        this.wsCashOutSteps.CO_TC_08();
+
+    }
+
+}
     @Test(dependsOnMethods = "loginGoogle", priority = 4, description = "Validate verify transaction receipt")
     public void CO_TC_03() throws Exception {
         if (this.homeSteps.isInHomePage()) {

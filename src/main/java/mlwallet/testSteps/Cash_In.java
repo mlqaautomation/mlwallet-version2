@@ -7,8 +7,8 @@ public class Cash_In extends Base_Steps {
     public void cashIn(){
         mobileGeneralMethod.tap(mlWalletPageObjects.cashIn_icon(), "Cash In Icon");
         mobileGeneralMethod.tap(mlWalletPageObjects.cashInBranch_icon(), "Cash in Branch");
-        mobileGeneralMethod.waitSleep(4000);
-        mobileGeneralMethod.type(mlWalletPageObjects.amountEditText(), "Amount Edit Text", "1");
+        mobileGeneralMethod.waitSleep(5000);
+        mobileGeneralMethod.type(mlWalletPageObjects.amountEditText(), "Amount Edit Text", "100");
         mobileGeneralMethod.tap(mlWalletPageObjects.next_btn(), "Next btn");
         mobileGeneralMethod.waitSleep(5000);
         mobileGeneralMethod.tap(mlWalletPageObjects.continue_btn(), "Continue btn");
