@@ -25,19 +25,14 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import static utilities.Driver.AppiumDriverManager.getAndroidDriver;
 import static utilities.Driver.DriverManager.getDriver;
 public class ExtentReporter implements ITestListener {
 
     private static ExtentReports extent;
     private static final ThreadLocal<ExtentTest> extentTestThreadLocal = new ThreadLocal<>();
     private static final String SCREENSHOTS_DIRECTORY = "Screenshots";
-    private static File src;
-
-    protected static void logFail(String s) {
-    }
-
-    public static void logPass(String s) {
-    }
+    public static String platform;
 
     public void onStart(ITestContext context){
         extent = new ExtentReports();
@@ -49,7 +44,12 @@ public class ExtentReporter implements ITestListener {
         ExtentSparkReporter spark = new ExtentSparkReporter(reportsDirectory + "/" + reportFileName);
         extent.attachReporter(spark);
     }
-
+    public static synchronized void setPlatform(String platform){
+        ExtentReporter.platform = platform;
+    }
+    public synchronized static String getPlatform(){
+        return platform;
+    }
 
     public static synchronized WebDriver getWebDriver() {
         return getDriver();
@@ -88,18 +88,20 @@ public class ExtentReporter implements ITestListener {
         }
     }
     private static synchronized String captureScreenshot(String testName) {
+        TakesScreenshot screenshotDriver = (TakesScreenshot) getWebDriver();
+        File src = screenshotDriver.getScreenshotAs(OutputType.FILE);
+        String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
+        String screenshotPath = getScreenshotDirectoryPath() + File.separator + testName + "_" + timestamp + ".png";
+        File screenshotFile = new File(screenshotPath);
+
         try {
-            TakesScreenshot screenshotDriver = (TakesScreenshot) getWebDriver();
-            File src = screenshotDriver.getScreenshotAs(OutputType.FILE);
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
-            String screenshotPath = getScreenshotDirectoryPath() + File.separator + testName + "_" + timestamp + ".png";
-            File screenshotFile = new File(screenshotPath);
             FileUtils.copyFile(src, screenshotFile);
-            //LoggingUtils.info("Screenshot captured: " + screenshotFile.getAbsolutePath());
             return screenshotFile.getAbsolutePath();
         } catch (IOException e) {
             LoggingUtils.error(e.getMessage());
         }
+
+
         return null;
     }
     private static synchronized String getScreenshotDirectoryPath() {

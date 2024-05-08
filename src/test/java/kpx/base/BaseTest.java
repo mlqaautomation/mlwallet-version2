@@ -1,16 +1,30 @@
 package kpx.base;
 
+
+import kpx.actual.SendOutTransactional_Tests;
+
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+
 import mlkpx.testSteps.*;
 import mlkpx.testSteps.Home_Steps;
 import mlkpx.testSteps.Kyc_Steps;
 import mlkpx.testSteps.Login_Steps;
 import mlkpx.testSteps.Payout_Steps;
+import mlwallet.testSteps.Cash_In;
+import mlwallet.testSteps.Kwarta_Padala;
+import mlwallet.testSteps.Login;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
 
 import static utilities.Driver.DriverManager.*;
+
+import utilities.Driver.AppiumDriverManager;
 import utilities.Driver.DriverType;
 
+import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
+
+import java.time.Duration;
 
 public class BaseTest {
     protected Home_Steps homeSteps;
@@ -25,31 +39,85 @@ public class BaseTest {
     protected BillsPayCancellation_Steps billsPayCancellationSteps;
     protected BillsPayChangeD_Steps billsPayChangeDSteps;
     protected BillsPayReprinting_Steps billsPayReprintingSteps;
-    protected WalletServices_Steps walletServicesSteps;
     protected SOReprinting_Steps soReprintingSteps;
     protected RequestForChange_Steps requestForChangeSteps;
     protected ReturnToSender_Steps returnToSenderSteps;
     protected ORReprinting_Steps orReprintingSteps;
     protected WS_CashInToOwnAccount_Steps wsCashInToOwnAccountSteps;
+    protected WS_CashInToAnotherAccount wsCashInToAnotherAccount;
     protected WS_CashOut_Steps wsCashOutSteps;
     protected WS_KwartaPadalaPayOut_Steps wsKwartaPadalaPayOutSteps;
+    protected WS_Reprinting_Steps wsReprintingSteps;
     protected WS_ShopSafe_Steps wsShopSafeSteps;
 
+    protected SendOutTransactional_Steps sendOutTransactionalSteps;
+    protected SendOutNegativeTest_Steps sendOutNegativeTestSteps;
 
-    @Parameters("browser")
+    protected Login loginWalletSteps;
+    protected Cash_In cashInSteps;
+
+    protected WalletServicesNegativeTest_Steps walletServicesNegativeTestSteps;
+    protected WalletServicesTransactional_Steps walletServicesTransactionalSteps;
+
+
+    protected Kwarta_Padala kwartaPadala;
+
+
+    @Parameters("type")
     @BeforeClass (alwaysRun = true)
-    public void setUp(final String browser){
-        if (browser == null || browser.isEmpty()) {
-            throw new IllegalArgumentException("Browser parameter cannot be null or empty");
-        }
-        initializeDriver(DriverType.valueOf(browser.toUpperCase()));
-        getDriver().manage().deleteAllCookies();
-        if (getDriver().toString().contains("RemoteWebDriver")) {
+    public void setUp(final String type){
+        if(type.equals("mobile")){
+            AppiumDriverManager.setupServer();
+            AppiumDriverManager.startActivity();
+            initWallet();
+        }else if(type.equals("web")){
+            final String browser ="chrome";
+            initializeDriver(DriverType.valueOf(browser.toUpperCase()));
+            getDriver().manage().deleteAllCookies();
             getDriver().get(System.getProperty("targetUrl"));
-        } else {
-            getDriver().get(System.getProperty("targetUrl"));
-            LoggingUtils.info("Redirecting back to home");
+            init();
+        }else{
+            throw new AssertionError("Unsupported Type: " + type);
         }
+        ExtentReporter.setPlatform(type);
+
+    }
+    private void initializeDriver(DriverType driverType) {
+        createDriver(driverType);
+    }
+
+    @BeforeMethod(alwaysRun = true)
+    @Parameters("type")
+    public void setUpTests(final String type){
+        if(type.equals("web")) {
+            getDriver().get(System.getProperty("homeUrl"));
+        }else if(type.equals("mobile")){
+            LoggingUtils.info("Starting app...");
+//            AppiumDriverManager.startActivity();
+            PageFactory.initElements(new AppiumFieldDecorator(AppiumDriverManager.getAndroidDriver(), Duration.ofSeconds(10)), this);
+        }
+    }
+    @AfterMethod(alwaysRun = true)
+    @Parameters("type")
+    public void clean(final String type){
+        if(type.equals("mobile")) {
+            LoggingUtils.info("Resetting app...");
+//            AppiumDriverManager.clearApp();
+        }
+        LoggingUtils.info("------>>>Test Ended<<<-------");
+    }
+    @AfterClass(alwaysRun = true)
+    @Parameters("type")
+    public void tearDown (final String type) {
+        if(type.equals("mobile")){
+            AppiumDriverManager.stopServer();
+        }else if(type.equals("web")){
+            closeWebBrowser();
+        }else{
+            throw new IllegalArgumentException("Unsupported Type: " + type);
+        }
+    }
+    public void init(){
         this.loginSteps = new Login_Steps();
         this.homeSteps = new Home_Steps();
         this.kycSteps = new Kyc_Steps();
@@ -67,27 +135,22 @@ public class BaseTest {
         this.returnToSenderSteps = new ReturnToSender_Steps();
         this.orReprintingSteps = new ORReprinting_Steps();
         this.wsCashInToOwnAccountSteps = new WS_CashInToOwnAccount_Steps();
+        this.wsCashInToAnotherAccount = new WS_CashInToAnotherAccount();
         this.wsCashOutSteps = new WS_CashOut_Steps();
         this.wsKwartaPadalaPayOutSteps = new WS_KwartaPadalaPayOut_Steps();
+        this.wsReprintingSteps = new WS_Reprinting_Steps();
+        this.wsShopSafeSteps = new WS_ShopSafe_Steps();
+
+        this.sendOutTransactionalSteps = new SendOutTransactional_Steps();
+        this.sendOutNegativeTestSteps = new SendOutNegativeTest_Steps();
+
+        this.walletServicesNegativeTestSteps = new WalletServicesNegativeTest_Steps();
+        this.walletServicesTransactionalSteps = new WalletServicesTransactional_Steps();
 
     }
-    private void initializeDriver(DriverType driverType) {
-        createDriver(driverType);
-    }
-
-
-    @BeforeMethod(alwaysRun = true)
-    public void setUpTests(){
-        getDriver().get(System.getProperty("homeUrl"));
-    }
-    @AfterMethod(alwaysRun = true)
-    public void clean(){
-        LoggingUtils.info("------>>>Test Ended<<<-------");
-
-    }
-
-    @AfterClass(alwaysRun = true)
-    public void tearDown () {
-        closeWebBrowser();
+    public void initWallet(){
+        this.loginWalletSteps = new Login();
+        this.cashInSteps = new Cash_In();
+        this.kwartaPadala = new Kwarta_Padala();
     }
 }

@@ -65,9 +65,12 @@ public class SendOut_Steps extends Base_Steps {
         scrollToElement(sendOutPageObjects.selectKYC());
         scrollDown(100);
         click(sendOutPageObjects.selectKYC(), "Select KYC Button");
+
         waitSleep(3000);
         scrollDown(100);
+
         waitSleep(5000);
+        scrollDown(100);
         searchReceiver();
         scrollToElement(sendOutPageObjects.sourceOfFund());
         type(sendOutPageObjects.sourceOfFund(), "Source of Fund field ", propertyReader.getproperty("source_of_fund"));
@@ -80,8 +83,13 @@ public class SendOut_Steps extends Base_Steps {
         click(sendOutPageObjects.confirmSendOutButton(), "Confirm SendOut Button");
         waitSleep(3000);
         //todo get value of kptn locator and post it to yaml file
+
         String  remoteSendoutKPTN = getText(sendOutPageObjects.kptnText());
         List<String> kptnValues = Collections.singletonList(remoteSendoutKPTN);
+
+//        String  kptnText = getText(sendOutPageObjects.kptnText());
+//        List<String> kptnValues = Collections.singletonList(kptnText);
+
         reader.writeRemoteKptnData(kptnValues);
         click(sendOutPageObjects.proceedToPrinting(), "Proceed to Printing");
         waitSleep(3000);
@@ -280,11 +288,10 @@ public class SendOut_Steps extends Base_Steps {
         waitSleep(2000);
         click(sendOutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
         if (isVisible(sendOutPageObjects.sendOutTransaction(), getText(sendOutPageObjects.sendOutTransaction()))) {
-            ExtentReporter.logPass("DS_TC_08", "Successfully Validated SendOut Domestic Page Navigation");
-            LoggingUtils.info("Successfully Navigate for SendOut Domestic Page ");
+            ExtentReporter.logPass("DS_TC_08", "Successfully Validate Submit SendOut Transaction");
         } else {
-            ExtentReporter.logFail("DS_TC_08", "Failed to Validate SendOut Domestic Page Navigation");
-            LoggingUtils.info("Failed to Validate SendOut Domestic Page Navigation ");
+            ExtentReporter.logFail("DS_TC_08", "Failed to Validate Submit SendOut Transaction");
+            Assert.fail("Validate Submit SendOut Transaction");
         }
     }
 
@@ -308,8 +315,7 @@ public class SendOut_Steps extends Base_Steps {
             click(sendOutPageObjects.cancelButtoninConfirmation(), "Cancel Button");
             waitSleep(3000);
             if (sendOutPageObjects.messageToReceiver().isEnabled()) {
-                ExtentReporter.logPass("DS_TC_10", "Successfully redirected to the SendOut Domestic Page");
-                LoggingUtils.info("Successfully redirected to the SendOut Domestic Page");
+                ExtentReporter.logPass("DS_TC_10", "Successfully redirected to the SendOut Domestic Page");;
             } else {
                 ExtentReporter.logFail("DS_TC_10", "Failed to redirect to the SendOut Domestic Page");
                 Assert.fail("Failed to redirect to the SendOut Domestic Page");

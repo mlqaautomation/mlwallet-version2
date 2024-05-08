@@ -11,9 +11,10 @@ public class Payout_Tests extends BaseTest{
         this.loginSteps.signInGoogle("teller");
         this.loginSteps.loginKpx("teller");
         if(this.homeSteps.isInHomePage()){
-            ExtentReporter.logPass("Login, Passed!!");
+            ExtentReporter.logPass("loginGoogle","Login, Passed!!");
         }
     }
+
     @Test(dependsOnMethods = "loginGoogle", priority = 1, description = "Successful domestic payout transaction")
     public void Payout_TC_01()throws Exception{
         if(this.homeSteps.isInHomePage()){
@@ -50,14 +51,15 @@ public class Payout_Tests extends BaseTest{
 
     }
     @Test(dependsOnMethods = "loginGoogle", priority = 5, description = "Invalid amount domestic payout transaction")
-    public void Payout_TC_05()throws Exception{
-        if(this.homeSteps.isInHomePage()){
+    public void Payout_TC_05()throws Exception {
+        if (this.homeSteps.isInHomePage()) {
             this.payoutSteps.navigatePayoutPage();
             this.payoutSteps.validateInvalidAmountDPT();
-
         }
-
     }
+
+
+
     @Test(dependsOnMethods = "loginGoogle", priority = 6, description = "Invalid amount remote domestic payout transaction")
     public void Payout_TC_06()throws Exception{
         if(this.homeSteps.isInHomePage()){
@@ -67,6 +69,7 @@ public class Payout_Tests extends BaseTest{
         }
 
     }
+
     @Test(dependsOnMethods = "loginGoogle", priority = 7, description = "Claimed domestic payout transaction")
     public void Payout_TC_07()throws Exception{
         if(this.homeSteps.isInHomePage()){

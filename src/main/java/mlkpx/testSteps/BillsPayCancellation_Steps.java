@@ -120,11 +120,15 @@ public class BillsPayCancellation_Steps extends Base_Steps{
             type(billsPayPageObjects.IRNum(), "KTPN Number", "343453453453");
             click(billsPayPageObjects.CancelPayment(), "Cancel Payment");
 
+
         if(isVisible(billsPayPageObjects.InvalidIRNum(), getText(billsPayPageObjects.InvalidIRNum()))){
             ExtentReporter.logPass("validate Cancelled BillsPay Invalid IR Number", "Successfully validate Cancelled BillsPay Invalid IR Number");
         }else{
             ExtentReporter.logFail("validate Cancelled BillsPay Invalid IR Number", "validate Cancelled BillsPay Invalid IR Number");
             Assert.fail("validate Cancelled BillsPay Invalid IR Number");
+
+            assertEqual(getText(billsPayPageObjects.InvalidIR()), "Please enter valid IR No.");
+
         }
     }
     public void validateCancelledBillsPayNoReason()throws Exception{

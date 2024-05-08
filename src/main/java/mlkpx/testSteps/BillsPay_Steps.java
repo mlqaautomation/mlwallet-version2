@@ -54,7 +54,7 @@ public class BillsPay_Steps extends Base_Steps{
             LoggingUtils.info("Bills Pay Confirmation");
             click(billsPayPageObjects.ReviewBillsPay(), "Reviewed Bills Payment Input");
             click(billsPayPageObjects.ConfirmSubmitBillsPay(), "Confirm Payment");
-            waitSleep(5000);
+            waitSleep(7000);
             assertEqual(getText(billsPayPageObjects.SuccessfulBillsPay()), "Bills Pay Successful");
             String kptnText = getText(billsPayPageObjects.kptnText());
             List<String> kptnValues = Collections.singletonList(kptnText);
@@ -137,7 +137,7 @@ public class BillsPay_Steps extends Base_Steps{
             LoggingUtils.info("Bills Pay Confirmation");
             click(billsPayPageObjects.ReviewBillsPay(), "Reviewed Bills Payment Input");
             click(billsPayPageObjects.ConfirmSubmitBillsPay(), "Confirm Payment");
-            waitSleep(5000);
+            waitSleep(7000);
             assertEqual(getText(billsPayPageObjects.SuccessfulBillsPay()), "Bills Pay Successful");
             String kptnText = getText(billsPayPageObjects.kptnText());
             List<String> kptnValues = Collections.singletonList(kptnText);
@@ -420,10 +420,5 @@ public class BillsPay_Steps extends Base_Steps{
             LoggingUtils.info("The maximum amount for payments is Php100,000.00. Please enter a lower amount.");
         }
     }
-
-
-
-
-
 
 }

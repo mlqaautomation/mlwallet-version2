@@ -18,7 +18,6 @@ public class WS_CashOut_Steps extends Base_Steps{
     }
     public void CO_TC_01()throws Exception{
         CO_TC_03();
-        click(wsCashOutPageObjects.cancelButtonInReceipt(),"Cancel Button Receipt");
     }
 
 //    public void CO_TC_02()throws Exception{
@@ -51,11 +50,12 @@ public class WS_CashOut_Steps extends Base_Steps{
         }
         click(wsCashOutPageObjects.proceedButtonToReceipt(),"Proceed To Printing");
         if(isVisible(wsCashOutPageObjects.transactionReceipt(), getText(wsCashOutPageObjects.transactionReceipt()))){
-            ExtentReporter.logPass("CO_TC_01", "Successfully Verify Transaction Receipt");
+            ExtentReporter.logPass("CO_TC_03", "Successfully Verify Transaction Receipt");
         }else{
-            ExtentReporter.logFail("CO_TC_01", "Failed to Verify Transaction Receipt");
+            ExtentReporter.logFail("CO_TC_03", "Failed to Verify Transaction Receipt");
             Assert.fail("Failed to Verify Transaction Receipt");
         }
+        click(wsCashOutPageObjects.cancelButtonInReceipt(),"Cancel Button Receipt");
     }
 
     public void CO_TC_04()throws Exception{

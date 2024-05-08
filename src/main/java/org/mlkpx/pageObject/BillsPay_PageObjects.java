@@ -291,31 +291,47 @@ public class BillsPay_PageObjects {
     }
     public WebElement CancelledRefNum(){return getDriver().findElement(By.xpath("//h5[contains(text(),'Bills Payment Cancelled')]"));
     }
-    public WebElement InvalidIRNum(){return getDriver().findElement(By.xpath("//*[text()='Please enter valid IR No.']"));
+
+    public WebElement InvalidIRNum() {
+        return getDriver().findElement(By.xpath("//*[text()='Please enter valid IR No.']"));
     }
-    public WebElement SuccessChanges(){return getDriver().findElement(By.xpath("//p[contains(text(),'Details have been successfully updated.')]"));
-    }
-    public WebElement NoEditChanges(){return getDriver().findElement(By.xpath("//h5[text()='No Changes Have Been Made']"));
-    }
-    public WebElement NoIRNum(){return getDriver().findElement(By.xpath("//small[contains(text(),'IR Number is required')]"));
-    }
-    public WebElement OnlyLetters(){return getDriver().findElement(By.xpath("//small[contains(text(),'Only letters A-Z, Ñ, - and . are allowed.')]"));
-    }
-    public WebElement NoReason(){return getDriver().findElement(By.xpath("//small[contains(text(),'Reason for Cancellation is required')]"));
-    }
-    public WebElement NoReasonChange(){return getDriver().findElement(By.xpath("//small[contains(text(),'Reason for Change is required.')]"));
-    }
-    public WebElement Page_h5(){
-        return getDriver().findElement(By.xpath("//h5[contains(text(),'No Transaction Found')]"));
-    }
-    public WebElement OKButton(){return getDriver().findElement(By.xpath("//button[normalize-space()='OK']"));
-    }
-    public WebElement ClickOption(){
-        return getDriver().findElement(By.cssSelector ( "[width='20']" ));
-    }
-    public WebElement ChooseOption(){
-        return getDriver().findElement(By.xpath( "(//*[@class=' css-26l3qy-menu']//img)[2]" ));
-    }
+
+        public WebElement InvalidIR () {
+            return getDriver().findElement(By.xpath("//small[contains(text(),'Please enter valid IR No.')]"));
+        }
+
+
+        public WebElement SuccessChanges () {
+            return getDriver().findElement(By.xpath("//p[contains(text(),'Details have been successfully updated.')]"));
+        }
+        public WebElement NoEditChanges () {
+            return getDriver().findElement(By.xpath("//h5[text()='No Changes Have Been Made']"));
+        }
+        public WebElement NoIRNum () {
+            return getDriver().findElement(By.xpath("//small[contains(text(),'IR Number is required')]"));
+        }
+        public WebElement OnlyLetters () {
+            return getDriver().findElement(By.xpath("//small[contains(text(),'Only letters A-Z, Ñ, - and . are allowed.')]"));
+        }
+        public WebElement NoReason () {
+            return getDriver().findElement(By.xpath("//small[contains(text(),'Reason for Cancellation is required')]"));
+        }
+        public WebElement NoReasonChange () {
+            return getDriver().findElement(By.xpath("//small[contains(text(),'Reason for Change is required.')]"));
+        }
+        public WebElement Page_h5 () {
+            return getDriver().findElement(By.xpath("//h5[contains(text(),'No Transaction Found')]"));
+        }
+        public WebElement OKButton () {
+            return getDriver().findElement(By.xpath("//button[normalize-space()='OK']"));
+        }
+        public WebElement ClickOption () {
+            return getDriver().findElement(By.cssSelector("[width='20']"));
+        }
+        public WebElement ChooseOption () {
+            return getDriver().findElement(By.xpath("(//*[@class=' css-26l3qy-menu']//img)[2]"));
+        }
+
 
 
 }

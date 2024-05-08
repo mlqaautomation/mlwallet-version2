@@ -22,6 +22,7 @@ public class Login_Steps extends Base_Steps {
             switchToPreviousTab();
         }
     }
+
     public void signInGoogleV2()throws Exception{
         // logging in google via clicking the email, this only happens when browser is not closed
         try{
