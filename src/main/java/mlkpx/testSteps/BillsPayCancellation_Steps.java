@@ -2,6 +2,8 @@ package mlkpx.testSteps;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
 
 import java.time.Duration;
@@ -25,8 +27,8 @@ public class BillsPayCancellation_Steps extends Base_Steps{
         click(billsPayPageObjects.BPCancellation(), "Bills Pay Cancellation Transaction");
         if(isVisible(billsPayPageObjects.BillsPayText(), getText(billsPayPageObjects.BillsPayText()))) {
             LoggingUtils.info("Navigated the BillsPay Cancellation page");
-//            String BillsPayKPTN = reader.getBillsPayKPTN(); // Call the getSendOutKPTN function
-//            type(billsPayPageObjects.RefNum(), "KTPN Number",BillsPayKPTN);
+            String BillsPayKPTN = reader.getBillsPayKPTN(); // Call the getSendOutKPTN function
+            type(billsPayPageObjects.RefNum(), "KTPN Number",BillsPayKPTN);
             click(billsPayPageObjects.SearchButton(), "Search Button");
         }
 
@@ -47,7 +49,8 @@ public class BillsPayCancellation_Steps extends Base_Steps{
         click(billsPayPageObjects.BPCancellation(), "Bills Pay Remote Cancellation Transaction");
         if(isVisible(billsPayPageObjects.BillsPayText(), getText(billsPayPageObjects.BillsPayText()))) {
             LoggingUtils.info("Navigated the BillsPay Cancellation page");
-            type(billsPayPageObjects.RefNum(), "KTPN Number","KBPUNBGCJMV");
+            String remoteBillsPayKPTN = reader.getRemoteBillsPayKPTN(); // Call the getSendOutKPTN function
+            type(billsPayPageObjects.RefNum(), "KTPN Number",remoteBillsPayKPTN);
             click(billsPayPageObjects.SearchButton(), "Search Button");
         }
 
@@ -114,11 +117,18 @@ public class BillsPayCancellation_Steps extends Base_Steps{
             type(billsPayPageObjects.RefNum(), "KTPN Number","KBPTLEFUPGI");
             click(billsPayPageObjects.SearchButton(), "Search Button");
         }
-
-        if(isVisible(billsPayPageObjects.BillsPayText(), getText(billsPayPageObjects.BillsPayText()))){
             type(billsPayPageObjects.IRNum(), "KTPN Number", "343453453453");
             click(billsPayPageObjects.CancelPayment(), "Cancel Payment");
+
+
+        if(isVisible(billsPayPageObjects.InvalidIRNum(), getText(billsPayPageObjects.InvalidIRNum()))){
+            ExtentReporter.logPass("validate Cancelled BillsPay Invalid IR Number", "Successfully validate Cancelled BillsPay Invalid IR Number");
+        }else{
+            ExtentReporter.logFail("validate Cancelled BillsPay Invalid IR Number", "validate Cancelled BillsPay Invalid IR Number");
+            Assert.fail("validate Cancelled BillsPay Invalid IR Number");
+
             assertEqual(getText(billsPayPageObjects.InvalidIR()), "Please enter valid IR No.");
+
         }
     }
     public void validateCancelledBillsPayNoReason()throws Exception{

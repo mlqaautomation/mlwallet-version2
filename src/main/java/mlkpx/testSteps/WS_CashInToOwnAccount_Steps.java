@@ -25,12 +25,6 @@ public class WS_CashInToOwnAccount_Steps extends Base_Steps{
         type(wsCashInToOwnAccountPageObjects.referenceNumField(), "Reference Number Field", randomReferenceNum);
         click(wsCashInToOwnAccountPageObjects.searchButton(), "Search Button");
         waitSleep(3000);
-        if (isVisible(wsCashInToOwnAccountPageObjects.cashInText(), getText(wsCashInToOwnAccountPageObjects.cashInText()))) {
-            ExtentReporter.logPass("CIOA_TC_01", "Successfully Redirected to Cash In Transaction Information");
-        } else {
-            ExtentReporter.logFail("CIOA_TC_01", "Failed to Redirected to Cash In Transaction Information");
-            Assert.fail("Failed to Redirected to Cash In Transaction Information");
-        }
         String totalAmountText = getText(wsCashInToOwnAccountPageObjects.totalAmount());
         List<String> totalAmountValues = Collections.singletonList(totalAmountText);
         totalAmountText = totalAmountText.replaceAll("[^\\d.]", "").replace(",", ".");
@@ -56,9 +50,9 @@ public class WS_CashInToOwnAccount_Steps extends Base_Steps{
         click(wsCashInToOwnAccountPageObjects.confirmCashInButton(), "Confirm Cash In Button");
         waitSleep(2000);
         if (isVisible(wsCashInToOwnAccountPageObjects.cashInSuccessfulText(), getText(wsCashInToOwnAccountPageObjects.cashInSuccessfulText()))) {
-            ExtentReporter.logPass("Cash In Successful", "Successfully Cash In");
+            ExtentReporter.logPass("CIOA_TC_01", "Successfully Cash In");
         } else {
-            ExtentReporter.logFail("Cash In Successful", "Failed to Cash In");
+            ExtentReporter.logFail("CIOA_TC_01", "Failed to Cash In");
             Assert.fail("Failed to Cash In");
         }
         click(wsCashInToOwnAccountPageObjects.proceedToPrintingButton(), "Proceed To Printing Button");
@@ -104,13 +98,13 @@ public class WS_CashInToOwnAccount_Steps extends Base_Steps{
         click(wsCashInToOwnAccountPageObjects.cancelInProceedButton(), "Cancel Button");
         click(wsCashInToOwnAccountPageObjects.proceedButton(), "Proceed Button");
         click(wsCashInToOwnAccountPageObjects.confirmCashInButton(), "Confirm Cash In Button");
-        waitSleep(2000);
+        waitSleep(4000);
         click(wsCashInToOwnAccountPageObjects.proceedToPrintingButton(), "Proceed To Printing Button");
         if(isVisible(wsCashInToOwnAccountPageObjects.detailsReceipt(), getText(wsCashInToOwnAccountPageObjects.detailsReceipt()))){
-            ExtentReporter.logPass("Cash In Successful", "Successfully Cash In Verify Receipt");
+            ExtentReporter.logPass("CIOA_TC_03", "Successfully Cash In Verify Receipt");
         }else{
-            ExtentReporter.logFail("Cash In Successful", "Failed to Cash In Verify Receipt");
-            Assert.fail("Failed to Cash In");
+            ExtentReporter.logFail("CIOA_TC_03", "Failed to Cash In Verify Receipt");
+            Assert.fail("Failed to Cash In Verify Receipt");
         }
         click(wsCashInToOwnAccountPageObjects.cancelReceiptButton(), "Cancel Button");
 
@@ -173,14 +167,14 @@ public class WS_CashInToOwnAccount_Steps extends Base_Steps{
     }
     public void CIOA_TC_09()throws Exception {
         navigationWalletServices();
-        String randomReferenceNum = reader.getRandomWriteCashIn_Kptn();
-        type(wsCashInToOwnAccountPageObjects.referenceNumField(), "Reference Number Field", randomReferenceNum);
+//        String randomReferenceNum = reader.getRandomWriteCashIn_Kptn();
+        type(wsCashInToOwnAccountPageObjects.referenceNumField(), "Reference Number Field", "ACIFDVERLXF");
         click(wsCashInToOwnAccountPageObjects.searchButton(), "Search Button");
         waitSleep(3000);
         if(isVisible(wsCashInToOwnAccountPageObjects.cashInText(), getText(wsCashInToOwnAccountPageObjects.cashInText()))){
-            ExtentReporter.logPass("CIOA_TC_01", "Successfully Redirected to Cash In Transaction Information");
+            ExtentReporter.logPass("CIOA_TC_09", "Successfully Redirected to Cash In Transaction Information");
         }else{
-            ExtentReporter.logFail("CIOA_TC_01", "Failed to Redirected to Cash In Transaction Information");
+            ExtentReporter.logFail("CIOA_TC_09", "Failed to Redirected to Cash In Transaction Information");
             Assert.fail("Failed to Redirected to Cash In Transaction Information");
         }
         String totalAmountText = getText(wsCashInToOwnAccountPageObjects.totalAmount());

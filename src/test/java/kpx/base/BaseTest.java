@@ -1,8 +1,6 @@
 package kpx.base;
 
 
-import kpx.actual.SendOutTransactional_Tests;
-
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 import mlkpx.testSteps.*;
@@ -56,10 +54,6 @@ public class BaseTest {
 
     protected Login loginWalletSteps;
     protected Cash_In cashInSteps;
-
-    protected WalletServicesNegativeTest_Steps walletServicesNegativeTestSteps;
-    protected WalletServicesTransactional_Steps walletServicesTransactionalSteps;
-
 
     protected Kwarta_Padala kwartaPadala;
     protected Cash_Out cashOut;
@@ -145,9 +139,6 @@ public class BaseTest {
 
         this.sendOutTransactionalSteps = new SendOutTransactional_Steps();
         this.sendOutNegativeTestSteps = new SendOutNegativeTest_Steps();
-
-        this.walletServicesNegativeTestSteps = new WalletServicesNegativeTest_Steps();
-        this.walletServicesTransactionalSteps = new WalletServicesTransactional_Steps();
 
     }
     public void initWallet(){
