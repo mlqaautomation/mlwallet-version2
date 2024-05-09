@@ -161,7 +161,7 @@ public class SendOut_Steps extends Base_Steps {
         type(sendOutPageObjects.r_FirstName(), "R_Firstname ", propertyReader.getproperty("MFirst_name"));
         type(sendOutPageObjects.r_MiddleName(), "R_Firstname ", propertyReader.getproperty("MFirst_name"));
         type(sendOutPageObjects.principalAmount(),"Principal Amount", propertyReader.getproperty("principalAmount"));
-        waitSleep(2000);
+        waitSleep(5000);
         click(sendOutPageObjects.submitSendOut(),"Submit Sendout Button");
         scrollDown(50);
         if(isVisible(sendOutPageObjects.receiversMaximumLettersDangerText(), getText(sendOutPageObjects.receiversMaximumLettersDangerText()))){

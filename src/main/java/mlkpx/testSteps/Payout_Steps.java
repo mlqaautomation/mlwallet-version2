@@ -70,29 +70,6 @@ public class Payout_Steps extends Base_Steps {
             List<String> payoutKPTNList = Collections.singletonList(sendoutKPTN);
             reader.writePayoutKptnData(payoutKPTNList);
 
-
-            if (payoutPageObjects.PayoutConfirm().isEnabled()) {
-//                try{
-                click(payoutPageObjects.ConfirmPayout(), "Click Confirm Payout");
-                if (payoutPageObjects.SuccessfulPay().getText().contains("Payout Successful")) {
-                    assertEqual(getText(payoutPageObjects.SuccessfulPay()), "Payout Successful");
-                    List<String> sendoutKPTNList = Collections.singletonList(sendoutKPTN);
-                    reader.writePayoutKptnData(sendoutKPTNList);
-                }
-//                    click(payoutPageObjects.proceedToPrinting(), "Proceed to Printing");
-//                    waitSleep(2000);
-//                    click(payoutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
-//                }catch (Exception e){
-//                    LoggingUtils.info("Payout Unsuccessful");
-//                    List<String> payoutKPTNList = Collections.singletonList(sendoutKPTN);
-//                    reader.writeKptnData(payoutKPTNList);
-//                    waitSleep(2000);
-//                }
-
-
-            }
-            click(payoutPageObjects.proceedToPrinting(), "Proceed to Printing");
-            click(payoutPageObjects.cancelButtoninReceipt(), "Cancel Button Receipt");
         }
     }
 

@@ -1,0 +1,239 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 536870912 bytes. Error detail: G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   This process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Zero Based Compressed Oops mode in which the Java heap is
+#     placed in the first 32GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3631), pid=21844, tid=13936
+#
+# JRE version:  (22.0.1+8) (build )
+# Java VM: OpenJDK 64-Bit Server VM (22.0.1+8-16, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -ea -Denv=sit -Dheadless=false -Dbrowser=chrome -DprojectBuildDir=C:\Users\MONC20248261\kpx-automation\target -DremoteDriver=false -DgridURL=http://192.168.12.61:4444/wd/hub -DtargetUrl=https://wanwan.mlhuillier.com/ -DhomeUrl=https://wanwan.mlhuillier.com/home -DdesiredPlatform -DdesiredBrowserVersion -Ddataproviderthreadcount=1 -DemailToken=vzfx lhji qtv3 b6yv wfff jrlo tqsi 63zl -Didea.test.cyclic.buffer.size=1048576 -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1.3\lib\idea_rt.jar=50895:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1.3\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 com.intellij.rt.testng.RemoteTestNGStarter -usedefaultlisteners false -socket50894 @w@C:\Users\MONC20248261\AppData\Local\Temp\idea_working_dirs_testng2.tmp -temp C:\Users\MONC20248261\AppData\Local\Temp\idea_testng2.tmp
+
+Host: Intel(R) Core(TM) i5-10400 CPU @ 2.90GHz, 12 cores, 31G,  Windows 11 , 64 bit Build 22621 (10.0.22621.3374)
+Time: Thu May  9 08:32:57 2024 Malay Peninsula Standard Time elapsed time: 0.032232 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000002acea0c91f0):  JavaThread "Unknown thread" [_thread_in_vm, id=13936, stack(0x000000e720f00000,0x000000e721000000) (1024K)]
+
+Stack: [0x000000e720f00000,0x000000e721000000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x6e2279]  (no source info available)
+V  [jvm.dll+0x874e33]  (no source info available)
+V  [jvm.dll+0x87725e]  (no source info available)
+V  [jvm.dll+0x877933]  (no source info available)
+V  [jvm.dll+0x27fd76]  (no source info available)
+V  [jvm.dll+0x6de915]  (no source info available)
+V  [jvm.dll+0x6d341a]  (no source info available)
+V  [jvm.dll+0x3589da]  (no source info available)
+V  [jvm.dll+0x360f06]  (no source info available)
+V  [jvm.dll+0x3b3e2e]  (no source info available)
+V  [jvm.dll+0x3b40d8]  (no source info available)
+V  [jvm.dll+0x32c59c]  (no source info available)
+V  [jvm.dll+0x32d158]  (no source info available)
+V  [jvm.dll+0x83ccdc]  (no source info available)
+V  [jvm.dll+0x3c0d71]  (no source info available)
+V  [jvm.dll+0x825ccc]  (no source info available)
+V  [jvm.dll+0x45b8fe]  (no source info available)
+V  [jvm.dll+0x45d781]  (no source info available)
+C  [jli.dll+0x52a3]  (no source info available)
+C  [ucrtbase.dll+0x29333]  (no source info available)
+C  [KERNEL32.DLL+0x1257d]  (no source info available)
+C  [ntdll.dll+0x5aa48]  (no source info available)
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ffbea5eb1c8, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+Total: 0
+
+Other Threads:
+  0x000002acf539fca0 WorkerThread "GC Thread#0"                     [id=8304, stack(0x000000e721000000,0x000000e721100000) (1024K)]
+  0x000002acecb235c0 ConcurrentGCThread "G1 Main Marker"            [id=21084, stack(0x000000e721100000,0x000000e721200000) (1024K)]
+  0x000002acecb23d80 WorkerThread "G1 Conc#0"                       [id=21764, stack(0x000000e721200000,0x000000e721300000) (1024K)]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffbe9d3f367]
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007ffbea66bcb8] Heap_lock - owner thread: 0x000002acea0c91f0
+
+Heap address: 0x0000000602800000, size: 8152 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 1.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+ CardTable entry size: 512
+ Card Set container configuration: InlinePtr #cards 4 size 8 Array Of Cards #cards 32 size 80 Howl #buckets 8 coarsen threshold 7372 Howl Bitmap #cards 1024 size 144 coarsen threshold 921 Card regions per heap region 1 cards per card region 8192
+
+Heap:
+ garbage-first heap   total reserved 8347648K, committed 0K, used 0K [0x0000000602800000, 0x0000000800000000)
+  region size 4096K, 0 young (0K), 0 survivors (0K)
+
+[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffbea13e429]
+GC Heap History (0 events):
+No events
+
+Dll operation events (1 events):
+Event: 0.027 Loaded shared library C:\Users\MONC20248261\.jdks\openjdk-22.0.1\bin\java.dll
+
+Deoptimization events (0 events):
+No events
+
+Classes loaded (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+ZGC Phase Switch (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff716570000 - 0x00007ff71657e000 	C:\Users\MONC20248261\.jdks\openjdk-22.0.1\bin\java.exe
+0x00007ffc77270000 - 0x00007ffc77486000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffc753e0000 - 0x00007ffc754a4000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffc74bc0000 - 0x00007ffc74f67000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffc74930000 - 0x00007ffc74a41000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffc70ce0000 - 0x00007ffc70cfb000 	C:\Users\MONC20248261\.jdks\openjdk-22.0.1\bin\VCRUNTIME140.dll
+0x00007ffc70cc0000 - 0x00007ffc70cd7000 	C:\Users\MONC20248261\.jdks\openjdk-22.0.1\bin\jli.dll
+0x00007ffc75770000 - 0x00007ffc7591e000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffc74610000 - 0x00007ffc74636000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffc75330000 - 0x00007ffc75359000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffc74810000 - 0x00007ffc74929000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffc74770000 - 0x00007ffc7480a000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffc5ca50000 - 0x00007ffc5cce3000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.3235_none_270f74e173860f98\COMCTL32.dll
+0x00007ffc76670000 - 0x00007ffc76717000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffc754b0000 - 0x00007ffc754e1000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ffc64260000 - 0x00007ffc64462000 	C:\WINDOWS\system32\tmumh\20019\AddOn\8.55.0.1288\TmUmEvt64.dll
+0x00007ffc750a0000 - 0x00007ffc750a8000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ffc76720000 - 0x00007ffc767d2000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffc76fc0000 - 0x00007ffc77068000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffc74f70000 - 0x00007ffc74f98000 	C:\WINDOWS\System32\bcrypt.dll
+0x00007ffc754f0000 - 0x00007ffc75605000 	C:\WINDOWS\System32\RPCRT4.dll
+0x0000000064ad0000 - 0x0000000064c67000 	C:\WINDOWS\system32\tmumh\20019\TmMon\2.9.0.1084\tmmon64.dll
+0x00007ffc70d50000 - 0x00007ffc70d5c000 	C:\Users\MONC20248261\.jdks\openjdk-22.0.1\bin\vcruntime140_1.dll
+0x00007ffc52ce0000 - 0x00007ffc52d6e000 	C:\Users\MONC20248261\.jdks\openjdk-22.0.1\bin\msvcp140.dll
+0x00007ffbe9a00000 - 0x00007ffbea747000 	C:\Users\MONC20248261\.jdks\openjdk-22.0.1\bin\server\jvm.dll
+0x00007ffc75100000 - 0x00007ffc75171000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffc73d60000 - 0x00007ffc73dad000 	C:\WINDOWS\SYSTEM32\POWRPROF.dll
+0x00007ffc5c920000 - 0x00007ffc5c954000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffc6ea20000 - 0x00007ffc6ea2a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffc73cf0000 - 0x00007ffc73d03000 	C:\WINDOWS\SYSTEM32\UMPDC.dll
+0x00007ffc73530000 - 0x00007ffc73548000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ffc70cb0000 - 0x00007ffc70cba000 	C:\Users\MONC20248261\.jdks\openjdk-22.0.1\bin\jimage.dll
+0x00007ffc61b90000 - 0x00007ffc61dc3000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ffc75a00000 - 0x00007ffc75d88000 	C:\WINDOWS\System32\combase.dll
+0x00007ffc75920000 - 0x00007ffc759f7000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x00007ffc614d0000 - 0x00007ffc61502000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ffc74590000 - 0x00007ffc74609000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffc70ca0000 - 0x00007ffc70caf000 	C:\Users\MONC20248261\.jdks\openjdk-22.0.1\bin\instrument.dll
+0x00007ffc70c50000 - 0x00007ffc70c6e000 	C:\Users\MONC20248261\.jdks\openjdk-22.0.1\bin\java.dll
+0x00007ffc75e10000 - 0x00007ffc7666c000 	C:\WINDOWS\System32\SHELL32.dll
+0x00007ffc76800000 - 0x00007ffc769a5000 	C:\WINDOWS\System32\ole32.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Users\MONC20248261\.jdks\openjdk-22.0.1\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.3235_none_270f74e173860f98;C:\WINDOWS\system32\tmumh\20019\AddOn\8.55.0.1288;C:\WINDOWS\system32\tmumh\20019\TmMon\2.9.0.1084;C:\Users\MONC20248261\.jdks\openjdk-22.0.1\bin\server
+
+VM Arguments:
+jvm_args: -ea -Denv=sit -Dheadless=false -Dbrowser=chrome -DprojectBuildDir=C:\Users\MONC20248261\kpx-automation\target -DremoteDriver=false -DgridURL=http://192.168.12.61:4444/wd/hub -DtargetUrl=https://wanwan.mlhuillier.com/ -DhomeUrl=https://wanwan.mlhuillier.com/home -DdesiredPlatform -DdesiredBrowserVersion -Ddataproviderthreadcount=1 -DemailToken=vzfx lhji qtv3 b6yv wfff jrlo tqsi 63zl -Didea.test.cyclic.buffer.size=1048576 -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1.3\lib\idea_rt.jar=50895:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1.3\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 
+java_command: com.intellij.rt.testng.RemoteTestNGStarter -usedefaultlisteners false -socket50894 @w@C:\Users\MONC20248261\AppData\Local\Temp\idea_working_dirs_testng2.tmp -temp C:\Users\MONC20248261\AppData\Local\Temp\idea_testng2.tmp
+java_class_path (initial): C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1.3\lib\idea_rt.jar;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1.3\plugins\testng\lib\testng-rt.jar;C:\Users\MONC20248261\kpx-automation\target\test-classes;C:\Users\MONC20248261\kpx-automation\target\classes;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-java\4.16.1\selenium-java-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-api\4.16.1\selenium-api-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-chrome-driver\4.16.1\selenium-chrome-driver-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\com\google\auto\service\auto-service-annotations\1.1.1\auto-service-annotations-1.1.1.jar;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-chromium-driver\4.16.1\selenium-chromium-driver-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-json\4.16.1\selenium-json-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-manager\4.16.1\selenium-manager-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v118\4.16.1\selenium-devtools-v118-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v119\4.16.1\selenium-devtools-v119-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v120\4.16.1\selenium-devtools-v120-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v85\4.16.1\selenium-devtools-v85-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-edge-driver\4.16.1\selenium-edge-driver-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-firefox-driver\4.16.1\selenium-firefox-driver-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-http\4.16.1\selenium-http-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\dev\failsafe\failsafe\3.3.2\failsafe-3.3.2.jar;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-ie-driver\4.16.1\selenium-ie-driver-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-remote-driver\4.16.1\selenium-remote-driver-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\com\google\guava\guava\32.1.2-jre\guava-32.1.2-jre.jar;C:\Users\MONC20248261\.m2\repository\com\google\guava\failureaccess\1.0.1\failureaccess-1.0.1.jar;C:\Users\MONC20248261\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\MONC20248261\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\MONC20248261\.m2\repository\org\checkerframework\checker-qual\3.33.0\checker-qual-3.33.0.jar;C:\Users\MONC20248261\.m2\repository\com\google\errorprone\error_prone_annotations\2.18.0\error_prone_annotations-2.18.0.jar;C:\Users\MONC20248261\.m2\repository\com\google\j2objc\j2objc-annotations\2.8\j2objc-annotations-2.8.jar;C:\Users\MONC20248261\.m2\repository\io\opentelemetry\opentelemetry-api\1.28.0\opentelemetry-api-1.28.0.jar;C:\Users\MONC20248261\.m2\repository\io\opentelemetry\opentelemetry-context\1.28.0\opentelemetry-context-1.28.0.jar;C:\Users\MONC20248261\.m2\repository\io\opentelemetry\opentelemetry-exporter-logging\1.28.0\opentelemetry-exporter-logging-1.28.0.jar;C:\Users\MONC20248261\.m2\repository\io\opentelemetry\opentelemetry-sdk-metrics\1.28.0\opentelemetry-sdk-metrics-1.28.0.jar;C:\Users\MONC20248261\.m2\repository\io\opentelemetry\opentelemetry-extension-incubator\1.28.0-alpha\opentelemetry-extension-incubator-1.28.0-alpha.jar;C:\Users\MONC20248261\.m2\repository\io\opentelemetry\opentelemetry-sdk-logs\1.28.0\opentelemetry-sdk-logs-1.28.0.jar;C:\Users\MONC20248261\.m2\repository\io\opentelemetry\opentelemetry-sdk-common\1.28.0\opentelemetry-sdk-common-1.28.0.jar;C:\Users\MONC20248261\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure-spi\1.28.0\opentelemetry-sdk-extension-autoconfigure-spi-1.28.0.jar;C:\Users\MONC20248261\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure\1.28.0\opentelemetry-sdk-extension-autoconfigure-1.28.0.jar;C:\Users\MONC20248261\.m2\repository\io\opentelemetry\opentelemetry-api-events\1.28.0-alpha\opentelemetry-api-events-1.28.0-alpha.jar;C:\Users\MONC20248261\.m2\repository\io\opentelemetry\opentelemetry-sdk-trace\1.28.0\opentelemetry-sdk-trace-1.28.0.jar;C:\Users\MONC20248261\.m2\repository\io\opentelemetry\opentelemetry-sdk\1.28.0\opentelemetry-sdk-1.28.0.jar;C:\Users\MONC20248261\.m2\repository\io\opentelemetry\opentelemetry-semconv\1.28.0-alpha\opentelemetry-semconv-1.28.0-alpha.jar;C:\Users\MONC20248261\.m2\repository\net\bytebuddy\byte-buddy\1.14.5\byte-buddy-1.14.5.jar;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-os\4.16.1\selenium-os-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\org\apache\commons\commons-exec\1.3\commons-exec-1.3.jar;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-safari-driver\4.16.1\selenium-safari-driver-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\org\seleniumhq\selenium\selenium-support\4.16.1\selenium-support-4.16.1.jar;C:\Users\MONC20248261\.m2\repository\io\github\bonigarcia\webdrivermanager\5.6.4\webdrivermanager-5.6.4.jar;C:\Users\MONC20248261\.m2\repository\com\google\code\gson\gson\2.10.1\gson-2.10.1.jar;C:\Users\MONC20248261\.m2\repository\com\github\docker-java\docker-java\3.3.4\docker-java-3.3.4.jar;C:\Users\MONC20248261\.m2\repository\com\github\docker-java\docker-java-core\3.3.4\docker-java-core-3.3.4.jar;C:\Users\MONC20248261\.m2\repository\com\github\docker-java\docker-java-api\3.3.4\docker-java-api-3.3.4.jar;C:\Users\MONC20248261\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.10.3\jackson-annotations-2.10.3.jar;C:\Users\MONC20248261\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.10.3\jackson-databind-2.10.3.jar;C:\Users\MONC20248261\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.10.3\jackson-core-2.10.3.jar;C:\Users\MONC20248261\.m2\repository\org\bouncycastle\bcpkix-jdk18on\1.76\bcpkix-jdk18on-1.76.jar;C:\Users\MONC20248261\.m2\repository\org\bouncycastle\bcprov-jdk18on\1.76\bcprov-jdk18on-1.76.jar;C:\Users\MONC20248261\.m2\repository\org\bouncycastle\bcutil-jdk18on\1.76\bcutil-jdk18on-1.76.jar;C:\Users\MONC20248261\.m2\repository\org\slf4j\jcl-over-slf4j\1.7.30\jcl-over-slf4j-1.7.30.jar;C:\Users\MONC20248261\.m2\repository\com\github\docker-java\docker-java-transport-httpclient5\3.3.4\docker-java-transport-httpclient5-3.3.4.jar;C:\Users\MONC20248261\.m2\repository\com\github\docker-java\docker-java-transport\3.3.4\docker-java-transport-3.3.4.jar;C:\Users\MONC20248261\.m2\repository\net\java\dev\jna\jna\5.13.0\jna-5.13.0.jar;C:\Users\MONC20248261\.m2\repository\org\brotli\dec\0.1.2\dec-0.1.2.jar;C:\Users\MONC20248261\.m2\repository\org\apache\commons\commons-lang3\3.14.0\commons-lang3-3.14.0.jar;C:\Users\MONC20248261\.m2\repository\org\apache\commons\commons-compress\1.26.0\commons-compress-1.26.0.jar;C:\Users\MONC20248261\.m2\repository\commons-io\commons-io\2.15.1\commons-io-2.15.1.jar;C:\Users\MONC20248261\.m2\repository\org\apache\httpcomponents\client5\httpclient5\5.2.1\httpclient5-5.2.1.jar;C:\Users\MONC20248261\.m2\repository\org\apache\httpcomponents\core5\httpcore5\5.2\httpcore5-5.2.jar;C:\Users\MONC20248261\.m2\repository\org\apache\httpcomponents\core5\httpcore5-h2\5.2\httpcore5-h2-5.2.jar;C:\Users\MONC20248261\.m2\repository\org\testng\testng\7.9.0\testng-7.9.0.jar;C:\Users\MONC20248261\.m2\repository\com\beust\jcommander\1.82\jcommander-1.82.jar;C:\Users\MONC20248261\.m2\repository\org\webjars\jquery\3.7.1\jquery-3.7.1.jar;C:\Users\MONC20248261\.m2\repository\org\apache\poi\poi\4.1.1\poi-4.1.1.jar;C:\Users\MONC20248261\.m2\repository\commons-codec\commons-codec\1.13\commons-codec-1.13.jar;C:\Users\MONC20248261\.m2\repository\org\apache\commons\commons-collections4\4.4\commons-collections4-4.4.jar;C:\Users\MONC20248261\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\MONC20248261\.m2\repository\org\apache\poi\poi-ooxml\4.1.1\poi-ooxml-4.1.1.jar;C:\Users\MONC20248261\.m2\repository\org\apache\poi\poi-ooxml-schemas\4.1.1\poi-ooxml-schemas-4.1.1.jar;C:\Users\MONC20248261\.m2\repository\org\apache\xmlbeans\xmlbeans\3.1.0\xmlbeans-3.1.0.jar;C:\Users\MONC20248261\.m2\repository\com\github\virtuald\curvesapi\1.06\curvesapi-1.06.jar;C:\Users\MONC20248261\.m2\repository\org\slf4j\slf4j-api\2.0.12\slf4j-api-2.0.12.jar;C:\Users\MONC20248261\.m2\repository\ch\qos\logback\logback-classic\1.4.14\logback-classic-1.4.14.jar;C:\Users\MONC20248261\.m2\repository\ch\qos\logback\logback-core\1.4.14\logback-core-1.4.14.jar;C:\Users\MONC20248261\.m2\repository\org\slf4j\slf4j-jdk14\1.7.25\slf4j-jdk14-1.7.25.jar;C:\Users\MONC20248261\.m2\repository\com\aventstack\extentreports\5.0.9\extentreports-5.0.9.jar;C:\Users\MONC20248261\.m2\repository\io\reactivex\rxjava3\rxjava\3.0.4\rxjava-3.0.4.jar;C:\Users\MONC20248261\.m2\repository\org\reactivestreams\reactive-streams\1.0.3\reactive-streams-1.0.3.jar;C:\Users\MONC20248261\.m2\repository\org\freemarker\freemarker\2.3.30\freemarker-2.3.30.jar;C:\Users\MONC20248261\.m2\repository\org\jboss\aerogear\aerogear-otp-java\1.0.0\aerogear-otp-java-1.0.0.jar;C:\Users\MONC20248261\.m2\repository\org\yaml\snakeyaml\2.1\snakeyaml-2.1.jar;C:\Users\MONC20248261\.m2\repository\org\projectlombok\lombok\1.18.24\lombok-1.18.24.jar;C:\Users\MONC20248261\.m2\repository\io\appium\java-client\9.0.0\java-client-9.0.0.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 3                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 10                                        {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 4194304                                   {product} {ergonomic}
+   size_t InitialHeapSize                          = 536870912                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 8547991552                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 4194304                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5839372                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122909434                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122909434                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 8547991552                             {manageable} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags foldmultilines=false
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Environment Variables:
+JAVA_HOME=C:\jdk-11.0.2
+PATH=C:\Python312\Scripts\;C:\Python312\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\jdk-11.0.2\bin;C:\Program Files\Git\cmd;C:\Android\Sdk\tools;C:\Android\Sdk\tools\bin;C:\Android\Sdk\platforms;C:\Android\Sdk\platform-tools;C:\apache-maven-3.9.3\bin;C:\Program Files\PuTTY\;C:\Program Files\Crucial\Crucial Storage Executive;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Users\MONC20248261\AppData\Local\Microsoft\WindowsApps;C:\Users\MONC20248261\AppData\Roaming\npm
+USERNAME=MONC20248261
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 165 Stepping 5, GenuineIntel
+TMP=C:\Users\MONC20~1\AppData\Local\Temp
+TEMP=C:\Users\MONC20~1\AppData\Local\Temp
+
+
+
+
+Periodic native trim disabled
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 11 , 64 bit Build 22621 (10.0.22621.3374)
+OS uptime: 0 days 15:23 hours
+Hyper-V role detected
+
+CPU: total 12 (initial active 12) (6 cores per cpu, 2 threads per core) family 6 model 165 stepping 5 microcode 0xe0, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, fma, vzeroupper, clflush, clflushopt, hv, rdtscp, f16c
+Processor Information for all 12 processors :
+  Max Mhz: 2904, Current Mhz: 2904, Mhz Limit: 2904
+
+Memory: 4k page, system-wide physical 32607M (4815M free)
+TotalPageFile size 49194M (AvailPageFile size 752M)
+current process WorkingSet (physical memory assigned to process): 15M, peak: 15M
+current process commit charge ("private bytes"): 67M, peak: 579M
+
+vm_info: OpenJDK 64-Bit Server VM (22.0.1+8-16) for windows-amd64 JRE (22.0.1+8-16), built on 2024-03-12T10:33:16Z by "mach5one" with MS VC++ 17.6 (VS2022)
+
+END.

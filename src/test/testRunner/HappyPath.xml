@@ -12,10 +12,10 @@
             </classes>
         </parameter>
     </test>
-    <test name="KPX-WALLET SERVICE TRANSACTIONAL">
+    <test name="KPX-WALLET SERVICES Negative Test">
         <parameter name="type" value="web">
             <classes>
-                <class name="kpx.actual.WalletServicesTransactional_Tests"> </class>
+                <class name="kpx.actual.WalletServicesNegativeTest_Tests"> </class>
             </classes>
         </parameter>
     </test>

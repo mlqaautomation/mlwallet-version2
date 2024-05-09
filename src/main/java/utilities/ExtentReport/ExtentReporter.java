@@ -88,19 +88,29 @@ public class ExtentReporter implements ITestListener {
         }
     }
     private static synchronized String captureScreenshot(String testName) {
-        TakesScreenshot screenshotDriver = (TakesScreenshot) getWebDriver();
-        File src = screenshotDriver.getScreenshotAs(OutputType.FILE);
-        String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
-        String screenshotPath = getScreenshotDirectoryPath() + File.separator + testName + "_" + timestamp + ".png";
-        File screenshotFile = new File(screenshotPath);
+        String platform = getPlatform();
+        Object driver = null;
 
-        try {
-            FileUtils.copyFile(src, screenshotFile);
-            return screenshotFile.getAbsolutePath();
-        } catch (IOException e) {
-            LoggingUtils.error(e.getMessage());
+        if (platform.equals("mobile")) {
+            driver = getAndroidDriver();
+        } else if (platform.equals("web")) {
+            driver = getDriver();
         }
 
+        if (driver instanceof TakesScreenshot) {
+            TakesScreenshot screenshotDriver = (TakesScreenshot) driver;
+            File src = screenshotDriver.getScreenshotAs(OutputType.FILE);
+            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
+            String screenshotPath = getScreenshotDirectoryPath() + File.separator + testName + "_" + timestamp + ".png";
+            File screenshotFile = new File(screenshotPath);
+
+            try {
+                FileUtils.copyFile(src, screenshotFile);
+                return screenshotFile.getAbsolutePath();
+            } catch (IOException e) {
+                LoggingUtils.error(e.getMessage());
+            }
+        }
 
         return null;
     }
