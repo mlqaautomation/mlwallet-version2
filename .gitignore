@@ -11,6 +11,8 @@ target/
 *.iws
 *.iml
 *.ipr
+*.json
+*.log
 
 ### Eclipse ###
 .apt_generated
@@ -51,4 +53,5 @@ src/test/java/resources/testData.properties
 *.json
 .idea/
 target/
+
 
