@@ -104,212 +104,190 @@ public class yamlReader {
 
 
 
-            public String getBillsPayKPTN () {
-                try {
-                    List<String> billsPayKptn = (List<String>) yamlData.get("billsPayKTPN");
+    public String getBillsPayKPTN () {
+        try {
+            List<String> billsPayKptn = (List<String>) yamlData.get("billsPayKTPN");
 
-                    if (billsPayKptn == null || billsPayKptn.isEmpty()) {
-                        System.out.println("No BillsPay KPTN values available.");
-                        return null;
-                    }
-
-                    int randomIndex = new Random().nextInt(billsPayKptn.size());
-                    String randomBillsPayKptn = billsPayKptn.get(randomIndex); //Randomly selected send out KPTN directly from the list
-                    billsPayKptn.remove(randomIndex);
-                    saveYamlData();
-                    return randomBillsPayKptn;
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return null;
-                }
+            if (billsPayKptn == null || billsPayKptn.isEmpty()) {
+                System.out.println("No BillsPay KPTN values available.");
+                return null;
             }
 
-            public String getRemoteBillsPayKPTN () {
-                try {
-                    List<String> RemoteBillsPayKptnList = (List<String>) yamlData.get("remoteBillsPayKTPN");
-
-                    if (RemoteBillsPayKptnList == null || RemoteBillsPayKptnList.isEmpty()) {
-                        System.out.println("No Remote BillsPay KPTN values available.");
-                        return null;
-                    }
-
-                    int randomIndex = new Random().nextInt(RemoteBillsPayKptnList.size());
-                    String randomBillsPayKptn = RemoteBillsPayKptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
-                    saveYamlData();
-                    return randomBillsPayKptn;
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return null;
-                }
-            }
-
-            public String getSendOutKPTN () {
-                try {
-                    List<String> sendOutKptnList = (List<String>) yamlData.get("sendOutKPTN");
-
-                    if (sendOutKptnList == null || sendOutKptnList.isEmpty()) {
-                        System.out.println("No send out KPTN values available.");
-                        return null;
-                    }
-
-
-                    int randomIndex = new Random().nextInt(sendOutKptnList.size());
-                    String randomSendOutKptn = sendOutKptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
-                    sendOutKptnList.remove(randomIndex);
-                    saveYamlData();
-                    return randomSendOutKptn;
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return null;
-                }
-            }
-
-            public String getPayoutKPTN () {
-                try {
-                    List<String> sendOutKptnList = (List<String>) yamlData.get("sendOutKPTN");
-                    List<String> payoutKptnList = (List<String>) yamlData.get("payoutKPTN");
-
-                    if (sendOutKptnList == null || sendOutKptnList.isEmpty()) {
-                        System.out.println("No Sendout KPTN values available.");
-                        return null;
-                    }
-
-//            int randomIndex = new Random().nextInt(kptnList.size());
-//            String randomKPTN = kptnList.remove(randomIndex); // Remove the randomly selected KPTN directly from the list
-//            saveYamlData();
-//            return randomKPTN;
-
-                    int randomIndex = new Random().nextInt(sendOutKptnList.size());
-                    String randomSendOutKptn = sendOutKptnList.get(randomIndex); // Randomly selected send out KPTN directly from the list
-                    sendOutKptnList.remove(randomIndex);
-
-                    if (payoutKptnList == null) {
-                        payoutKptnList = new ArrayList<>();
-                        yamlData.put("payoutKPTN", payoutKptnList);
-                    }
-                    payoutKptnList.add(randomSendOutKptn);
-
-                    saveYamlData();
-                    return randomSendOutKptn;
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return null;
-                }
-            }
-            public String getSuccessPayoutKPTN () {
-                try {
-                    List<String> kptnList = (List<String>) yamlData.get("payoutKPTN");
-
-                    if (kptnList == null || kptnList.isEmpty()) {
-                        System.out.println("No payoutKPTN values available.");
-                        return null;
-                    }
-
-                    int randomIndex = new Random().nextInt(kptnList.size());
-                    String randomKPTN = kptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
-                    saveYamlData();
-                    return randomKPTN;
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return null;
-                }
-            }
-            public String getSuccessRemotePayoutKPTN () {
-                try {
-                    List<String> kptnList = (List<String>) yamlData.get("remotePayoutKPTN");
-
-                    if (kptnList == null || kptnList.isEmpty()) {
-                        System.out.println("No payoutKPTN values available.");
-                        return null;
-                    }
-
-                    int randomIndex = new Random().nextInt(kptnList.size());
-                    String randomKPTN = kptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
-                    saveYamlData();
-                    return randomKPTN;
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return null;
-                }
-            }
-            public String getRemotePayoutKPTN () {
-                try {
-                    List<String> kptnList = (List<String>) yamlData.get("remotePayoutKPTN");
-
-                    if (kptnList == null || kptnList.isEmpty()) {
-                        System.out.println("No payoutKPTN values available.");
-                        return null;
-                    }
-//            int randomIndex = new Random().nextInt(kptnList.size());
-//            String randomKPTN = kptnList.remove(randomIndex); // Remove the randomly selected KPTN directly from the list
-//            saveYamlData();
-//            return randomKPTN;
-
-                    int randomIndex = new Random().nextInt(kptnList.size());
-                    String randomKPTN = kptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
-                    kptnList.remove(randomIndex);
-                    saveYamlData();
-                    return randomKPTN;
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return null;
-                }
-            }
-            public String getRemoteKPTN () {
-                try {
-                    List<String> remoteKptnList = (List<String>) yamlData.get("remoteSendoutKPTN");
-
-                    if (remoteKptnList == null || remoteKptnList.isEmpty()) {
-                        System.out.println("No remote KPTN values available.");
-                        return null;
-                    }
-
-//            int randomIndex = new Random().nextInt(remoteKptnList.size());
-//            String randomRemoteKptn = remoteKptnList.remove(randomIndex);
-//            saveYamlData();
-//            return randomRemoteKptn;
-
-                    int randomIndex = new Random().nextInt(remoteKptnList.size());
-                    String randomRemoteKptn = remoteKptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
-                    remoteKptnList.remove(randomIndex);
-                    saveYamlData();
-                    return randomRemoteKptn;
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return null;
-                }
-            }
-            public String getRandomCashOutReferenceNum () {
-                try {
-                    List<String> cashOutReferenceNumList = (List<String>) yamlData.get("CashOutKTPN");
-                    if (cashOutReferenceNumList == null || cashOutReferenceNumList.isEmpty()) {
-                        System.out.println("No Random Cash Out Reference Number available.");
-                        return null;
-                    }
-                    int randomIndex = new Random().nextInt(cashOutReferenceNumList.size());
-                    String randomCashOutReferenceNum = cashOutReferenceNumList.get(randomIndex);
-                    cashOutReferenceNumList.remove(randomIndex);
-                    saveYamlData();
-                    return randomCashOutReferenceNum;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return null;
-                }
+            int randomIndex = new Random().nextInt(billsPayKptn.size());
+            String randomBillsPayKptn = billsPayKptn.get(randomIndex); //Randomly selected send out KPTN directly from the list
+            billsPayKptn.remove(randomIndex);
+            saveYamlData();
+            return randomBillsPayKptn;
 
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
-    public String getRandomCashOutReferenceNum() {
+
+    public String getRemoteBillsPayKPTN () {
+        try {
+            List<String> RemoteBillsPayKptnList = (List<String>) yamlData.get("remoteBillsPayKTPN");
+
+            if (RemoteBillsPayKptnList == null || RemoteBillsPayKptnList.isEmpty()) {
+                System.out.println("No Remote BillsPay KPTN values available.");
+                return null;
+            }
+
+            int randomIndex = new Random().nextInt(RemoteBillsPayKptnList.size());
+            String randomBillsPayKptn = RemoteBillsPayKptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
+            saveYamlData();
+            return randomBillsPayKptn;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public String getSendOutKPTN () {
+        try {
+            List<String> sendOutKptnList = (List<String>) yamlData.get("sendOutKPTN");
+
+            if (sendOutKptnList == null || sendOutKptnList.isEmpty()) {
+                System.out.println("No send out KPTN values available.");
+                return null;
+            }
+
+
+            int randomIndex = new Random().nextInt(sendOutKptnList.size());
+            String randomSendOutKptn = sendOutKptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
+            sendOutKptnList.remove(randomIndex);
+            saveYamlData();
+            return randomSendOutKptn;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public String getPayoutKPTN () {
+        try {
+            List<String> sendOutKptnList = (List<String>) yamlData.get("sendOutKPTN");
+            List<String> payoutKptnList = (List<String>) yamlData.get("payoutKPTN");
+
+            if (sendOutKptnList == null || sendOutKptnList.isEmpty()) {
+                System.out.println("No PayOut KPTN values available.");
+                return null;
+            }
+
+//            int randomIndex = new Random().nextInt(kptnList.size());
+//            String randomKPTN = kptnList.remove(randomIndex); // Remove the randomly selected KPTN directly from the list
+//            saveYamlData();
+//            return randomKPTN;
+
+            int randomIndex = new Random().nextInt(sendOutKptnList.size());
+            String randomSendOutKptn = sendOutKptnList.get(randomIndex); // Randomly selected send out KPTN directly from the list
+            sendOutKptnList.remove(randomIndex);
+
+            if (payoutKptnList == null) {
+                payoutKptnList = new ArrayList<>();
+                yamlData.put("payoutKPTN", payoutKptnList);
+            }
+            payoutKptnList.add(randomSendOutKptn);
+
+            saveYamlData();
+            return randomSendOutKptn;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public String getSuccessPayoutKPTN () {
+        try {
+            List<String> kptnList = (List<String>) yamlData.get("payoutKPTN");
+
+            if (kptnList == null || kptnList.isEmpty()) {
+                System.out.println("No payoutKPTN values available.");
+                return null;
+            }
+
+            int randomIndex = new Random().nextInt(kptnList.size());
+            String randomKPTN = kptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
+            saveYamlData();
+            return randomKPTN;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public String getSuccessRemotePayoutKPTN () {
+        try {
+            List<String> kptnList = (List<String>) yamlData.get("remotePayoutKPTN");
+
+            if (kptnList == null || kptnList.isEmpty()) {
+                System.out.println("No payoutKPTN values available.");
+                return null;
+            }
+
+            int randomIndex = new Random().nextInt(kptnList.size());
+            String randomKPTN = kptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
+            saveYamlData();
+            return randomKPTN;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public String getRemotePayoutKPTN () {
+        try {
+            List<String> kptnList = (List<String>) yamlData.get("remotePayoutKPTN");
+
+            if (kptnList == null || kptnList.isEmpty()) {
+                System.out.println("No payoutKPTN values available.");
+                return null;
+            }
+//            int randomIndex = new Random().nextInt(kptnList.size());
+//            String randomKPTN = kptnList.remove(randomIndex); // Remove the randomly selected KPTN directly from the list
+//            saveYamlData();
+//            return randomKPTN;
+
+            int randomIndex = new Random().nextInt(kptnList.size());
+            String randomKPTN = kptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
+            kptnList.remove(randomIndex);
+            saveYamlData();
+            return randomKPTN;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public String getRemoteKPTN () {
+        try {
+            List<String> remoteKptnList = (List<String>) yamlData.get("remoteSendoutKPTN");
+
+            if (remoteKptnList == null || remoteKptnList.isEmpty()) {
+                System.out.println("No remote KPTN values available.");
+                return null;
+            }
+
+//            int randomIndex = new Random().nextInt(remoteKptnList.size());
+//            String randomRemoteKptn = remoteKptnList.remove(randomIndex);
+//            saveYamlData();
+//            return randomRemoteKptn;
+
+            int randomIndex = new Random().nextInt(remoteKptnList.size());
+            String randomRemoteKptn = remoteKptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
+            remoteKptnList.remove(randomIndex);
+            saveYamlData();
+            return randomRemoteKptn;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public String getRandomCashOutReferenceNum () {
         try {
             List<String> cashOutReferenceNumList = (List<String>) yamlData.get("CashOutKTPN");
             if (cashOutReferenceNumList == null || cashOutReferenceNumList.isEmpty()) {
@@ -326,24 +304,8 @@ public class yamlReader {
             return null;
         }
     }
-    public String getRandomReferenceNum() {
-        try {
-            List<String> referenceNumList = (List<String>) yamlData.get("referenceNum");
-            if (referenceNumList == null || referenceNumList.isEmpty()) {
-                System.out.println("No Reference Number available.");
-                return null;
-            }
-            int randomIndex = new Random().nextInt(referenceNumList.size());
-            String randomReferenceNum = referenceNumList.get(randomIndex);
-            referenceNumList.remove(randomIndex);
-            saveYamlData();
-            return randomReferenceNum;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-    public String getRandomKPPReferenceNum() {
+
+    public String getRandomKPPReferenceNum () {
         try {
             List<String> kppReferenceNumList = (List<String>) yamlData.get("KwartaPadalaKTPN");
             if (kppReferenceNumList == null || kppReferenceNumList.isEmpty()) {
@@ -360,202 +322,175 @@ public class yamlReader {
             return null;
         }
     }
-    public String getCIAReprintKPTN() {
+    public String getCIAReprintKPTN () {
         try {
             List<String> CIAKptnList = (List<String>) yamlData.get("CIAReprintKPTN");
 
             if (CIAKptnList == null || CIAKptnList.isEmpty()) {
                 System.out.println("No send out KPTN values available.");
                 return null;
-
             }
 
-            public String getRandomKPPReferenceNum () {
-                try {
-                    List<String> kppReferenceNumList = (List<String>) yamlData.get("KwartaPadalaKTPN");
-                    if (kppReferenceNumList == null || kppReferenceNumList.isEmpty()) {
-                        System.out.println("No KPPP Reference Number available.");
-                        return null;
-                    }
-                    int randomIndex = new Random().nextInt(kppReferenceNumList.size());
-                    String randomKPPReferenceNum = kppReferenceNumList.get(randomIndex);
-                    kppReferenceNumList.remove(randomIndex);
-                    saveYamlData();
-                    return randomKPPReferenceNum;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return null;
+
+            int randomIndex = new Random().nextInt(CIAKptnList.size());
+            String randomSendOutKptn = CIAKptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
+            CIAKptnList.remove(randomIndex);
+            saveYamlData();
+            return randomSendOutKptn;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public String getKPReprintKPTN () {
+        try {
+            List<String> KPKptnList = (List<String>) yamlData.get("KPReprintKPTN");
+
+            if (KPKptnList == null || KPKptnList.isEmpty()) {
+                System.out.println("No send out KPTN values available.");
+                return null;
+            }
+
+
+            int randomIndex = new Random().nextInt(KPKptnList.size());
+            String randomSendOutKptn = KPKptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
+            KPKptnList.remove(randomIndex);
+            saveYamlData();
+            return randomSendOutKptn;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    private void saveYamlData () {
+        try {
+            Yaml yaml = new Yaml();
+            Writer writer = new FileWriter(yamlFileName);
+            yaml.dump(yamlData, writer);
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void writeKptnData (List < String > values) {
+        try {
+            Yaml yaml = new Yaml();
+            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
+            Map<String, Object> yamlData = yaml.load(fileInputStream);
+
+            if (yamlData.containsKey("sendOutKPTN")) {
+                List<String> existingValues = (List<String>) yamlData.get("sendOutKPTN");
+                existingValues.addAll(values);
+            } else {
+                yamlData.put("sendOutKPTN", values);
+            }
+
+            FileWriter writer = new FileWriter(yamlFileName);
+            yaml.dump(yamlData, writer);
+            LoggingUtils.info(values + " saved to file");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void writeRemoteKptnData (List < String > values) {
+        try {
+            Yaml yaml = new Yaml();
+            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
+            Map<String, Object> yamlData = yaml.load(fileInputStream);
+
+            if (yamlData.containsKey("remoteSendoutKPTN")) {
+                List<String> existingValues = (List<String>) yamlData.get("remoteSendoutKPTN");
+                existingValues.addAll(values);
+            } else {
+                yamlData.put("remoteSendoutKPTN", values);
+            }
+
+            FileWriter writer = new FileWriter(yamlFileName);
+            yaml.dump(yamlData, writer);
+            LoggingUtils.info(values + " saved to file");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void writePayoutKptnData (List < String > values) {
+        try {
+            Yaml yaml = new Yaml();
+            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
+            Map<String, Object> yamlData = yaml.load(fileInputStream);
+
+            if (yamlData.containsKey("payoutKPTN")) {
+                List<String> existingValues = (List<String>) yamlData.get("payoutKPTN");
+                existingValues.addAll(values);
+            } else {
+                yamlData.put("payoutKPTN", values);
+            }
+
+            FileWriter writer = new FileWriter(yamlFileName);
+            yaml.dump(yamlData, writer);
+            LoggingUtils.info(values + " saved to file");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeRemotePayoutKptnData (List < String > values) {
+        try {
+            Yaml yaml = new Yaml();
+            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
+            Map<String, Object> yamlData = yaml.load(fileInputStream);
+
+            if (yamlData.containsKey("remotePayoutKPTN")) {
+                List<String> existingValues = (List<String>) yamlData.get("remotePayoutKPTN");
+                existingValues.addAll(values);
+            } else {
+                yamlData.put("remotePayoutKPTN", values);
+            }
+
+            FileWriter writer = new FileWriter(yamlFileName);
+            yaml.dump(yamlData, writer);
+            LoggingUtils.info(values + " saved to file");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void writeBillsPayKptnData (List < String > values) {
+        try {
+            Yaml yaml = new Yaml();
+            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
+            Map<String, Object> yamlData = yaml.load(fileInputStream);
+
+            if (yamlData.containsKey("billsPayKTPN")) {
+                List<String> existingValues = (List<String>) yamlData.get("billsPayKTPN");
+                for (String value : values) {
+                    existingValues.add(value.replace(" ", ""));
                 }
-            }
-            public String getCIAReprintKPTN () {
-                try {
-                    List<String> CIAKptnList = (List<String>) yamlData.get("CIAReprintKPTN");
-
-                    if (CIAKptnList == null || CIAKptnList.isEmpty()) {
-                        System.out.println("No send out KPTN values available.");
-                        return null;
-                    }
-
-
-                    int randomIndex = new Random().nextInt(CIAKptnList.size());
-                    String randomSendOutKptn = CIAKptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
-                    CIAKptnList.remove(randomIndex);
-                    saveYamlData();
-                    return randomSendOutKptn;
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return null;
+            } else {
+                List<String> trimmedValues = new ArrayList<>();
+                for (String value : values) {
+                    trimmedValues.add(value.replace(" ", ""));
                 }
+                yamlData.put("billsPayKTPN", trimmedValues);
             }
-            public String getKPReprintKPTN () {
-                try {
-                    List<String> KPKptnList = (List<String>) yamlData.get("KPReprintKPTN");
+            FileWriter writer = new FileWriter(yamlFileName);
+            yaml.dump(yamlData, writer);
+            LoggingUtils.info(values + " saved to file");
+            writer.close();
 
-                    if (KPKptnList == null || KPKptnList.isEmpty()) {
-                        System.out.println("No send out KPTN values available.");
-                        return null;
-                    }
-
-
-                    int randomIndex = new Random().nextInt(KPKptnList.size());
-                    String randomSendOutKptn = KPKptnList.get(randomIndex); //Randomly selected send out KPTN directly from the list
-                    KPKptnList.remove(randomIndex);
-                    saveYamlData();
-                    return randomSendOutKptn;
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return null;
-                }
-            }
-            private void saveYamlData () {
-                try {
-                    Yaml yaml = new Yaml();
-                    Writer writer = new FileWriter(yamlFileName);
-                    yaml.dump(yamlData, writer);
-                    writer.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            public void writeKptnData (List < String > values) {
-                try {
-                    Yaml yaml = new Yaml();
-                    FileInputStream fileInputStream = new FileInputStream(yamlFileName);
-                    Map<String, Object> yamlData = yaml.load(fileInputStream);
-
-                    if (yamlData.containsKey("sendOutKPTN")) {
-                        List<String> existingValues = (List<String>) yamlData.get("sendOutKPTN");
-                        existingValues.addAll(values);
-                    } else {
-                        yamlData.put("sendOutKPTN", values);
-                    }
-
-                    FileWriter writer = new FileWriter(yamlFileName);
-                    yaml.dump(yamlData, writer);
-                    LoggingUtils.info(values + " saved to file");
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            public void writeRemoteKptnData (List < String > values) {
-                try {
-                    Yaml yaml = new Yaml();
-                    FileInputStream fileInputStream = new FileInputStream(yamlFileName);
-                    Map<String, Object> yamlData = yaml.load(fileInputStream);
-
-                    if (yamlData.containsKey("remoteSendoutKPTN")) {
-                        List<String> existingValues = (List<String>) yamlData.get("remoteSendoutKPTN");
-                        existingValues.addAll(values);
-                    } else {
-                        yamlData.put("remoteSendoutKPTN", values);
-                    }
-
-                    FileWriter writer = new FileWriter(yamlFileName);
-                    yaml.dump(yamlData, writer);
-                    LoggingUtils.info(values + " saved to file");
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            public void writePayoutKptnData (List < String > values) {
-                try {
-                    Yaml yaml = new Yaml();
-                    FileInputStream fileInputStream = new FileInputStream(yamlFileName);
-                    Map<String, Object> yamlData = yaml.load(fileInputStream);
-
-                    if (yamlData.containsKey("payoutKPTN")) {
-                        List<String> existingValues = (List<String>) yamlData.get("payoutKPTN");
-                        existingValues.addAll(values);
-                    } else {
-                        yamlData.put("payoutKPTN", values);
-                    }
-
-                    FileWriter writer = new FileWriter(yamlFileName);
-                    yaml.dump(yamlData, writer);
-                    LoggingUtils.info(values + " saved to file");
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            public void writeRemotePayoutKptnData (List < String > values) {
-                try {
-                    Yaml yaml = new Yaml();
-                    FileInputStream fileInputStream = new FileInputStream(yamlFileName);
-                    Map<String, Object> yamlData = yaml.load(fileInputStream);
-
-                    if (yamlData.containsKey("remotePayoutKPTN")) {
-                        List<String> existingValues = (List<String>) yamlData.get("remotePayoutKPTN");
-                        existingValues.addAll(values);
-                    } else {
-                        yamlData.put("remotePayoutKPTN", values);
-                    }
-
-                    FileWriter writer = new FileWriter(yamlFileName);
-                    yaml.dump(yamlData, writer);
-                    LoggingUtils.info(values + " saved to file");
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            public void writeBillsPayKptnData (List < String > values) {
-                try {
-                    Yaml yaml = new Yaml();
-                    FileInputStream fileInputStream = new FileInputStream(yamlFileName);
-                    Map<String, Object> yamlData = yaml.load(fileInputStream);
-
-                    if (yamlData.containsKey("billsPayKTPN")) {
-                        List<String> existingValues = (List<String>) yamlData.get("billsPayKTPN");
-                        for (String value : values) {
-                            existingValues.add(value.replace(" ", ""));
-                        }
-                    } else {
-                        List<String> trimmedValues = new ArrayList<>();
-                        for (String value : values) {
-                            trimmedValues.add(value.replace(" ", ""));
-                        }
-                        yamlData.put("billsPayKTPN", trimmedValues);
-                    }
-                    FileWriter writer = new FileWriter(yamlFileName);
-                    yaml.dump(yamlData, writer);
-                    LoggingUtils.info(values + " saved to file");
-                    writer.close();
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            public void writeRemoteBillsPayKptnData (List < String > values) {
-                try {
-                    Yaml yaml = new Yaml();
-                    FileInputStream fileInputStream = new FileInputStream(yamlFileName);
-                    Map<String, Object> yamlData = yaml.load(fileInputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void writeRemoteBillsPayKptnData (List < String > values) {
+        try {
+            Yaml yaml = new Yaml();
+            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
+            Map<String, Object> yamlData = yaml.load(fileInputStream);
 
 //            if (yamlData.containsKey("remoteBillsPayKTPN")) {
 //                List<String> existingValues = (List<String>) yamlData.get("remoteBillsPayKTPN");
@@ -563,196 +498,49 @@ public class yamlReader {
 //            } else {
 //                yamlData.put("remoteBillsPayKTPN", values);
 //            }
-                    if (yamlData.containsKey("remoteBillsPayKTPN")) {
-                        List<String> existingValues = (List<String>) yamlData.get("remoteBillsPayKTPN");
-                        for (String value : values) {
-                            existingValues.add(value.replace(" ", ""));
-                        }
-                    } else {
-                        List<String> trimmedValues = new ArrayList<>();
-                        for (String value : values) {
-                            trimmedValues.add(value.replace(" ", ""));
-                        }
-                        yamlData.put("remoteBillsPayKTPN", trimmedValues);
-                    }
-
-                    FileWriter writer = new FileWriter(yamlFileName);
-                    yaml.dump(yamlData, writer);
-                    LoggingUtils.info(values + " saved to file");
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+            if (yamlData.containsKey("remoteBillsPayKTPN")) {
+                List<String> existingValues = (List<String>) yamlData.get("remoteBillsPayKTPN");
+                for (String value : values) {
+                    existingValues.add(value.replace(" ", ""));
                 }
-            }
-            public void writeTotalAmountData (List < String > values) {
-                try {
-                    Yaml yaml = new Yaml();
-                    FileInputStream fileInputStream = new FileInputStream(yamlFileName);
-                    Map<String, Object> yamlData = yaml.load(fileInputStream);
-
-                    if (yamlData.containsKey("totalAmount")) {
-                        List<String> existingValues = (List<String>) yamlData.get("totalAmount");
-                        existingValues.addAll(values);
-                    } else {
-                        yamlData.put("totalAmount", values);
-                    }
-
-                    FileWriter writer = new FileWriter(yamlFileName);
-                    yaml.dump(yamlData, writer);
-                    LoggingUtils.info(values + " saved to file");
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+            } else {
+                List<String> trimmedValues = new ArrayList<>();
+                for (String value : values) {
+                    trimmedValues.add(value.replace(" ", ""));
                 }
-            }
-            public void writeTenderAmountData (List < String > values) {
-                try {
-                    Yaml yaml = new Yaml();
-                    FileInputStream fileInputStream = new FileInputStream(yamlFileName);
-                    Map<String, Object> yamlData = yaml.load(fileInputStream);
-
-                    if (yamlData.containsKey("tenderAmount")) {
-                        List<String> existingValues = (List<String>) yamlData.get("tenderAmount");
-                        existingValues.addAll(values);
-                    } else {
-                        yamlData.put("tenderAmount", values);
-                    }
-
-                    FileWriter writer = new FileWriter(yamlFileName);
-                    yaml.dump(yamlData, writer);
-                    LoggingUtils.info(values + " saved to file");
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            public void writeKPPrintKTPN (List < String > values) {
-                try {
-                    Yaml yaml = new Yaml();
-                    FileInputStream fileInputStream = new FileInputStream(yamlFileName);
-                    Map<String, Object> yamlData = yaml.load(fileInputStream);
-
-                    if (yamlData.containsKey("KPReprintKPTN")) {
-                        List<String> existingValues = (List<String>) yamlData.get("KPReprintKPTN");
-                        existingValues.addAll(values);
-                    } else {
-                        yamlData.put("KPReprintKPTN", values);
-                    }
-
-                    FileWriter writer = new FileWriter(yamlFileName);
-                    yaml.dump(yamlData, writer);
-                    LoggingUtils.info(values + " saved to file");
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            public void writeCIAPrintKTPN (List < String > values) {
-                try {
-                    Yaml yaml = new Yaml();
-                    FileInputStream fileInputStream = new FileInputStream(yamlFileName);
-                    Map<String, Object> yamlData = yaml.load(fileInputStream);
-
-                    if (yamlData.containsKey("CIAReprintKPTN")) {
-                        List<String> existingValues = (List<String>) yamlData.get("CIAReprintKPTN");
-                        existingValues.addAll(values);
-                    } else {
-                        yamlData.put("CIAReprintKPTN", values);
-                    }
-
-                    FileWriter writer = new FileWriter(yamlFileName);
-                    yaml.dump(yamlData, writer);
-                    LoggingUtils.info(values + " saved to file");
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                yamlData.put("remoteBillsPayKTPN", trimmedValues);
             }
 
-            public void writeKP_Kptn (List < String > values) {
-                try {
-                    Yaml yaml = new Yaml();
-                    FileInputStream fileInputStream = new FileInputStream(yamlFileName);
-                    Map<String, Object> yamlData = yaml.load(fileInputStream);
-
-                    // Check if yamlData is null or empty
-                    if (yamlData == null) {
-                        yamlData = new HashMap<>();
-                    }
-
-                    if (yamlData.containsKey("KwartaPadalaKTPN")) {
-                        List<String> existingValues = (List<String>) yamlData.get("KwartaPadalaKTPN");
-                        for (String value : values) {
-                            String trimmedValue = value.replace("Ref. No:", "").trim();
-                            existingValues.add(trimmedValue);
-                            LoggingUtils.info(trimmedValue + " saved to file"); // Update the logging statement
-                        }
-                    } else {
-                        List<String> trimmedValues = new ArrayList<>();
-                        for (String value : values) {
-                            String trimmedValue = value.replace("Ref. No:", "").trim();
-                            trimmedValues.add(trimmedValue);
-                            LoggingUtils.info(trimmedValue + " saved to file"); // Update the logging statement
-                        }
-                        yamlData.put("KwartaPadalaKTPN", trimmedValues);
-                    }
-
-                    FileWriter writer = new FileWriter(yamlFileName);
-                    yaml.dump(yamlData, writer);
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            public void writeCashOut_Kptn (List < String > values) {
-                try {
-                    Yaml yaml = new Yaml();
-                    FileInputStream fileInputStream = new FileInputStream(yamlFileName);
-                    Map<String, Object> yamlData = yaml.load(fileInputStream);
-
-                    // Check if yamlData is null or empty
-                    if (yamlData == null) {
-                        yamlData = new HashMap<>();
-                    }
-
-                    if (yamlData.containsKey("CashOutKTPN")) {
-                        List<String> existingValues = (List<String>) yamlData.get("CashOutKTPN");
-                        for (String value : values) {
-                            String trimmedValue = value.replace("KPTN:", "").trim();
-                            existingValues.add(trimmedValue);
-                            LoggingUtils.info(trimmedValue + " saved to file"); // Update the logging statement
-                        }
-                    } else {
-                        List<String> trimmedValues = new ArrayList<>();
-                        for (String value : values) {
-                            String trimmedValue = value.replace("KPTN:", "").trim();
-                            trimmedValues.add(trimmedValue);
-                            LoggingUtils.info(trimmedValue + " saved to file"); // Update the logging statement
-                        }
-                        yamlData.put("CashOutKTPN", trimmedValues);
-                    }
-
-                    FileWriter writer = new FileWriter(yamlFileName);
-                    yaml.dump(yamlData, writer);
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-
-            public void writeCashIn_Kptn (List < String > values) {
-
-                FileWriter writer = new FileWriter(yamlFileName);
-                yaml.dump(yamlData, writer);
-                LoggingUtils.info(values + " saved to file");
-                writer.close();
-            } catch(IOException e){
-                e.printStackTrace();
-            }
+            FileWriter writer = new FileWriter(yamlFileName);
+            yaml.dump(yamlData, writer);
+            LoggingUtils.info(values + " saved to file");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
-    public void writeTenderAmountData(List<String> values) {
+    public void writeTotalAmountData (List < String > values) {
+        try {
+            Yaml yaml = new Yaml();
+            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
+            Map<String, Object> yamlData = yaml.load(fileInputStream);
+
+            if (yamlData.containsKey("totalAmount")) {
+                List<String> existingValues = (List<String>) yamlData.get("totalAmount");
+                existingValues.addAll(values);
+            } else {
+                yamlData.put("totalAmount", values);
+            }
+
+            FileWriter writer = new FileWriter(yamlFileName);
+            yaml.dump(yamlData, writer);
+            LoggingUtils.info(values + " saved to file");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void writeTenderAmountData (List < String > values) {
         try {
             Yaml yaml = new Yaml();
             FileInputStream fileInputStream = new FileInputStream(yamlFileName);
@@ -773,7 +561,7 @@ public class yamlReader {
             e.printStackTrace();
         }
     }
-    public void writeKPPrintKTPN(List<String> values) {
+    public void writeKPPrintKTPN (List < String > values) {
         try {
             Yaml yaml = new Yaml();
             FileInputStream fileInputStream = new FileInputStream(yamlFileName);
@@ -794,7 +582,7 @@ public class yamlReader {
             e.printStackTrace();
         }
     }
-    public void writeCIAPrintKTPN(List<String> values) {
+    public void writeCIAPrintKTPN (List < String > values) {
         try {
             Yaml yaml = new Yaml();
             FileInputStream fileInputStream = new FileInputStream(yamlFileName);
@@ -815,50 +603,8 @@ public class yamlReader {
             e.printStackTrace();
         }
     }
-    public void writeCIOPrintKTPN(List<String> values) {
-        try {
-            Yaml yaml = new Yaml();
-            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
-            Map<String, Object> yamlData = yaml.load(fileInputStream);
 
-            if (yamlData.containsKey("CIOReprintKPTN")) {
-                List<String> existingValues = (List<String>) yamlData.get("CIOReprintKPTN");
-                existingValues.addAll(values);
-            } else {
-                yamlData.put("CIOReprintKPTN", values);
-            }
-
-            FileWriter writer = new FileWriter(yamlFileName);
-            yaml.dump(yamlData, writer);
-            LoggingUtils.info(values + " saved to file");
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public void writeCOPrintKTPN(List<String> values) {
-        try {
-            Yaml yaml = new Yaml();
-            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
-            Map<String, Object> yamlData = yaml.load(fileInputStream);
-
-            if (yamlData.containsKey("COReprintKPTN")) {
-                List<String> existingValues = (List<String>) yamlData.get("COReprintKPTN");
-                existingValues.addAll(values);
-            } else {
-                yamlData.put("COReprintKPTN", values);
-            }
-
-            FileWriter writer = new FileWriter(yamlFileName);
-            yaml.dump(yamlData, writer);
-            LoggingUtils.info(values + " saved to file");
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public void writeCashIn_Kptn(List<String> values) {
-
+    public void writeKP_Kptn (List < String > values) {
         try {
             Yaml yaml = new Yaml();
             FileInputStream fileInputStream = new FileInputStream(yamlFileName);
@@ -869,13 +615,82 @@ public class yamlReader {
                 yamlData = new HashMap<>();
             }
 
+            if (yamlData.containsKey("KwartaPadalaKTPN")) {
+                List<String> existingValues = (List<String>) yamlData.get("KwartaPadalaKTPN");
+                for (String value : values) {
+                    String trimmedValue = value.replace("Ref. No:", "").trim();
+                    existingValues.add(trimmedValue);
+                    LoggingUtils.info(trimmedValue + " saved to file"); // Update the logging statement
+                }
+            } else {
+                List<String> trimmedValues = new ArrayList<>();
+                for (String value : values) {
+                    String trimmedValue = value.replace("Ref. No:", "").trim();
+                    trimmedValues.add(trimmedValue);
+                    LoggingUtils.info(trimmedValue + " saved to file"); // Update the logging statement
+                }
+                yamlData.put("KwartaPadalaKTPN", trimmedValues);
+            }
+
+            FileWriter writer = new FileWriter(yamlFileName);
+            yaml.dump(yamlData, writer);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void writeCashOut_Kptn (List < String > values) {
+        try {
+            Yaml yaml = new Yaml();
+            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
+            Map<String, Object> yamlData = yaml.load(fileInputStream);
+
+            // Check if yamlData is null or empty
+            if (yamlData == null) {
+                yamlData = new HashMap<>();
+            }
+
+            if (yamlData.containsKey("CashOutKTPN")) {
+                List<String> existingValues = (List<String>) yamlData.get("CashOutKTPN");
+                for (String value : values) {
+                    String trimmedValue = value.replace("KPTN:", "").trim();
+                    existingValues.add(trimmedValue);
+                    LoggingUtils.info(trimmedValue + " saved to file"); // Update the logging statement
+                }
+            } else {
+                List<String> trimmedValues = new ArrayList<>();
+                for (String value : values) {
+                    String trimmedValue = value.replace("KPTN:", "").trim();
+                    trimmedValues.add(trimmedValue);
+                    LoggingUtils.info(trimmedValue + " saved to file"); // Update the logging statement
+                }
+                yamlData.put("CashOutKTPN", trimmedValues);
+            }
+
+            FileWriter writer = new FileWriter(yamlFileName);
+            yaml.dump(yamlData, writer);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeCashIn_Kptn (List < String > values) {
+        try {
+            Yaml yaml = new Yaml();
+            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
+            Map<String, Object> yamlData = yaml.load(fileInputStream);
+            // Check if yamlData is null or empty
+            if (yamlData == null) {
+                yamlData = new HashMap<>();
+            }
             if (yamlData.containsKey("CashInKTPN")) {
                 List<String> existingValues = (List<String>) yamlData.get("CashInKTPN");
+
                 existingValues.addAll(values);
             } else {
                 yamlData.put("CashInKTPN", values);
             }
-
             FileWriter writer = new FileWriter(yamlFileName);
             yaml.dump(yamlData, writer);
             LoggingUtils.info(values + " saved to file");
@@ -886,40 +701,7 @@ public class yamlReader {
     }
 
 
-            public String getRandomWriteCashIn_Kptn () {
-                try {
-                    List<String> referenceNumList = (List<String>) yamlData.get("CashInKTPN");
-                    if (referenceNumList == null || referenceNumList.isEmpty()) {
-                        System.out.println("No Cash In KPTN available.");
-                        return null;
-                    }
-                    int randomIndex = new Random().nextInt(referenceNumList.size());
-                    String randomWriteCashIn_Kptn = referenceNumList.get(randomIndex);
-                    referenceNumList.remove(randomIndex);
-                    saveYamlData();
-                    return randomWriteCashIn_Kptn;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return null;
-
-                }
-            }
-            public String getAccessKey () {
-                return (String) yamlData.get("AccessKey");
-            }
-        }
-
-
-
-
-            FileWriter writer = new FileWriter(yamlFileName);
-            yaml.dump(yamlData, writer);
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public String getRandomWriteCashIn_Kptn() {
+    public String getRandomWriteCashIn_Kptn () {
         try {
             List<String> referenceNumList = (List<String>) yamlData.get("CashInKTPN");
             if (referenceNumList == null || referenceNumList.isEmpty()) {
@@ -934,10 +716,10 @@ public class yamlReader {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+
         }
     }
-    public String getAccessKey() {
+    public String getAccessKey () {
         return (String) yamlData.get("AccessKey");
     }
 }
-
