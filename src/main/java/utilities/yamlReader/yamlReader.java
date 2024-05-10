@@ -173,7 +173,7 @@ public class yamlReader {
                     List<String> payoutKptnList = (List<String>) yamlData.get("payoutKPTN");
 
                     if (sendOutKptnList == null || sendOutKptnList.isEmpty()) {
-                        System.out.println("No PayOut KPTN values available.");
+                        System.out.println("No Sendout KPTN values available.");
                         return null;
                     }
 
