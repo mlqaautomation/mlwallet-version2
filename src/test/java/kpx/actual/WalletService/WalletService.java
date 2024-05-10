@@ -19,6 +19,7 @@ public class WalletService extends BaseTest {
     public void loginTest(){
         loginWalletSteps.loginWallet();
     }
+<<<<<<< HEAD
     @Test(dependsOnMethods="loginTest" ,description = "Test to get cash in KPTN")
     public void cashIn(){
         cashInSteps.cashIn();
@@ -32,5 +33,25 @@ public class WalletService extends BaseTest {
     public void cashOut(){
         cashOut.cashOut();
     }
+=======
+    @Test(dependsOnMethods="loginTest" ,priority = 1, description = "Test to get cash in KPTN")
+    public void cashIn(){
+        cashInSteps.cashIn();
+    }
+
+//    @Test(dependsOnMethods="loginTest", priority = 2 ,description = "Test to get CashOut KPTN")
+//    public void cashOut(){
+//        cashOut.cashOut();
+//    }
+//
+//    @Test(dependsOnMethods="loginTest", priority = 3 ,description = "Test to get KwartaPadala KPTN")
+//    public void kwartaPadala(){
+//        kwartaPadala.kwartaPadala();
+//    }
+
+
+
+
+>>>>>>> 1c9a93753132099d4225c0db7d78e4bcd06d8243
 }
 

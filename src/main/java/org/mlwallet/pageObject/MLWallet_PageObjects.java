@@ -85,6 +85,9 @@ public class MLWallet_PageObjects extends AppiumDriverManager{
     public WebElement selectRecipient_button(){
         return driver.findElement(AppiumBy.ByAccessibilityId.accessibilityId("Select Recipient"));
     }
+    public WebElement noMiddleName_button(){
+        return driver.findElement(By.xpath("//android.widget.ImageView"));
+    }
     public WebElement selectPayment_Wallet(){
         return driver.findElement(By.xpath("//android.view.ViewGroup[@resource-id='391CJJ']"));
     }

@@ -13,7 +13,9 @@ public class Kwarta_Padala extends Base_Steps{
         mobileGeneralMethod.waitSleep(5000);
         mobileGeneralMethod.tap(mlWalletPageObjects.firstRecipient_kp(), "First Recipient");
         mobileGeneralMethod.tap(mlWalletPageObjects.selectRecipient_button(), "Select Recipient");
-        mobileGeneralMethod.tap(mlWalletPageObjects.next_btn(), "Next Button");
+        mobileGeneralMethod.waitSleep(2000);
+        mobileGeneralMethod.tap(mlWalletPageObjects.noMiddleName_button(), "No MiddleName");
+        mobileGeneralMethod.tap(mlWalletPageObjects.next_next(), "Next Button");
         mobileGeneralMethod.type(mlWalletPageObjects.amountEditText(), "Amount Edit Text", "100");
         mobileGeneralMethod.tap(mlWalletPageObjects.next_btn(), "Next Button");
         mobileGeneralMethod.tap(mlWalletPageObjects.selectPayment_Wallet(), "Wallet Payment");
