@@ -55,6 +55,7 @@ public class BaseTest {
     protected Login loginWalletSteps;
     protected Cash_In cashInSteps;
 
+
     protected Kwarta_Padala kwartaPadala;
     protected Cash_Out cashOut;
 
@@ -139,6 +140,7 @@ public class BaseTest {
 
         this.sendOutTransactionalSteps = new SendOutTransactional_Steps();
         this.sendOutNegativeTestSteps = new SendOutNegativeTest_Steps();
+
 
     }
     public void initWallet(){

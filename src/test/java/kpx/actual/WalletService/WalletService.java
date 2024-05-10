@@ -19,6 +19,7 @@ public class WalletService extends BaseTest {
     public void loginTest(){
         loginWalletSteps.loginWallet();
     }
+
     @Test(dependsOnMethods="loginTest" ,description = "Test to get cash in KPTN")
     public void cashIn(){
         cashInSteps.cashIn();
@@ -32,5 +33,6 @@ public class WalletService extends BaseTest {
     public void cashOut(){
         cashOut.cashOut();
     }
+
 }
 

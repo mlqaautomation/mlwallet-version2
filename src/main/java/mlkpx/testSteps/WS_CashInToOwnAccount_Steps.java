@@ -60,7 +60,7 @@ public class WS_CashInToOwnAccount_Steps extends Base_Steps{
         click(wsCashInToOwnAccountPageObjects.cancelReceiptButton(), "Cancel Button");
 
     }
-//    public void CIOA_TC_02()throws Exception{
+    //    public void CIOA_TC_02()throws Exception{
 //        QRCODE
 //    }
     public void CIOA_TC_03()throws Exception{
@@ -138,7 +138,7 @@ public class WS_CashInToOwnAccount_Steps extends Base_Steps{
             Assert.fail("Failed to  validate invalid mobile number");
         }
     }
-//    public void CIOA_TC_06()throws Exception{
+    //    public void CIOA_TC_06()throws Exception{
 //      QRCODE
 //    }
     public void CIOA_TC_07()throws Exception {
