@@ -24,7 +24,7 @@ public class AppiumDriverManager {
         service.start();
         LoggingUtils.info("Starting Service----");
         UiAutomator2Options options = new UiAutomator2Options()
-                .setDeviceName("emulator-5554")
+                .setDeviceName("RRCW901MQLF")
                 .setApp(Apk.API_DEMOS_APK.toString())
                 .autoGrantPermissions()
                 .setAutomationName("uiautomator2")

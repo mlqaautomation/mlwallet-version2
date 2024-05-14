@@ -19,12 +19,10 @@ public class WalletService extends BaseTest {
     public void loginTest(){
         loginWalletSteps.loginWallet();
     }
-
     @Test(dependsOnMethods="loginTest" ,description = "Test to get cash in KPTN")
     public void cashIn(){
         cashInSteps.cashIn();
     }
-
     @Test(dependsOnMethods="loginTest", priority = 2 ,description = "Test to get KwartaPadala KPTN")
     public void kwartaPadala(){
         kwartaPadala.kwartaPadala();

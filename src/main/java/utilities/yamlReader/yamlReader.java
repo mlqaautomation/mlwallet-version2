@@ -49,6 +49,62 @@ public class yamlReader {
         return null;
     }
 
+    public Map<String, Object> getShopSafeData(String tier) {
+        List<Map<String, Object>> tiers = (List<Map<String, Object>>) yamlData.get("ShopSafeNumbers");
+        for (Map<String, Object> r : tiers) {
+            String rTier = (String) r.get("tier");
+            if (tier.equals(rTier)) {
+                return r;
+            }
+        }
+        return null;
+    }
+    public Long getNumberByTier(String tier){
+        Map<String, Object> tierData = getShopSafeData(tier);
+        if (tierData != null) {
+            return (Long) tierData.get("number");
+        }
+        return null;
+    }
+
+    public Map<String, Object> getFillUpData(String fill) {
+        List<Map<String, Object>> fills = (List<Map<String, Object>>) yamlData.get("FillUp");
+        for (Map<String, Object> r : fills) {
+            String rTier = (String) r.get("fill");
+            if (fill.equals(rTier)) {
+                return r;
+            }
+        }
+        return null;
+    }
+
+    public String getFillInfo(String fill){
+        Map<String, Object> fillData = getFillUpData(fill);
+        if (fillData != null) {
+            return (String) fillData.get("info");
+        }
+        return null;
+    }
+
+    public Map<String, Object> getFillNumData(String numDatas) {
+        List<Map<String, Object>> num = (List<Map<String, Object>>) yamlData.get("FillUpNum");
+        for (Map<String, Object> r : num) {
+            String rNum = (String) r.get("fills");
+            if (numDatas.equals(rNum)) {
+                return r;
+            }
+        }
+        return null;
+    }
+    public Integer getInputNum(String numDatas){
+        Map<String, Object> numData = getFillNumData(numDatas);
+        if (numData != null) {
+            return (Integer) numData.get("numdata");
+        }
+        return null;
+    }
+
+
     public String getEmailByRole(String role) {
         Map<String, Object> roleData = getRoleData(role);
         if (roleData != null) {
@@ -395,6 +451,28 @@ public class yamlReader {
             e.printStackTrace();
         }
     }
+
+    public void writeKptnShopSafeData (List < String > values) {
+        try {
+            Yaml yaml = new Yaml();
+            FileInputStream fileInputStream = new FileInputStream(yamlFileName);
+            Map<String, Object> yamlData = yaml.load(fileInputStream);
+
+            if (yamlData.containsKey("KPTN_Shop_Safe")) {
+                List<String> existingValues = (List<String>) yamlData.get("KPTN_Shop_Safe");
+                existingValues.addAll(values);
+            } else {
+                yamlData.put("KPTN_Shop_Safe", values);
+            }
+            FileWriter writer = new FileWriter(yamlFileName);
+            yaml.dump(yamlData, writer);
+            LoggingUtils.info(values + " saved to file");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void writeRemoteKptnData (List < String > values) {
         try {
             Yaml yaml = new Yaml();

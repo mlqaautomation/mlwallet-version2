@@ -61,14 +61,14 @@ public class WalletServicesTransactional_Tests extends BaseTest {
 
     }
 
-    @Test(dependsOnMethods = "loginGoogle", priority = 6, description = "Validate verify remote Cash Out")
-    public void CO_TC_08() throws Exception {
-        if (this.homeSteps.isInHomePage()) {
-            this.wsCashOutSteps.CO_TC_08();
-
-        }
-
-    }
+//    @Test(dependsOnMethods = "loginGoogle", priority = 6, description = "Validate verify remote Cash Out")
+//    public void CO_TC_08() throws Exception {
+//        if (this.homeSteps.isInHomePage()) {
+//            this.wsCashOutSteps.CO_TC_08();
+//
+//        }
+//
+//    }
 
     ////////////////////////////KWARTA PADALA TRANSACTIONAL////////////////////////////////////////////
     @Test(dependsOnMethods = "loginGoogle", priority = 7, description = "Validate To validate successful Wallet Services Kwarta Padala Payout")

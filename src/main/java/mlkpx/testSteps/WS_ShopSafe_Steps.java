@@ -202,7 +202,7 @@ public class WS_ShopSafe_Steps extends Base_Steps{
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "Shop Safe Header")){
             scrollToElement(wsShopSafePageObjects.StatusText());
-            isVisible(wsShopSafePageObjects.StatusText(),"");
+            isVisible(wsShopSafePageObjects.StatusText(),"Status");
             ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validate Parcel Status As Transit");
         }else{
             ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Parcel Status As Transit");
@@ -243,14 +243,44 @@ public class WS_ShopSafe_Steps extends Base_Steps{
             scrollToElement(wsShopSafePageObjects.PrintReceiptTxtBtn());
             type(wsShopSafePageObjects.TrackingNoTextbox(), "Tracking Number Field","" );
             type(wsShopSafePageObjects.RemarksTxtbox(), "Remarks Field","" );
-            click(wsShopSafePageObjects.UpdateStatusBtn(), "");
-            //click(wsShopSafePageObjects.YesBtn(), "");
-
-            // status modal
+            click(wsShopSafePageObjects.UpdateStatusBtn(), "Update Status Btn");
+            isVisible(wsShopSafePageObjects.KPTN(),"KPTN");
+            click(wsShopSafePageObjects.YesBtn(), "Yes Btn");
+            click(wsShopSafePageObjects.OkBtn(), "Ok Btn");
+            scrollToElement(wsShopSafePageObjects.UpdateStatusBtn());
+            click(wsShopSafePageObjects.UpdateStatusBtn(), "Update Status Btn");
+            isVisible(wsShopSafePageObjects.KPTN(),"KPTN");
+            click(wsShopSafePageObjects.YesBtn(), "Yes Btn");
+            click(wsShopSafePageObjects.OkBtn(), "Ok Btn");
+            // Back to Mobile
 
             ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validate Update Status By Clicking Yes Button");
         }else{
             ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Update Status By Clicking Yes Button");
+            Assert.fail("Failed to Validate Shop Safe Page");
+        }
+    }
+
+    public void To_Validate_Complete_Transaction_WS_SS_12()throws Exception{
+        click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
+        click(wsShopSafePageObjects.shopsafeText(), "Shop Safe Button");
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        click(wsShopSafePageObjects.searchBtn(), "Search Button");
+        waitSleep(3000);
+        if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "Shop Safe Header")){
+            scrollToElement(wsShopSafePageObjects.PrintReceiptTxtBtn());
+            type(wsShopSafePageObjects.TrackingNoTextbox(), "Tracking Number Field","" );
+            type(wsShopSafePageObjects.RemarksTxtbox(), "Remarks Field","" );
+            click(wsShopSafePageObjects.CompleteBtn(), "Complete Btn");
+            click(wsShopSafePageObjects.YesBtn(), "Yes Btn");
+            click(wsShopSafePageObjects.OkBtn(), "Ok Btn");
+            isVisible(wsShopSafePageObjects.KPTN(),"KPTN");
+            click(wsShopSafePageObjects.OkBtn(), "Ok Btn");
+            // Back to Mobile
+
+            ExtentReporter.logPass("Shop Safe Page ", "Validate Complete Transaction Successfully");
+        }else{
+            ExtentReporter.logFail("Shop Safe Page ", "Failed to Validate Complete Transaction");
             Assert.fail("Failed to Validate Shop Safe Page");
         }
     }

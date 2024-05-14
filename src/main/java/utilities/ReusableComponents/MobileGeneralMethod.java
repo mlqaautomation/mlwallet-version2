@@ -1,6 +1,8 @@
 package utilities.ReusableComponents;
 
 import io.appium.java_client.android.AndroidDriver;
+import mlwallet.testSteps.Login;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -8,6 +10,8 @@ import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.Reporter;
 import utilities.Driver.AppiumDriverManager;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
@@ -108,6 +112,29 @@ public class MobileGeneralMethod extends ExtentReporter {
             ExtentReporter.logInfo("Swipe test", ".");
         }catch (Exception e){
 
+        }
+    }
+
+    public String getText(WebElement byLocator) throws Exception {
+        try{
+            wait.until(ExpectedConditions.visibilityOf(byLocator));
+            return byLocator.getText();
+        }catch (Exception e){
+            ExtentReporter.logFail("Element: " + byLocator + "not visible", "Caused: ");
+            LoggingUtils.error("Element: " + byLocator + "not visible");
+            throw new AssertionError("Element: " + byLocator + " not visible" );
+        }
+    }
+
+    public void assertionValidation(String actual, String expected) throws Exception {
+        Assert.assertEquals(actual,expected);
+        if(actual.equals(expected))
+        {
+            LoggingUtils.info(actual+" and "+expected+" are matched");
+            ExtentReporter.logPass("Assertion",actual+" and "+expected+" are matched");
+        }else {
+            LoggingUtils.info(actual+" and "+expected+" are not matched");
+            ExtentReporter.logFail("Assertion",actual+" and "+expected+" are not matched");
         }
     }
 }

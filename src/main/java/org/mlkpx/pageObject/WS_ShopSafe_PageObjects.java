@@ -101,7 +101,8 @@ public class WS_ShopSafe_PageObjects {
     public WebElement UpdateInfoText(){return getDriver().findElement(By.xpath("(//*[text()=\"Are you sure you want to update the transaction?\"])"));}
     public WebElement YesBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Yes\"])"));}
     public WebElement NoBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"No\"])"));}
-
+    public WebElement KPTN(){return getDriver().findElement(By.xpath("(//*/p/div/p[2]"));}
+    public WebElement UpdateSuccessfulLabel(){return getDriver().findElement(By.xpath("(//*[text()=\"Update Successful\"])"));}
 
     //-------------Negative Test
     public WebElement CancelShopSafeUpdateText(){return getDriver().findElement(By.xpath("(//*[text()=\"Cancel Shop Safe Update\"])"));}
@@ -109,7 +110,7 @@ public class WS_ShopSafe_PageObjects {
     public WebElement YesDoNotUpdateBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Yes, do not update\"])"));}
     public WebElement NoStayOnThisPageBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"No, stay on this page\"])"));}
     public WebElement NotFoundText(){return getDriver().findElement(By.xpath("(//*[text()=\"Not Found\"])"));}
-    public WebElement ReferenceNoNotFound(){return getDriver().findElement(By.xpath("(//*[text()=\"Reference Number not found. \"])"));}
+    public WebElement ReferenceNoNotFound(){return getDriver().findElement(By.xpath("(//*[text()=\"Reference Number not found. \"])+-"));}
     public WebElement OkBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"OK\"])"));}
     public WebElement warningText(){return getDriver().findElement(By.xpath("(//*[text()=\"Warning\"])"));}
     public WebElement emptyErrorMessage(){return getDriver().findElement(By.xpath("(//*[text()=\"Reference Number is required.\"])"));}

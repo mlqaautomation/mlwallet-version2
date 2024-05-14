@@ -8,10 +8,7 @@ import mlkpx.testSteps.Home_Steps;
 import mlkpx.testSteps.Kyc_Steps;
 import mlkpx.testSteps.Login_Steps;
 import mlkpx.testSteps.Payout_Steps;
-import mlwallet.testSteps.Cash_In;
-import mlwallet.testSteps.Cash_Out;
-import mlwallet.testSteps.Kwarta_Padala;
-import mlwallet.testSteps.Login;
+import mlwallet.testSteps.*;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
 
@@ -49,13 +46,14 @@ public class BaseTest {
     protected WS_Reprinting_Steps wsReprintingSteps;
     protected WS_ShopSafe_Steps wsShopSafeSteps;
 
+
     protected SendOutTransactional_Steps sendOutTransactionalSteps;
     protected SendOutNegativeTest_Steps sendOutNegativeTestSteps;
 
     protected Login loginWalletSteps;
     protected Cash_In cashInSteps;
 
-
+    protected Shop_Safe shopSafe;
     protected Kwarta_Padala kwartaPadala;
     protected Cash_Out cashOut;
 
@@ -138,6 +136,7 @@ public class BaseTest {
         this.wsReprintingSteps = new WS_Reprinting_Steps();
         this.wsShopSafeSteps = new WS_ShopSafe_Steps();
 
+
         this.sendOutTransactionalSteps = new SendOutTransactional_Steps();
         this.sendOutNegativeTestSteps = new SendOutNegativeTest_Steps();
 
@@ -148,5 +147,6 @@ public class BaseTest {
         this.cashInSteps = new Cash_In();
         this.kwartaPadala = new Kwarta_Padala();
         this.cashOut = new Cash_Out();
+        this.shopSafe = new Shop_Safe();
     }
 }
