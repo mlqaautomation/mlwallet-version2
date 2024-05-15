@@ -53,5 +53,5 @@ src/test/java/resources/testData.properties
 *.json
 .idea/
 target/
-
+*.apk
 

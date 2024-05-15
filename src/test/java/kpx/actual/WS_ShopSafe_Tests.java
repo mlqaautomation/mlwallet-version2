@@ -10,9 +10,9 @@ public class WS_ShopSafe_Tests extends BaseTest {
     public void loginGoogle() throws Exception {
         this.loginSteps.signInGoogle("teller");
         this.loginSteps.loginKpx("teller");
-        if(this.homeSteps.isInHomePage()){
-            ExtentReporter.logPass("loginGoogle", "Login, Passed!!");
-        }
+//        if(this.homeSteps.isInHomePage()){
+//            ExtentReporter.logPass("loginGoogle", "Login, Passed!!");
+//        }
     }
 
 //    @Test(dependsOnMethods = "loginGoogle" , priority = 1)
@@ -131,9 +131,9 @@ public class WS_ShopSafe_Tests extends BaseTest {
 
     @Test(dependsOnMethods = "loginGoogle", priority = 12)
     public void To_Validate_Invalid_Reference_Number_WS_RR_02() throws Exception {
-        if (this.homeSteps.isInHomePage()) {
+
             this.wsShopSafeSteps.To_Validate_Invalid_Reference_Number_WS_RR_02();
-        }
+
     }
 
 //    @Test(dependsOnMethods = "loginGoogle", priority = 13)
@@ -152,9 +152,9 @@ public class WS_ShopSafe_Tests extends BaseTest {
 
     @Test(dependsOnMethods = "loginGoogle", priority = 15)
     public void To_Validate_Back_To_Wallet_Services_Page_WS_RR_05() throws Exception {
-        if (this.homeSteps.isInHomePage()) {
+
             this.wsShopSafeSteps.To_Validate_Back_To_Wallet_Services_Page_WS_RR_05();
-        }
+
     }
 
 //    @Test(dependsOnMethods = "loginGoogle", priority = 16)

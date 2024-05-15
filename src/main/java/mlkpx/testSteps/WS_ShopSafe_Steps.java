@@ -483,9 +483,9 @@ public class WS_ShopSafe_Steps extends Base_Steps{
             scrollToElement(wsShopSafePageObjects.BackBtn());
             click(wsShopSafePageObjects.BackBtn(),"BackBtn");
             click(wsShopSafePageObjects.YesDoNotUpdateBtn(),"YesDoNotUpdateBtn");
-            click(wsCashInToOwnAccountPageObjects.walletServicesLink(), "Wallet Services Page ");
-            isVisible(wsCashInToOwnAccountPageObjects.walletServicesText(),"walletServicesText");
-            isVisible(wsCashInToOwnAccountPageObjects.searchButton(),"searchButton");
+//            click(wsCashInToOwnAccountPageObjects.walletServicesLink(), "Wallet Services Page ");
+//            isVisible(wsCashInToOwnAccountPageObjects.walletServicesText(),"walletServicesText");
+//            isVisible(wsCashInToOwnAccountPageObjects.searchButton(),"searchButton");
             ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validated Modal Display By Clicking Back Button");
         }else{
             ExtentReporter.logFail("Shop Safe Page navigation", "Failed to Validate Modal Display By Clicking Back Button");

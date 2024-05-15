@@ -1,8 +1,6 @@
 package utilities.ReusableComponents;
 
 import io.appium.java_client.android.AndroidDriver;
-import mlwallet.testSteps.Login;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -11,19 +9,16 @@ import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.Reporter;
 import utilities.Driver.AppiumDriverManager;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
 import utilities.yamlReader.yamlReader;
-
 import java.time.Duration;
 import java.util.Arrays;
-import java.util.List;
 
 import static utilities.Driver.AppiumDriverManager.getAndroidDriver;
 
-public class MobileGeneralMethod extends ExtentReporter {
+public class MobileGeneralMethod extends AppiumDriverManager {
     protected final AndroidDriver driver = getAndroidDriver();
     private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     public final yamlReader reader = new yamlReader();
@@ -87,21 +82,21 @@ public class MobileGeneralMethod extends ExtentReporter {
 
         }
     }
-    public void startActivity(){
-        try{
-            LoggingUtils.info("Starting App Activity........");
-            AppiumDriverManager.setupServer();
-            AppiumDriverManager.startActivity();
-        }catch (Exception e){
-
-        }
-    }
+//    public void startActivity(){
+//        try{
+//            LoggingUtils.info("Starting App Activity........");
+//            AppiumDriverManager.setupServer();
+//            AppiumDriverManager.startActivity();
+//        }catch (Exception e){
+//
+//        }
+//    }
     public void verticalSwipe(){
         try{
-            Dimension size = getAndroidDriver().manage().window().getSize();
+            Dimension size = driver.manage().window().getSize();
             int startY = size.getHeight()/2;
             int startX = size.getWidth()/2;
-            int endY = (int) (getAndroidDriver().manage().window().getSize().getHeight()*0.2);
+            int endY = (int) (driver.manage().window().getSize().getHeight()*0.2);
             PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
             Sequence swipe = new Sequence(finger, 0);
             swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
@@ -111,7 +106,7 @@ public class MobileGeneralMethod extends ExtentReporter {
             driver.perform(Arrays.asList(swipe));
             ExtentReporter.logInfo("Swipe test", ".");
         }catch (Exception e){
-
+            throw new AssertionError("Err: " +e);
         }
     }
 
