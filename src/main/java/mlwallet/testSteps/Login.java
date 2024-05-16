@@ -59,6 +59,7 @@ public class Login extends Base_Steps {
     public void enterOTP(){
         LoggingUtils.info("Entering OTP........");
         for (int i=0; i < 6; i++){
+            mobileGeneralMethod.waitSleep(1000);
             mobileGeneralMethod.type(mlWalletPageObjects.otp_editText(i),"OTP field" , "1");
         }
         mobileGeneralMethod.waitSleep(10000);
@@ -66,6 +67,7 @@ public class Login extends Base_Steps {
     public void enterPin(){
         LoggingUtils.info("Entering Wallet Pin........");
         for (int i=1; i < 5; i++){
+            mobileGeneralMethod.waitSleep(1000);
             mobileGeneralMethod.tap(mlWalletPageObjects.walletPin_btn(1),"Pin field");
         }
         mobileGeneralMethod.waitSleep(10000);

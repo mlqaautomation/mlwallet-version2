@@ -460,9 +460,19 @@ public class yamlReader {
 
             if (yamlData.containsKey("KPTN_Shop_Safe")) {
                 List<String> existingValues = (List<String>) yamlData.get("KPTN_Shop_Safe");
-                existingValues.addAll(values);
+                for (String value : values) {
+                    String trimmedValue = value.replace("REF: ", "").trim();
+                    existingValues.add(trimmedValue);
+                    LoggingUtils.info(trimmedValue + " saved to file"); // Update the logging statement
+                }
             } else {
-                yamlData.put("KPTN_Shop_Safe", values);
+                List<String> trimmedValues = new ArrayList<>();
+                for (String value : values) {
+                    String trimmedValue = value.replace("REF: ", "").trim();
+                    trimmedValues.add(trimmedValue);
+                    LoggingUtils.info(trimmedValue + " saved to file"); // Update the logging statement
+                }
+                yamlData.put("KPTN_Shop_Safe", trimmedValues);
             }
             FileWriter writer = new FileWriter(yamlFileName);
             yaml.dump(yamlData, writer);
@@ -470,6 +480,24 @@ public class yamlReader {
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public String getKptnShopSafeData() {
+        try {
+            List<String> shopSafeReferenceNumList = (List<String>) yamlData.get("KPTN_Shop_Safe");
+            if (shopSafeReferenceNumList == null || shopSafeReferenceNumList.isEmpty()) {
+                System.out.println("No Reference Number available.");
+                return null;
+            }
+            String KPTNShopNum = shopSafeReferenceNumList.get(shopSafeReferenceNumList.size()- 1);
+            shopSafeReferenceNumList.remove(shopSafeReferenceNumList.size() - 1);
+            saveYamlData();
+            return KPTNShopNum;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

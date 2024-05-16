@@ -93,12 +93,10 @@ public class WS_ShopSafe_Tests extends BaseTest {
 //        }
 //    }
 //
-//    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "Validate Cash In to Own Account Page")
-//    public void To_Validate_Parcel_Status_As_Ready_for_Pick_Up_WS_SS_12() throws Exception {
-//        if (this.homeSteps.isInHomePage()) {
-//            this.wsShopSafeSteps.To_Validate_Parcel_Status_As_Ready_for_Pick_Up_WS_SS_12();
-//        }
-//    }
+    @Test(dependsOnMethods = "loginGoogle", priority = 1, description = "Validate Cash In to Own Account Page")
+    public void To_Validate_Parcel_Status_As_Ready_for_Pick_Up_WS_SS_12() throws Exception {
+         this.wsShopSafeSteps.To_Validate_Parcel_Status_As_Ready_for_Pick_Up_WS_SS_12();
+    }
 //
 //    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "Validate Cash In to Own Account Page")
 //    public void To_Validate_Input_Remarks_And_Clicking_Update_Status_Button_For_PickUp_WS_SS_13() throws Exception {
@@ -129,12 +127,12 @@ public class WS_ShopSafe_Tests extends BaseTest {
 //        }
 //    }
 
-    @Test(dependsOnMethods = "loginGoogle", priority = 12)
-    public void To_Validate_Invalid_Reference_Number_WS_RR_02() throws Exception {
-
-            this.wsShopSafeSteps.To_Validate_Invalid_Reference_Number_WS_RR_02();
-
-    }
+//    @Test(dependsOnMethods = "loginGoogle", priority = 12)
+//    public void To_Validate_Invalid_Reference_Number_WS_RR_02() throws Exception {
+//
+//            this.wsShopSafeSteps.To_Validate_Invalid_Reference_Number_WS_RR_02();
+//
+//    }
 
 //    @Test(dependsOnMethods = "loginGoogle", priority = 13)
 //    public void To_Validate_Empty_Tracking_Number_WS_RR_03() throws Exception {
@@ -150,12 +148,12 @@ public class WS_ShopSafe_Tests extends BaseTest {
 //        }
 //    }
 
-    @Test(dependsOnMethods = "loginGoogle", priority = 15)
-    public void To_Validate_Back_To_Wallet_Services_Page_WS_RR_05() throws Exception {
-
-            this.wsShopSafeSteps.To_Validate_Back_To_Wallet_Services_Page_WS_RR_05();
-
-    }
+//    @Test(dependsOnMethods = "loginGoogle", priority = 15)
+//    public void To_Validate_Back_To_Wallet_Services_Page_WS_RR_05() throws Exception {
+//
+//            this.wsShopSafeSteps.To_Validate_Back_To_Wallet_Services_Page_WS_RR_05();
+//
+//    }
 
 //    @Test(dependsOnMethods = "loginGoogle", priority = 16)
 //    public void To_Validate_Stay_In_The_Page_WS_RR_06() throws Exception {

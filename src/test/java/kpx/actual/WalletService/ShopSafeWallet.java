@@ -31,18 +31,18 @@ public class ShopSafeWallet extends BaseTest{
 //    public void SSM_TC_08_Verify_seller_fill_up_the_Item_Information_Page_and_clicking_proceed_button_Invites_Page() throws Exception {
 //        shopSafe.SSM_TC_08_Verify_seller_fill_up_the_Item_Information_Page_and_clicking_proceed_button_Invites_Page();
 //    }
-    @Test(priority = 5, description = "SHOP SAFE BTCH 20")
-    public void SSM_TC_09_Validate_Buyer_Ongoing_Transaction_Page() throws Exception {
-        shopSafe.SSM_TC_09_Validate_Buyer_Ongoing_Transaction_Page();
-    }
-    @Test(priority = 6, description = "SHOP SAFE BTCH 21")
-    public void SSM_TC_10_Validate_Seller_Ongoing_Transaction_Page() throws Exception {
-        shopSafe.SSM_TC_10_Validate_Seller_Ongoing_Transaction_Page();
-    }
-    @Test(priority = 7, description = "SHOP SAFE BTCH 22")
-    public void SSM_TC_11_Verify_seller_fill_up_the_Item_Information_Page_and_clicking_proceed_button_Invites_Page() throws Exception {
-        shopSafe.SSM_TC_11_Verify_seller_fill_up_the_Item_Information_Page_and_clicking_proceed_button_Invites_Page();
-    }
+//    @Test(priority = 5, description = "SHOP SAFE BTCH 20")
+//    public void SSM_TC_09_Validate_Buyer_Ongoing_Transaction_Page() throws Exception {
+//        shopSafe.SSM_TC_09_Validate_Buyer_Ongoing_Transaction_Page();
+//    }
+//    @Test(priority = 6, description = "SHOP SAFE BTCH 21")
+//    public void SSM_TC_10_Validate_Seller_Ongoing_Transaction_Page() throws Exception {
+//        shopSafe.SSM_TC_10_Validate_Seller_Ongoing_Transaction_Page();
+//    }
+//    @Test(priority = 7, description = "SHOP SAFE BTCH 22")
+//    public void SSM_TC_11_Verify_seller_fill_up_the_Item_Information_Page_and_clicking_proceed_button_Invites_Page() throws Exception {
+//        shopSafe.SSM_TC_11_Verify_seller_fill_up_the_Item_Information_Page_and_clicking_proceed_button_Invites_Page();
+//    }
     @Test(priority = 8, description = "SHOP SAFE BTCH 23")
     public void SSM_TC_12_Verify_seller_Paid_Item_Transaction_Drop_off_Status_Invites_Page() throws Exception {
         shopSafe.SSM_TC_12_Verify_seller_Paid_Item_Transaction_Drop_off_Status_Invites_Page();

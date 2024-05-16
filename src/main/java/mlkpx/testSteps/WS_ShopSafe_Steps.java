@@ -264,7 +264,8 @@ public class WS_ShopSafe_Steps extends Base_Steps{
     public void To_Validate_Complete_Transaction_WS_SS_12()throws Exception{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeText(), "Shop Safe Button");
-        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        String KPTN_Shop_Safe = reader.getKptnShopSafeData();
+        type(wsShopSafePageObjects.referenceNoTxtbox(), KPTN_Shop_Safe,"" );
         click(wsShopSafePageObjects.searchBtn(), "Search Button");
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "Shop Safe Header")){
@@ -276,6 +277,8 @@ public class WS_ShopSafe_Steps extends Base_Steps{
             click(wsShopSafePageObjects.OkBtn(), "Ok Btn");
             isVisible(wsShopSafePageObjects.KPTN(),"KPTN");
             click(wsShopSafePageObjects.OkBtn(), "Ok Btn");
+            scrollToElement(wsShopSafePageObjects.PrintReceiptTxtBtn());
+            click(wsShopSafePageObjects.PrintReceiptTxtBtn(), "Print Receipt");
             // Back to Mobile
 
             ExtentReporter.logPass("Shop Safe Page ", "Validate Complete Transaction Successfully");
