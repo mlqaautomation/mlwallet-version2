@@ -491,7 +491,6 @@ public class yamlReader {
                 return null;
             }
             String KPTNShopNum = shopSafeReferenceNumList.get(shopSafeReferenceNumList.size()- 1);
-            shopSafeReferenceNumList.remove(shopSafeReferenceNumList.size() - 1);
             saveYamlData();
             return KPTNShopNum;
 

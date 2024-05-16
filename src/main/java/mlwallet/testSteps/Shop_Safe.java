@@ -218,11 +218,11 @@ public class Shop_Safe extends Base_Steps{
         mobileGeneralMethod.type(mlWalletPageObjects.objItemQuantityTxtbx(), "Type Item Quantity",reader.getInputNum("ValidItemQuantity").toString());
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.tap(mlWalletPageObjects.objCategoryDropDownlist(),"Category DropDownlist");
-        mobileGeneralMethod.waitSleep(3000);
+        mobileGeneralMethod.waitSleep(5000);
         mobileGeneralMethod.tap(mlWalletPageObjects.objClothesTxtBtn(),"Select Clothes");
         mobileGeneralMethod.type(mlWalletPageObjects.objItemPriceTxtbx(), "Type Item Price",reader.getInputNum("ValidItemPrice").toString());
         mobileGeneralMethod.tap(mlWalletPageObjects.objWeightRangeDropDownList(),"Weight Range DropDownList");
-        mobileGeneralMethod.waitSleep(3000);
+        mobileGeneralMethod.waitSleep(5000);
         mobileGeneralMethod.tap(mlWalletPageObjects.obj0kgTxtBtn(), "Select 0 to 3 kg");
     }
     public void SSM_TC_07_Verify_seller_fill_up_the_Item_Information_Page_and_clicking_proceed_button_Invites_Page () throws Exception {
@@ -254,7 +254,7 @@ public class Shop_Safe extends Base_Steps{
     }
 
     public void VerifyTransactionPage() throws Exception{
-        mobileGeneralMethod.waitSleep(8000);
+        mobileGeneralMethod.waitSleep(10000);
         mobileGeneralMethod.isVisible(mlWalletPageObjects.objSRFTN(),"RFTN");
         mobileGeneralMethod.isVisible(mlWalletPageObjects.objSellersDetailTransactLabel(),"Sellers Detail");
         mobileGeneralMethod.isVisible(mlWalletPageObjects.objSellersNameTransactVal(),"Sellers Name");
@@ -623,6 +623,7 @@ public class Shop_Safe extends Base_Steps{
         mobileGeneralMethod.isVisible(mlWalletPageObjects.objOngoingDeclineItem(),"Decline Item Btn");
         mobileGeneralMethod.isVisible(mlWalletPageObjects.objOngoingAcceptItem(),"Accept Item Btn");
         mobileGeneralMethod.tap(mlWalletPageObjects.objOngoingAcceptItem(),"Accept Item Btn");
+        mobileGeneralMethod.waitSleep(8000);
         mobileGeneralMethod.isVisible(mlWalletPageObjects.objSuccessfulAcceptedLabel(),"Successful Accept Label");
         mobileGeneralMethod.isVisible(mlWalletPageObjects.objSuccessfulOkayBtn(),"Successful Okay Btn");
         mobileGeneralMethod.tap(mlWalletPageObjects.objSuccessfulOkayBtn(),"Click Successful Okay Btn");
@@ -635,7 +636,7 @@ public class Shop_Safe extends Base_Steps{
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(5000);
         mobileGeneralMethod.tap(mlWalletPageObjects.objOngoingTransactTxtBtn(),"View all Invites Text Button");
-        mobileGeneralMethod.waitSleep(5000);
+        mobileGeneralMethod.waitSleep(8000);
         if(mobileGeneralMethod.isVisible(mlWalletPageObjects.objFirstInTab(),"New Invitation in Invites list")) {
             mobileGeneralMethod.tap(mlWalletPageObjects.objFirstInTab(), "New Invitation in Invites list");
             validateBuyerReadyForPickUpOngoing();

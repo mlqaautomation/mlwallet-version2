@@ -101,7 +101,7 @@ public class WS_ShopSafe_PageObjects {
     public WebElement UpdateInfoText(){return getDriver().findElement(By.xpath("(//*[text()=\"Are you sure you want to update the transaction?\"])"));}
     public WebElement YesBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"Yes\"])"));}
     public WebElement NoBtn(){return getDriver().findElement(By.xpath("(//*[text()=\"No\"])"));}
-    public WebElement KPTN(){return getDriver().findElement(By.xpath("(//*/p/div/p[2]"));}
+    public WebElement KPTN(){return getDriver().findElement(By.cssSelector("[data-testid='sendoutKPTN']"));}
     public WebElement UpdateSuccessfulLabel(){return getDriver().findElement(By.xpath("(//*[text()=\"Update Successful\"])"));}
 
     //-------------Negative Test

@@ -236,22 +236,29 @@ public class WS_ShopSafe_Steps extends Base_Steps{
     public void To_Validate_Update_Status_By_Clicking_Yes_Button_For_Transit_WS_SS_11()throws Exception{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeText(), "Shop Safe Button");
-        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field","" );
+        String KPTN_Shop_Safe = reader.getKptnShopSafeData();
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "Reference Number Field",KPTN_Shop_Safe );
         click(wsShopSafePageObjects.searchBtn(), "Search Button");
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "Shop Safe Header")){
             scrollToElement(wsShopSafePageObjects.PrintReceiptTxtBtn());
-            type(wsShopSafePageObjects.TrackingNoTextbox(), "Tracking Number Field","" );
-            type(wsShopSafePageObjects.RemarksTxtbox(), "Remarks Field","" );
+            type(wsShopSafePageObjects.TrackingNoTextbox(), "Tracking Number Field",propertyReader.getproperty("TrackingNoTextbox") );
+            type(wsShopSafePageObjects.RemarksTxtbox(), "Remarks Field",propertyReader.getproperty("RemarksTxtbox") );
             click(wsShopSafePageObjects.UpdateStatusBtn(), "Update Status Btn");
-            isVisible(wsShopSafePageObjects.KPTN(),"KPTN");
+            waitSleep(2000);
             click(wsShopSafePageObjects.YesBtn(), "Yes Btn");
+            waitSleep(10000);
+            isVisible(wsShopSafePageObjects.KPTN(),"KPTN");
             click(wsShopSafePageObjects.OkBtn(), "Ok Btn");
+            waitSleep(10000);
             scrollToElement(wsShopSafePageObjects.UpdateStatusBtn());
             click(wsShopSafePageObjects.UpdateStatusBtn(), "Update Status Btn");
-            isVisible(wsShopSafePageObjects.KPTN(),"KPTN");
+            waitSleep(2000);
             click(wsShopSafePageObjects.YesBtn(), "Yes Btn");
+            waitSleep(10000);
+            isVisible(wsShopSafePageObjects.KPTN(),"KPTN");
             click(wsShopSafePageObjects.OkBtn(), "Ok Btn");
+            waitSleep(10000);
             // Back to Mobile
 
             ExtentReporter.logPass("Shop Safe Page navigation", "Successfully Validate Update Status By Clicking Yes Button");
@@ -265,18 +272,19 @@ public class WS_ShopSafe_Steps extends Base_Steps{
         click(wsShopSafePageObjects.walletServicesLink(), "Wallet Services Page ");
         click(wsShopSafePageObjects.shopsafeText(), "Shop Safe Button");
         String KPTN_Shop_Safe = reader.getKptnShopSafeData();
-        type(wsShopSafePageObjects.referenceNoTxtbox(), KPTN_Shop_Safe,"" );
+        type(wsShopSafePageObjects.referenceNoTxtbox(), "", KPTN_Shop_Safe);
         click(wsShopSafePageObjects.searchBtn(), "Search Button");
         waitSleep(3000);
         if(isVisible(wsShopSafePageObjects.shopsafeTextNextheader(), "Shop Safe Header")){
             scrollToElement(wsShopSafePageObjects.PrintReceiptTxtBtn());
-            type(wsShopSafePageObjects.TrackingNoTextbox(), "Tracking Number Field","" );
-            type(wsShopSafePageObjects.RemarksTxtbox(), "Remarks Field","" );
+            type(wsShopSafePageObjects.RemarksTxtbox(), "Remarks Field", propertyReader.getproperty("RemarksTxtbox") );
             click(wsShopSafePageObjects.CompleteBtn(), "Complete Btn");
             click(wsShopSafePageObjects.YesBtn(), "Yes Btn");
-            click(wsShopSafePageObjects.OkBtn(), "Ok Btn");
+            waitSleep(10000);
             isVisible(wsShopSafePageObjects.KPTN(),"KPTN");
             click(wsShopSafePageObjects.OkBtn(), "Ok Btn");
+            waitSleep(10000);
+
             scrollToElement(wsShopSafePageObjects.PrintReceiptTxtBtn());
             click(wsShopSafePageObjects.PrintReceiptTxtBtn(), "Print Receipt");
             // Back to Mobile

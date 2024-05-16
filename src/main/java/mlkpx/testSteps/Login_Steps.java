@@ -10,9 +10,11 @@ public class Login_Steps extends Base_Steps {
         try{
             click(googlePageObjects.googleContainer(), "Google Sign in Container");
             switchToNextTab();
+            waitSleep(2000);
             typeEnter(googlePageObjects.emailField(), "Email Field", reader.getEmailByRole(role));
             typeEnter(googlePageObjects.passwordField(), "Password Field", reader.getPasswordByRole(role));
             click(googlePageObjects.anotherWayButton(), "Another way");
+            waitSleep(2000);
             click(googlePageObjects.selectGoogleAuthenticator(), "Google Auth Option");
             typeEnter(googlePageObjects.codeField(), "Auth Key Field", TOTPGenerator.getTwoFactorCode());
             switchToPreviousTab();
@@ -42,8 +44,9 @@ public class Login_Steps extends Base_Steps {
         try{
             type(loginPageObjects.userNameField(),"kpx username field", reader.getKpxUsername(role));
             type(loginPageObjects.passwordField(), "kpx password field", reader.getKpxPassword(role));
-            click(loginPageObjects.loginButton(), "Login button");
 
+            click(loginPageObjects.loginButton(), "Login button");
+            waitSleep(4000);
         }catch (Exception e){
             ExtentReporter.logFail("loginKpx, ","error "+ e);
         }
