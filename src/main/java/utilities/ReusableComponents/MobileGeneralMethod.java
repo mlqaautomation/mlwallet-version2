@@ -110,6 +110,25 @@ public class MobileGeneralMethod extends AppiumDriverManager {
         }
     }
 
+    public void verticalSwipeDown(){
+        try {
+            Dimension size = driver.manage().window().getSize();
+            int startY = (int) (driver.manage().window().getSize().getHeight() * 0.2);
+            int startX = size.getWidth() / 2;
+            int endY = (int) (driver.manage().window().getSize().getHeight() * 0.8);
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Sequence scroll = new Sequence(finger, 0);
+            scroll.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+            scroll.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+            scroll.addAction(finger.createPointerMove(Duration.ofMillis(600), PointerInput.Origin.viewport(), startX, endY));
+            scroll.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+            driver.perform(Arrays.asList(scroll));
+            ExtentReporter.logInfo("Scroll down test", ".");
+        } catch (Exception e) {
+            throw new AssertionError("Err: " + e);
+        }
+    }
+
     public String getText(WebElement byLocator) throws Exception {
         try{
             wait.until(ExpectedConditions.visibilityOf(byLocator));

@@ -28,7 +28,7 @@ public class BaseTest {
     protected Login loginWalletSteps;
 
     protected Shop_Safe shopSafe;
-
+    protected KwartaPadala_Wallet kwartaPadalaWallet;
 
     @Parameters("type")
     @BeforeClass (alwaysRun = true)
@@ -94,5 +94,7 @@ public class BaseTest {
     public void initWallet(){
         this.loginWalletSteps = new Login();
         this.shopSafe = new Shop_Safe();
+        this.kwartaPadalaWallet = new KwartaPadala_Wallet();
     }
+
 }

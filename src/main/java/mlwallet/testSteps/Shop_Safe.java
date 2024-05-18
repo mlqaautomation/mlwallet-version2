@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class Shop_Safe extends Base_Steps{
-    
     Login login = new Login();
 
     //--------------------Positive Test--------------------
