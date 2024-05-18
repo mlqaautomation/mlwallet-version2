@@ -20,15 +20,12 @@ import utilities.Logger.LoggingUtils;
 import java.time.Duration;
 
 public class BaseTest {
-
     protected Login_Steps loginSteps;
-
     protected WS_ShopSafe_Steps wsShopSafeSteps;
-
     protected Login loginWalletSteps;
-
     protected Shop_Safe shopSafe;
     protected KwartaPadala_Wallet kwartaPadalaWallet;
+    protected BuyELoad buyELoad;
 
     @Parameters("type")
     @BeforeClass (alwaysRun = true)
@@ -95,6 +92,7 @@ public class BaseTest {
         this.loginWalletSteps = new Login();
         this.shopSafe = new Shop_Safe();
         this.kwartaPadalaWallet = new KwartaPadala_Wallet();
+        this.buyELoad = new BuyELoad();
     }
 
 }

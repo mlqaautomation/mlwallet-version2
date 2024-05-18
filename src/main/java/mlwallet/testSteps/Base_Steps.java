@@ -1,5 +1,6 @@
 package mlwallet.testSteps;
 
+import org.mlwallet.pageObject.BuyEloadObject;
 import org.mlwallet.pageObject.HomePageObject;
 import org.mlwallet.pageObject.KwartaPadalaObjects;
 import org.mlwallet.pageObject.MLWallet_PageObjects;
@@ -11,11 +12,11 @@ import utilities.PropertyReader.propertyReader;
 
 public class Base_Steps {
     public static String osName=System.getProperty("os.name").toLowerCase();
-    static MobileGeneralMethod mobileGeneralMethod = new MobileGeneralMethod();
+    MobileGeneralMethod mobileGeneralMethod = new MobileGeneralMethod();
     MLWallet_PageObjects mlWalletPageObjects = new MLWallet_PageObjects();
     KwartaPadalaObjects kwartaPadalaObjects = new KwartaPadalaObjects();
     HomePageObject homePageObject = new HomePageObject();
-
+    BuyEloadObject buyEloadObject = new BuyEloadObject();
     public static propertyReader prop;
     yamlReader yamlReader = new yamlReader();
     final String filepath = "src\\test\\java\\resources\\testData.properties";
