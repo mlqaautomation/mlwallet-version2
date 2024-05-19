@@ -27,6 +27,7 @@ public class BaseTest {
     protected KwartaPadala_Wallet kwartaPadalaWallet;
     protected BuyELoad buyELoad;
     protected GCash gCash;
+    protected PayBills payBills;
 
     @Parameters("type")
     @BeforeClass (alwaysRun = true)
@@ -95,6 +96,7 @@ public class BaseTest {
         this.kwartaPadalaWallet = new KwartaPadala_Wallet();
         this.buyELoad = new BuyELoad();
         this.gCash = new GCash();
+        this.payBills = new PayBills();
     }
 
 }

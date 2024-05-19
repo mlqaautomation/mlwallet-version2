@@ -36,37 +36,44 @@ public class GCash extends Base_Steps{
         mobileGeneralMethod.tap(gCashObjects.objGcashSendMoneyText(), "Send Money To Gcash");
         mobileGeneralMethod.type(gCashObjects.objGcashMobileNumber(), "Mobile Number",propertyReader.getproperty("GcashMobileNo"));
         mobileGeneralMethod.tap(gCashObjects.objNextBtn(), "Next Button");
+        mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.type(gCashObjects.objAmountTextBox(),"Amount",propertyReader.getproperty("AmountInput"));
         mobileGeneralMethod.tap(gCashObjects.objNextBtn(), "Next Button");
+        mobileGeneralMethod.waitSleep(3000);
         if(mobileGeneralMethod.isVisible(gCashObjects.objProceedBtn(),"Proceed Button")){
             mobileGeneralMethod.tap(gCashObjects.objProceedBtn(),"Click Proceed");
         }
         mobileGeneralMethod.isVisible(gCashObjects.objConfirmDetailsPage(), "Confirm Details Page");
         mobileGeneralMethod.tap(gCashObjects.objConfirmBtn(), "Confirm Button");
         mobileGeneralMethod.tap(loginObject.objContinueBtn(), "Continue Button");
+        mobileGeneralMethod.waitSleep(5000);
     }
     public void GCashSuccessfulTransaction_GC_SM_TC_76() throws Exception {
         login.loginWalletBranchTier();
         double prevBalance = getWalletBalance();
         confirmGcashTransaction();
         mobileGeneralMethod.isVisible(gCashObjects.objTransactionDetailsText(), "Transaction Details");
+        mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.verticalSwipe();
         String total = mobileGeneralMethod.getText(gCashObjects.objGcashTotal());
         String numericTotal = total.replaceAll("[^\\d.]", ""); // Remove non-numeric characters    
         double totalValue = parseDouble(numericTotal);
         mobileGeneralMethod.tap(gCashObjects.objBack_to_Home_Page(), "Back to Home Page");
+        mobileGeneralMethod.waitSleep(5000);
         if (mobileGeneralMethod.isVisible(loginObject.objAvailableBalance(),"Available Balance")) {
             mobileGeneralMethod.verticalSwipeDown();
             double newBalance = getWalletBalance();
             double expectedBalance = prevBalance - totalValue;
             mobileGeneralMethod.assertionValidationdouble(newBalance, expectedBalance);
             mobileGeneralMethod.verticalSwipe();
-            mobileGeneralMethod.isVisible(homePageObject.objRecentTransactions(),"Header");
+            mobileGeneralMethod.waitSleep(3000);
+            mobileGeneralMethod.isVisible(homePageObject.objRecentTransactions(),"Recent Transactions Header");
             mobileGeneralMethod.verticalSwipe();
             mobileGeneralMethod.tap(historyObject.objSeeMoreBtn(),"See More Button");
-            mobileGeneralMethod.waitSleep(3000);
-            mobileGeneralMethod.isVisible(historyObject.objTransactionHistory(),"Page");
-            mobileGeneralMethod.tap(historyObject.objSendMoneyTab(),"Tab");
+            mobileGeneralMethod.waitSleep(10000);
+            mobileGeneralMethod.isVisible(historyObject.objTransactionHistory(),"Transaction History Page");
+            mobileGeneralMethod.tap(historyObject.objSendMoneyTab(),"Send Money Tab");
+            mobileGeneralMethod.waitSleep(10000);
             mobileGeneralMethod.tap(historyObject.objFirstTransaction(),"First Transaction");
             String amountHistory = mobileGeneralMethod.getText(historyObject.objTotalAmount());
             String historyTotal = amountHistory.replaceAll("[^\\d.]", ""); // Remove non-numeric characters

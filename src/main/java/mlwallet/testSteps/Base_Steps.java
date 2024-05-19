@@ -16,6 +16,7 @@ public class Base_Steps {
     GCashObjects gCashObjects = new GCashObjects();
     HomePageObject homePageObject = new HomePageObject();
     LoginObject loginObject = new LoginObject();
+    PayBillsObject payBillsObject = new PayBillsObject();
     HistoryObject historyObject = new HistoryObject();
     BuyEloadObject buyEloadObject = new BuyEloadObject();
     public static propertyReader prop;
