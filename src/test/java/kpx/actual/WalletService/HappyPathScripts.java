@@ -35,4 +35,8 @@ public class HappyPathScripts extends BaseTest {
     public void paybillsSuccessfulTransaction_PB_TC_19() throws Exception {
         payBills.paybillsSuccessfulTransaction_PB_TC_19();
     }
+    @Test(priority = 8, description = "TEST TO")
+    public void topUpGamesSuccessfulTransaction_TUG_TC_06() throws Exception {
+        topUpGames.topUpGamesSuccessfulTransaction_TUG_TC_06();
+    }
 }

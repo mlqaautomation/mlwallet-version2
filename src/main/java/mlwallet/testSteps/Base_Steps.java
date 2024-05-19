@@ -13,6 +13,7 @@ public class Base_Steps {
     MobileGeneralMethod mobileGeneralMethod = new MobileGeneralMethod();
     MLWallet_PageObjects mlWalletPageObjects = new MLWallet_PageObjects();
     KwartaPadalaObjects kwartaPadalaObjects = new KwartaPadalaObjects();
+    TopUpGamesObjects topUpGamesObjects = new TopUpGamesObjects();
     GCashObjects gCashObjects = new GCashObjects();
     HomePageObject homePageObject = new HomePageObject();
     LoginObject loginObject = new LoginObject();

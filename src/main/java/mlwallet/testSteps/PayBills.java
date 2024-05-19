@@ -18,19 +18,19 @@ public class PayBills extends Base_Steps{
         mobileGeneralMethod.waitSleep(3000);
     }
     public void searchBiller() throws Exception {
-        mobileGeneralMethod.type(payBillsObject.objSearchBiller(), prop.getproperty("Biller_Name"), "Search Biller");
+        mobileGeneralMethod.type(payBillsObject.objSearchBiller(), "Search Biller",prop.getproperty("Biller_Name"));
         mobileGeneralMethod.isVisible(payBillsObject.objMisBillsPayBiller(), "Mis Bills Pay Biller");
         mobileGeneralMethod.tap(payBillsObject.objMisBillsPayBiller(), "Mis Bills Pay Biller");
         mobileGeneralMethod.waitSleep(5000);
     }
     public void billerDetails(String sFirstName, String sLastName, String sMiddleName, String sAmount) throws Exception {
         if (mobileGeneralMethod.isVisible(payBillsObject.objBillsPayInformation(),"Bills Pay Information Page")) {
-            mobileGeneralMethod.type(payBillsObject.objAccountNumberField(), prop.getproperty("AccountNumber"), "Account Number Text Field");
-            mobileGeneralMethod.type(payBillsObject.objFirstNameField(), sFirstName, "First Name Text Field");
-            mobileGeneralMethod.type(payBillsObject.objMiddleNameField(), sMiddleName, "Middle Name Text Field");
-            mobileGeneralMethod.type(payBillsObject.objLastnameField(), sLastName, "Last Name Text Field");
+            mobileGeneralMethod.type(payBillsObject.objAccountNumberField(),"Account Number Text Field", prop.getproperty("AccountNumber"));
+            mobileGeneralMethod.type(payBillsObject.objFirstNameField(),"First Name Text Field", sFirstName );
+            mobileGeneralMethod.type(payBillsObject.objMiddleNameField(),"Middle Name Text Field" , sMiddleName );
+            mobileGeneralMethod.type(payBillsObject.objLastnameField(),"Last Name Text Field", sLastName);
             mobileGeneralMethod.verticalSwipe();
-            mobileGeneralMethod.type(payBillsObject.objAmountField(), sAmount, "Amount to Send Text Field");
+            mobileGeneralMethod.type(payBillsObject.objAmountField(),"Amount to Send Text Field", sAmount);
             mobileGeneralMethod.tap(payBillsObject.objConfirmBtn(),"Confirm Button");
             mobileGeneralMethod.waitSleep(8000);
         }

@@ -6,6 +6,8 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import mlkpx.testSteps.*;
 import mlkpx.testSteps.Login_Steps;
 import mlwallet.testSteps.*;
+import org.apache.poi.ss.formula.functions.T;
+import org.mlwallet.pageObject.TopUpGamesObjects;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
 
@@ -28,6 +30,7 @@ public class BaseTest {
     protected BuyELoad buyELoad;
     protected GCash gCash;
     protected PayBills payBills;
+    protected TopUpGames topUpGames;
 
     @Parameters("type")
     @BeforeClass (alwaysRun = true)
@@ -97,6 +100,7 @@ public class BaseTest {
         this.buyELoad = new BuyELoad();
         this.gCash = new GCash();
         this.payBills = new PayBills();
+        this.topUpGames = new TopUpGames();
     }
 
 }
