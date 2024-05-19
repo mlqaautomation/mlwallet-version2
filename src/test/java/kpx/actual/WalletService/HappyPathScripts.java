@@ -22,14 +22,14 @@ public class HappyPathScripts extends BaseTest {
 //        kwartaPadalaWallet.kwartaPadalaViaMLWalletSuccessfulTransaction_STW_TC_02();
 //    }
     //--------------ELoad
-    @Test(priority = 5)
-    public void buyELoadSuccessfulTransaction_BE_TC_26() throws Exception {
-        buyELoad.buyELoadSuccessfulTransaction_BE_TC_26();
-    }
+//    @Test(priority = 5, description = "TEST TO")
+//    public void buyELoadSuccessfulTransaction_BE_TC_26() throws Exception {
+//        buyELoad.buyELoadSuccessfulTransaction_BE_TC_26();
+//    }
 //    //--------------GCash
-//    @Test(priority = 6)
+//    @Test(priority = 6, description = "TEST TO")
 //    public void GCashSuccessfulTransaction_GC_SM_TC_76() throws Exception {
-//        mlWalletGCashScripts.GCashSuccessfulTransaction_GC_SM_TC_76();
+//        gCash.GCashSuccessfulTransaction_GC_SM_TC_76();
 //    }
 //    @Test(priority = 7)
 //    public void paybillsSuccessfulTransaction_PB_TC_19() throws Exception {

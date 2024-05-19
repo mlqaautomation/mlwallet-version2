@@ -1,9 +1,7 @@
 package mlwallet.testSteps;
 
-import org.mlwallet.pageObject.BuyEloadObject;
-import org.mlwallet.pageObject.HomePageObject;
-import org.mlwallet.pageObject.KwartaPadalaObjects;
-import org.mlwallet.pageObject.MLWallet_PageObjects;
+import org.apache.commons.math3.stat.inference.OneWayAnova;
+import org.mlwallet.pageObject.*;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
 import utilities.ReusableComponents.MobileGeneralMethod;
@@ -15,7 +13,10 @@ public class Base_Steps {
     MobileGeneralMethod mobileGeneralMethod = new MobileGeneralMethod();
     MLWallet_PageObjects mlWalletPageObjects = new MLWallet_PageObjects();
     KwartaPadalaObjects kwartaPadalaObjects = new KwartaPadalaObjects();
+    GCashObjects gCashObjects = new GCashObjects();
     HomePageObject homePageObject = new HomePageObject();
+    LoginObject loginObject = new LoginObject();
+    HistoryObject historyObject = new HistoryObject();
     BuyEloadObject buyEloadObject = new BuyEloadObject();
     public static propertyReader prop;
     yamlReader yamlReader = new yamlReader();

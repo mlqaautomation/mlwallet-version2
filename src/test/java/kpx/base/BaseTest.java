@@ -26,6 +26,7 @@ public class BaseTest {
     protected Shop_Safe shopSafe;
     protected KwartaPadala_Wallet kwartaPadalaWallet;
     protected BuyELoad buyELoad;
+    protected GCash gCash;
 
     @Parameters("type")
     @BeforeClass (alwaysRun = true)
@@ -93,6 +94,7 @@ public class BaseTest {
         this.shopSafe = new Shop_Safe();
         this.kwartaPadalaWallet = new KwartaPadala_Wallet();
         this.buyELoad = new BuyELoad();
+        this.gCash = new GCash();
     }
 
 }
