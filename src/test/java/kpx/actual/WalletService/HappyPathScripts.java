@@ -17,26 +17,28 @@ public class HappyPathScripts extends BaseTest {
     }
 
     //--------------KwartaPadalaViaWalletUser
-    @Test(priority = 3, description = "TEST TO")
-    public void kwartaPadalaViaMLWalletSuccessfulTransaction_STW_TC_02() throws Exception{
-        kwartaPadalaWallet.kwartaPadalaViaMLWalletSuccessfulTransaction_STW_TC_02();
-    }
-    //--------------ELoad
-    @Test(priority = 5, description = "TEST TO")
-    public void buyELoadSuccessfulTransaction_BE_TC_26() throws Exception {
-        buyELoad.buyELoadSuccessfulTransaction_BE_TC_26();
-    }
+//    @Test(priority = 3, description = "TEST TO")
+//    public void kwartaPadalaViaMLWalletSuccessfulTransaction_STW_TC_02() throws Exception{
+//        kwartaPadalaWallet.kwartaPadalaViaMLWalletSuccessfulTransaction_STW_TC_02();
+//    }
+//    //--------------ELoad
+//    @Test(priority = 5, description = "TEST TO")
+//    public void buyELoadSuccessfulTransaction_BE_TC_26() throws Exception {
+//        buyELoad.buyELoadSuccessfulTransaction_BE_TC_26();
+//    }
     //--------------GCash
 //    @Test(priority = 6, description = "TEST TO")
 //    public void GCashSuccessfulTransaction_GC_SM_TC_76() throws Exception {
 //        gCash.GCashSuccessfulTransaction_GC_SM_TC_76();
 //    }
+    //--------------PayBills
 //    @Test(priority = 7, description = "TEST TO")
 //    public void paybillsSuccessfulTransaction_PB_TC_19() throws Exception {
 //        payBills.paybillsSuccessfulTransaction_PB_TC_19();
 //    }
-//    @Test(priority = 8, description = "TEST TO")
-//    public void topUpGamesSuccessfulTransaction_TUG_TC_06() throws Exception {
-//        topUpGames.topUpGamesSuccessfulTransaction_TUG_TC_06();
-//    }
+    //--------------TopUpGames
+    @Test(priority = 8, description = "TEST TO")
+    public void topUpGamesSuccessfulTransaction_TUG_TC_06() throws Exception {
+        topUpGames.topUpGamesSuccessfulTransaction_TUG_TC_06();
+    }
 }

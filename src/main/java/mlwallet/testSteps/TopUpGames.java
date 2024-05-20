@@ -40,9 +40,10 @@ public class TopUpGames extends Base_Steps{
         selectGameAndLoadType();
         inputRequiredDataAndContinue();
         mobileGeneralMethod.tap(topUpGamesObjects.objConfirm(),"button");
-        mobileGeneralMethod.waitSleep(8000);
+        mobileGeneralMethod.waitSleep(20000);
+//        login.enterPin();
         mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(),"Continue Button");
-        mobileGeneralMethod.waitSleep(10000);
+        mobileGeneralMethod.waitSleep(30000);
         if( mobileGeneralMethod.isVisible(topUpGamesObjects.objTransactionDetails(),"Page")) {
              mobileGeneralMethod.isVisible(topUpGamesObjects.objTransactionCode(),"Transaction Code");
              mobileGeneralMethod.isVisible(topUpGamesObjects.objGameUserIDInTransactionDetails(),"Game User ID");

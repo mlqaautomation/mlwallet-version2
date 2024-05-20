@@ -65,7 +65,7 @@ public class BaseTest {
             AppiumDriverManager.setupServer();
             AppiumDriverManager.startActivity();
             initWallet();
-            PageFactory.initElements(new AppiumFieldDecorator(AppiumDriverManager.getAndroidDriver(), Duration.ofSeconds(10)), this);
+            PageFactory.initElements(new AppiumFieldDecorator(AppiumDriverManager.getAndroidDriver(), Duration.ofSeconds(5)), this);
         }
     }
     @AfterMethod(alwaysRun = true)
