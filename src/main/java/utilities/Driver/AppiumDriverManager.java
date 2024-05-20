@@ -12,6 +12,7 @@ public class AppiumDriverManager {
     protected static final String IP_Address = "127.0.0.1";
     protected static final int PORT = 4723;
     private static AppiumDriverLocalService service;
+
     protected static AndroidDriver driver;
     public static final String APP_ID = "com.mlhuillier.mlwallet";
     public static final String APP_Activity = "MainActivity";

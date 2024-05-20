@@ -29,6 +29,7 @@ public class Login extends Base_Steps {
         mobileGeneralMethod.tap(mlWalletPageObjects.login_btn(),"Login Button");
         mobileGeneralMethod.waitSleep(10000);
         enterOTP();
+        mobileGeneralMethod.waitSleep(2000);
         enterPin();
         if((mlWalletPageObjects.usableBalance_Text().isDisplayed())){
             ExtentReporter.logPass("loginWallet", "Successfully Logged in");
@@ -46,6 +47,7 @@ public class Login extends Base_Steps {
         mobileGeneralMethod.tap(mlWalletPageObjects.login_btn(),"Login Button");
         mobileGeneralMethod.waitSleep(10000);
         enterOTP();
+        mobileGeneralMethod.waitSleep(2000);
         enterPin();
         if((mlWalletPageObjects.usableBalance_Text().isDisplayed())){
             ExtentReporter.logPass("loginWallet", "Successfully Logged in");
@@ -59,7 +61,7 @@ public class Login extends Base_Steps {
     public void enterOTP(){
         LoggingUtils.info("Entering OTP........");
         for (int i=0; i < 6; i++){
-            mobileGeneralMethod.waitSleep(1000);
+            mobileGeneralMethod.waitSleep(2000);
             mobileGeneralMethod.type(mlWalletPageObjects.otp_editText(i),"OTP field" , "1");
         }
         mobileGeneralMethod.waitSleep(10000);

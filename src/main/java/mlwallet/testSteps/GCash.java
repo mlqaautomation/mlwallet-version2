@@ -39,14 +39,15 @@ public class GCash extends Base_Steps{
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.type(gCashObjects.objAmountTextBox(),"Amount",propertyReader.getproperty("AmountInput"));
         mobileGeneralMethod.tap(gCashObjects.objNextBtn(), "Next Button");
-        mobileGeneralMethod.waitSleep(3000);
-        if(mobileGeneralMethod.isVisible(gCashObjects.objProceedBtn(),"Proceed Button")){
-            mobileGeneralMethod.tap(gCashObjects.objProceedBtn(),"Click Proceed");
-        }
+        mobileGeneralMethod.waitSleep(8000);
+//        if(mobileGeneralMethod.isVisible(gCashObjects.objProceedBtn(),"Proceed Button")){
+//            mobileGeneralMethod.tap(gCashObjects.objProceedBtn(),"Click Proceed");
+//        }
         mobileGeneralMethod.isVisible(gCashObjects.objConfirmDetailsPage(), "Confirm Details Page");
         mobileGeneralMethod.tap(gCashObjects.objConfirmBtn(), "Confirm Button");
+        mobileGeneralMethod.waitSleep(8000);
         mobileGeneralMethod.tap(loginObject.objContinueBtn(), "Continue Button");
-        mobileGeneralMethod.waitSleep(5000);
+        mobileGeneralMethod.waitSleep(20000);
     }
     public void GCashSuccessfulTransaction_GC_SM_TC_76() throws Exception {
         login.loginWalletBranchTier();

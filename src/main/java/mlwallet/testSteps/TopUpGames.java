@@ -35,7 +35,7 @@ public class TopUpGames extends Base_Steps{
         mobileGeneralMethod.waitSleep(3000);
         String sAvailableBalance = mobileGeneralMethod.getText(topUpGamesObjects.objAvailableBalance());
         mobileGeneralMethod.tap(topUpGamesObjects.objTopUpGames(),"Icon");
-        mobileGeneralMethod.waitSleep(8000);
+        mobileGeneralMethod.waitSleep(25000);
         mobileGeneralMethod.isVisible(topUpGamesObjects.objTopGamesPage(), "TopUp Games Page");
         selectGameAndLoadType();
         inputRequiredDataAndContinue();

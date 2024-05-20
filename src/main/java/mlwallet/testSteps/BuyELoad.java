@@ -14,7 +14,7 @@ public class BuyELoad extends Base_Steps{
     public void buyELoadSuccessfulTransaction_BE_TC_26() throws Exception {
         login.loginWalletFullyTier();
         mobileGeneralMethod.tap(buyEloadObject.objEloadTab(), "Buy eLoad tab");
-        mobileGeneralMethod.waitSleep(5000);
+        mobileGeneralMethod.waitSleep(10000);
         mobileGeneralMethod.isVisible(buyEloadObject.objEloadtransactionPage(), "eLoad Transaction Page");
         mobileGeneralMethod.tap(buyEloadObject.objSelectSmartTelco(), "Select Smart Telco");
         mobileGeneralMethod.tap(buyEloadObject.objMobileNoField(), "Mobile Number Field");

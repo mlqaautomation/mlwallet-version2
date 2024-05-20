@@ -18,7 +18,8 @@ public class PayBills extends Base_Steps{
         mobileGeneralMethod.waitSleep(3000);
     }
     public void searchBiller() throws Exception {
-        mobileGeneralMethod.type(payBillsObject.objSearchBiller(), "Search Biller",prop.getproperty("Biller_Name"));
+        mobileGeneralMethod.waitSleep(30000);
+        mobileGeneralMethod.type(payBillsObject.objSearchBiller(),"Search Biller",prop.getproperty("Biller_Name"));
         mobileGeneralMethod.isVisible(payBillsObject.objMisBillsPayBiller(), "Mis Bills Pay Biller");
         mobileGeneralMethod.tap(payBillsObject.objMisBillsPayBiller(), "Mis Bills Pay Biller");
         mobileGeneralMethod.waitSleep(5000);

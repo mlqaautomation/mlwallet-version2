@@ -48,6 +48,7 @@ public class KwartaPadala_Wallet extends Base_Steps{
         Thread.sleep(3000);
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
+        mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.isVisible(homePageObject.objRecentTransactions(),  "Recent Transactions");
         mobileGeneralMethod.isVisible(homePageObject.objWalletToWallet(), "Wallet To Wallet");
         mobileGeneralMethod.tap(homePageObject.objWalletToWallet(), "Wallet To Wallet");
