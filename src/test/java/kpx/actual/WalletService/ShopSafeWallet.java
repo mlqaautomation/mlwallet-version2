@@ -15,40 +15,40 @@ public class ShopSafeWallet extends BaseTest{
             ExtentReporter.logPass("isAppInstalledTest", "MLWALLET is installed");
         }
 
-    @Test(priority = 1, description = "SHOP SAFE BTCH 19")
+    @Test(priority = 1, description = "SSM_TC_04_Verify_enter_valid_seller_number_in_Create_Transaction_Page")
     public void SSM_TC_04_Verify_enter_valid_seller_number_in_Create_Transaction_Page() throws Exception {
         shopSafe.SSM_TC_04_Verify_enter_valid_seller_number_in_Create_Transaction_Page();
     }
-//    @Test(priority = 2, description = "SHOP SAFE BTCH 13")
+//    @Test(priority = 2, description = "SSM_TC_05_Verify_buyer_request_invites_click_View_Invitations_Button_in_Invites_Page")
 //    public void SSM_TC_05_Verify_buyer_request_invites_click_View_Invitations_Button_in_Invites_Page() throws Exception {
 //        shopSafe.SSM_TC_05_Verify_buyer_request_invites_click_View_Invitations_Button_in_Invites_Page();
 //    }
-//    @Test(priority = 3, description = "SHOP SAFE BTCH 12")
+//    @Test(priority = 3, description = "SSM_TC_06_Verify_seller_received_invites_click_View_Invitations_Button_in_Invites_Page")
 //    public void SSM_TC_06_Verify_seller_received_invites_click_View_Invitations_Button_in_Invites_Page() throws Exception {
 //        shopSafe.SSM_TC_06_Verify_seller_received_invites_click_View_Invitations_Button_in_Invites_Page();
 //    }
-    @Test(priority = 4, description = "SHOP SAFE BTCH 21")
+    @Test(priority = 4, description = "SSM_TC_08_Verify_seller_fill_up_the_Item_Information_Page_and_clicking_proceed_button_Invites_Page")
     public void SSM_TC_08_Verify_seller_fill_up_the_Item_Information_Page_and_clicking_proceed_button_Invites_Page() throws Exception {
         shopSafe.SSM_TC_08_Verify_seller_fill_up_the_Item_Information_Page_and_clicking_proceed_button_Invites_Page();
     }
-    @Test(priority = 5, description = "SHOP SAFE BTCH 20")
+    @Test(priority = 5, description = "SSM_TC_09_Validate_Buyer_Ongoing_Transaction_Page")
     public void SSM_TC_09_Validate_Buyer_Ongoing_Transaction_Page() throws Exception {
         shopSafe.SSM_TC_09_Validate_Buyer_Ongoing_Transaction_Page();
     }
-    @Test(priority = 6, description = "SHOP SAFE BTCH 21")
+    @Test(priority = 6, description = "SSM_TC_10_Validate_Seller_Ongoing_Transaction_Page")
     public void SSM_TC_10_Validate_Seller_Ongoing_Transaction_Page() throws Exception {
         shopSafe.SSM_TC_10_Validate_Seller_Ongoing_Transaction_Page();
     }
-    @Test(priority = 7, description = "SHOP SAFE BTCH 22")
+    @Test(priority = 7, description = "SSM_TC_11_Verify_seller_fill_up_the_Item_Information_Page_and_clicking_proceed_button_Invites_Page")
     public void SSM_TC_11_Verify_seller_fill_up_the_Item_Information_Page_and_clicking_proceed_button_Invites_Page() throws Exception {
         shopSafe.SSM_TC_11_Verify_seller_fill_up_the_Item_Information_Page_and_clicking_proceed_button_Invites_Page();
     }
-    @Test(priority = 8, description = "SHOP SAFE BTCH 23")
+    @Test(priority = 8, description = "SSM_TC_12_Verify_seller_Paid_Item_Transaction_Drop_off_Status_Invites_Page")
     public void SSM_TC_12_Verify_seller_Paid_Item_Transaction_Drop_off_Status_Invites_Page() throws Exception {
         shopSafe.SSM_TC_12_Verify_seller_Paid_Item_Transaction_Drop_off_Status_Invites_Page();
     }
 
-//        @Test(priority = 6, description = "SHOP SAFE BTCH 23")
+//        @Test(priority = 6, description = "SSM_TC_15_Verify_buyer_and_Seller_Successful_Transaction")
 //        public void SSM_TC_15_Verify_buyer_and_Seller_Successful_Transaction() throws Exception {
 //            shopSafe.SSM_TC_15_Verify_buyer_and_Seller_Successful_Transaction();
 //        }

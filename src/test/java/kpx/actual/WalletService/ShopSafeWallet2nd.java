@@ -15,7 +15,7 @@ public class ShopSafeWallet2nd extends BaseTest {
         ExtentReporter.logPass("isAppInstalledTest", "MLWALLET is installed");
     }
 
-    @Test(priority = 8, description = "SHOP SAFE BTCH 22")
+    @Test(priority = 8, description = "SSM_TC_14_Verify_buyer_Receive_Item_Ready_For_Pick_Up")
     public void SSM_TC_14_Verify_buyer_Receive_Item_Ready_For_Pick_Up() throws Exception {
         shopSafe.SSM_TC_14_Verify_buyer_Receive_Item_Ready_For_Pick_Up();
     }

@@ -215,7 +215,19 @@ public class BuyEloadObject extends AppiumDriverManager {
      public WebElement objMLPinEditField(){
         return driver.findElement(By.xpath("//*[@resource-id='847305']"));
     }
+
+     public WebElement obj5SmartRegularLoad(){
+         return driver.findElement(By.xpath("//*[@content-desc='PHP, 5, P5 Smart Regular, P5 Smart Regular']"));
+     }
      public WebElement obj10SmartRegular(){
         return driver.findElement(By.xpath("//*[@text='P10 Smart Regular']"));
+    }
+
+    public WebElement telcoOptions(int indexTab)
+    {
+        return driver.findElement(By.xpath("(//*[android.view.ViewGroup]/following-sibling::android.view.ViewGroup/(descendant::android.widget.ImageView)[1])["+indexTab+"]"));
+    }
+    public WebElement objContactsAndNumber(int i,int j){
+        return driver.findElement(By.xpath("(((//*[@class='android.view.ViewGroup' and ./parent::*[@class='android.widget.ScrollView' and ./parent::*[./parent::*[./parent::*[@class='android.widget.FrameLayout']]]]]/*[@class='android.view.ViewGroup'])["+i+"]/*/*[@class='android.view.ViewGroup' and ./parent::*[@class='android.view.ViewGroup']])[1]/*[@class='android.widget.TextView'])["+j+"]"));
     }
 }

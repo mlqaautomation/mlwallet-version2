@@ -57,7 +57,7 @@ public class BaseTest {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters("type")
-    public void setUpTests(final String type){
+    public void setUpTests(final String type) throws InterruptedException {
         if(type.equals("web")) {
             getDriver().get(System.getProperty("homeUrl"));
         }else if(type.equals("mobile")){
@@ -65,7 +65,7 @@ public class BaseTest {
             AppiumDriverManager.setupServer();
             AppiumDriverManager.startActivity();
             initWallet();
-            PageFactory.initElements(new AppiumFieldDecorator(AppiumDriverManager.getAndroidDriver(), Duration.ofSeconds(5)), this);
+            PageFactory.initElements(new AppiumFieldDecorator(AppiumDriverManager.getAndroidDriver(), Duration.ofSeconds(20)), this);
         }
     }
     @AfterMethod(alwaysRun = true)
@@ -81,7 +81,7 @@ public class BaseTest {
     @Parameters("type")
     public void tearDown (final String type) {
         if(type.equals("mobile")){
-        //AppiumDriverManager.stopServer();
+        AppiumDriverManager.stopServer();
         }else if(type.equals("web")){
             closeWebBrowser();
         }else{

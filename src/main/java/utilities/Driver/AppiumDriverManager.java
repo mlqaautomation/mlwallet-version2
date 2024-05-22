@@ -6,6 +6,8 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import utilities.Logger.LoggingUtils;
 import utilities.ApkPath.Apk;
+
+import java.time.Duration;
 import java.util.Map;
 public class AppiumDriverManager {
     //todo *
@@ -17,11 +19,12 @@ public class AppiumDriverManager {
     public static final String APP_ID = "com.mlhuillier.mlwallet";
     public static final String APP_Activity = "MainActivity";
 
-    public static void setupServer(){
+    public static void setupServer() throws InterruptedException {
         service = new AppiumServiceBuilder()
                 .withIPAddress(IP_Address)
-                .usingPort(PORT)
+                .usingAnyFreePort()
                 .build();
+        Thread.sleep(3000);
         service.start();
         LoggingUtils.info("Starting Service----");
         UiAutomator2Options options = new UiAutomator2Options()

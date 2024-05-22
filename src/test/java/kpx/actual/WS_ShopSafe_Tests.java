@@ -94,24 +94,24 @@ public class WS_ShopSafe_Tests extends BaseTest {
 //    }
 //
 
-    @Test(dependsOnMethods = "loginGoogle", priority = 1, description = "Validate Cash In to Own Account Page")
+    @Test(dependsOnMethods = "loginGoogle", priority = 1, description = "To_Validate_Complete_Transaction_WS_SS_12")
     public void To_Validate_Complete_Transaction_WS_SS_12() throws Exception {
          this.wsShopSafeSteps.To_Validate_Complete_Transaction_WS_SS_12();
     }
 //
-//    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "Validate Cash In to Own Account Page")
+//    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "To_Validate_Input_Remarks_And_Clicking_Update_Status_Button_For_PickUp_WS_SS_13")
 //    public void To_Validate_Input_Remarks_And_Clicking_Update_Status_Button_For_PickUp_WS_SS_13() throws Exception {
 //            this.wsShopSafeSteps.To_Validate_Input_Remarks_And_Clicking_Update_Status_Button_For_PickUp_WS_SS_13();
 //    }
 //
-//    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "Validate Cash In to Own Account Page")
+//    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "To_Validate_Parcel_Status_As_Transit_WS_SS_14")
 //    public void To_Validate_Parcel_Status_As_Transit_WS_SS_14() throws Exception {
 //        if (this.homeSteps.isInHomePage()) {
 //            this.wsShopSafeSteps.To_Validate_Parcel_Status_As_Transit_WS_SS_14();
 //        }
 //    }
 //
-//    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "Validate Cash In to Own Account Page")
+//    @Test(dependsOnMethods = "loginGoogle", priority = 10, description = "To_Validate_Clicking_Complete_Button_For_PickUp_WS_SS_15")
 //    public void To_Validate_Clicking_Complete_Button_For_PickUp_WS_SS_15() throws Exception {
 //        if (this.homeSteps.isInHomePage()) {
 //            this.wsShopSafeSteps.To_Validate_Clicking_Complete_Button_For_PickUp_WS_SS_15();

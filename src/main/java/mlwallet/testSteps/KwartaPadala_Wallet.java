@@ -36,7 +36,7 @@ public class KwartaPadala_Wallet extends Base_Steps{
         enterAmountAndSendToMLWallet();
         mobileGeneralMethod.waitSleep(10000);
         mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(),"Continue Button");
-        mobileGeneralMethod.waitSleep(10000);
+        mobileGeneralMethod.waitSleep(20000);
         mobileGeneralMethod.isVisible(kwartaPadalaObjects.objSendMoneyMLWallet(), "Send Money MLWallet Message");
         mobileGeneralMethod.isVisible(kwartaPadalaObjects.objSendMoneyMLWalletPHP(), "Amount");
         mobileGeneralMethod.isVisible(kwartaPadalaObjects.objSendMoneyMLWalletDate(), "Date");
