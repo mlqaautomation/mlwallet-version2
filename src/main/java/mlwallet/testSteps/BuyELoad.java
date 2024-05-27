@@ -23,29 +23,29 @@ public class BuyELoad extends Base_Steps{
         ExtentReporter.logInfo("BE_TC_26", "Buy ELoad Successful Transaction UI validated");
         login.loginWalletFullyTier();
         mobileGeneralMethod.tap(buyEloadObject.objEloadTab(), "Buy eLoad tab");
-        mobileGeneralMethod.waitSleep(10000);
+        mobileGeneralMethod.waitSleep(8000);
         mobileGeneralMethod.isVisible(buyEloadObject.objEloadtransactionPage(), "eLoad Transaction Page");
         mobileGeneralMethod.tap(buyEloadObject.objSelectSmartTelco(), "Select Smart Telco");
         mobileGeneralMethod.tap(buyEloadObject.objMobileNoField(), "Mobile Number Field");
         mobileGeneralMethod.type(buyEloadObject.objMobileNoField(),"Mobile Number",propertyReader.getproperty("MobileNo"));
-        mobileGeneralMethod.waitSleep(3000);
+        mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.tap(buyEloadObject.objSelectSmartTelco(), "Select Smart Telco");
-        mobileGeneralMethod.waitSleep(3000);
+        mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.tap(buyEloadObject.objNextBtn(), "Next Button");
-        mobileGeneralMethod.waitSleep(5000);
+        mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
-        mobileGeneralMethod.waitSleep(3000);
+        mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
-        mobileGeneralMethod.waitSleep(3000);
+        mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.tap(buyEloadObject.obj10SmartRegular(), "10 Smart Promo");
         mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(), "Continue Promo Pop Up");
-        mobileGeneralMethod.waitSleep(5000);
+        mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
         mobileGeneralMethod.isVisible(buyEloadObject.objBuyLoad(), "Buy Load Page");
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
-        mobileGeneralMethod.waitSleep(10000);
+        mobileGeneralMethod.waitSleep(8000);
        mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(),"Continue Button");
-        mobileGeneralMethod.waitSleep(20000);
+        mobileGeneralMethod.waitSleep(15000);
         if (mobileGeneralMethod.isVisible(buyEloadObject.objTransactionDetailsPage(), "Transaction Details Page")) {
            mobileGeneralMethod.isVisible(buyEloadObject.objMobileNumberInTransactionDetails(), "Mobile Number");
            mobileGeneralMethod.isVisible(buyEloadObject.objBuyELoadTime(), "Date and Time");
@@ -65,34 +65,36 @@ public class BuyELoad extends Base_Steps{
 
     //-----------------------------Postive Testing------------------------------------------
 
-    public void eLoad_generic(String sTier, String mobileNo, String status, int telcoOption) throws Exception {
+    public void eLoad_generic() throws Exception {
         login.loginWalletFullyTier();
-        mobileGeneralMethod.tap(buyEloadObject.objEloadTab(), "Buy eLoad");
-        mobileGeneralMethod.waitSleep(1000);
-        if (status.equals("true")) {
-           mobileGeneralMethod.isVisible(buyEloadObject.objEloadtransactionPage(), "eLoad Transaction Page");
-            mobileGeneralMethod.tap(buyEloadObject.objSelectSmartTelco(), "Telco");
-        }
+        mobileGeneralMethod.tap(buyEloadObject.objEloadTab(), "Buy eLoad tab");
+        mobileGeneralMethod.waitSleep(8000);
+        mobileGeneralMethod.isVisible(buyEloadObject.objEloadtransactionPage(), "eLoad Transaction Page");
+        mobileGeneralMethod.tap(buyEloadObject.objSelectSmartTelco(), "Select Smart Telco");
         mobileGeneralMethod.tap(buyEloadObject.objMobileNoField(), "Mobile Number Field");
-        mobileGeneralMethod.type(buyEloadObject.objMobileNoField(), mobileNo, "Mobile Number Field");
-//      hideKeyboard();
+        mobileGeneralMethod.type(buyEloadObject.objMobileNoField(),"Mobile Number",propertyReader.getproperty("MobileNo"));
+        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.tap(buyEloadObject.objSelectSmartTelco(), "Select Smart Telco");
         mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.tap(buyEloadObject.objNextBtn(), "Next Button");
+        mobileGeneralMethod.waitSleep(3000);
     }
-    public void buyELoadTransactionDetails_BE_TC_01(String sTier, int promotab) throws Exception {
+    public void buyELoadTransactionDetails_BE_TC_01() throws Exception {
         ExtentReporter.logInfo("BE_TC_01","Transaction Details Validation after Buying eLoad");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        eLoad_generic();
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
-        mobileGeneralMethod.tap(buyEloadObject.objRegularLoadTab(), "Regular Load Tab");
         mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.tap(buyEloadObject.obj5SmartRegularLoad(), "Regular Load");
-        mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(), "Pop Up");
+        mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.tap(buyEloadObject.obj10SmartRegular(), "10 Smart Promo");
+        mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(), "Continue Promo Pop Up");
+        mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
-        mobileGeneralMethod.isVisible(buyEloadObject.objBuyLoad(), "Page");
+        mobileGeneralMethod.isVisible(buyEloadObject.objBuyLoad(), "Buy Load Page");
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
-       mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(),"Continue Button");
-        mobileGeneralMethod.waitSleep(30000);
+        mobileGeneralMethod.waitSleep(8000);
+        mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(),"Continue Button");
+        mobileGeneralMethod.waitSleep(15000);
         if (mobileGeneralMethod.isVisible(buyEloadObject.objTransactionDetailsPage(),"Page")) {
            mobileGeneralMethod.isVisible(buyEloadObject.objMobileNumberInTransactionDetails(),"Mobile Number");
            mobileGeneralMethod.isVisible(buyEloadObject.objBuyELoadTime(), "Date and Time");
@@ -101,82 +103,134 @@ public class BuyELoad extends Base_Steps{
            mobileGeneralMethod.isVisible(buyEloadObject.objServiceFee(), "Service Fee");
            mobileGeneralMethod.isVisible(buyEloadObject.objTotalAmount(), "Total Amount");
             LoggingUtils.info("BE_TC_01, Transaction Details Validated after Buying eLoad");
-            ExtentReporter.logPass("BE_TC_01", " Transaction Details Validated after Buying eLoad");
+            ExtentReporter.logPass("BE_TC_01", "Transaction Details Validated after Buying eLoad");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("BE_TC_01", "Buy ELoad Failed to Validate after Buying eLoad Transaction Details");
             System.out.println("-----------------------------------------------------------");
         }
     }
+
+    //------------------Negative
     public void buyELoadInvalidMobileNumber_BE_TC_02() throws Exception {
-        ExtentReporter.logInfo("","Buying eLoad using invalid mobile number");
-        eLoad_generic(prop.getproperty("Fully_Verified"), prop.getproperty("inValidMobNumber"), "true", 3);
+        ExtentReporter.logInfo("BE_TC_02","Buying eLoad using invalid mobile number");
+        login.loginWalletFullyTier();
+        mobileGeneralMethod.tap(buyEloadObject.objEloadTab(), "Buy eLoad tab");
+        mobileGeneralMethod.waitSleep(8000);
+        mobileGeneralMethod.isVisible(buyEloadObject.objEloadtransactionPage(), "eLoad Transaction Page");
+        mobileGeneralMethod.tap(buyEloadObject.objSelectSmartTelco(), "Select Smart Telco");
+        mobileGeneralMethod.tap(buyEloadObject.objMobileNoField(), "Mobile Number Field");
+        mobileGeneralMethod.type(buyEloadObject.objMobileNoField(),"Mobile Number",propertyReader.getproperty("InvalidNumber"));
+        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.tap(buyEloadObject.objSelectSmartTelco(), "Select Smart Telco");
+        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.tap(buyEloadObject.objNextBtn(), "Next Button");
+        mobileGeneralMethod.waitSleep(3000);
         if (mobileGeneralMethod.isVisible(buyEloadObject.objErrorMsg(), "Pop Up Message")) {
             String sActualErrorMsg = mobileGeneralMethod.getText(buyEloadObject.objErrorMsg());
             String sExceptedErrorMsg = "Network and Mobile number does not match";
             mobileGeneralMethod.assertionValidation(sActualErrorMsg, sExceptedErrorMsg);
             LoggingUtils.info("BE_TC_02, Buy ELoad Using Invalid Mobile Number, Network and Mobile number does not match Error Message Validated");
-            ExtentReporter.logPass("BE_TC_02", "BE_TC_02, Buy ELoad Using Invalid Mobile Number, Network and Mobile number does not match Error Message Validated");
+            ExtentReporter.logPass("BE_TC_02", "Buy ELoad Using Invalid Mobile Number, Network and Mobile number does not match Error Message Validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("BE_TC_02", "Buy ELoad Using Invalid Mobile Number Failed , Network and Mobile number does not match Error Message not Validated");
             System.out.println("-----------------------------------------------------------");
         }
     }
+
+    //------------------Negative
     public void buyELoadWithoutInputMobNumber_BE_TC_03() throws Exception {
-        ExtentReporter.logInfo("","Buying eLoad without mobile number input");
-        eLoad_generic(prop.getproperty("Fully_Verified"), "", "true", 3);
+        ExtentReporter.logInfo("BE_TC_03","Buying eLoad without mobile number input");
+        login.loginWalletFullyTier();
+        mobileGeneralMethod.tap(buyEloadObject.objEloadTab(), "Buy eLoad tab");
+        mobileGeneralMethod.waitSleep(8000);
+        mobileGeneralMethod.isVisible(buyEloadObject.objEloadtransactionPage(), "eLoad Transaction Page");
+        mobileGeneralMethod.tap(buyEloadObject.objSelectSmartTelco(), "Select Smart Telco");
+        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.tap(buyEloadObject.objNextBtn(), "Next Button");
+        mobileGeneralMethod.waitSleep(3000);
         if (mobileGeneralMethod.isVisible(buyEloadObject.objErrorMsg(), "Pop Up Message")) {
             String sActualErrorMsg = mobileGeneralMethod.getText(buyEloadObject.objErrorMsg());
-            String sExceptedErrorMsg = "Mobile number is required";
+            String sExceptedErrorMsg = "Mobile number is required.";
             mobileGeneralMethod.assertionValidation(sActualErrorMsg, sExceptedErrorMsg);
             LoggingUtils.info("BE_TC_03, Buy ELoad without mobile number input, Mobile number is required Error Message is validated");
-            ExtentReporter.logPass("BE_TC_03", "BE_TC_03, Buy ELoad without mobile number input, Mobile number is required Error Message is validated");
+            ExtentReporter.logPass("BE_TC_03", "Buy ELoad without mobile number input, Mobile number is required Error Message is validated");
+        }
+        else{
+            ExtentReporter.logFail("BE_TC_02", "Buy ELoad without mobile number input Failed, Mobile number is required Error Message is  not validated");
+            System.out.println("-----------------------------------------------------------");
         }
     }
-    public void buyELoadWithoutTelecommunicationSelected_BE_TC_04() throws Exception {
-        ExtentReporter.logInfo("","Buying eLoad without telecommunication selected");
-        eLoad_generic(prop.getproperty("Fully_Verified"), prop.getproperty("Smart"), "false", 4);
+    //------------------Negative
+    public void buyELoadWithCharacterMobileNo_BE_TC_04() throws Exception {
+        ExtentReporter.logInfo("BE_TC_04","Buying eLoad without telecommunication selected");
+        login.loginWalletFullyTier();
+        mobileGeneralMethod.tap(buyEloadObject.objEloadTab(), "Buy eLoad tab");
+        mobileGeneralMethod.waitSleep(8000);
+        mobileGeneralMethod.isVisible(buyEloadObject.objEloadtransactionPage(), "eLoad Transaction Page");
+        mobileGeneralMethod.tap(buyEloadObject.objSelectSmartTelco(), "Select Smart Telco");
+        mobileGeneralMethod.tap(buyEloadObject.objMobileNoField(), "Mobile Number Field");
+        mobileGeneralMethod.type(buyEloadObject.objMobileNoField(),"Mobile Number",propertyReader.getproperty("StringMobileNo"));
+        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.tap(buyEloadObject.objSelectSmartTelco(), "Select Smart Telco");
+        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.tap(buyEloadObject.objNextBtn(), "Next Button");
+        mobileGeneralMethod.waitSleep(3000);
         if (mobileGeneralMethod.isVisible(buyEloadObject.objErrorMsg(), "Pop Up Message")) {
             String sActualErrorMsg = mobileGeneralMethod.getText(buyEloadObject.objErrorMsg());
-            String sExceptedErrorMsg = "Network and Mobile number does not match";
+            String sExceptedErrorMsg = "Mobile number is invalid";
             mobileGeneralMethod.assertionValidation(sActualErrorMsg, sExceptedErrorMsg);
             LoggingUtils.info("BE_TC_04, Buying eLoad without selecting telecommunication, Network and Mobile number does not match Error Msg Validated");
-            ExtentReporter.logPass("BE_TC_04", "BE_TC_04, Buying eLoad without selecting telecommunication, Network and Mobile number does not match Error Msg Validated");
+            ExtentReporter.logPass("BE_TC_04", "Buying eLoad with Character Mobile No, Mobile number is invalid Validated");
+        }
+        else{
+            ExtentReporter.logFail("BE_TC_04", "Buy ELoad with Character Mobile No Failed, Mobile number is invalid is not validated");
+            System.out.println("-----------------------------------------------------------");
         }
     }
-    public void buyELoadInsufficientBalance_BE_TC_05(String sTier, int promotab) throws Exception {
-        ExtentReporter.logInfo("","Buying eLoad with insufficient balance");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+    //------------------Negative Cant test
+    public void buyELoadInsufficientBalance_BE_TC_05() throws Exception {
+        ExtentReporter.logInfo("BE_TC_05","Buying eLoad with insufficient balance");
+        eLoad_generic();
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
+        mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
-        //swipeDownUntilElementVisible("Smart Regular Load 3000");
-        mobileGeneralMethod.tap(buyEloadObject.obj10SmartRegular(), "Load");
-        mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(), "Pop Up");
-        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.tap(buyEloadObject.obj10SmartRegular(), "10 Smart Promo");
+        mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(), "Continue Promo Pop Up");
+        mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
-        mobileGeneralMethod.isVisible(buyEloadObject.objBuyLoad(), "Page");
-        mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
-        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.waitSleep(3000);
         if (mobileGeneralMethod.isVisible(buyEloadObject.objInsufficientBalPopup(), "Pop up")) {
             String sActualInsufficientBalMsg = mobileGeneralMethod.getText(buyEloadObject.objInsufficientBalPopup());
             String sExceptedMsg = "There is insufficient balance to proceed with this transaction. Please try again.";
             mobileGeneralMethod.assertionValidation(sActualInsufficientBalMsg, sExceptedMsg);
            mobileGeneralMethod.isVisible(buyEloadObject.objOkBtn(), "Button");
             LoggingUtils.info("BE_TC_05, Insufficient Balance Error Message Validated");
-            ExtentReporter.logPass("BE_TC_05", "BE_TC_05, Insufficient Balance Error Message Validated");
+            ExtentReporter.logPass("BE_TC_05", "Passed Insufficient Balance Error Message Validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("BE_TC_05", "Failed Insufficient Balance Error Message Validated");
             System.out.println("-----------------------------------------------------------");
         }
     }
-    public void buyELoadMaxLimitPerTransaction_BE_TC_09(String sTier, int promotab) throws Exception {
+    //------------------Negative Cant Test
+    public void buyELoadMaxLimitPerTransaction_BE_TC_06() throws Exception {
         ExtentReporter.logInfo("","Buy ELoad Maximum Limit per Transaction");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        eLoad_generic();
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
+        mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
-        //swipeDownUntilElementVisible("Smart Regular Load 3000");
-        mobileGeneralMethod.tap(buyEloadObject.obj10SmartRegular(), "Load");
-        mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(), "Pop Up");
-        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.tap(buyEloadObject.obj10SmartRegular(), "10 Smart Promo");
+        mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(), "Continue Promo Pop Up");
+        mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
-        mobileGeneralMethod.isVisible(buyEloadObject.objBuyLoad(), "Page");
-        mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
-         mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.waitSleep(3000);
         if (mobileGeneralMethod.isVisible(buyEloadObject.objMaxLimitPopupMsg(), "Error Popup Msg")) {
             String sActualPopupMsg = mobileGeneralMethod.getText(buyEloadObject.objMaxLimitPopupMsg());
             String sExceptedPopupMsg = "The maximum E-load per transaction set for your verification level is P2,000.00. Please try again.";
@@ -185,19 +239,29 @@ public class BuyELoad extends Base_Steps{
             ExtentReporter.logPass("BE_TC_09", "BE_TC_09, Buy ELoad Maximum Limit per Transaction Validated");
             System.out.println("-----------------------------------------------------------");
         }
+        else{
+            ExtentReporter.logFail("BE_TC_09", "Failed Insufficient Balance Error Message Validated");
+            System.out.println("-----------------------------------------------------------");
+        }
     }
-    public void buyELoadTransactionPageUIValidation_BE_TC_10(String sTier) throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Transaction Page UI Validation");
+    //-----------------Positive
+    public void buyELoadTransactionPageUIValidation_BE_TC_10() throws Exception {
+        ExtentReporter.logInfo("BE_TC_10","Buy ELoad Transaction Page UI Validation");
         login.loginWalletFullyTier();
         mobileGeneralMethod.tap(buyEloadObject.objEloadTab(), "Buy eLoad");
-        if (mobileGeneralMethod.isVisible(buyEloadObject.objEloadtransactionPage(), "Page")) {
-           mobileGeneralMethod.isVisible(buyEloadObject.objSelectTelco(),"Header");
-           mobileGeneralMethod.isVisible(buyEloadObject.objPhoneToLoad(),"Header");
+        mobileGeneralMethod.waitSleep(8000);
+        if (mobileGeneralMethod.isVisible(buyEloadObject.objEloadtransactionPage(), "Eload transaction Page")) {
+           mobileGeneralMethod.isVisible(buyEloadObject.objSelectTelco(),"Telco");
+           mobileGeneralMethod.isVisible(buyEloadObject.objPhoneToLoad(),"Phone To Load Header");
            mobileGeneralMethod.isVisible(buyEloadObject.objMobileNoField(), "Mobile Number Input Field");
-           mobileGeneralMethod.isVisible(buyEloadObject.objSelectFromContacts(), "Button");
-           mobileGeneralMethod.isVisible(buyEloadObject.objNextBtn(),"Button");
+           mobileGeneralMethod.isVisible(buyEloadObject.objSelectFromContacts(), "Select From Contacts Button");
+           mobileGeneralMethod.isVisible(buyEloadObject.objNextBtn(),"Next Button");
             LoggingUtils.info("BE_TC_10, Buy ELoad Transaction Page UI Validated");
-            ExtentReporter.logPass("BE_TC_10", "BE_TC_10, Buy ELoad Transaction Page UI Validated");
+            ExtentReporter.logPass("BE_TC_10", "Passsed Buy ELoad Transaction Page UI Validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("BE_TC_10", "Failed Buy ELoad Transaction Page UI Validated");
             System.out.println("-----------------------------------------------------------");
         }
     }
@@ -231,7 +295,7 @@ public class BuyELoad extends Base_Steps{
     }
     public void buyELoadLoadSelectionPageUIValidation_BE_TC_13(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad Load Selection Page UI Validation");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
 
         if (mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Page")) {
            mobileGeneralMethod.isVisible(buyEloadObject.objMobileNumberInLoadSelection(), "Number");
@@ -252,7 +316,7 @@ public class BuyELoad extends Base_Steps{
     }
     public void buyELoadLoadSelectionChangeBtnFunctionality_BE_TC_14(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad Load Selection Change Button Functionality Validation");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.tap(buyEloadObject.objChange(), "Button");
         if (mobileGeneralMethod.isVisible(buyEloadObject.objEloadtransactionPage(), "Page")) {
             LoggingUtils.info("BE_TC_14, After clicking on Change Btn in Load Selection Page, Application navigates to eLoad Transaction page is Validated");
@@ -262,7 +326,7 @@ public class BuyELoad extends Base_Steps{
     }
     public void buyELoadTransactionDetailsPageUIValidation_BE_TC_15(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad Transaction Details Page UI Validation");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
@@ -452,7 +516,7 @@ public class BuyELoad extends Base_Steps{
     }
     public void buyELoadPromoConfirmationPopupValidation_BE_TC_24(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad Promo Confirmation Popup Validation");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
 
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
@@ -469,7 +533,7 @@ public class BuyELoad extends Base_Steps{
     }
     public void buyELoadOTPPageUIValidation_BE_TC_25(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad OTP page UI Validation");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.waitSleep(1000);
@@ -492,7 +556,7 @@ public class BuyELoad extends Base_Steps{
     }
     public void buyELoadSuccessfulTransaction_BE_TC_26(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad Successful Transaction UI Validation");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
@@ -552,251 +616,10 @@ public class BuyELoad extends Base_Steps{
         }
     }
 
-    public void buyELoadLocationPopupValidation_BE_TC_51(String sTier, int promotab) throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Location Popup Validation");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
-        if (mobileGeneralMethod.isVisible(homePageObject.objPopUpMsg(),"Popup Msg")) {
-            LoggingUtils.info("BE_TC_51, Buy ELoad Location Popup Validated");
-            ExtentReporter.logPass("BE_TC_51", "BE_TC_51, Buy ELoad Location Popup Validated");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
-
-    public void buyELoadLocationDenyFunctionality_BE_TC_52(String sTier, int promotab) throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Location Deny Functionality");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
-        if (mobileGeneralMethod.isVisible(homePageObject.objPopUpMsg(),"Popup Msg")) {
-//            permissionDenyPopUp();
-            LoggingUtils.info("BE_TC_52, Buy ELoad Location Deny Functionality Validated");
-            ExtentReporter.logPass("BE_TC_52", "BE_TC_52, Buy ELoad Location Deny Functionality Validated");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
-
-    public void buyELoadLocationPermissionDenyCloseBtnFunctionality_BE_TC_53(String sTier, int promotab) throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Location Permission Deny Close Button Functionality");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
-        if (mobileGeneralMethod.isVisible(homePageObject.objPopUpMsg(),"Popup Msg")) {
-//            permissionDenyCloseBtnFunctionality();
-            if (mobileGeneralMethod.isVisible(loginObject.objAvailableBalance(),"Page")) {
-                LoggingUtils.info("BE_TC_53, Buy ELoad Location Permission Deny Close Button Functionality Validated");
-                ExtentReporter.logPass("BE_TC_53", "BE_TC_53, Buy ELoad Location Permission Deny Close Button Functionality Validated");
-                System.out.println("-----------------------------------------------------------");
-            }
-        }
-    }
-
-
-    public void buyELoadLocationPermissionDenyOpenSettingsBtnFunctionality_BE_TC_54(String sTier, int promotab) throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Location Permission Deny open Settings Button Functionality Validation");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
-        if (mobileGeneralMethod.isVisible(homePageObject.objPopUpMsg(),"Popup Msg")) {
-//            permissionDenyOpenSettingsBtnFunctionality();
-            if (mobileGeneralMethod.isVisible(buyEloadObject.objAppInfo(),"Page")) {
-                LoggingUtils.info("BE_TC_54, Buy ELoad Location Permission Deny Open Settings Button Functionality Validated");
-                ExtentReporter.logPass("BE_TC_54", "BE_TC_54, Buy ELoad Location Permission Deny Open Settings Button Functionality Validated");
-                System.out.println("-----------------------------------------------------------");
-            }
-        }
-    }
-
-
-    public void buyELoadLocationPopUpAllowFunctionality_BE_TC_55(String sTier, int promotab) throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Location popup Allow Button Functionality Validation");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
-        if (mobileGeneralMethod.isVisible(homePageObject.objPopUpMsg(),"Popup Msg")) {
-            mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(),"Page");
-            LoggingUtils.info("BE_TC_55, Buy ELoad Location popup Allow Button Functionality Validated");
-            ExtentReporter.logPass("BE_TC_55", "BE_TC_55, Buy ELoad Location popup Allow Button Functionality Validated");
-            System.out.println("-----------------------------------------------------------");
-
-        }
-    }
-
-    public void buyELoadContactsPermissionPopup_BE_TC_56(String sTier) throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Contacts Permission Popup");
-//        mlWalletLogin(sTier);
-        mobileGeneralMethod.tap(buyEloadObject.objEloadTab(), "Buy eLoad");
-        mobileGeneralMethod.tap(buyEloadObject.objSelectFromContacts(),"Button");
-        if (mobileGeneralMethod.isVisible(homePageObject.objPopUpMsg(),"Popup Msg")) {
-            mobileGeneralMethod.isVisible(homePageObject.objContactPopUpAllowBtn(),"Button");
-            mobileGeneralMethod.isVisible(homePageObject.objPopUpDenyBtn(),"Button");
-            LoggingUtils.info("BE_TC_56, Buy ELoad Contacts Permission Popup Validated");
-            ExtentReporter.logPass("BE_TC_56", "BE_TC_56, Buy ELoad Location popup Allow Button Functionality Validated");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
-
-    public void buyELoadContactPermissionPopupAllowBtnFunctionality_BE_TC_57() throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Contacts Permission Popup Allow Button Functionality");
-        buyELoadContactsPermissionPopup_BE_TC_56(prop.getproperty("Fully_Verified"));
-        mobileGeneralMethod.tap(homePageObject.objContactPopUpAllowBtn(),"Button");
-        if (mobileGeneralMethod.isVisible(buyEloadObject.objContacts(),"Page")) {
-            for (int i = 1; i <= 4; i++) {
-                for (int j = 1; j <= 2; j++) {
-                    if (j == 1) {
-                        String sContactName = mobileGeneralMethod.getText(buyEloadObject.objContactsAndNumber(i, j));
-                        LoggingUtils.info("Contact Name : " + sContactName + " is displayed");
-                        ExtentReporter.logPass(" ", "Contact Name : " + sContactName + " is displayed");
-                    }
-                    if (j == 2) {
-                        String sContactNumber = mobileGeneralMethod.getText(buyEloadObject.objContactsAndNumber(i, j));
-                        LoggingUtils.info("Contact Number : " + sContactNumber + " is displayed");
-                        ExtentReporter.logPass(" ", "Contact Number : " + sContactNumber + " is displayed");
-                    }
-                }
-            }
-            LoggingUtils.info("BE_TC_57, Buy ELoad Contacts Permission Popup Allow Button Functionality Validated");
-            ExtentReporter.logPass("BE_TC_57", "BE_TC_57, Buy ELoad Contacts Permission Popup Allow Button Functionality Validated");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
-
-
-    public void buyELoadContactPermissionPopupDenyBtnFunctionality_BE_TC_58() throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Contacts Permission Popup Deny Button Functionality");
-        buyELoadContactsPermissionPopup_BE_TC_56(prop.getproperty("Fully_Verified"));
-        mobileGeneralMethod.tap(homePageObject.objPopUpDenyBtn(),"Button");
-        mobileGeneralMethod.tap(buyEloadObject.objContactsPageBackBtn(), "Contact Page Back Arrow Button");
-        mobileGeneralMethod.tap(buyEloadObject.objSelectFromContacts(),"Button");
-        if (mobileGeneralMethod.isVisible(buyEloadObject.objContactPopupMsg(),"Popup")) {
-            mobileGeneralMethod.isVisible(buyEloadObject.objAllowAccess(),"Button");
-            mobileGeneralMethod.isVisible(buyEloadObject.objAskMeLater(),"Button");
-            LoggingUtils.info("BE_TC_58, Buy ELoad Contacts Permission Popup Deny Button Functionality Validated");
-            ExtentReporter.logPass("BE_TC_58", "BE_TC_58, Buy ELoad Contacts Permission Popup Deny Button Functionality Validated");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
-
-    public void buyELoadContactPermissionTwoDenyBtnFunctionality_BE_TC_59() throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Contact PermissionTwo Deny Button Functionality");
-        buyELoadContactPermissionPopupDenyBtnFunctionality_BE_TC_58();
-        mobileGeneralMethod.tap(buyEloadObject.objAllowAccess(),"Button");
-        mobileGeneralMethod.tap(homePageObject.objContactPopupDenyBtn(),"Button");
-        if (mobileGeneralMethod.isVisible(buyEloadObject.objNoContactsFoundMsg(),"Message")) {
-            LoggingUtils.info("BE_TC_59, Buy ELoad Contact PermissionTwo Deny Button Functionality validated");
-            ExtentReporter.logPass("BE_TC_59", "BE_TC_59, Buy ELoad Contact PermissionTwo Deny Button Functionality Validated");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
-
-    public void buyELoadContactPermissionTwoAllowBtnFunctionality_BE_TC_60() throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Contact PermissionTwo Allow Button Functionality");
-        buyELoadContactPermissionPopupDenyBtnFunctionality_BE_TC_58();
-        mobileGeneralMethod.tap(buyEloadObject.objAllowAccess(),"Button");
-        mobileGeneralMethod.tap(homePageObject.objContactPopUpAllowBtn(),"Button");
-        if (mobileGeneralMethod.isVisible(buyEloadObject.objContacts(),"Page")) {
-            for (int i = 1; i <= 4; i++) {
-                for (int j = 1; j <= 2; j++) {
-                    if (j == 1) {
-                        String sContactName = mobileGeneralMethod.getText(buyEloadObject.objContactsAndNumber(i, j));
-                        LoggingUtils.info("Contact Name : " + sContactName + " is displayed");
-                        ExtentReporter.logPass(" ", "Contact Name : " + sContactName + " is displayed");
-                    }
-                    if (j == 2) {
-                        String sContactNumber = mobileGeneralMethod.getText(buyEloadObject.objContactsAndNumber(i, j));
-                        LoggingUtils.info("Contact Number : " + sContactNumber + " is displayed");
-                        ExtentReporter.logPass(" ", "Contact Number : " + sContactNumber + " is displayed");
-                    }
-                }
-            }
-            LoggingUtils.info("BE_TC_60, Buy ELoad Contact PermissionTwo Allow Button Functionality Validated");
-            ExtentReporter.logPass("BE_TC_60", "BE_TC_60, Buy ELoad Contact PermissionTwo Allow Button Functionality Validated");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
-
-
-    public void buyELoadInternetInterruptionWhileEnteringOTP_BE_TC_61(String sTier, int promotab) throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Internet Interruption While Entering OTP Validation");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
-        
-        mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
-        mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
-        mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.tap(buyEloadObject.obj10SmartRegular(),"Promo");
-        mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(),"Pop Up");
-        mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
-        mobileGeneralMethod.isVisible(buyEloadObject.objBuyLoad(),"Page");
-        mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
-        mobileGeneralMethod.waitSleep(1000);
-//        setWifiConnectionToONOFF("OFF");
-        mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(),"Continue Button");
-        if (mobileGeneralMethod.isVisible(homePageObject.objInternetConnectionPopUp(),"PopUp")) {
-//            internetConnectionError();
-            LoggingUtils.info("BE_TC_61, Buy ELoad Internet Interruption While Entering OTP Validated");
-            ExtentReporter.logPass("BE_TC_61", "BE_TC_61, Buy ELoad Internet Interruption While Entering OTP Validated");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
-
-    public void buyELoadLocationPermissionAskMeLaterButtonFunctionality_BE_TC_62() throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Location Permission Ask Me Later Button Functionality");
-        buyELoadContactPermissionPopupDenyBtnFunctionality_BE_TC_58();
-        mobileGeneralMethod.tap(buyEloadObject.objAskMeLater(),"Button");
-        if (mobileGeneralMethod.isVisible(homePageObject.objPopUpMsg(),"Popup Msg")) {
-            mobileGeneralMethod.isVisible(homePageObject.objContactPopUpAllowBtn(),"Button");
-            mobileGeneralMethod.isVisible(homePageObject.objContactPopupDenyBtn(),"Button");
-            LoggingUtils.info("BE_TC_62, Buy ELoad Location Permission Ask Me Later Button Functionality Validated");
-            ExtentReporter.logPass("BE_TC_62", "BE_TC_62, Buy ELoad Location Permission Ask Me Later Button Functionality Validated");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
-
-    public void buyELoadLocationPermissionTwoDenyBtnFunctionality_BE_TC_63() throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Location PermissionTwo Deny Button Functionality");
-        buyELoadLocationPermissionAskMeLaterButtonFunctionality_BE_TC_62();
-        mobileGeneralMethod.tap(homePageObject.objContactPopupDenyBtn(),"Button");
-        if (mobileGeneralMethod.isVisible(buyEloadObject.objNoContactsFoundMsg(),"Message")) {
-            LoggingUtils.info("BE_TC_63, Buy ELoad Location PermissionTwo Deny Button Functionality validated");
-            ExtentReporter.logPass("BE_TC_63", "BE_TC_63, Buy ELoad Location PermissionTwo Deny Button Functionality Validated");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
-
-    public void buyELoadLocationPermissionTwoAllowBtnFunctionality_BE_TC_64() throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Location PermissionTwo Allow Button Functionality");
-        buyELoadLocationPermissionAskMeLaterButtonFunctionality_BE_TC_62();
-        mobileGeneralMethod.tap(homePageObject.objContactPopUpAllowBtn(),"Button");
-        if (mobileGeneralMethod.isVisible(buyEloadObject.objContacts(),"Page")) {
-            for (int i = 1; i <= 4; i++) {
-                for (int j = 1; j <= 2; j++) {
-                    if (j == 1) {
-                        String sContactName = mobileGeneralMethod.getText(buyEloadObject.objContactsAndNumber(i, j));
-                        LoggingUtils.info("Contact Name : " + sContactName + " is displayed");
-                        ExtentReporter.logPass(" ", "Contact Name : " + sContactName + " is displayed");
-                    }
-                    if (j == 2) {
-                        String sContactNumber = mobileGeneralMethod.getText(buyEloadObject.objContactsAndNumber(i, j));
-                        LoggingUtils.info("Contact Number : " + sContactNumber + " is displayed");
-                        ExtentReporter.logPass(" ", "Contact Number : " + sContactNumber + " is displayed");
-                    }
-                }
-            }
-            LoggingUtils.info("BE_TC_64, Buy ELoad Location PermissionTwo Allow Button Functionality Validated");
-            ExtentReporter.logPass("BE_TC_64", "BE_TC_64, Buy ELoad Location PermissionTwo Allow Button Functionality Validated");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
-
-    public void buyELoadContactPopupNotDisplayedAfterClickingODenyButtonValidation_BE_TC_65() throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Contact Popup Not displayed After Clicking On Deny Button Validation");
-        buyELoadLocationPermissionAskMeLaterButtonFunctionality_BE_TC_62();
-        mobileGeneralMethod.tap(homePageObject.objContactPopupDenyBtn(),"Button");
-        mobileGeneralMethod.tap(buyEloadObject.objContactsPageBackBtn(), "Contacts Page Back Btn");
-        mobileGeneralMethod.isVisible(buyEloadObject.objEloadtransactionPage(),"Page");
-        mobileGeneralMethod.tap(buyEloadObject.objSelectFromContacts(),"Button");
-        if (mobileGeneralMethod.isVisible(buyEloadObject.objContactPopupMsg(), "Contacts Popup")) {
-            LoggingUtils.info("BE_TC_65, Buy ELoad Contact Popup Not displayed After Clicking On Deny Button is Validated");
-            ExtentReporter.logPass("BE_TC_65", "BE_TC_65, Buy ELoad Contact Popup Not displayed After Clicking On Deny Button is Validated");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
 
     public void buyELoadNewTransactionBtnFunctionality_BE_TC_66() throws Exception {
         ExtentReporter.logInfo("","Buy ELoad New Transaction Button Functionality");
-        buyELoadTransactionDetails_BE_TC_01(prop.getproperty("Fully_Verified"), 3);
+        
         mobileGeneralMethod.tap(buyEloadObject.objNewTransaction(),"Button");
         if (mobileGeneralMethod.isVisible(buyEloadObject.objEloadtransactionPage(),"Page")) {
             LoggingUtils.info("BE_TC_66, Buy ELoad New Transaction Button Functionality Validated");
@@ -805,33 +628,9 @@ public class BuyELoad extends Base_Steps{
         }
     }
 
-    public void buyELoadTransactionValidationAfterMinimizingApp_BE_TC_069(String sTier, int promotab) throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Transaction Validation After Minimizing App");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
-        mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
-        mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
-        mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.tap(buyEloadObject.obj10SmartRegular(),"Promo");
-        mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(),"Pop Up");
-        mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
-        mobileGeneralMethod.isVisible(buyEloadObject.objBuyLoad(),"Page");
-        mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
-        mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(),"Continue Button");
-//        DriverManager.getAppiumDriver().runAppInBackground(Duration.ofSeconds(5));
-        LoggingUtils.info("Application relaunched after 5 Seconds");
-        mobileGeneralMethod.waitSleep(1000);
-        if (mobileGeneralMethod.isVisible(buyEloadObject.objTransactionDetailsPage(),"Page")) {
-            LoggingUtils.info("BE_TC_069, Buy ELoad Transaction Validation After Minimizing App Validated");
-            ExtentReporter.logPass("BE_TC_069", "BE_TC_069, Buy ELoad Transaction Validation After Minimizing App Validated");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
-
-
     public void buyELoadTransactionWithValidMLPin_BE_TC_78(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad Transaction With Valid MLPin");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
@@ -856,10 +655,9 @@ public class BuyELoad extends Base_Steps{
         }
     }
 
-
     public void buyELoadTransactionWithInValidMLPin_BE_TC_79(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad Transaction With InValid MLPin");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
@@ -883,7 +681,7 @@ public class BuyELoad extends Base_Steps{
 
     public void buyELoadInOTPPopupValidation_BE_TC_089(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad Transaction IN App OTP Popup Validation");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
@@ -902,10 +700,9 @@ public class BuyELoad extends Base_Steps{
         }
     }
 
-
     public void buyELoadTransactionInAppOTPPopupUIValidation_BE_TC_090(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad Transaction InApp OTP popup UI Validation");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
@@ -927,10 +724,9 @@ public class BuyELoad extends Base_Steps{
         }
     }
 
-
     public void buyELoadTransactionNewOTPAfterSixtySecondsValidation_BE_TC_091(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad New OTP got generated After Sixty Seconds validation");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
@@ -955,7 +751,7 @@ public class BuyELoad extends Base_Steps{
 
     public void buyELoadTransactionOTPCancelBtnFunctionality_BE_TC_092(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad Transaction OTP Cancel Button Functionality");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
@@ -975,10 +771,9 @@ public class BuyELoad extends Base_Steps{
         }
     }
 
-
     public void buyELoadTransactionOTPContinueBtnFunctionality_BE_TC_093(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad Transaction OTP Continue Button Functionality");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
@@ -1001,7 +796,7 @@ public class BuyELoad extends Base_Steps{
 
     public void buyELoadMaximumTransactionForBranchVerifiedTier_BE_TC_42(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad maximum transaction for Branch verified Tier");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
@@ -1024,7 +819,7 @@ public class BuyELoad extends Base_Steps{
 
     public void buyELoadMaximumTransactionForSemiVerifiedTier_BE_TC_30(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad maximum transaction for Semi verified Tier");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
@@ -1047,7 +842,7 @@ public class BuyELoad extends Base_Steps{
 
     public void buyELoadMaximumLimitForSemiVerifiedTier_BE_TC_33(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad maximum Limit reached Error msg validation for Semi verified Tier");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
@@ -1071,7 +866,7 @@ public class BuyELoad extends Base_Steps{
 
     public void buyELoadMaximumLimitForFullyVerifiedTier_BE_TC_39(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad maximum Limit reached Error msg validation for Fully verified Tier");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
@@ -1095,7 +890,7 @@ public class BuyELoad extends Base_Steps{
 
     public void buyELoadMaximumTransactionForFullyVerifiedTier_BE_TC_36(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad maximum transaction for Fully verified Tier");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
@@ -1119,7 +914,7 @@ public class BuyELoad extends Base_Steps{
 
     public void buyELoadMaximumLimitForBuyerTierVerifiedTier_BE_TC_45(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad maximum Limit reached Error msg validation for Buyer Tier verified Tier");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
@@ -1143,7 +938,7 @@ public class BuyELoad extends Base_Steps{
 
     public void buyELoadMaximumTransactionForBuyerTierVerifiedTier_BE_TC_48(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad maximum transaction for Buyer Tier verified Tier");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
@@ -1166,7 +961,7 @@ public class BuyELoad extends Base_Steps{
 
     public void buyELoadSecondTimeLoadSelectionPopupValidation_BE_TC_29(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad Second time Load selection popup validation");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(), "Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
@@ -1187,7 +982,7 @@ public class BuyELoad extends Base_Steps{
 
     public void buyELoadMLPinPageNavigation_BE_TC_87(String sTier, int promotab) throws Exception {
         ExtentReporter.logInfo("","Buy ELoad ML pin page navigation");
-        eLoad_generic(sTier, prop.getproperty("Smart"), "true", promotab);
+        
         mobileGeneralMethod.isVisible(buyEloadObject.objLoadSelectionPage(),"Load Selection Page");
         mobileGeneralMethod.tap(buyEloadObject.objPromoLoadTab(), "Promo Load Tab");
         mobileGeneralMethod.waitSleep(1000);
