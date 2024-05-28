@@ -58,6 +58,40 @@ public class Login extends Base_Steps {
             throw new AssertionError("Failed to logged in");
         }
     }
+    public void loginWalletBuyerTier(){
+        mobileGeneralMethod.waitSleep(5000);
+        mobileGeneralMethod.type(mlWalletPageObjects.mobileNum_editText(), "Mobile Field", "9999999941");
+        mobileGeneralMethod.tap(mlWalletPageObjects.login_btn(),"Login Button");
+        mobileGeneralMethod.waitSleep(10000);
+        enterOTP();
+        mobileGeneralMethod.waitSleep(2000);
+        enterPin();
+        if((mlWalletPageObjects.usableBalance_Text().isDisplayed())){
+            ExtentReporter.logPass("loginWallet", "Successfully Logged in");
+            LoggingUtils.info("You are now Logged in");
+        }else{
+            ExtentReporter.logFail("loginWallet", "Failed to logged in");
+            LoggingUtils.error("Failed to logged in");
+            throw new AssertionError("Failed to logged in");
+        }
+    }
+    public void loginWalletSemiTier(){
+        mobileGeneralMethod.waitSleep(5000);
+        mobileGeneralMethod.type(mlWalletPageObjects.mobileNum_editText(), "Mobile Field", "9999999946");
+        mobileGeneralMethod.tap(mlWalletPageObjects.login_btn(),"Login Button");
+        mobileGeneralMethod.waitSleep(10000);
+        enterOTP();
+        mobileGeneralMethod.waitSleep(2000);
+        enterPin();
+        if((mlWalletPageObjects.usableBalance_Text().isDisplayed())){
+            ExtentReporter.logPass("loginWallet", "Successfully Logged in");
+            LoggingUtils.info("You are now Logged in");
+        }else{
+            ExtentReporter.logFail("loginWallet", "Failed to logged in");
+            LoggingUtils.error("Failed to logged in");
+            throw new AssertionError("Failed to logged in");
+        }
+    }
     public void enterOTP(){
         LoggingUtils.info("Entering OTP........");
         for (int i=0; i < 6; i++){

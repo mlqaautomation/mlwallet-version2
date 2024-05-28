@@ -151,6 +151,17 @@ public class MobileGeneralMethod extends AppiumDriverManager {
             ExtentReporter.logFail("Assertion",actual+" and "+expected+" are not matched");
         }
     }
+    public void assertionNotEqualValidation(String actual, String expected) throws Exception {
+        Assert.assertEquals(actual,expected);
+        if(actual != expected)
+        {
+            LoggingUtils.info(actual+" and "+expected+" are not matched");
+            ExtentReporter.logPass("Assertion",actual+" and "+expected+" are matched");
+        }else {
+            LoggingUtils.info(actual+" and "+expected+" are matched");
+            ExtentReporter.logFail("Assertion",actual+" and "+expected+" are not matched");
+        }
+    }
     public void assertionValidationdouble(double actual, double expected) throws Exception {
         Assert.assertEquals(actual,expected);
         if(actual == expected)

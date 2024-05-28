@@ -19,6 +19,9 @@ public class MLWallet_PageObjects extends AppiumDriverManager{
     public WebElement notifPermission_msg(){
         return driver.findElement(By.id("com.android.permissioncontroller:id/permission_message"));
     }
+    public WebElement objEnterMpinVal (String mPin){
+        return driver.findElement(By.xpath("//*[@text='"+mPin+"']"));
+    }
     public WebElement notifPermission_allowBtn(){
         return driver.findElement(By.id("com.android.permissioncontroller:id/permission_allow_button"));
     }
@@ -300,6 +303,9 @@ public class MLWallet_PageObjects extends AppiumDriverManager{
     }
     public WebElement objCancelsBtn(){
         return driver.findElement(By.xpath("//*[@text='Cancel']"));
+    }
+    public WebElement objCancels2Btn(){
+        return driver.findElement(By.xpath("//*[@text='CANCEL']"));
     }
     public WebElement objAllowCameraWhileUsingAppBtn(){
         return driver.findElement(By.xpath("//*[@text='While using the app']"));

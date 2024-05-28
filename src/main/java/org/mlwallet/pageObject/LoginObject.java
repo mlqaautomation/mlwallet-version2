@@ -15,7 +15,6 @@ public class LoginObject extends AppiumDriverManager {
     public WebElement objLoginBtn(){
         return driver.findElement(By.xpath("//*[@text='Login']"));
     }
-    public WebElement objOtpTextField;
 
     public WebElement objOtpTextField(int i){
         return driver.findElement(By.xpath("(//*[@class='android.widget.EditText'])["+i+"]"));
