@@ -20,18 +20,9 @@ public class Base_Steps {
     PayBillsObject payBillsObject = new PayBillsObject();
     HistoryObject historyObject = new HistoryObject();
     BuyEloadObject buyEloadObject = new BuyEloadObject();
-    public static propertyReader prop;
     yamlReader yamlReader = new yamlReader();
     final String filepath = "src\\test\\java\\resources\\testData.properties";
     propertyReader propertyReader = new propertyReader(filepath);
-
     public final yamlReader reader = new yamlReader();
-    public void propertyFileReader(){
-        if(osName.contains("linux")){
-            prop = new propertyReader("./properties/testdata.properties");
-        }else{
-            prop = new propertyReader(".\\properties\\testdata.properties");
-        }
-    }
 
 }

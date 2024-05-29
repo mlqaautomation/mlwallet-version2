@@ -1,6 +1,7 @@
 package utilities.ReusableComponents;
 
 import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -43,6 +44,15 @@ public class MobileGeneralMethod extends AppiumDriverManager {
             LoggingUtils.error("Failed to Typed into field: " + elementName + ", Value: "+ text);
             ExtentReporter.logFail("Failed to Typed into field: " + elementName , "Typed Value: "+ text);
             throw new AssertionError("Failed to Typed Element: " + elementName + e );
+        }
+    }
+    public static void clearField(WebElement byLocator, String text) {
+        try {
+            byLocator.clear();
+            LoggingUtils.info("Cleared the text in : " + text);
+            ExtentReporter.logPass("clear text", "Cleared the text in : " + text);
+        } catch (Exception e) {
+            LoggingUtils.error(e);
         }
     }
     public boolean isVisible(WebElement locator, String elementName){

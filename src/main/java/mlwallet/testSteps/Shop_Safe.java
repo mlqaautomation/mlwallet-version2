@@ -712,7 +712,7 @@ public class Shop_Safe extends Base_Steps{
 //         mobileGeneralMethod.waitSleep(1000);
 //        mobileGeneralMethod.tap(mlWalletPageObjects.objShopSafeIconBtn(), "Shop Safe Icon Button");
 //        mobileGeneralMethod.tap(mlWalletPageObjects.objStartTransactBtn(), "Start Transaction Button");
-//        mobileGeneralMethod.type(mlWalletPageObjects.objSellerNoTxtbx(), prop.getproperty("VaildShopSafeNumber"), "Type Valid Number");
+//        mobileGeneralMethod.type(mlWalletPageObjects.objSellerNoTxtbx(), propertyReader.getproperty("VaildShopSafeNumber"), "Type Valid Number");
 //        mobileGeneralMethod.tap(mlWalletPageObjects.objInviteSellerBtn(), "Invite Seller Button");
 //        if (mobileGeneralMethod.isVisible(mlWalletPageObjects.objSuccessfInviteLabel(), "Successful Invite")) {
 //            mobileGeneralMethod.tap(mlWalletPageObjects.objOkayBtn(), "Okay Button");
@@ -896,9 +896,9 @@ public class Shop_Safe extends Base_Steps{
         mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.tap(mlWalletPageObjects.objShopSafeIconBtn(), "Shop Safe Icon Button");
         mobileGeneralMethod.tap(mlWalletPageObjects.objStartTransactBtn(), "Start Transaction Button");
-        mobileGeneralMethod.type(mlWalletPageObjects.objSellerNoTxtbx(), prop.getproperty("CharacterNumber"), "Enter Character");
+        mobileGeneralMethod.type(mlWalletPageObjects.objSellerNoTxtbx(), propertyReader.getproperty("CharacterNumber"), "Enter Character");
         mobileGeneralMethod.tap(mlWalletPageObjects.objInviteSellerBtn(), "Invite Seller Button");
-        mobileGeneralMethod.assertionValidation(mobileGeneralMethod.getText(mlWalletPageObjects.objGetErrMsg(prop.getproperty("InvalidMobileNum"))), prop.getproperty("InvalidMobileNum"));
+        mobileGeneralMethod.assertionValidation(mobileGeneralMethod.getText(mlWalletPageObjects.objGetErrMsg(propertyReader.getproperty("InvalidMobileNum"))), propertyReader.getproperty("InvalidMobileNum"));
         LoggingUtils.info("Prompt Display should be Mobile number is invalid");
         ExtentReporter.logPass("SSM_TC_03", "Validate enter characters seller number in Create Transaction Page");
     }
@@ -908,9 +908,9 @@ public class Shop_Safe extends Base_Steps{
         mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.tap(mlWalletPageObjects.objShopSafeIconBtn(), "Shop Safe Icon Button");
         mobileGeneralMethod.tap(mlWalletPageObjects.objStartTransactBtn(), "Start Transaction Button");
-        mobileGeneralMethod.type(mlWalletPageObjects.objSellerNoTxtbx(), prop.getproperty("DecimalNumber"), "Enter Decimal");
+        mobileGeneralMethod.type(mlWalletPageObjects.objSellerNoTxtbx(), propertyReader.getproperty("DecimalNumber"), "Enter Decimal");
         mobileGeneralMethod.tap(mlWalletPageObjects.objInviteSellerBtn(), "Invite Seller Button");
-        mobileGeneralMethod.assertionValidation(mobileGeneralMethod.getText(mlWalletPageObjects.objGetErrMsg(prop.getproperty("InvalidMobileNum"))), prop.getproperty("InvalidMobileNum"));
+        mobileGeneralMethod.assertionValidation(mobileGeneralMethod.getText(mlWalletPageObjects.objGetErrMsg(propertyReader.getproperty("InvalidMobileNum"))), propertyReader.getproperty("InvalidMobileNum"));
         LoggingUtils.info("Prompt Display should be Mobile number is invalid");
         ExtentReporter.logPass("SSM_TC_03", "Validate enter decimal seller number in Create Transaction Page");
     }
@@ -921,7 +921,7 @@ public class Shop_Safe extends Base_Steps{
         mobileGeneralMethod.tap(mlWalletPageObjects.objShopSafeIconBtn(), "Shop Safe Icon Button");
         mobileGeneralMethod.tap(mlWalletPageObjects.objStartTransactBtn(), "Start Transaction Button");
         mobileGeneralMethod.tap(mlWalletPageObjects.objInviteSellerBtn(), "Invite Seller Button");
-        mobileGeneralMethod.assertionValidation(mobileGeneralMethod.getText(mlWalletPageObjects.objGetErrMsg(prop.getproperty("EmptyMobileNum"))), prop.getproperty("EmptyMobileNum"));
+        mobileGeneralMethod.assertionValidation(mobileGeneralMethod.getText(mlWalletPageObjects.objGetErrMsg(propertyReader.getproperty("EmptyMobileNum"))), propertyReader.getproperty("EmptyMobileNum"));
         LoggingUtils.info("Prompt Display should be Mobile number is required");
         ExtentReporter.logPass("SSM_TC_03", "Validate enter empty seller number in Create Transaction Page");
     }

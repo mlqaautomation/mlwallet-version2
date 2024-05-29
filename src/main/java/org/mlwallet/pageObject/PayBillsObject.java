@@ -47,6 +47,27 @@ public class PayBillsObject extends AppiumDriverManager {
     public WebElement objCharityAndReligious(){
         return driver.findElement(By.xpath("//*[@text='Charity/Religious']"));
     }
+    public WebElement objDistributionAndRetail(){
+        return driver.findElement(By.xpath("//*[@text='Distribution/Retail']"));
+    }
+    public WebElement objEducation(){
+        return driver.findElement(By.xpath("//*[@text='Education']"));
+    }
+    public WebElement objGovernment(){
+        return driver.findElement(By.xpath("//*[@text='Government']"));
+    }
+    public WebElement objMedical(){
+        return driver.findElement(By.xpath("//*[@text='Medical']"));
+    }
+    public WebElement objMotors(){
+        return driver.findElement(By.xpath("//*[@text='Motors']"));
+    }
+    public WebElement objTelecoms(){
+        return driver.findElement(By.xpath("//*[@text='Telecoms']"));
+    }
+    public WebElement objTravelAndAmusement(){
+        return driver.findElement(By.xpath("//*[@text='Travel/Amusement']"));
+    }
     public WebElement objCharityAndReligiousBillers(){
         return driver.findElement(By.xpath("//*[@text='Charity/Religious']/parent::android.view.ViewGroup/following-sibling::android.view.ViewGroup/child::android.widget.TextView"));
     }
@@ -72,7 +93,7 @@ public class PayBillsObject extends AppiumDriverManager {
         return driver.findElement(By.xpath("//*[@text='Biller']/following-sibling::android.widget.EditText"));
     }
     public WebElement objSearchBiller(){
-        return driver.findElement(By.xpath("//android.widget.EditText[@resource-id='P3812K']"));
+        return driver.findElement(By.xpath("//*[@text='Search biller ...']"));
     }
     public WebElement objSearchBillerInSavedBillers(){
         return driver.findElement(By.xpath("//*[@class='android.widget.EditText']"));
@@ -191,6 +212,9 @@ public class PayBillsObject extends AppiumDriverManager {
     public WebElement objSuccessPillPaymentMsg(){
         return driver.findElement(By.xpath("//*[@text='Bills Payment Successful']"));
     }
+    public WebElement objInsufficientAmountMsg(){
+        return driver.findElement(By.xpath("//*[@text='Upgrade Now' or @text='Ok']/parent::android.view.ViewGroup/parent::android.view.ViewGroup/preceding-sibling::android.widget.TextView"));
+    }
     public WebElement objAmountPaid(){
         return driver.findElement(By.xpath("(//*[@text='Bills Payment Successful']/following-sibling::android.widget.TextView)[1]"));
     }
@@ -199,6 +223,9 @@ public class PayBillsObject extends AppiumDriverManager {
     }
     public WebElement objTransactionDetails(){
         return driver.findElement(By.xpath("//*[@text='Transaction Details']"));
+    }
+    public WebElement objReferenceNumberInCashOut(){
+        return driver.findElement(By.xpath("(//*[@resource-id='Reference Number'])[2]"));
     }
     public WebElement objServiceFee(){
         return driver.findElement(By.xpath("(//*[@resource-id='Service Fee'])[2]"));
