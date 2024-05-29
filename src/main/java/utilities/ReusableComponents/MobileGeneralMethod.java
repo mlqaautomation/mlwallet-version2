@@ -151,15 +151,15 @@ public class MobileGeneralMethod extends AppiumDriverManager {
             ExtentReporter.logFail("Assertion",actual+" and "+expected+" are not matched");
         }
     }
-    public void assertionNotEqualValidation(String actual, String expected) throws Exception {
-        Assert.assertEquals(actual,expected);
+    public void assertionNotEqualValidation(int actual, int expected) throws Exception {
+        Assert.assertNotEquals(actual,expected);
         if(actual != expected)
         {
             LoggingUtils.info(actual+" and "+expected+" are not matched");
-            ExtentReporter.logPass("Assertion",actual+" and "+expected+" are matched");
+            ExtentReporter.logFail("Assertion",actual+" and "+expected+" are not matched");
         }else {
             LoggingUtils.info(actual+" and "+expected+" are matched");
-            ExtentReporter.logFail("Assertion",actual+" and "+expected+" are not matched");
+            ExtentReporter.logPass("Assertion",actual+" and "+expected+" are matched");
         }
     }
     public void assertionValidationdouble(double actual, double expected) throws Exception {
@@ -172,5 +172,16 @@ public class MobileGeneralMethod extends AppiumDriverManager {
             LoggingUtils.info(actual+" and "+expected+" are not matched");
             ExtentReporter.logFail("Assertion",actual+" and "+expected+" are not matched");
         }
+    }
+
+    public void passTest(String steps, String message){
+        waitSleep(2000);
+        LoggingUtils.info(steps+" "+message+" ");
+        ExtentReporter.logPass("Passed",steps+" "+message+" ");
+    }
+    public void failTest(String steps, String message){
+        waitSleep(2000);
+        LoggingUtils.info(steps+" "+message+" ");
+        ExtentReporter.logPass("Failed",steps+" "+message+" ");
     }
 }

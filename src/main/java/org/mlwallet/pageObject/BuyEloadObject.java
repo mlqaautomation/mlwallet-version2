@@ -156,7 +156,7 @@ public class BuyEloadObject extends AppiumDriverManager {
         return driver.findElement(By.xpath("//*[@text='Allow' or @text='ALLOW']"));
     }
      public WebElement objSearch(){
-        return driver.findElement(By.xpath("//*[@class='android.widget.EditText']"));
+        return driver.findElement(By.xpath("//*[@text='Search']"));
     }
      public WebElement objContactsBtn(){
         return driver.findElement(By.xpath("(//*[@text='Contacts'])[2]"));
@@ -168,13 +168,13 @@ public class BuyEloadObject extends AppiumDriverManager {
         return driver.findElement(By.xpath("(//*[@text='Contacts'])[1]/parent::android.view.ViewGroup/preceding-sibling::android.view.ViewGroup"));
     }
      public WebElement objSearchedContactName(){
-        return driver.findElement(By.xpath("(((//*[@class='android.view.ViewGroup' and ./parent::*[@class='android.widget.ScrollView' and ./parent::*[./parent::*[./parent::*[@class='android.widget.FrameLayout']]]]]/*[@class='android.view.ViewGroup'])[1]/*/*[@class='android.view.ViewGroup' and ./parent::*[@class='android.view.ViewGroup']])[1]/*[@class='android.widget.TextView'])[1]"));
+        return driver.findElement(By.xpath("(//*[@class='android.widget.ScrollView'])[2]/child::android.view.ViewGroup/child::android.view.ViewGroup/child::android.view.ViewGroup[1]/child::android.view.ViewGroup/child::android.widget.TextView[1]"));
     }
      public WebElement objSearchedContactNumber(){
-        return driver.findElement(By.xpath("(((//*[@class='android.view.ViewGroup' and ./parent::*[@class='android.widget.ScrollView' and ./parent::*[./parent::*[./parent::*[@class='android.widget.FrameLayout']]]]]/*[@class='android.view.ViewGroup'])[1]/*/*[@class='android.view.ViewGroup' and ./parent::*[@class='android.view.ViewGroup']])[1]/*[@class='android.widget.TextView'])[2]"));
+        return driver.findElement(By.xpath("(//*[@class='android.widget.ScrollView'])[2]/child::android.view.ViewGroup/child::android.view.ViewGroup/child::android.view.ViewGroup[1]/child::android.view.ViewGroup/child::android.widget.TextView[2]"));
     }
      public WebElement objAddToFavoriteIcon(){
-        return driver.findElement(By.xpath("((//*[@class='android.view.ViewGroup' and ./parent::*[@class='android.widget.ScrollView' and ./parent::*[./parent::*[./parent::*[@class='android.widget.FrameLayout']]]]]/*[@class='android.view.ViewGroup'])[1]/*/*[@class='android.view.ViewGroup' and ./parent::*[@class='android.view.ViewGroup']])[2]/child::android.widget.TextView"));
+        return driver.findElement(By.xpath("(//*[@class='android.widget.ScrollView'])[2]/child::android.view.ViewGroup/child::android.view.ViewGroup/child::android.view.ViewGroup[2]"));
     }
      public WebElement objNoFavoritesFoundMsg(){
         return driver.findElement(By.xpath("//*[@text='No favorites found']"));
@@ -222,7 +222,9 @@ public class BuyEloadObject extends AppiumDriverManager {
      public WebElement obj10SmartRegular(){
         return driver.findElement(By.xpath("//*[@text='P10 Smart Regular']"));
     }
-
+    public WebElement obj30SmartUCT(){
+        return driver.findElement(By.xpath("//*[@text='UCT30 (SMART)']"));
+    }
     public WebElement telcoOptions(int indexTab)
     {
         return driver.findElement(By.xpath("(//*[android.view.ViewGroup]/following-sibling::android.view.ViewGroup/(descendant::android.widget.ImageView)[1])["+indexTab+"]"));

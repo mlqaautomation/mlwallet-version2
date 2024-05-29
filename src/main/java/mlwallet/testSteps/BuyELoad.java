@@ -41,9 +41,10 @@ public class BuyELoad extends Base_Steps{
         mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(), "Continue Promo Pop Up");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
+        mobileGeneralMethod.waitSleep(2000);
         mobileGeneralMethod.isVisible(buyEloadObject.objBuyLoad(), "Buy Load Page");
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
-        mobileGeneralMethod.waitSleep(8000);
+        mobileGeneralMethod.waitSleep(10000);
         mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(),"Continue Button");
         mobileGeneralMethod.waitSleep(15000);
         if (mobileGeneralMethod.isVisible(buyEloadObject.objTransactionDetailsPage(), "Transaction Details Page")) {
@@ -90,9 +91,10 @@ public class BuyELoad extends Base_Steps{
         mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(), "Continue Promo Pop Up");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
+        mobileGeneralMethod.waitSleep(2000);
         mobileGeneralMethod.isVisible(buyEloadObject.objBuyLoad(), "Buy Load Page");
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
-        mobileGeneralMethod.waitSleep(8000);
+        mobileGeneralMethod.waitSleep(10000);
         mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(),"Continue Button");
         mobileGeneralMethod.waitSleep(15000);
         if (mobileGeneralMethod.isVisible(buyEloadObject.objTransactionDetailsPage(),"Page")) {
@@ -319,7 +321,7 @@ public class BuyELoad extends Base_Steps{
     }
     //-----------------Positive
     public void buyELoadLoadSelectionPageUIValidation_BE_TC_13() throws Exception {
-        ExtentReporter.logInfo("","Buy ELoad Load Selection Page UI Validation");
+        ExtentReporter.logInfo("BE_TC_13","Buy ELoad Load Selection Page UI Validation");
         login.loginWalletFullyTier();
         mobileGeneralMethod.tap(buyEloadObject.objEloadTab(), "Buy eLoad tab");
         mobileGeneralMethod.waitSleep(8000);
@@ -479,14 +481,13 @@ public class BuyELoad extends Base_Steps{
     public void buyELoadSearchFieldValidation_BE_TC_19() throws Exception {
         ExtentReporter.logInfo("BE_TC_19","Buy ELoad Search Field Validation");
         login.loginWalletFullyTier();
-        login.loginWalletFullyTier();
         mobileGeneralMethod.tap(buyEloadObject.objEloadTab(),"Buy eLoad");
         mobileGeneralMethod.waitSleep(8000);
         mobileGeneralMethod.tap(buyEloadObject.objSelectFromContacts(),"Button");
         mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.isVisible(buyEloadObject.objContacts(), "Page");
         if (mobileGeneralMethod.isVisible(buyEloadObject.objSearch(), "Contact Search")) {
-            mobileGeneralMethod.type(buyEloadObject.objSearch(), "Contact Search", prop.getproperty("NameDataTest"));
+            mobileGeneralMethod.type(buyEloadObject.objSearch(), "Contact Search", propertyReader.getproperty("NameDataTest"));
             mobileGeneralMethod.waitSleep(1000);
             mobileGeneralMethod.isVisible(buyEloadObject.objSearchedContactName(),"Contact name");
             mobileGeneralMethod.isVisible(buyEloadObject.objSearchedContactNumber(),"Contact Number");
@@ -504,22 +505,25 @@ public class BuyELoad extends Base_Steps{
         ExtentReporter.logInfo("BE_TC_20","Buy ELoad Add Contact To Favorites");
         login.loginWalletFullyTier();
         mobileGeneralMethod.tap(buyEloadObject.objEloadTab(), "Buy eLoad");
+        mobileGeneralMethod.waitSleep(8000);
         mobileGeneralMethod.tap(buyEloadObject.objSelectFromContacts(),"Button");
-        mobileGeneralMethod.tap(buyEloadObject.objAllowBtn(),"Button");
-        mobileGeneralMethod.isVisible(buyEloadObject.objContacts(),"Page");
-        mobileGeneralMethod.type(buyEloadObject.objSearch(), "Contact Search", prop.getproperty("NameFavDataTest"));
         mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.isVisible(buyEloadObject.objContacts(),"Page");
+        mobileGeneralMethod.type(buyEloadObject.objSearch(), "Contact Search", propertyReader.getproperty("NameFavDataTest"));
+        mobileGeneralMethod.waitSleep(2000);
         mobileGeneralMethod.isVisible(buyEloadObject.objSearchedContactName(),"Contact name");
         String sContactName = mobileGeneralMethod.getText(buyEloadObject.objSearchedContactName());
         mobileGeneralMethod.isVisible(buyEloadObject.objSearchedContactNumber(),"Contact Number");
         String sContactNumber = mobileGeneralMethod.getText(buyEloadObject.objSearchedContactNumber());
         mobileGeneralMethod.tap(buyEloadObject.objAddToFavoriteIcon(), "Add To Favorite Icon");
-        mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.waitSleep(2000);
+        mobileGeneralMethod.tap(buyEloadObject.objContactsPageBackBtn(), "Back Icon");
+        mobileGeneralMethod.tap(buyEloadObject.objSelectFromContacts(),"Button");
+        mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(buyEloadObject.objFavorites(),"Button");
         if (mobileGeneralMethod.isVisible(buyEloadObject.objSearchedContactName(), "Contact name")) {
             String sContactNameInFavorites = mobileGeneralMethod.getText(buyEloadObject.objSearchedContactName());
-            mobileGeneralMethod.assertionValidation(sContactName, sContactNameInFavorites);
+            mobileGeneralMethod.assertionValidation(sContactName.toUpperCase(), sContactNameInFavorites);
             String sContactNumberInFavorites = mobileGeneralMethod.getText(buyEloadObject.objSearchedContactNumber());
             mobileGeneralMethod.assertionValidation(sContactNumber, sContactNumberInFavorites);
             LoggingUtils.info("BE_TC_20, Buy ELoad Add Contact To Favorites Validated");
@@ -531,21 +535,25 @@ public class BuyELoad extends Base_Steps{
             System.out.println("-----------------------------------------------------------");
         }
     }
-    //-----------------Positive
+    //-----------------Positive dependent TC 20
     public void buyELoadSearchUnFavoriteContact_BE_TC_23() throws Exception {
         ExtentReporter.logInfo("BE_TC_23","Buy ELoad Search UnFavorite Contact");
         login.loginWalletFullyTier();
         mobileGeneralMethod.tap(buyEloadObject.objEloadTab(), "Buy eLoad");
+        mobileGeneralMethod.waitSleep(8000);
         mobileGeneralMethod.tap(buyEloadObject.objSelectFromContacts(),"Button");
-        mobileGeneralMethod.tap(buyEloadObject.objAllowBtn(),"Button");
+        mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.isVisible(buyEloadObject.objContacts(),"Page");
         mobileGeneralMethod.tap(buyEloadObject.objFavorites(),"Button");
-        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.waitSleep(2000);
         if (mobileGeneralMethod.isVisible(buyEloadObject.objSearch(), "Contact Search")) {
-            mobileGeneralMethod.type(buyEloadObject.objSearch(),"Contact Search", prop.getproperty("NameFavDataTest"));
+            mobileGeneralMethod.type(buyEloadObject.objSearch(),"Contact Search", propertyReader.getproperty("NameFavDataTest"));
             mobileGeneralMethod.tap(buyEloadObject.objAddToFavoriteIcon(), "UnFavorite Icon");
-            mobileGeneralMethod.verticalSwipeDown();
             mobileGeneralMethod.waitSleep(2000);
+            mobileGeneralMethod.tap(buyEloadObject.objContactsPageBackBtn(), "Back Icon");
+            mobileGeneralMethod.tap(buyEloadObject.objSelectFromContacts(),"Button");
+            mobileGeneralMethod.waitSleep(2000);
+            mobileGeneralMethod.tap(buyEloadObject.objFavorites(),"Button");
             mobileGeneralMethod.isVisible(buyEloadObject.objNoFavoritesFoundMsg(),"Message");
             LoggingUtils.info("BE_TC_23, Buy ELoad Search UnFavorite Contact Validated");
             ExtentReporter.logPass("BE_TC_23", "Buy ELoad Search UnFavorite Contact Validated");
@@ -613,14 +621,14 @@ public class BuyELoad extends Base_Steps{
         mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(), "Continue Promo Pop Up");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
+        mobileGeneralMethod.waitSleep(2000);
         mobileGeneralMethod.isVisible(buyEloadObject.objBuyLoad(), "Buy Load Page");
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
         mobileGeneralMethod.waitSleep(8000);
         if (mobileGeneralMethod.isVisible(loginObject.objOneTimePin(),"Page")) {
             mobileGeneralMethod.isVisible(loginObject.objOTP(),"One Time Pin");
-            mobileGeneralMethod.isVisible(loginObject.objSeconds(),"Seconds");
-            mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(),"Continue Button");
-            mobileGeneralMethod.tap(mlWalletPageObjects.objCancels2Btn(),"Cancel Button");
+            mobileGeneralMethod.isVisible(mlWalletPageObjects.continue2_btn(),"Continue Button");
+            mobileGeneralMethod.isVisible(loginObject.objCancelBtn(),"Cancel Button");
             LoggingUtils.info("BE_TC_25, Buy ELoad One Time Pin page UI Validated");
             ExtentReporter.logPass("BE_TC_25", "Buy ELoad One Time Pin page UI Validated");
             System.out.println("-----------------------------------------------------------");
@@ -634,10 +642,6 @@ public class BuyELoad extends Base_Steps{
     public void buyELoadRecentTransactionUIValidation_BE_TC_27() throws Exception {
         ExtentReporter.logInfo("BE_TC_27","Buy ELoad Recent Transaction UI Validation");
         buyELoadSuccessfulTransaction_BE_TC_26();
-        mobileGeneralMethod.tap(buyEloadObject.objBackToHomeBtn(),"Button");
-        mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.verticalSwipeDown();
-        mobileGeneralMethod.verticalSwipe();
         if (mobileGeneralMethod.isVisible(homePageObject.objRecentTransactions(),"Header")) {
             mobileGeneralMethod.isVisible(homePageObject.objBuyELoadTransaction(),"Transaction");
             mobileGeneralMethod.isVisible(homePageObject.objPosted(),"Status");
@@ -722,6 +726,7 @@ public class BuyELoad extends Base_Steps{
         mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(), "Continue Promo Pop Up");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
+        mobileGeneralMethod.waitSleep(2000);
         mobileGeneralMethod.isVisible(buyEloadObject.objBuyLoad(), "Buy Load Page");
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
         mobileGeneralMethod.waitSleep(8000);
@@ -766,6 +771,7 @@ public class BuyELoad extends Base_Steps{
         mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(), "Continue Promo Pop Up");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
+        mobileGeneralMethod.waitSleep(2000);
         mobileGeneralMethod.isVisible(buyEloadObject.objBuyLoad(), "Buy Load Page");
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
         mobileGeneralMethod.waitSleep(8000);
@@ -807,14 +813,18 @@ public class BuyELoad extends Base_Steps{
         mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(), "Continue Promo Pop Up");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
+        mobileGeneralMethod.waitSleep(2000);
         mobileGeneralMethod.isVisible(buyEloadObject.objBuyLoad(), "Buy Load Page");
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
         mobileGeneralMethod.waitSleep(8000);
         if (mobileGeneralMethod.isVisible(loginObject.objOTP(),"One Time Pin")) {
             String sGeneratedOTP = mobileGeneralMethod.getText(loginObject.objOTP());
             mobileGeneralMethod.waitSleep(70000);
+            int otpfirstAsInteger = Integer.parseInt(sGeneratedOTP);
+            mobileGeneralMethod.isVisible(loginObject.objOTP(),"New One Time Pin");
             String sNewlyGeneratedOTPAfterSixtySeconds = mobileGeneralMethod.getText(loginObject.objOTP());
-            mobileGeneralMethod.assertionNotEqualValidation(sGeneratedOTP, sNewlyGeneratedOTPAfterSixtySeconds);
+            int otpSecondAsInteger = Integer.parseInt(sNewlyGeneratedOTPAfterSixtySeconds);
+            mobileGeneralMethod.assertionNotEqualValidation(otpfirstAsInteger, otpSecondAsInteger);
             LoggingUtils.info("BE_TC_091, Buy ELoad Transaction New OTP got generated After Sixty Seconds is validated");
             ExtentReporter.logPass("BE_TC_091", "Buy ELoad Transaction New OTP got generated After Sixty Seconds is validated");
             System.out.println("-----------------------------------------------------------");
@@ -847,6 +857,7 @@ public class BuyELoad extends Base_Steps{
         mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(), "Continue Promo Pop Up");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
+        mobileGeneralMethod.waitSleep(2000);
         mobileGeneralMethod.isVisible(buyEloadObject.objBuyLoad(), "Buy Load Page");
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
         mobileGeneralMethod.waitSleep(8000);
@@ -884,9 +895,10 @@ public class BuyELoad extends Base_Steps{
         mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(), "Continue Promo Pop Up");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
+        mobileGeneralMethod.waitSleep(2000);
         mobileGeneralMethod.isVisible(buyEloadObject.objBuyLoad(), "Buy Load Page");
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
-        mobileGeneralMethod.waitSleep(8000);
+        mobileGeneralMethod.waitSleep(10000);
         mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(),"Continue Button");
         mobileGeneralMethod.waitSleep(15000);
         if (mobileGeneralMethod.isVisible(buyEloadObject.objTransactionDetailsPage(), "Transaction Details Page")) {
@@ -928,9 +940,10 @@ public class BuyELoad extends Base_Steps{
         mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(), "Continue Promo Pop Up");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
+        mobileGeneralMethod.waitSleep(2000);
         mobileGeneralMethod.isVisible(buyEloadObject.objBuyLoad(), "Buy Load Page");
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
-        mobileGeneralMethod.waitSleep(8000);
+        mobileGeneralMethod.waitSleep(10000);
         mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(),"Continue Button");
         mobileGeneralMethod.waitSleep(15000);
         if (mobileGeneralMethod.isVisible(buyEloadObject.objTransactionDetailsPage(), "Transaction Details Page")) {
@@ -972,9 +985,10 @@ public class BuyELoad extends Base_Steps{
         mobileGeneralMethod.isVisible(buyEloadObject.objContinuePromoPopUp(), "Continue Promo Pop Up");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
+        mobileGeneralMethod.waitSleep(2000);
         mobileGeneralMethod.isVisible(buyEloadObject.objBuyLoad(), "Buy Load Page");
         mobileGeneralMethod.tap(buyEloadObject.objConfirmBtn(), "Confirm Button");
-        mobileGeneralMethod.waitSleep(8000);
+        mobileGeneralMethod.waitSleep(10000);
         mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(),"Continue Button");
         mobileGeneralMethod.waitSleep(15000);
         if (mobileGeneralMethod.isVisible(buyEloadObject.objTransactionDetailsPage(), "Transaction Details Page")) {

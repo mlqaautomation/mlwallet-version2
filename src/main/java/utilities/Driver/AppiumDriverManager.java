@@ -33,6 +33,7 @@ public class AppiumDriverManager {
                 .autoGrantPermissions()
                 .setAutomationName("uiautomator2")
                 .setNoReset(false)
+                .setNewCommandTimeout(Duration.ofSeconds(80))
                 .eventTimings();
         driver = new AndroidDriver(service.getUrl(), options);
     }

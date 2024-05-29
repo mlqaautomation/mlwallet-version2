@@ -305,7 +305,7 @@ public class MLWallet_PageObjects extends AppiumDriverManager{
         return driver.findElement(By.xpath("//*[@text='Cancel']"));
     }
     public WebElement objCancels2Btn(){
-        return driver.findElement(By.xpath("//*[@text='CANCEL']"));
+        return driver.findElement(AppiumBy.ByAccessibilityId.accessibilityId("CANCEL"));
     }
     public WebElement objAllowCameraWhileUsingAppBtn(){
         return driver.findElement(By.xpath("//*[@text='While using the app']"));
