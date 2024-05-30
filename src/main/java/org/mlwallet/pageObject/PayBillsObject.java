@@ -170,6 +170,15 @@ public class PayBillsObject extends AppiumDriverManager {
     public WebElement objMaxLimitErrorMessage(){
         return driver.findElement(By.xpath("//*[@text='Ok']/parent::android.view.ViewGroup/parent::android.view.ViewGroup/preceding-sibling::android.widget.TextView"));
     }
+    public WebElement objMaxLimitFullyErrorMessage(){
+        return driver.findElement(By.xpath("//*[@text='The maximum Bills Pay per transaction set for your verification level is P50,000.00. Please try again.']"));
+    }
+    public WebElement objMaxLimitBranchErrorMessage(){
+        return driver.findElement(By.xpath("//*[@text='The maximum Bills Pay per transaction set for your verification level is P25,000.00. Please try again.']"));
+    }
+    public WebElement objGotItBtn(){
+        return driver.findElement(By.xpath("//*[@text='Got It']"));
+    }
     public WebElement objAddBiller(){
         return driver.findElement(By.xpath("//*[@text='Add Biller']"));
     }
@@ -224,6 +233,9 @@ public class PayBillsObject extends AppiumDriverManager {
     public WebElement objTransactionDetails(){
         return driver.findElement(By.xpath("//*[@text='Transaction Details']"));
     }
+    public WebElement objNoRecentTransaction(){
+        return driver.findElement(By.xpath("//*[@text='No Recent Transaction']"));
+    }
     public WebElement objReferenceNumberInCashOut(){
         return driver.findElement(By.xpath("(//*[@resource-id='Reference Number'])[2]"));
     }
@@ -245,6 +257,7 @@ public class PayBillsObject extends AppiumDriverManager {
     public WebElement objTransactionNumber(){
         return driver.findElement(By.xpath("(//*[@resource-id='Transaction No.'])[2]"));
     }
+
     public WebElement objReferenceNumber(){
         return driver.findElement(By.xpath("(//*[@resource-id='Reference Number'])[2]"));
     }

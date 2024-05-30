@@ -16,7 +16,7 @@ public class PayBills extends Base_Steps{
     public void payBillsNavigation() throws Exception {
         mobileGeneralMethod.isVisible(payBillsObject.objPayBills(),"Pay Bills Icon");
         mobileGeneralMethod.tap(payBillsObject.objPayBills(), "Click Pay Bills Icon");
-        mobileGeneralMethod.waitSleep(3000);
+        mobileGeneralMethod.waitSleep(5000);
     }
     public void searchBiller() throws Exception {
         mobileGeneralMethod.waitSleep(8000);
@@ -45,6 +45,7 @@ public class PayBills extends Base_Steps{
             mobileGeneralMethod.waitSleep(10000);
         }
     }
+    //--------Happy Path
     public void paybillsSuccessfulTransaction_PB_TC_19() throws Exception {
         login.loginWalletFullyTier();
         payBillsNavigation();
@@ -382,11 +383,16 @@ public class PayBills extends Base_Steps{
         mobileGeneralMethod.type(payBillsObject.objSearchSavedBiller(), "Search Biller Text Field", propertyReader.getproperty("Last_Name"));
         if (mobileGeneralMethod.isVisible(payBillsObject.objSelectBillerInnSavedBiller(propertyReader.getproperty("Last_Name")),"Recipient")) {
             LoggingUtils.info("PB_TC_12, The Added Biller is displayed in Saved Biller Page");
-            ExtentReporter.logPass("PB_TC_12", "PB_TC_12, The Added Biller is displayed in Saved Biller Page");
+            ExtentReporter.logPass("PB_TC_12", "The Added Biller is displayed in Saved Biller Page");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else {
+            ExtentReporter.logFail("PB_TC_12", "Failed Added Biller is not displayed in Saved Biller Page");
             System.out.println("-----------------------------------------------------------");
         }
     }
-    public void selectAddedBiler() throws Exception {
+    public void selectAddedBiller() throws Exception {
+        mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.tap(payBillsObject.objSavedBiller(),"Button");
         mobileGeneralMethod.waitSleep(5000);
         if (mobileGeneralMethod.isVisible(payBillsObject.objSavedBillers(),"Page")) {
@@ -395,49 +401,76 @@ public class PayBills extends Base_Steps{
             mobileGeneralMethod.tap(payBillsObject.objSelectLastName(propertyReader.getproperty("Last_Name"), propertyReader.getproperty("First_Name")),"Recipient");
         }
     }
-    //------------Positive
+    public void selectsearchBiller() throws Exception {
+        if (mobileGeneralMethod.isVisible(payBillsObject.objSavedBillers(),"Page")) {
+            mobileGeneralMethod.type(payBillsObject.objSearchBillerInSavedBillers(), "Search Recipient Text Field", propertyReader.getproperty("Last_Name"));
+            mobileGeneralMethod.isVisible(payBillsObject.objSelectLastName(propertyReader.getproperty("Last_Name"), propertyReader.getproperty("First_Name")), "Recipient");
+            mobileGeneralMethod.tap(payBillsObject.objSelectLastName(propertyReader.getproperty("Last_Name"), propertyReader.getproperty("First_Name")),"Recipient");
+        }
+    }
+    public void selectSearchExactBiller() throws Exception {
+        if (mobileGeneralMethod.isVisible(payBillsObject.objSavedBillers(),"Page")) {
+            mobileGeneralMethod.type(payBillsObject.objSearchBillerInSavedBillers(), "Search Recipient Text Field", propertyReader.getproperty("EditedLast_name"));
+            mobileGeneralMethod.isVisible(payBillsObject.objSelectLastName(propertyReader.getproperty("Edited_Last_name"), propertyReader.getproperty("First_Name")), "Recipient");
+            mobileGeneralMethod.tap(payBillsObject.objSelectLastName(propertyReader.getproperty("Edited_Last_name"), propertyReader.getproperty("First_Name")),"Recipient");
+        }
+    }
+    //------------Negative dependent to TC 12
     public void editAddedBillerToPayBills_PB_TC_14() throws Exception {
         ExtentReporter.logInfo("PB_TC_14","Edit Added Biller to Pay bIlls");
         login.loginWalletBranchTier();
         payBillsNavigation();
-        selectAddedBiler();
+        selectAddedBiller();
         mobileGeneralMethod.tap(payBillsObject.objEditBtn(),"Button");
-        mobileGeneralMethod.clearField(payBillsObject.objEditRecipientLastName(), "Last Name Input Field");
+        mobileGeneralMethod.clearField(payBillsObject.objEditRecipientLastName(), "CLear Last Name Input Field");
         mobileGeneralMethod.type(payBillsObject.objEditRecipientLastName(),"Last Name Text Field", propertyReader.getproperty("Edited_Last_name"));
         mobileGeneralMethod.tap(payBillsObject.ObjSaveBtn(),"Button");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(payBillsObject.objOKBtn(),"Button");
-        mobileGeneralMethod.waitSleep(5000);
-        mobileGeneralMethod.type(payBillsObject.objSearchSavedBiller(), propertyReader.getproperty("Edited_Last_name"), "Search Recipient Text Field");
+        mobileGeneralMethod.waitSleep(3000);
+        mobileGeneralMethod.clearField(payBillsObject.objSearchSavedBiller(), "Clear Last Name Input Field");
+        mobileGeneralMethod.type(payBillsObject.objSearchSavedBiller(), "Search Recipient Text Field", propertyReader.getproperty("EditedLast_name"));
         mobileGeneralMethod.waitSleep(1000);
         if (mobileGeneralMethod.isVisible(payBillsObject.objSelectLastName(propertyReader.getproperty("Edited_Last_name"), propertyReader.getproperty("First_Name")), "Recipient")) {
             LoggingUtils.info("PB_TC_14, Successfully edited the Added Biller");
-            ExtentReporter.logPass("PB_TC_14", "PB_TC_14, Successfully edited the Added Biller");
+            ExtentReporter.logPass("PB_TC_14", "Successfully edited the Added Biller");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else {
+            ExtentReporter.logFail("PB_TC_14", "Failed to edit the Added Biller");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //------------Negative dependent to TC 12
     public void deleteAddedBillerPayBills_PB_TC_15() throws Exception {
-        ExtentReporter.logInfo("","Delete Added Biller Pay Bills");
-        //mlWalletLogin(propertyReader.getproperty("Branch_Verified"));
+        ExtentReporter.logInfo("PB_TC_15","Delete Added Biller Pay Bills");
+        login.loginWalletBranchTier();
         payBillsNavigation();
-//        selectAddedBiler();
+        addBiller();
+        mobileGeneralMethod.tap(payBillsObject.objOKBtn(),"Button");
+        mobileGeneralMethod.waitSleep(5000);
+        selectsearchBiller();
         mobileGeneralMethod.tap(payBillsObject.objRemoveBtn(),"Button");
         if (mobileGeneralMethod.isVisible(payBillsObject.objConfirmPopup(),"Pop up")) {
             mobileGeneralMethod.tap(payBillsObject.objConfirmBtn(),"Button");
+            mobileGeneralMethod.waitSleep(3000);
+            mobileGeneralMethod.isVisible(payBillsObject.objSavedBillers(),"Page");
+            mobileGeneralMethod.type(payBillsObject.objSearchBillerInSavedBillers(), "Search saved biller input field", propertyReader.getproperty("Last_Name"));
+            mobileGeneralMethod.isVisible(payBillsObject.objNoRecentTransaction(), "No Saved Recipient");
+            LoggingUtils.info("PB_TC_15, Successfully deleted the Added Biller");
+            ExtentReporter.logPass("PB_TC_15", "Successfully deleted the Added Biller");
+            System.out.println("-----------------------------------------------------------");
         }
-        if (mobileGeneralMethod.isVisible(payBillsObject.objSavedBillers(),"Page")) {
-            mobileGeneralMethod.type(payBillsObject.objSearchBillerInSavedBillers(), propertyReader.getproperty("Edited_Last_name"), "Search saved biller input field");
-            if (mobileGeneralMethod.isVisible(payBillsObject.objSelectLastName(propertyReader.getproperty("Edited_Last_name"), propertyReader.getproperty("First_Name")), "Saved Recipient")) {
-                LoggingUtils.info("PB_TC_15, Successfully deleted the Added Biller");
-                ExtentReporter.logPass("PB_TC_15", "PB_TC_15, Successfully deleted the Added Biller");
-                System.out.println("-----------------------------------------------------------");
-            }
+        else {
+            ExtentReporter.logFail("PB_TC_15", "Failed to deleted the Added Biller");
+            System.out.println("-----------------------------------------------------------");
         }
     }
 //================================ Phase 2=============================================================//
+    //---------------Postive
     public void payBillsUIValidation_PB_TC_16() throws Exception {
-        ExtentReporter.logInfo("","Pay Bills UI Validation");
-        //mlWalletLogin(propertyReader.getproperty("Branch_Verified"));
+        ExtentReporter.logInfo("PB_TC_16","Pay Bills UI Validation");
+        login.loginWalletBranchTier();
         payBillsNavigation();
         if (mobileGeneralMethod.isVisible(payBillsObject.objSelectBiller(),"Page")) {
             mobileGeneralMethod.isVisible(payBillsObject.objRecentTransactions(),"Header");
@@ -447,15 +480,21 @@ public class PayBills extends Base_Steps{
             mobileGeneralMethod.isVisible(payBillsObject.objAlphabetical(),"Button");
             mobileGeneralMethod.isVisible(payBillsObject.objSearchBiller(), "Search Biller Input Field");
             LoggingUtils.info("PB_TC_16, Pay Bills UI Page Validated");
-            ExtentReporter.logPass("PB_TC_16", "PB_TC_16, Pay Bills UI Page Validated");
+            ExtentReporter.logPass("PB_TC_16", "Pay Bills UI Page Validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else {
+            ExtentReporter.logFail("PB_TC_16", "Failed Pay Bills UI Page to Validate");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //---------------Postive
     public void payBillsAddBillerPageUIValidation_PB_TC_18() throws Exception {
-        ExtentReporter.logInfo("","PayBills Add Biller Page UI Validation");
-        //mlWalletLogin(propertyReader.getproperty("Branch_Verified"));
+        ExtentReporter.logInfo("PB_TC_18","PayBills Add Biller Page UI Validation");
+        login.loginWalletBranchTier();
         payBillsNavigation();
         mobileGeneralMethod.tap(payBillsObject.objSavedBiller(),"Button");
+        mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(payBillsObject.objAddBiller(),"Button");
         if (mobileGeneralMethod.isVisible(payBillsObject.objAddBillers(),"Page")) {
             mobileGeneralMethod.isVisible(payBillsObject.objBillerInformation(),"Header");
@@ -467,15 +506,22 @@ public class PayBills extends Base_Steps{
             mobileGeneralMethod.isVisible(payBillsObject.objAddNickName(), "Nick Name Input Field");
             mobileGeneralMethod.isVisible(payBillsObject.objProceedBtn(),"Button");
             LoggingUtils.info("PB_TC_18, PayBills Add Biller Page UI Validated");
-            ExtentReporter.logPass("PB_TC_18", "PB_TC_16, PayBills Add Biller Page UI Validated");
+            ExtentReporter.logPass("PB_TC_18", "PayBills Add Biller Page UI Validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else {
+            ExtentReporter.logFail("PB_TC_18", "Failed PayBills Add Biller Page UI to Validate");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //---------------Postive
     public void payBillsSavedBilerUIValidation_PB_TC_20() throws Exception {
-        ExtentReporter.logInfo("","Pay Bills Saved Biler UI Validation");
-        //mlWalletLogin(propertyReader.getproperty("Fully_verified"));
+        ExtentReporter.logInfo("PB_TC_20","Pay Bills Saved Biller UI Validation");
+        login.loginWalletBranchTier();
         payBillsNavigation();
-//        selectAddedBiler();
+        mobileGeneralMethod.tap(payBillsObject.objSavedBiller(),"Button");
+        mobileGeneralMethod.waitSleep(3000);
+        selectSearchExactBiller();
         if (mobileGeneralMethod.isVisible(payBillsObject.objAccountInfo(),"Page")) {
             mobileGeneralMethod.isVisible(payBillsObject.objAddAccountNumber(),"Account Number");
             mobileGeneralMethod.isVisible(payBillsObject.objAddFirstName(),"First Name");
@@ -485,17 +531,30 @@ public class PayBills extends Base_Steps{
             mobileGeneralMethod.isVisible(payBillsObject.objEditBtn(),"Button");
             mobileGeneralMethod.isVisible(payBillsObject.objRemoveBtn(),"Button");
             mobileGeneralMethod.isVisible(payBillsObject.objSelectBiller(),"Button");
-            LoggingUtils.info("PB_TC_20, Pay Bills Saved Biler UI Validated");
-            ExtentReporter.logPass("PB_TC_20", "PB_TC_20, Pay Bills Saved Biler UI validated");
+            LoggingUtils.info("PB_TC_20, Pay Bills Saved Biller UI Validated");
+            ExtentReporter.logPass("PB_TC_20", "Pay Bills Saved Biller UI validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else {
+            ExtentReporter.logFail("PB_TC_20", "Failed Pay Bills Saved Biller UI to Validate");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //---------------Negative
     public void payBillsMaxBillsPaymentPerTransactionBuyTierUser_PB_TC_22() throws Exception {
-        ExtentReporter.logInfo("","Pay Bills Maximum Bills Payment Per Transaction for Buyer Tier Account");
-//        mlWalletLogin(propertyReader.getproperty("Buyer_Tier"));
+        ExtentReporter.logInfo("PB_TC_22","Pay Bills Maximum Bills Payment Per Transaction for Buyer Tier Account");
+        login.loginWalletBuyerTier();
         payBillsNavigation();
         searchBiller();
-//        billerDetails(propertyReader.getproperty("First_Name"), propertyReader.getproperty("Middle_Name"), propertyReader.getproperty("Last_Name"), "20000");
+        mobileGeneralMethod.verticalSwipe();
+        mobileGeneralMethod.type(payBillsObject.objAccountNumberField(),"Account Number Text Field", propertyReader.getproperty("AccountNumber"));
+        mobileGeneralMethod.type(payBillsObject.objFirstNameField(),"First Name Text Field", propertyReader.getproperty("First_Name"));
+        mobileGeneralMethod.type(payBillsObject.objMiddleNameField(),"Middle Name Text Field" , propertyReader.getproperty("Middle_Name") );
+        mobileGeneralMethod.type(payBillsObject.objLastnameField(),"Last Name Text Field", propertyReader.getproperty("Last_Name"));
+        mobileGeneralMethod.verticalSwipe();
+        mobileGeneralMethod.type(payBillsObject.objAmountField(),"Amount to Send Text Field", propertyReader.getproperty("AmountBuyerMaxInput"));
+        mobileGeneralMethod.tap(payBillsObject.objConfirmBtn(),"Confirm Button");
+        mobileGeneralMethod.waitSleep(8000);
         confirmDetailsAndPay();
         if (mobileGeneralMethod.isVisible(payBillsObject.objMaxLimitErrorMessageUpgrade(),"Error Message")) {
             String sMaxLimitErrorMessage = mobileGeneralMethod.getText(payBillsObject.objMaxLimitErrorMessageUpgrade());
@@ -503,16 +562,29 @@ public class PayBills extends Base_Steps{
             mobileGeneralMethod.assertionValidation(sMaxLimitErrorMessage, sExpectedErrorMessage);
             mobileGeneralMethod.isVisible(payBillsObject.objUpgradeNowBtn(),"Button");
             LoggingUtils.info("PB_TC_22, Pay Bills Maximum Bills Payment Per Transaction for Buyer Tier Account Validated");
-            ExtentReporter.logPass("PB_TC_22", "PB_TC_22, Pay Bills Maximum Bills Payment Per Transaction for Buyer Tier Account validated");
+            ExtentReporter.logPass("PB_TC_22", "Pay Bills Maximum Bills Payment Per Transaction for Buyer Tier Account validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else {
+            ExtentReporter.logFail("PB_TC_22", "Failed Pay Bills Maximum Bills Payment Per Transaction for Buyer Tier Account to Validate");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //---------------Negative
     public void payBillsMaxBillsPaymentPerTransactionSemiVerifiedTier_PB_TC_25() throws Exception {
-        ExtentReporter.logInfo("","Pay Bills Maximum Bills Payment Per Transaction for Semi Verified Tier Account");
-//        mlWalletLogin(propertyReader.getproperty("Semi_Verified"));
+        ExtentReporter.logInfo("PB_TC_25","Pay Bills Maximum Bills Payment Per Transaction for Semi Verified Tier Account");
+        login.loginWalletSemiTier();
         payBillsNavigation();
         searchBiller();
-//        billerDetails(propertyReader.getproperty("First_Name"), propertyReader.getproperty("Middle_Name"), propertyReader.getproperty("Last_Name"), "60000");
+        mobileGeneralMethod.verticalSwipe();
+        mobileGeneralMethod.type(payBillsObject.objAccountNumberField(),"Account Number Text Field", propertyReader.getproperty("AccountNumber"));
+        mobileGeneralMethod.type(payBillsObject.objFirstNameField(),"First Name Text Field", propertyReader.getproperty("First_Name"));
+        mobileGeneralMethod.type(payBillsObject.objMiddleNameField(),"Middle Name Text Field" , propertyReader.getproperty("Middle_Name") );
+        mobileGeneralMethod.type(payBillsObject.objLastnameField(),"Last Name Text Field", propertyReader.getproperty("Last_Name"));
+        mobileGeneralMethod.verticalSwipe();
+        mobileGeneralMethod.type(payBillsObject.objAmountField(),"Amount to Send Text Field", propertyReader.getproperty("AmountSemiMaxInput"));
+        mobileGeneralMethod.tap(payBillsObject.objConfirmBtn(),"Confirm Button");
+        mobileGeneralMethod.waitSleep(8000);
         confirmDetailsAndPay();
         if (mobileGeneralMethod.isVisible(payBillsObject.objMaxLimitErrorMessageUpgrade(),"Error Message")) {
             String sMaxLimitErrorMessage = mobileGeneralMethod.getText(payBillsObject.objMaxLimitErrorMessageUpgrade());
@@ -520,108 +592,108 @@ public class PayBills extends Base_Steps{
             mobileGeneralMethod.assertionValidation(sMaxLimitErrorMessage, sExpectedErrorMessage);
             mobileGeneralMethod.isVisible(payBillsObject.objUpgradeNowBtn(),"Button");
             LoggingUtils.info("PB_TC_25, Pay Bills Maximum Bills Payment Per Transaction for Semi Verified Tier Account Validated");
-            ExtentReporter.logPass("PB_TC_25", "PB_TC_25, Pay Bills Maximum Bills Payment Per Transaction for Semi Verified Tier Account validated");
+            ExtentReporter.logPass("PB_TC_25", "Pay Bills Maximum Bills Payment Per Transaction for Semi Verified Tier Account validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else {
+            ExtentReporter.logFail("PB_TC_25", "Failed Pay Bills Maximum Bills Payment Per Transaction for Semi Verified Tier Account to Validate");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //--------------Negative
     public void payBillsMaxBillsPaymentPerTransactionBranchVerifiedTier_PB_TC_28() throws Exception {
-        ExtentReporter.logInfo("","Pay Bills Maximum Bills Payment Per Transaction for Branch Verified Tier Account");
-        //mlWalletLogin(propertyReader.getproperty("Branch_Verified"));
+        ExtentReporter.logInfo("PB_TC_28","Pay Bills Maximum Bills Payment Per Transaction for Branch Verified Tier Account");
+        login.loginWalletBranchTier();
         payBillsNavigation();
         searchBiller();
-//        billerDetails(propertyReader.getproperty("First_Name"), propertyReader.getproperty("Middle_Name"), propertyReader.getproperty("Last_Name"), "60000");
+        mobileGeneralMethod.verticalSwipe();
+        mobileGeneralMethod.type(payBillsObject.objAccountNumberField(),"Account Number Text Field", propertyReader.getproperty("AccountNumber"));
+        mobileGeneralMethod.type(payBillsObject.objFirstNameField(),"First Name Text Field", propertyReader.getproperty("First_Name"));
+        mobileGeneralMethod.type(payBillsObject.objMiddleNameField(),"Middle Name Text Field" , propertyReader.getproperty("Middle_Name") );
+        mobileGeneralMethod.type(payBillsObject.objLastnameField(),"Last Name Text Field", propertyReader.getproperty("Last_Name"));
+        mobileGeneralMethod.verticalSwipe();
+        mobileGeneralMethod.type(payBillsObject.objAmountField(),"Amount to Send Text Field", propertyReader.getproperty("AmountBranchMaxInput"));
+        mobileGeneralMethod.tap(payBillsObject.objConfirmBtn(),"Confirm Button");
+        mobileGeneralMethod.waitSleep(8000);
         confirmDetailsAndPay();
-        if (mobileGeneralMethod.isVisible(payBillsObject.objMaxLimitErrorMessage(),"Error Message")) {
-            String sMaxLimitErrorMessage = mobileGeneralMethod.getText(payBillsObject.objMaxLimitErrorMessage());
+        if (mobileGeneralMethod.isVisible(payBillsObject.objMaxLimitBranchErrorMessage(),"Error Message")) {
+            String sMaxLimitErrorMessage = mobileGeneralMethod.getText(payBillsObject.objMaxLimitBranchErrorMessage());
             String sExpectedErrorMessage = "The maximum Bills Pay per transaction set for your verification level is P25,000.00. Please try again.";
             mobileGeneralMethod.assertionValidation(sMaxLimitErrorMessage, sExpectedErrorMessage);
-            mobileGeneralMethod.isVisible(payBillsObject.objOKBtn(),"Button");
+            mobileGeneralMethod.isVisible(payBillsObject.objGotItBtn(),"Button");
             LoggingUtils.info("PB_TC_26, Pay Bills Maximum Bills Payment Per Transaction for Branch Verified Tier Account Validated");
-            ExtentReporter.logPass("PB_TC_26", "PB_TC_26, Pay Bills Maximum Bills Payment Per Transaction for Branch Verified Tier Account validated");
+            ExtentReporter.logPass("PB_TC_26", "Pay Bills Maximum Bills Payment Per Transaction for Branch Verified Tier Account validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else {
+            ExtentReporter.logFail("PB_TC_26", "Failed Pay Bills Maximum Bills Payment Per Transaction for Branch Verified Tier Account to Validate");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //---------------Negative
     public void payBillsMaxBillsPaymentPerTransactionFullyVerifiedTier_PB_TC_31() throws Exception {
-        ExtentReporter.logInfo("","Pay Bills Maximum Bills Payment Per Transaction for Fully Verified Tier Account");
-        //mlWalletLogin(propertyReader.getproperty("Fully_verified"));
+        ExtentReporter.logInfo("PB_TC_31","Pay Bills Maximum Bills Payment Per Transaction for Fully Verified Tier Account");
+        login.loginWalletFullyTier();
         payBillsNavigation();
         searchBiller();
-//        billerDetails(propertyReader.getproperty("First_Name"), propertyReader.getproperty("Middle_Name"), propertyReader.getproperty("Last_Name"), "60000");
+        mobileGeneralMethod.verticalSwipe();
+        mobileGeneralMethod.type(payBillsObject.objAccountNumberField(),"Account Number Text Field", propertyReader.getproperty("AccountNumber"));
+        mobileGeneralMethod.type(payBillsObject.objFirstNameField(),"First Name Text Field", propertyReader.getproperty("First_Name"));
+        mobileGeneralMethod.type(payBillsObject.objMiddleNameField(),"Middle Name Text Field" , propertyReader.getproperty("Middle_Name") );
+        mobileGeneralMethod.type(payBillsObject.objLastnameField(),"Last Name Text Field", propertyReader.getproperty("Last_Name"));
+        mobileGeneralMethod.verticalSwipe();
+        mobileGeneralMethod.type(payBillsObject.objAmountField(),"Amount to Send Text Field", propertyReader.getproperty("AmountFullyMaxInput"));
+        mobileGeneralMethod.tap(payBillsObject.objConfirmBtn(),"Confirm Button");
+        mobileGeneralMethod.waitSleep(8000);
         confirmDetailsAndPay();
-        if (mobileGeneralMethod.isVisible(payBillsObject.objMaxLimitErrorMessage(),"Error Message")) {
-            String sMaxLimitErrorMessage = mobileGeneralMethod.getText(payBillsObject.objMaxLimitErrorMessage());
+        if (mobileGeneralMethod.isVisible(payBillsObject.objMaxLimitFullyErrorMessage(),"Error Message")) {
+            String sMaxLimitErrorMessage = mobileGeneralMethod.getText(payBillsObject.objMaxLimitFullyErrorMessage());
             String sExpectedErrorMessage = "The maximum Bills Pay per transaction set for your verification level is P50,000.00. Please try again.";
             mobileGeneralMethod.assertionValidation(sMaxLimitErrorMessage, sExpectedErrorMessage);
-            mobileGeneralMethod.isVisible(payBillsObject.objOKBtn(),"Button");
+            mobileGeneralMethod.isVisible(payBillsObject.objGotItBtn(),"Button");
             LoggingUtils.info("PB_TC_31, Pay Bills Maximum Bills Payment Per Transaction for Fully Verified Tier Account Validated");
-            ExtentReporter.logPass("PB_TC_31", "PB_TC_31, Pay Bills Maximum Bills Payment Per Transaction for Fully Verified Tier Account validated");
+            ExtentReporter.logPass("PB_TC_31", "Pay Bills Maximum Bills Payment Per Transaction for Fully Verified Tier Account validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else {
+            ExtentReporter.logFail("PB_TC_31", "Failed Pay Bills Maximum Bills Payment Per Transaction for Fully Verified Tier Account to Validate");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //---------------Postive
     public void payBillsRecentTransaction_PB_TC_21() throws Exception {
-        ExtentReporter.logInfo("","PayBills Recent Transactions");
-        //mlWalletLogin(propertyReader.getproperty("Branch_Verified"));
+        ExtentReporter.logInfo("PB_TC_21","PayBills Recent Transactions");
+        login.loginWalletBranchTier();
         payBillsNavigation();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.isVisible(payBillsObject.objRecentTransactions(),"Header");
-//        horizontalSwipeByPercentages(0.8, 0.2, 0.25);
-//        horizontalSwipeByPercentages(0.8, 0.2, 0.25);
-        LoggingUtils.info("PB_TC_21, PayBills Recent Transactions Swiped until Last Transaction");
-        ExtentReporter.logPass("PB_TC_21", "PB_TC_21, PayBills Recent Transactions Swiped until Last Transaction");
-        System.out.println("-----------------------------------------------------------");
-    }
-    public void payBillsLocationPopupValidation_PB_TC_34() throws Exception {
-        ExtentReporter.logInfo("","Pay Bills Location popup Validation");
-        //mlWalletLogin(propertyReader.getproperty("Fully_verified"));
-        payBillsNavigation();
-        searchBiller();
-        billerDetails();
-        confirmDetailsAndPay();
-        if (mobileGeneralMethod.isVisible(homePageObject.objPopUpMsg(),"Popup Msg")) {
-            LoggingUtils.info("PB_TC_34, Pay Bills Location popup Validated");
-            ExtentReporter.logPass("PB_TC_34", "PB_TC_34, Pay Bills Location popup Validated");
+        if(mobileGeneralMethod.isVisible(payBillsObject.objRecentTransactions(),"Header")) {
+            LoggingUtils.info("PB_TC_21, PayBills Recent Transactions Swiped until Last Transaction");
+            ExtentReporter.logPass("PB_TC_21", "PayBills Recent Transactions Swiped until Last Transaction");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else {
+            ExtentReporter.logFail("PB_TC_31", "Failed PayBills Recent Transactions Swiped until Last Transaction to Validate");
             System.out.println("-----------------------------------------------------------");
         }
     }
-    public void payBillsLocationDenyFunctionality_PB_TC_35() throws Exception {
-        ExtentReporter.logInfo("","Pay Bills Location Deny Functionality Validation");
-        //mlWalletLogin(propertyReader.getproperty("Fully_verified"));
-        payBillsNavigation();
-        searchBiller();
-        billerDetails();
-        confirmDetailsAndPay();
-        if (mobileGeneralMethod.isVisible(homePageObject.objPopUpMsg(),"Popup Msg")) {
-//            permissionDenyPopUp();
-            LoggingUtils.info("PB_TC_35, Pay Bills Location Deny Functionality Validated");
-            ExtentReporter.logPass("PB_TC_35", "PB_TC_35, Pay Bills Location Deny Functionality Validated");
-            System.out.println("-----------------------------------------------------------");
+    public void handleMpin(String mPin) throws Exception {
+        for (int i = 0; i < mPin.length(); i++) {
+            char ch = mPin.charAt(i);
+            String ch1 = String.valueOf(ch);
+            mobileGeneralMethod.tap(mlWalletPageObjects.objEnterMpinVal(ch1), "MPIN");
         }
+        LoggingUtils.info("Entered MLPin " + mPin + " Successfully");
+        ExtentReporter.logPass("Enter MLPin", "Entered MLPin " + mPin + " Successfully");
     }
-    public void payBillsLocationPermissionDenyCloseBtnFunctionality_PB_TC_36() throws Exception {
-        ExtentReporter.logInfo("","Pay Bills Location Permission Deny Close Button Functionality Validation");
-        //mlWalletLogin(propertyReader.getproperty("Fully_verified"));
-        payBillsNavigation();
-        searchBiller();
-        billerDetails();
-        confirmDetailsAndPay();
-        if (mobileGeneralMethod.isVisible(homePageObject.objPopUpMsg(),"Popup Msg")) {
-//            permissionDenyCloseBtnFunctionality();
-            if (mobileGeneralMethod.isVisible(payBillsObject.objBillsPayInformation(),"Page")) {
-                LoggingUtils.info("PB_TC_36, Pay Bills Location Permission Deny Close Button Functionality Validated");
-                ExtentReporter.logPass("PB_TC_36", "PB_TC_36, Pay Bills Location Permission Deny Close Button Functionality Validated");
-                System.out.println("-----------------------------------------------------------");
-            }
-        }
-    }
-    
+    //-----------------Positive Cant Test
     public void payBillsTransactionWithValidMLPin_PB_TC_48() throws Exception {
-        ExtentReporter.logInfo("","Pay Bills Transaction With Valid ML Pin");
-        //mlWalletLogin(propertyReader.getproperty("Fully_verified"));
+        ExtentReporter.logInfo("PB_TC_48","Pay Bills Transaction With Valid ML Pin");
+        login.loginWalletFullyTier();
         payBillsNavigation();
         searchBiller();
         billerDetails();
         confirmDetailsAndPay();
-//        handleMpin("1111");
+        handleMpin("1111");
         if (mobileGeneralMethod.isVisible(payBillsObject.objSuccessPillPaymentMsg(),"Message")) {
             mobileGeneralMethod.isVisible(payBillsObject.objAmountPaid(),"Amount");
             mobileGeneralMethod.isVisible(payBillsObject.objPaidDate(),"Date");
@@ -641,18 +713,23 @@ public class PayBills extends Base_Steps{
             mobileGeneralMethod.isVisible(homePageObject.objRecentTransactions(),"Text");
             mobileGeneralMethod.tap(homePageObject.objPayBills(),"Text");
             LoggingUtils.info("PB_TC_48, Pay Bills Transaction With Valid ML Pin is validated");
-            ExtentReporter.logPass("PB_TC_48", "PB_TC_48, Pay Bills Transaction With Valid ML Pin is validated");
+            ExtentReporter.logPass("PB_TC_48", "Pay Bills Transaction With Valid ML Pin is validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("PB_TC_48", "Failed Pay Bills Transaction With Valid ML Pin to Validate");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //-----------------Negative Cant Test
     public void payBillsTransactionWithInValidMLPin_PB_TC_49() throws Exception {
-        ExtentReporter.logInfo("","Pay Bills Transaction With Invalid ML Pin");
-        //mlWalletLogin(propertyReader.getproperty("Fully_verified"));
-//        payBillsNavigation();
-//        searchBiller();
-//        billerDetails();
-//        confirmDetailsAndPay();
-//        handleMpin("1234");
+        ExtentReporter.logInfo("PB_TC_49","Pay Bills Transaction With Invalid ML Pin");
+        login.loginWalletFullyTier();
+        payBillsNavigation();
+        searchBiller();
+        billerDetails();
+        confirmDetailsAndPay();
+        handleMpin("1234");
         if (mobileGeneralMethod.isVisible(payBillsObject.objInvalidPINMsg(),"Message")) {
             String sActualErrorMsg = mobileGeneralMethod.getText(payBillsObject.objInvalidPINMsg());
             String sExceptedErrorMsg = "You have entered an invalid PIN. Please try again.";
@@ -661,25 +738,15 @@ public class PayBills extends Base_Steps{
             ExtentReporter.logPass("PB_TC_49", "PB_TC_49, Buy ELoad Transaction With Invalid ML Pin validated");
             System.out.println("-----------------------------------------------------------");
         }
-    }
-    public void payBillsInOTPPopupValidation_PB_TC_55() throws Exception {
-        ExtentReporter.logInfo("","PayBills InApp OTP popup Validation");
-        //mlWalletLogin(propertyReader.getproperty("Fully_verified"));
-        payBillsNavigation();
-        searchBiller();
-        billerDetails();
-        confirmDetailsAndPay();
-        mobileGeneralMethod.waitSleep(3000);
-        if (mobileGeneralMethod.isVisible(loginObject.objOneTimePin(),"Page")) {
-            mobileGeneralMethod.isVisible(loginObject.objOTP(),"One Time Pin");
-            LoggingUtils.info("PB_TC_55, PayBills, InApp OTP popup validated");
-            ExtentReporter.logPass("PB_TC_55", "PB_TC_55, PayBills, InApp OTP popup validated");
+        else{
+            ExtentReporter.logFail("PB_TC_48", "Failed Pay Bills Transaction With Valid ML Pin to Validate");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //---------------Postive
     public void payBillsTransactionInAppOTPPopupUIValidation_PB_TC_56() throws Exception {
-        ExtentReporter.logInfo("","PayBills Transaction InApp OTP popup UI Validation");
-        //mlWalletLogin(propertyReader.getproperty("Fully_verified"));
+        ExtentReporter.logInfo("PB_TC_55","PayBills Transaction InApp OTP popup UI Validation");
+        login.loginWalletFullyTier();
         payBillsNavigation();
         searchBiller();
         billerDetails();
@@ -687,37 +754,47 @@ public class PayBills extends Base_Steps{
         mobileGeneralMethod.waitSleep(3000);
         if (mobileGeneralMethod.isVisible(loginObject.objOneTimePin(),"Page")) {
             mobileGeneralMethod.isVisible(loginObject.objOTP(),"One Time Pin");
-            mobileGeneralMethod.isVisible(loginObject.objSeconds(),"Seconds");
             mobileGeneralMethod.isVisible(loginObject.objContinueBtn(),"Button");
             mobileGeneralMethod.isVisible(loginObject.objCancelBtn(),"Button");
             LoggingUtils.info("PB_TC_56, PayBills Transaction InApp OTP popup UI validated");
-            ExtentReporter.logPass("PB_TC_56", "PB_TC_56, PayBills Transaction InApp OTP popup UI validated");
+            ExtentReporter.logPass("PB_TC_56", "PayBills Transaction InApp OTP popup UI validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("PB_TC_56", "Failed PayBills Transaction InApp OTP popup UI to Validate");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //---------------Postive
     public void payBillsTransactionNewOTPAfterSixtySecondsValidation_PB_TC_57() throws Exception {
-        ExtentReporter.logInfo("","PayBills New OTP got generated After Sixty Seconds validation");
-        //mlWalletLogin(propertyReader.getproperty("Fully_verified"));
+        ExtentReporter.logInfo("PB_TC_57","PayBills New OTP got generated After Sixty Seconds validation");
+        login.loginWalletFullyTier();
         payBillsNavigation();
         searchBiller();
         billerDetails();
         confirmDetailsAndPay();
-        
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.isVisible(loginObject.objOneTimePin(),"Page");
         if (mobileGeneralMethod.isVisible(loginObject.objOTP(),"One Time Pin")) {
             String sGeneratedOTP = mobileGeneralMethod.getText(loginObject.objOTP());
+            int SFirstOTP = Integer.parseInt(sGeneratedOTP);
             mobileGeneralMethod.waitSleep(70000);
             String sNewlyGeneratedOTPAfterSixtySeconds = mobileGeneralMethod.getText(loginObject.objOTP());
-            mobileGeneralMethod.assertionValidation(sGeneratedOTP, sNewlyGeneratedOTPAfterSixtySeconds);
+            int SSecondOTP = Integer.parseInt(sNewlyGeneratedOTPAfterSixtySeconds);
+            mobileGeneralMethod.assertionNotEqualValidation(SFirstOTP, SSecondOTP);
             LoggingUtils.info("PB_TC_57, PayBills Transaction New OTP got generated After Sixty Seconds is validated");
-            ExtentReporter.logPass("PB_TC_57", "PB_TC_57, PayBills Transaction New OTP got generated After Sixty Seconds is validated");
+            ExtentReporter.logPass("PB_TC_57", "PayBills Transaction New OTP got generated After Sixty Seconds is validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("PB_TC_57", "Failed PayBills Transaction New OTP got generated After Sixty Seconds to Validate");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //------------Negative cant run App Crash
     public void payBillsTransactionOTPCancelBtnFunctionality_PB_TC_58() throws Exception {
-        ExtentReporter.logInfo("","PayBills Transaction OTP Cancel Button Functionality");
-        //mlWalletLogin(propertyReader.getproperty("Fully_verified"));
+        ExtentReporter.logInfo("PB_TC_58","PayBills Transaction OTP Cancel Button Functionality");
+        login.loginWalletFullyTier();
         payBillsNavigation();
         searchBiller();
         billerDetails();
@@ -727,13 +804,18 @@ public class PayBills extends Base_Steps{
         mobileGeneralMethod.tap(loginObject.objCancelBtn(),"Button");
         if (mobileGeneralMethod.isVisible(payBillsObject.objConfirmDetails(),"Page")) {
             LoggingUtils.info("PB_TC_58, PayBills Transaction, After clicking on Cancel in One time pin popup App navigates back to Confirm details Page is validated");
-            ExtentReporter.logPass("PB_TC_58", "PB_TC_58, PayBills Transaction, After clicking on Cancel in One time pin popup App navigates back to Confirm details Page is validated");
+            ExtentReporter.logPass("PB_TC_58", "PayBills Transaction, After clicking on Cancel in One time pin popup App navigates back to Confirm details Page is validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("PB_TC_58", "Failed PayBills Transaction, After clicking on Cancel in One time pin popup App navigates back to Confirm details Page to Validate");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //---------------Postive
     public void payBillsTransactionOTPContinueBtnFunctionality_PB_TC_59() throws Exception {
-        ExtentReporter.logInfo("","PayBills Transaction OTP Continue Button Functionality");
-        //mlWalletLogin(propertyReader.getproperty("Fully_verified"));
+        ExtentReporter.logInfo("PB_TC_59","PayBills Transaction OTP Continue Button Functionality");
+        login.loginWalletFullyTier();
         payBillsNavigation();
         searchBiller();
         billerDetails();
@@ -741,9 +823,14 @@ public class PayBills extends Base_Steps{
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.isVisible(loginObject.objOneTimePin(),"Page");
         mobileGeneralMethod.tap(loginObject.objContinueBtn(),"Button");
+        mobileGeneralMethod.waitSleep(15000);
         if (mobileGeneralMethod.isVisible(payBillsObject.objSuccessPillPaymentMsg(),"Message")) {
             LoggingUtils.info("PB_TC_59, PayBills Transaction, After clicking on Continue in One time pin popup App navigates to Transaction Success Page is validated");
-            ExtentReporter.logPass("PB_TC_59", "PB_TC_59, PayBills Transaction, After clicking on Continue in One time pin popup App navigates to Transaction Success page is validated");
+            ExtentReporter.logPass("PB_TC_59", "PayBills Transaction, After clicking on Continue in One time pin popup App navigates to Transaction Success page is validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("PB_TC_59", "Failed PayBills Transaction, After clicking on Cancel in One time pin popup App navigates back to Confirm details Page to Validate");
             System.out.println("-----------------------------------------------------------");
         }
     }

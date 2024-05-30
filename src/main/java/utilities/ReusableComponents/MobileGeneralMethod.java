@@ -46,7 +46,7 @@ public class MobileGeneralMethod extends AppiumDriverManager {
             throw new AssertionError("Failed to Typed Element: " + elementName + e );
         }
     }
-    public static void clearField(WebElement byLocator, String text) {
+    public void clearField(WebElement byLocator, String text) {
         try {
             byLocator.clear();
             LoggingUtils.info("Cleared the text in : " + text);
