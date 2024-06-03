@@ -11,10 +11,10 @@ import static utilities.Driver.AppiumDriverManager.getAndroidDriver;
 
 public class EloadScripts extends BaseTest {
 //----HappyPath
-//    @Test(priority = 1, description = "buyELoadSuccessfulTransaction_BE_1")
-//    public void buyELoadSuccessfulTransaction_BE_1() throws Exception {
-//        buyELoad.buyELoadSuccessfulTransaction_BE_TC_26();
-//    }
+    @Test(priority = 1, description = "buyELoadSuccessfulTransaction_BE_1")
+    public void buyELoadSuccessfulTransaction_BE_1() throws Exception {
+        buyELoad.buyELoadSuccessfulTransaction_BE_TC_26();
+    }
 //----Positive Test
 //    @Test(priority = 2, description = "buyELoadTransactionDetails_BE_2")
 //    public void buyELoadTransactionDetails_BE_2() throws Exception {

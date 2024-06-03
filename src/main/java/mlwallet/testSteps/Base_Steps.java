@@ -20,6 +20,8 @@ public class Base_Steps {
     PayBillsObject payBillsObject = new PayBillsObject();
     HistoryObject historyObject = new HistoryObject();
     BuyEloadObject buyEloadObject = new BuyEloadObject();
+    CashOutViaBranchObjects cashOutViaBranchObjects = new CashOutViaBranchObjects();
+    CashInViaBranchObjects cashInViaBranchObjects = new CashInViaBranchObjects();
     yamlReader yamlReader = new yamlReader();
     final String filepath = "src\\test\\java\\resources\\testData.properties";
     propertyReader propertyReader = new propertyReader(filepath);

@@ -63,9 +63,7 @@ public class BuyELoad extends Base_Steps{
             System.out.println("-----------------------------------------------------------");
         }
     }
-
     //-----------------------------Postive Testing------------------------------------------
-
     public void eLoad_generic() throws Exception {
         login.loginWalletFullyTier();
         mobileGeneralMethod.tap(buyEloadObject.objEloadTab(), "Buy eLoad tab");
@@ -80,6 +78,7 @@ public class BuyELoad extends Base_Steps{
         mobileGeneralMethod.tap(buyEloadObject.objNextBtn(), "Next Button");
         mobileGeneralMethod.waitSleep(3000);
     }
+    //----------------Postive
     public void buyELoadTransactionDetails_BE_TC_01() throws Exception {
         ExtentReporter.logInfo("BE_TC_01","Transaction Details Validation after Buying eLoad");
         eLoad_generic();
@@ -113,7 +112,6 @@ public class BuyELoad extends Base_Steps{
             System.out.println("-----------------------------------------------------------");
         }
     }
-
     //------------------Negative
     public void buyELoadInvalidMobileNumber_BE_TC_02() throws Exception {
         ExtentReporter.logInfo("BE_TC_02","Buying eLoad using invalid mobile number");
@@ -142,7 +140,6 @@ public class BuyELoad extends Base_Steps{
             System.out.println("-----------------------------------------------------------");
         }
     }
-
     //------------------Negative
     public void buyELoadWithoutInputMobNumber_BE_TC_03() throws Exception {
         ExtentReporter.logInfo("BE_TC_03","Buying eLoad without mobile number input");
@@ -210,7 +207,7 @@ public class BuyELoad extends Base_Steps{
             String sActualInsufficientBalMsg = mobileGeneralMethod.getText(buyEloadObject.objInsufficientBalPopup());
             String sExceptedMsg = "There is insufficient balance to proceed with this transaction. Please try again.";
             mobileGeneralMethod.assertionValidation(sActualInsufficientBalMsg, sExceptedMsg);
-           mobileGeneralMethod.isVisible(buyEloadObject.objOkBtn(), "Button");
+            mobileGeneralMethod.isVisible(buyEloadObject.objOkBtn(), "Button");
             LoggingUtils.info("BE_TC_05, Insufficient Balance Error Message Validated");
             ExtentReporter.logPass("BE_TC_05", "Passed Insufficient Balance Error Message Validated");
             System.out.println("-----------------------------------------------------------");

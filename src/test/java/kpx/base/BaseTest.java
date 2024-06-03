@@ -7,6 +7,7 @@ import mlkpx.testSteps.*;
 import mlkpx.testSteps.Login_Steps;
 import mlwallet.testSteps.*;
 import org.apache.poi.ss.formula.functions.T;
+import org.mlwallet.pageObject.CashOutViaBranchObjects;
 import org.mlwallet.pageObject.TopUpGamesObjects;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
@@ -28,6 +29,8 @@ public class BaseTest {
     protected Shop_Safe shopSafe;
     protected KwartaPadala_Wallet kwartaPadalaWallet;
     protected BuyELoad buyELoad;
+    protected CashInViaBranch cashInViaBranch;
+    protected CashOutViaBranch cashOutViaBranch;
     protected GCash gCash;
     protected PayBills payBills;
     protected TopUpGames topUpGames;
@@ -49,7 +52,6 @@ public class BaseTest {
             throw new AssertionError("Unsupported Type: " + type);
         }
         ExtentReporter.setPlatform(type);
-
     }
     private void initializeDriver(DriverType driverType) {
         createDriver(driverType);
@@ -91,7 +93,6 @@ public class BaseTest {
     public void init(){
         this.loginSteps = new Login_Steps();
         this.wsShopSafeSteps = new WS_ShopSafe_Steps();
-
     }
     public void initWallet(){
         this.loginWalletSteps = new Login();
@@ -101,6 +102,8 @@ public class BaseTest {
         this.gCash = new GCash();
         this.payBills = new PayBills();
         this.topUpGames = new TopUpGames();
+        this.cashInViaBranch = new CashInViaBranch();
+        this.cashOutViaBranch = new CashOutViaBranch();
     }
 
 }

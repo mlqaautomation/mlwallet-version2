@@ -341,7 +341,6 @@ public class PayBills extends Base_Steps{
             System.out.println("-----------------------------------------------------------");
         }
     }
-
     public void addSelectedBiller() throws Exception {
         mobileGeneralMethod.waitSleep(3000);
         if (mobileGeneralMethod.isVisible(payBillsObject.objAddSeectedBiller(), "Edit Biller")) {

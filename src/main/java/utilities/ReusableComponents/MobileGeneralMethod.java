@@ -1,10 +1,13 @@
 package utilities.ReusableComponents;
 
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,8 +24,28 @@ import static utilities.Driver.AppiumDriverManager.getAndroidDriver;
 
 public class MobileGeneralMethod extends AppiumDriverManager {
     protected final AndroidDriver driver = getAndroidDriver();
-    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+    protected final Actions actions = new Actions(driver);
+    private final WebDriverWait wait;
     public final yamlReader reader = new yamlReader();
+    public MobileGeneralMethod(){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        this.wait =  new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
+    public void typeActiveElement(String text){
+        try{
+            actions.
+                    sendKeys(text).
+                    perform();
+        }finally{
+            LoggingUtils.info("Entering text: " + text);
+            ExtentReporter.logInfo("Entering text: " + text, "");
+        }
+    }
+    public void inputOTP(){
+        for(int i = 1; i <= 6 ; i++){
+            typeActiveElement("1");
+        }
+    }
     public void tap(WebElement locator, String elementName){
         try{
             wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
