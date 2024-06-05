@@ -62,6 +62,9 @@ public class CashInViaBranchObjects extends AppiumDriverManager {
     public WebElement objCrossBtn(){
         return driver.findElement(By.xpath("//*[@text='Cash In']/parent::android.view.ViewGroup/preceding-sibling::android.view.ViewGroup"));
     }
+    public WebElement objCancelBtn(){
+        return driver.findElement(By.xpath("//*[@text='Cancel']"));
+    }
     public WebElement objCancelTransactionBtn(){
         return driver.findElement(By.xpath("//*[@text='Cancel Transaction']"));
     }

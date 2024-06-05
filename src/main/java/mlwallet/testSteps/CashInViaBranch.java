@@ -53,6 +53,27 @@ public class CashInViaBranch extends Base_Steps{
             }
         }
     }
+    public void cancelPreviousTransactionandViewPopUp() throws Exception {
+        mobileGeneralMethod.waitSleep(3000);
+        try {
+            if (mobileGeneralMethod.isDisplayed(cashInViaBranchObjects.objCancelTransactionBtn())) {
+                mobileGeneralMethod.tap(cashInViaBranchObjects.objCancelTransactionBtn(), "Cancel Transaction button");
+                mobileGeneralMethod.tap(cashInViaBranchObjects.objCancelBtn1(), "Cancel Button");
+                mobileGeneralMethod.waitSleep(5000);
+                mobileGeneralMethod.tap(cashInViaBranchObjects.objBackToHomeBtn(), "Back To Home Button");
+                mobileGeneralMethod.waitSleep(3000);
+                mobileGeneralMethod.tap(cashInViaBranchObjects.objCashInMenu(), "Cash In");
+                mobileGeneralMethod.isVisible(cashInViaBranchObjects.objBranchName(), "Cash In Options Page");
+                mobileGeneralMethod.tap(cashInViaBranchObjects.objBranchName(), "ML Branch");
+                cashInViaBranchEnterAmount(propertyReader.getproperty("AmountInput"));
+                mobileGeneralMethod.waitSleep(3000);
+            }
+        }
+        catch (NoSuchElementException e){
+            cashInViaBranchEnterAmount(propertyReader.getproperty("AmountInput"));
+            mobileGeneralMethod.waitSleep(3000);
+        }
+    }
     public void cancelPreviousTransactionAndMaxAmountContinue() throws Exception {
         mobileGeneralMethod.waitSleep(3000);
         try {
@@ -74,6 +95,35 @@ public class CashInViaBranch extends Base_Steps{
         }
         catch (NoSuchElementException e){
             cashInViaBranchEnterAmount(propertyReader.getproperty("AmountInvalidCashIn"));
+            mobileGeneralMethod.waitSleep(3000);
+            if(mobileGeneralMethod.isVisible(cashInViaBranchObjects.objContinueButton(),"Continue Button")){
+                mobileGeneralMethod.tap(cashInViaBranchObjects.objContinueButton(),"Continue Button");
+            }
+        }
+    }
+    public void cancelPreviousTransactionAndDecimalContinue() throws Exception {
+        mobileGeneralMethod.waitSleep(3000);
+        try {
+            if (mobileGeneralMethod.isDisplayed(cashInViaBranchObjects.objCancelTransactionBtn())) {
+                mobileGeneralMethod.tap(cashInViaBranchObjects.objCancelTransactionBtn(), "Cancel Transaction button");
+                mobileGeneralMethod.tap(cashInViaBranchObjects.objCancelBtn1(), "Cancel Button");
+                mobileGeneralMethod.waitSleep(5000);
+                mobileGeneralMethod.tap(cashInViaBranchObjects.objBackToHomeBtn(), "Back To Home Button");
+                mobileGeneralMethod.waitSleep(3000);
+                mobileGeneralMethod.tap(cashInViaBranchObjects.objCashInMenu(), "Cash In");
+                mobileGeneralMethod.isVisible(cashInViaBranchObjects.objBranchName(), "Cash In Options Page");
+                mobileGeneralMethod.tap(cashInViaBranchObjects.objBranchName(), "ML Branch");
+                mobileGeneralMethod.waitSleep(3000);
+                cashInViaBranchEnterAmount(propertyReader.getproperty("DecimalAmount"));
+                mobileGeneralMethod.waitSleep(3000);
+                if(mobileGeneralMethod.isVisible(cashInViaBranchObjects.objContinueButton(),"Continue Button")){
+                    mobileGeneralMethod.tap(cashInViaBranchObjects.objContinueButton(),"Continue Button");
+                }
+            }
+        }
+        catch (NoSuchElementException e){
+            mobileGeneralMethod.waitSleep(3000);
+            cashInViaBranchEnterAmount(propertyReader.getproperty("DecimalAmount"));
             mobileGeneralMethod.waitSleep(3000);
             if(mobileGeneralMethod.isVisible(cashInViaBranchObjects.objContinueButton(),"Continue Button")){
                 mobileGeneralMethod.tap(cashInViaBranchObjects.objContinueButton(),"Continue Button");
@@ -372,7 +422,7 @@ public class CashInViaBranch extends Base_Steps{
             System.out.println("-----------------------------------------------------------");
         }
     }
-    //----------------Positive
+    //----------------Negative
     public void cashInViaBranchCancelBtnValidationOnCashInConfirmPopUp_CIBR_TC_12() throws Exception {
         ExtentReporter.logInfo("CIBR_TC_12","Cash In Via Branch Cancel Button validation on CashIn Confirm Popup");
         login.loginWalletBranchTier();
@@ -395,37 +445,14 @@ public class CashInViaBranch extends Base_Steps{
             System.out.println("-----------------------------------------------------------");
         }
     }
-
-    public void cashInViaBranchTappingOutsideTheCashInConfirmationPopUp_CIBR_TC_13(String sAmount) throws Exception {
-        ExtentReporter.logInfo("CIBR_TC_13","Cash In Via Branch, On tapping Outside the CashIn Confirmation Popup");
-        login.loginWalletBranchTier();
-        cashInViaBranchNavigation();
-        cancelPreviousTransactionAndContinue();
-        cashInViaBranchEnterAmount(sAmount);
-        mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInConfirmationPopup(),"Popup");
-        LoggingUtils.info("Clicked OutSide the Dragon Pay Popup");
-        if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInConfirmationPopup(),"Popup")) {
-            LoggingUtils.info("CIBR_TC_13, Cash In Via Branch, On tapping Outside the CashIn Confirmation Popup, Popup doesn't closed");
-            ExtentReporter.logPass("CIBR_TC_13", "Cash In Via Branch, On tapping Outside the CashIn Confirmation Popup, Popup doesn't closed");
-            System.out.println("-----------------------------------------------------------");
-        }
-        else{
-            ExtentReporter.logFail("CIBR_TC_12", "Failed To validate Cash In Via Branch, On clicking Cancel Button on CashIn Confirm Popup Application Navigates to CashIn Page with Cancelled Status");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
+    //----------------Positive
     public void cashInViaBranchGoBackBtnValidationOnCashInConfirmPopUp_CIBR_TC_14() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch Go Back Button validation on CashIn Confirm Popup");
+        ExtentReporter.logInfo("CIBR_TC_14","Cash In Via Branch Go Back Button validation on CashIn Confirm Popup");
         login.loginWalletBranchTier();
         cashInViaBranchNavigation();
-        cancelPreviousTransactionAndContinue();
-        cashInViaBranchEnterAmount("100");
-        mobileGeneralMethod.tap(cashInViaBranchObjects.objContinueButton(),"button");
-        login.enterOTP();
-        mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInToBranch(),"Header");
-        mobileGeneralMethod.tap(cashInViaBranchObjects.objCancelTransactionBtn(),"Button");
-        mobileGeneralMethod.tap(cashInViaBranchObjects.objGoBackBtn(),"Button");
-        if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInToBranch(),"Header")) {
+        cancelPreviousTransactionandViewPopUp();
+        if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objContinueButton(),"Continue Button")) {
+            mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCancelBtn(),"Cancel Button");
             LoggingUtils.info("CIBR_TC_14, Cash In Via Branch, On clicking Go Back Button on CashIn Confirm Popup Application Navigates to CashIn Page with pending Status");
             ExtentReporter.logPass("CIBR_TC_14", "Cash In Via Branch, On clicking Go Back Button on CashIn Confirm Popup Application Navigates to CashIn Page with pending Status");
             System.out.println("-----------------------------------------------------------");
@@ -435,31 +462,15 @@ public class CashInViaBranch extends Base_Steps{
             System.out.println("-----------------------------------------------------------");
         }
     }
-    public void cashInViaBankTappingOutsideTheCancelTransactionConfirmationPopup_CIBR_TC_15() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch, On tapping Outside the Cancel Transaction Confirmation Popup");
-        login.loginWalletBranchTier();
-        cashInViaBranchNavigation();
-        mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInToBranch(), "Header");
-        mobileGeneralMethod.tap(cashInViaBranchObjects.objCancelTransactionBtn(),"Button");
-        mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCancelTransactionPopup(),"PopUp");
-        LoggingUtils.info("Clicked OutSide the Dragon Pay Popup");
-        if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCancelTransactionPopup(),"PopUp")) {
-            LoggingUtils.info("CIBR_TC_15, Cash In Via Branch, On tapping Outside the Cancel Transaction Confirmation Popup, Popup doesn't closed");
-            ExtentReporter.logPass("CIBR_TC_15", "CIBR_TC_15, Cash In Via Branch, On tapping Outside the Cancel Transaction Confirmation Popup, Popup doesn't closed");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
-
+    //----------------Positive
     public void cashInViaBranchSemiVerifiedTierUser_CIBR_TC_17() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch Semi verified Tier User");
+        ExtentReporter.logInfo("CIBR_TC_17","Cash In Via Branch Semi verified Tier User");
         login.loginWalletSemiTier();
         cashInViaBranchNavigation();
         cancelPreviousTransactionAndContinue();
-        cashInViaBranchEnterAmount("100");
-        mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.isVisible(cashInViaBranchObjects.objWarningPopup(),"Pop Up");
-        mobileGeneralMethod.tap(cashInViaBranchObjects.objContinueButton(), "Continue Button");
-        login.enterOTP();
+        mobileGeneralMethod.waitSleep(8000);
+        mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(),"Continue Button");
+        mobileGeneralMethod.waitSleep(15000);
         if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInToBranch(),"Header")) {
             mobileGeneralMethod.isVisible(cashInViaBranchObjects.objPHP(),"PHP");
             mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCreatedDate(),"Date");
@@ -468,24 +479,26 @@ public class CashInViaBranch extends Base_Steps{
             mobileGeneralMethod.tap(cashInViaBranchObjects.objCrossBtn(), "Cash In Branch Cross Button");
             mobileGeneralMethod.verticalSwipeDown();
             mobileGeneralMethod.verticalSwipe();
-            if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInTransaction(),"Transaction")) {
-                mobileGeneralMethod.isVisible(cashInViaBranchObjects.objPending(),"Status");
-                LoggingUtils.info("CIBR_TC_17, Cash In Via Branch Semi verified Tier User Validated");
-                ExtentReporter.logPass("CIBR_TC_17", "CIBR_TC_17, Cash In Via Branch Semi verified Tier User Validated");
-                System.out.println("-----------------------------------------------------------");
-            }
+            mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInTransaction(),"Transaction");
+            mobileGeneralMethod.isVisible(cashInViaBranchObjects.objPending(),"Status");
+            LoggingUtils.info("CIBR_TC_17, Cash In Via Branch Semi verified Tier User Validated");
+            ExtentReporter.logPass("CIBR_TC_17", "Cash In Via Branch Semi verified Tier User Validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("CIBR_TC_17", "Failed To validate Cash In Via Branch Semi verified Tier User");
+            System.out.println("-----------------------------------------------------------");
         }
     }
+    //----------------Positive
     public void cashInViaBranchFullyVerifiedTierUser_CIBR_TC_18() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch Fully verified Tier User");
+        ExtentReporter.logInfo("CIBR_TC_18","Cash In Via Branch Fully verified Tier User");
         login.loginWalletFullyTier();
         cashInViaBranchNavigation();
         cancelPreviousTransactionAndContinue();
-        cashInViaBranchEnterAmount("100");
-        mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.isVisible(cashInViaBranchObjects.objWarningPopup(),"Pop Up");
-        mobileGeneralMethod.tap(cashInViaBranchObjects.objContinueButton(), "Continue Button");
-        login.enterOTP();
+        mobileGeneralMethod.waitSleep(8000);
+        mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(),"Continue Button");
+        mobileGeneralMethod.waitSleep(15000);
         if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInToBranch(),"Header")) {
             mobileGeneralMethod.isVisible(cashInViaBranchObjects.objPHP(),"PHP");
             mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCreatedDate(),"Date");
@@ -494,63 +507,81 @@ public class CashInViaBranch extends Base_Steps{
             mobileGeneralMethod.tap(cashInViaBranchObjects.objCrossBtn(), "Cash In Branch Cross Button");
             mobileGeneralMethod.verticalSwipeDown();
             mobileGeneralMethod.verticalSwipe();
-            if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInTransaction(),"Transaction")) {
-                mobileGeneralMethod.isVisible(cashInViaBranchObjects.objPending(),"Status");
-                LoggingUtils.info("CIBR_TC_18, Cash In Via Branch Fully verified Tier User Validated");
-                ExtentReporter.logPass("CIBR_TC_18", "CIBR_TC_18, Cash In Via Branch Fully verified Tier User Validated");
-                System.out.println("-----------------------------------------------------------");
-            }
+            mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInTransaction(),"Transaction");
+            mobileGeneralMethod.isVisible(cashInViaBranchObjects.objPending(),"Status");
+            LoggingUtils.info("CIBR_TC_18, Cash In Via Branch Fully verified Tier User Validated");
+            ExtentReporter.logPass("CIBR_TC_18", "Cash In Via Branch Fully verified Tier User Validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("CIBR_TC_18", "Failed To validate Cash In Via Branch Fully verified Tier User");
+            System.out.println("-----------------------------------------------------------");
         }
     }
+    //----------------Negative
     public void cashInViaBranchMaxTransactionBuyerTierUser_CIBR_TC_19() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch Max Transaction Buyer Tier User");
+        ExtentReporter.logInfo("CIBR_TC_19","Cash In Via Branch Max Transaction Buyer Tier User");
         login.loginWalletBuyerTier();
-        cashInViaBranchNavigation();
         maxTransactionLimitValidation();
-        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.waitSleep(3000);
         if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objBankMaxLimitToUpgrade(),"Error Message")) {
             String sErrorMsg = mobileGeneralMethod.getText(cashInViaBranchObjects.objBankMaxLimitToUpgrade());
             String sExpectedErrorMsg = "The maximum Branch Cash-in per transaction set for your verification level is P20,000.00. Please try again.";
             mobileGeneralMethod.assertionValidation(sErrorMsg, sExpectedErrorMsg);
             LoggingUtils.info("CIBR_TC_19, Cash In Via Branch Max Transaction Buyer Tier User,Branch CashIn Not Allowed-Error message Validated");
-            ExtentReporter.logPass("CIBR_TC_19", "CIBR_TC_19, Cash In Via Branch Max Transaction Buyer Tier User,Branch CashIn Not Allowed-Error message Validated");
+            ExtentReporter.logPass("CIBR_TC_19", "Cash In Via Branch Max Transaction Buyer Tier User,Branch CashIn Not Allowed-Error message Validated");
+        }
+        else{
+            ExtentReporter.logFail("CIBR_TC_18", "Failed To validate Cash In Via Branch Max Transaction Buyer Tier User,Branch CashIn Not Allowed-Error message");
+            System.out.println("-----------------------------------------------------------");
         }
     }
+    //----------------Negative
     public void cashInViaBranchMaxTransactionSemiVerifiedTierUser_CIBR_TC_20() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch Max Transaction Limit Semi-verified Tier User");
+        ExtentReporter.logInfo("CIBR_TC_20","Cash In Via Branch Max Transaction Limit Semi-verified Tier User");
+        login.loginWalletSemiTier();
         maxTransactionLimitValidation();
-        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.waitSleep(3000);
         if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objBankMaxLimitToUpgrade(),"Error Message")) {
             String sErrorMsg = mobileGeneralMethod.getText(cashInViaBranchObjects.objBankMaxLimitToUpgrade());
             String sExpectedErrorMsg = "The maximum Branch Cash-in per transaction set for your verification level is P50,000.00. Please try again.";
             mobileGeneralMethod.assertionValidation(sErrorMsg, sExpectedErrorMsg);
             LoggingUtils.info("CIBR_TC_20, Cash In Via Branch Max Transaction Limit Semi-verified Tier User Validated");
-            ExtentReporter.logPass("CIBR_TC_20", "CIBR_TC_20, Cash In Via Branch Max Transaction Limit Semi-verified Tier User Validated");
+            ExtentReporter.logPass("CIBR_TC_20", "Cash In Via Branch Max Transaction Limit Semi-verified Tier User Validated");
+        }
+        else{
+            ExtentReporter.logFail("CIBR_TC_20", "Failed To validate Cash In Via Branch Max Transaction Limit Semi-verified Tier User");
+            System.out.println("-----------------------------------------------------------");
         }
     }
+    //----------------Negative
     public void cashInViaBranchMaxTransactionFullyVerifiedTierUser_CIBR_TC_21() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch Max Transaction Limit Fully-verified Tier User");
+        ExtentReporter.logInfo("CIBR_TC_21","Cash In Via Branch Max Transaction Limit Fully-verified Tier User");
+        login.loginWalletFullyTier();
         maxTransactionLimitValidation();
-        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.waitSleep(3000);
         if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objBankMaxLimitTxt(),"Error Message")) {
             String sErrorMsg = mobileGeneralMethod.getText(cashInViaBranchObjects.objBankMaxLimitTxt());
             String sExpectedErrorMsg = "The maximum Branch Cash-in per transaction set for your verification level is P50,000.00. Please try again.";
             mobileGeneralMethod.assertionValidation(sErrorMsg, sExpectedErrorMsg);
             LoggingUtils.info("CIBR_TC_21, Cash In Via Branch Max Transaction Limit Fully-verified Tier User Validated");
-            ExtentReporter.logPass("CIBR_TC_21", "CIBR_TC_21, Cash In Via Branch Max Transaction Limit Fully-verified Tier User Validated");
+            ExtentReporter.logPass("CIBR_TC_21", "Cash In Via Branch Max Transaction Limit Fully-verified Tier User Validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("CIBR_TC_21", "Failed To validate Cash In Via Branch Max Transaction Limit Fully-verified Tier User");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //----------------Positive
     public void cashInViaBranchTransactionDetailsUIValidation_CIBR_TC_22() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch Transaction Details UI Validation");
+        ExtentReporter.logInfo("CIBR_TC_22","Cash In Via Branch Transaction Details UI Validation");
         login.loginWalletBranchTier();
         cashInViaBranchNavigation();
         cancelPreviousTransactionAndContinue();
-        cashInViaBranchEnterAmount("100");
-        mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.isVisible(cashInViaBranchObjects.objWarningPopup(),"Pop Up");
-        mobileGeneralMethod.tap(cashInViaBranchObjects.objContinueButton(), "Continue Button");
-        login.enterOTP();
+        mobileGeneralMethod.waitSleep(8000);
+        mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(),"Continue Button");
+        mobileGeneralMethod.waitSleep(15000);
         mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInToBranch(),"Header");
         mobileGeneralMethod.isVisible(cashInViaBranchObjects.objPHP(),"PHP");
         mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCreatedDate(),"Date");
@@ -570,20 +601,23 @@ public class CashInViaBranch extends Base_Steps{
             mobileGeneralMethod.isVisible(historyObject.objServiceFee(),"Service Fee");
             mobileGeneralMethod.isVisible(historyObject.objTotalCashIn(),"Total Cash In");
             LoggingUtils.info("CIBR_TC_22,Cash In Via Branch Transaction Details UI Validated");
-            ExtentReporter.logPass("CIBR_TC_22", "'CIBR_TC_22',Cash In Via Branch Transaction Details UI Validated");
+            ExtentReporter.logPass("CIBR_TC_22", "Cash In Via Branch Transaction Details UI Validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("CIBR_TC_21", "Failed To validate Cash In Via Branch Transaction Details UI");
             System.out.println("-----------------------------------------------------------");
         }
     }
-    public void cashInViaBranchTransactionPendingStatusValidation_CIBR_TC_23() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch Transaction Pending status Validation");
+    //----------------Positive
+    public void cashInViaBranchTransactionWithValidMLPin_CIBR_TC_43() throws Exception {
+        ExtentReporter.logInfo("CIBR_TC_43","Cash In Via Branch Transaction With Valid ML Pin");
         login.loginWalletBranchTier();
         cashInViaBranchNavigation();
         cancelPreviousTransactionAndContinue();
-        cashInViaBranchEnterAmount("100");
-        mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.isVisible(cashInViaBranchObjects.objWarningPopup(), "Pop Up");
-        mobileGeneralMethod.tap(cashInViaBranchObjects.objContinueButton(), "Continue Button");
-        login.enterOTP();
+        mobileGeneralMethod.waitSleep(8000);
+        handleMpin("1111");
+        mobileGeneralMethod.waitSleep(15000);
         mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInToBranch(),"Header");
         mobileGeneralMethod.isVisible(cashInViaBranchObjects.objPHP(),"PHP");
         mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCreatedDate(),"Date");
@@ -594,136 +628,63 @@ public class CashInViaBranch extends Base_Steps{
         mobileGeneralMethod.verticalSwipe();
         if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInTransaction(),"Transaction")) {
             mobileGeneralMethod.isVisible(cashInViaBranchObjects.objPending(),"Status");
-            LoggingUtils.info("CIBR_TC_23,Cash In Via Branch Transaction Pending status Validated");
-            ExtentReporter.logPass("CIBR_TC_23", "'CIBR_TC_23',Cash In Via Branch Transaction Pending status Validated");
+            LoggingUtils.info("'CIBR_TC_43', Cash In Via Branch Transaction With Valid ML Pin validated");
+            ExtentReporter.logPass("'CIBR_TC_43", "Cash In Via Branch Transaction With Valid ML Pin validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("CIBR_TC_43", "Failed To validate Cash In Via Branch Transaction With Valid ML Pin");
             System.out.println("-----------------------------------------------------------");
         }
     }
-    public void cashInViaBranchTransactionCancelledStatusValidation_CIBR_TC_26() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch Transaction Cancelled Status Validation");
-        login.loginWalletBranchTier();
-        cashInViaBranchNavigation();
-        cashInViaBranchEnterAmount(propertyReader.getproperty("Amount"));
-        mobileGeneralMethod.tap(loginObject.objContinueBtn(), "Continue Button");
-        mobileGeneralMethod.tap(cashInViaBranchObjects.objCancelTransactionBtn(), "Cancel Transaction Button");
-        mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCancelTransactionPopup(),  "PopUp");
-        mobileGeneralMethod.tap(cashInViaBranchObjects.objCancelTransactionBtn(),  "Cancel Transaction Button");
-        mobileGeneralMethod.tap(cashInViaBranchObjects.objBackToHomeBtn(), "Button");
-        mobileGeneralMethod.verticalSwipeDown();
-        if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInTransaction(),"Transaction")) {
-            mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCancelled(),"Status");
-            LoggingUtils.info("'CIBR_TC_26',Cash In Via Branch Transaction Cancelled Status Validated");
-            ExtentReporter.logPass("'CIBR_TC_26", "'CIBR_TC_26', Cash In Via Branch Transaction Cancelled Status Validated");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
-    public void cashInViaBranchAmountFieldValidation_CIBR_TC_42() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch, Amount Field with more than 2 decimals Validation");
-        login.loginWalletBranchTier();
-        cashInViaBranchNavigation();
-        cancelPreviousTransactionAndContinue();
-        cashInViaBranchEnterAmount("100.123");
-        mobileGeneralMethod.waitSleep(1000);
-        if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objInvalidAmountMsg(),"Pop Message")) {
-            String sMinimumTransactionPopupMsg = mobileGeneralMethod.getText(cashInViaBranchObjects.objInvalidAmountMsg());
-            String sExpectedPopupMsg = "The amount must be limited to 2 decimal places";
-            mobileGeneralMethod.assertionValidation(sMinimumTransactionPopupMsg, sExpectedPopupMsg);
-            LoggingUtils.info("CIBR_TC_42, Cash In Via Branch, Amount Field with more than 2 decimals Error Msg validated");
-            ExtentReporter.logPass("CIBR_TC_42", "CIBR_TC_42, Cash In Via Branch, Amount Field with more than 2 decimals Error Msg validated");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
-    public void cashInViaBranchTransactionWithValidMLPin_CIBR_TC_43() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch Transaction With Valid ML Pin");
-        login.loginWalletBranchTier();
-        cashInViaBranchNavigation();
-        cancelPreviousTransactionAndContinue();
-        cashInViaBranchEnterAmount("100");
-        mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.isVisible(cashInViaBranchObjects.objWarningPopup(),"Pop Up");
-        mobileGeneralMethod.tap(cashInViaBranchObjects.objContinueButton(), "Continue Button");
-        handleMpin("1111");
-        if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInToBranch(),"Header")) {
-            mobileGeneralMethod.isVisible(cashInViaBranchObjects.objPHP(),"PHP");
-            mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCreatedDate(),"Date");
-            mobileGeneralMethod.isVisible(cashInViaBranchObjects.objStatus(),"Status");
-            mobileGeneralMethod.isVisible(cashInViaBranchObjects.objTransactionNo(),"Transaction Number");
-            mobileGeneralMethod.tap(cashInViaBranchObjects.objCrossBtn(), "Cash In Branch Cross Button");
-            mobileGeneralMethod.verticalSwipeDown();
-            mobileGeneralMethod.verticalSwipe();
-            if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInTransaction(),"Transaction")) {
-                mobileGeneralMethod.isVisible(cashInViaBranchObjects.objPending(),"Status");
-                LoggingUtils.info("'CIBR_TC_43', Cash In Via Branch Transaction With Valid ML Pin validated");
-                ExtentReporter.logPass("'CIBR_TC_43", "'CIBR_TC_43', Cash In Via Branch Transaction With Valid ML Pin validated");
-                System.out.println("-----------------------------------------------------------");
-            }
-        }
-    }
+    //----------------Negative
     public void cashInViaBranchTransactionWithInValidMLPin_CIBR_TC_44() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch Transaction With InValid ML Pin");
+        ExtentReporter.logInfo("CIBR_TC_44","Cash In Via Branch Transaction With InValid ML Pin");
         login.loginWalletBranchTier();
         cashInViaBranchNavigation();
         cancelPreviousTransactionAndContinue();
-        cashInViaBranchEnterAmount("100");
-        mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.isVisible(cashInViaBranchObjects.objWarningPopup(),"Pop Up");
-        mobileGeneralMethod.tap(cashInViaBranchObjects.objContinueButton(), "Continue Button");
+        mobileGeneralMethod.waitSleep(8000);
         handleMpin("1234");
         if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objInvalidPINMsg(),"Message")) {
             String sActualErrorMsg = mobileGeneralMethod.getText(cashInViaBranchObjects.objInvalidPINMsg());
             String sExceptedErrorMsg = "You have entered an invalid PIN. Please try again.";
             mobileGeneralMethod.assertionValidation(sActualErrorMsg, sExceptedErrorMsg);
             LoggingUtils.info("CIBR_TC_44, Cash In Via Branch Transaction With Invalid ML Pin validated");
-            ExtentReporter.logPass("CIBR_TC_44", "CIBR_TC_44, Cash In Via Branch Transaction With Invalid ML Pin validated");
+            ExtentReporter.logPass("CIBR_TC_44", "Cash In Via Branch Transaction With Invalid ML Pin validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("CIBR_TC_43", "Failed To validate Cash In Via Branch Transaction With Invalid ML Pin");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //----------------Positive
     public void cashInViaBranchOTPPopupValidation_CIBR_TC_50() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch OTP Popup validation");
+        ExtentReporter.logInfo("CIBR_TC_50","Cash In Via Branch OTP Popup validation");
         login.loginWalletBranchTier();
         cashInViaBranchNavigation();
         cancelPreviousTransactionAndContinue();
-        cashInViaBranchEnterAmount("100");
-        mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.isVisible(cashInViaBranchObjects.objWarningPopup(),"Pop Up");
-        mobileGeneralMethod.tap(cashInViaBranchObjects.objContinueButton(), "Continue Button");
-        mobileGeneralMethod.waitSleep(1000);
-        if (mobileGeneralMethod.isVisible(loginObject.objOneTimePin(),"Page")) {
-            mobileGeneralMethod.isVisible(loginObject.objOTP(),"One Time Pin");
-            LoggingUtils.info("CIBR_TC_50, Cash In Via Branch, InApp OTP popup validated");
-            ExtentReporter.logPass("CIBR_TC_50", "CIBR_TC_50, Cash In Via Branch, InApp OTP popup validated");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
-    public void cashInViaBranchTransactionInAppOTPPopupUIValidation_CIBR_TC_51() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch Transaction InApp OTP Popup validation");
-        login.loginWalletBranchTier();
-        cashInViaBranchNavigation();
-        cancelPreviousTransactionAndContinue();
-        cashInViaBranchEnterAmount("100");
-        mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.isVisible(cashInViaBranchObjects.objWarningPopup(),"Pop Up");
-        mobileGeneralMethod.tap(cashInViaBranchObjects.objContinueButton(), "Continue Button");
-        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.waitSleep(8000);
         if (mobileGeneralMethod.isVisible(loginObject.objOneTimePin(),"Page")) {
             mobileGeneralMethod.isVisible(loginObject.objOTP(),"One Time Pin");
             mobileGeneralMethod.isVisible(loginObject.objContinueBtn(), "Button");
             mobileGeneralMethod.isVisible(loginObject.objCancelBtn(), "Button");
-            LoggingUtils.info("CIBR_TC_51, Cash In Via Branch Transaction InApp OTP Popup validated");
-            ExtentReporter.logPass("CIBR_TC_51", "CIBR_TC_51, Cash In Via Branch Transaction InApp OTP Popup validated");
+            LoggingUtils.info("CIBR_TC_50, Cash In Via Branch, InApp OTP popup validated");
+            ExtentReporter.logPass("CIBR_TC_50", "Cash In Via Branch, InApp OTP popup validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("CIBR_TC_50", "Failed To validate Cash In Via Branch, InApp OTP popup");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //----------------Positive
     public void cashInViaBranchTransactionNewOTPAfterSixtySecondsValidation_CIBR_TC_52() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch Transaction New OTP got generated After Sixty Seconds validation");
+        ExtentReporter.logInfo("CIBR_TC_52","Cash In Via Branch Transaction New OTP got generated After Sixty Seconds validation");
         login.loginWalletBranchTier();
         cashInViaBranchNavigation();
         cancelPreviousTransactionAndContinue();
-        cashInViaBranchEnterAmount("100");
-        mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.isVisible(cashInViaBranchObjects.objWarningPopup(),"Pop Up");
-        mobileGeneralMethod.tap(cashInViaBranchObjects.objContinueButton(), "Continue Button");
-        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.waitSleep(8000);
         mobileGeneralMethod.isVisible(loginObject.objOneTimePin(),"Page");
         if (mobileGeneralMethod.isVisible(loginObject.objOTP(),"One Time Pin")) {
             String sGeneratedOTP = mobileGeneralMethod.getText(loginObject.objOTP());
@@ -733,38 +694,49 @@ public class CashInViaBranch extends Base_Steps{
             int sSecondOTP = Integer.parseInt(sNewlyGeneratedOTPAfterSixtySeconds);
             mobileGeneralMethod.assertionNotEqualValidation(sFirstOTP, sSecondOTP);
             LoggingUtils.info("CIBR_TC_52, Cash In Via Branch Transaction New OTP got generated After Sixty Seconds is validated");
-            ExtentReporter.logPass("CIBR_TC_52", "CIBR_TC_52, Cash In Via Branch Transaction New OTP got generated After Sixty Seconds is validated");
+            ExtentReporter.logPass("CIBR_TC_52", "Cash In Via Branch Transaction New OTP got generated After Sixty Seconds is validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("CIBR_TC_52", "Failed To validate Cash In Via Branch Transaction New OTP got generated After Sixty Seconds");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //----------------Negative
     public void cashInViaBranchTransactionOTPCancelBtnFunctionality_CIBR_TC_53() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch Transaction OTP Cancel Button Functionality");
+        ExtentReporter.logInfo("CIBR_TC_53","Cash In Via Branch Transaction OTP Cancel Button Functionality");
         login.loginWalletBranchTier();
         cashInViaBranchNavigation();
-        cancelPreviousTransactionAndContinue();
-        cashInViaBranchEnterAmount("100");
-        mobileGeneralMethod.tap(loginObject.objCancelBtn(), "Cancel Button");
+        cancelPreviousTransactionandViewPopUp();
+        mobileGeneralMethod.tap(cashInViaBranchObjects.objCancelBtn(), "Cancel Button");
+        mobileGeneralMethod.waitSleep(3000);
         if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objBranchCashIn(),"Page")) {
             LoggingUtils.info("CIBR_TC_53, Cash In Via Branch Transaction, After clicking on Cancel in One time pin popup App navigates back to Branch cash In Page is validated");
-            ExtentReporter.logPass("CIBR_TC_53", "CIBR_TC_53, Cash In Via Branch Transaction, After clicking on Cancel in One time pin popup App navigates back to Branch cash In Page is validated");
+            ExtentReporter.logPass("CIBR_TC_53", "Cash In Via Branch Transaction, After clicking on Cancel in One time pin popup App navigates back to Branch cash In Page is validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("CIBR_TC_53", "Failed To validate Cash In Via Branch Transaction, After clicking on Cancel in One time pin popup App navigates back to Branch cash In Page");
             System.out.println("-----------------------------------------------------------");
         }
     }
+    //----------------Positive
     public void cashInViaBranchOTPContinueBtnFunctionality_CIBR_TC_54() throws Exception {
-        ExtentReporter.logInfo("","Cash In Via Branch Transaction OTP Continue Button Functionality");
+        ExtentReporter.logInfo("CIBR_TC_54","Cash In Via Branch Transaction OTP Continue Button Functionality");
         login.loginWalletBranchTier();
         cashInViaBranchNavigation();
         cancelPreviousTransactionAndContinue();
-        cashInViaBranchEnterAmount("100");
-        mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.isVisible(cashInViaBranchObjects.objWarningPopup(),"Pop Up");
-        mobileGeneralMethod.tap(cashInViaBranchObjects.objContinueButton(), "Continue Button");
-        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.waitSleep(8000);
         mobileGeneralMethod.isVisible(loginObject.objOneTimePin(),"Page");
-        mobileGeneralMethod.tap(loginObject.objContinueBtn(),"Button");
+        mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(),"Continue Button");
+        mobileGeneralMethod.waitSleep(15000);
         if (mobileGeneralMethod.isVisible(cashInViaBranchObjects.objCashInToBranch(),"Page")) {
             LoggingUtils.info("CIBR_TC_54, Cash In Via Branch Transaction, After clicking on Continue in One time pin popup App navigates to Cash In To Branch Page is validated");
-            ExtentReporter.logPass("CIBR_TC_54", "CIBR_TC_54, Cash In Via Branch Transaction, After clicking on Continue in One time pin popup App navigates to Cash In To Branch page is validated");
+            ExtentReporter.logPass("CIBR_TC_54", "Cash In Via Branch Transaction, After clicking on Continue in One time pin popup App navigates to Cash In To Branch page is validated");
+            System.out.println("-----------------------------------------------------------");
+        }
+        else{
+            ExtentReporter.logFail("CIBR_TC_54", "Failed To validate Cash In Via Branch Transaction, After clicking on Continue in One time pin popup App navigates to Cash In To Branch page");
             System.out.println("-----------------------------------------------------------");
         }
     }

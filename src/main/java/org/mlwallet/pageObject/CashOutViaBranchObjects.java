@@ -55,13 +55,16 @@ public class CashOutViaBranchObjects extends AppiumDriverManager {
         return driver.findElement(By.xpath("//*[@text='Transaction Details']/preceding-sibling::android.view.ViewGroup/child::android.widget.TextView"));
     }
     public WebElement objMaxLimitTxt(){
-        return driver.findElement(By.xpath("//*[@text='Ok']/parent::android.view.ViewGroup/parent::android.view.ViewGroup/preceding-sibling::android.widget.TextView"));
+        return driver.findElement(By.xpath("//*[@text='The maximum Branch Cash-out per transaction set for your verification level is P5,000.00. Please try again.']"));
     }
     public WebElement objMaxLimitUpgrade(){
         return driver.findElement(By.xpath("//*[@text='Upgrade Now']/parent::android.view.ViewGroup/parent::android.view.ViewGroup/preceding-sibling::android.widget.TextView"));
     }
     public WebElement objInsufficientBalance(){
-        return driver.findElement(By.xpath("//*[@text='Upgrade Now' or @text='Ok']/parent::android.view.ViewGroup/parent::android.view.ViewGroup/preceding-sibling::android.widget.TextView"));
+        return driver.findElement(By.xpath("//*[@text='There is insufficient balance on your account to proceed with this transaction. Please try again.']"));
+    }
+    public WebElement objGotItBtn(){
+        return driver.findElement(By.xpath("//*[@text='Got It']"));
     }
     public WebElement objOkBtn(){
         return driver.findElement(By.xpath("//*[@text='Ok']"));
@@ -143,7 +146,7 @@ public class CashOutViaBranchObjects extends AppiumDriverManager {
         return driver.findElement(By.xpath("//*[@text='Continue']/parent::android.view.ViewGroup/parent::android.view.ViewGroup/preceding-sibling::android.widget.TextView"));
     }
     public WebElement objBankMaxLimitTxt(){
-        return driver.findElement(By.xpath("//*[@text='Ok']/parent::android.view.ViewGroup/parent::android.view.ViewGroup/preceding-sibling::android.widget.TextView"));
+        return driver.findElement(By.xpath("//*[@text='The maximum Branch Cash-out per transaction set for your verification level is P40,000.00. Please try again.']"));
     }
     public WebElement objMinimumTransactionErrorMsg(){
         return driver.findElement(By.xpath("//*[@text='Ok']/parent::android.view.ViewGroup/parent::android.view.ViewGroup/preceding-sibling::android.widget.TextView"));
