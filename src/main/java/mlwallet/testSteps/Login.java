@@ -41,7 +41,7 @@ public class Login extends Base_Steps {
         }
     }
 
-    public void loginWalletFullyTier(){
+    public void  loginWalletFullyTier(){
         mobileGeneralMethod.waitSleep(5000);
         mobileGeneralMethod.type(mlWalletPageObjects.mobileNum_editText(), "Mobile Field", "9999999934");
         mobileGeneralMethod.tap(mlWalletPageObjects.login_btn(),"Login Button");

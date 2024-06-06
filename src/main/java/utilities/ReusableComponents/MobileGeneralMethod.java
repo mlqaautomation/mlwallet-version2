@@ -115,7 +115,7 @@ public class MobileGeneralMethod extends AppiumDriverManager {
 
         }
     }
-//    public void startActivity(){
+    //    public void startActivity(){
 //        try{
 //            LoggingUtils.info("Starting App Activity........");
 //            AppiumDriverManager.setupServer();
@@ -216,5 +216,26 @@ public class MobileGeneralMethod extends AppiumDriverManager {
         waitSleep(2000);
         LoggingUtils.info(steps+" "+message+" ");
         ExtentReporter.logPass("Failed",steps+" "+message+" ");
+    }
+    public static void setWifiConnectionToONOFF(String Value) {
+        try {
+            if (Value.equalsIgnoreCase("On")) {
+                System.out.println("Switching On Wifi");
+                String cmd = "adb shell svc wifi enable";
+                Runtime.getRuntime().exec(cmd);
+                Thread.sleep(5000);
+                LoggingUtils.info("Wifi Data toggle is Switched On");
+                ExtentReporter.logPass("Wifi Toggle", "Wifi Data toggle is Switched On");
+            } else if (Value.equalsIgnoreCase("Off")) {
+                System.out.println("Switching Off Wifi");
+                String cmd = "adb shell svc wifi disable";
+                Runtime.getRuntime().exec(cmd);
+                Thread.sleep(5000);
+                LoggingUtils.info("Wifi Data toggle is Switched Off");
+                ExtentReporter.logPass("Wifi Toggle", "Wifi Data toggle is Switched Off");
+            }
+        } catch (Exception e) {
+//			logger.error(e);
+        }
     }
 }

@@ -4,6 +4,7 @@ import org.apache.commons.math3.stat.inference.OneWayAnova;
 import org.mlwallet.pageObject.*;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
+import utilities.ReusableComponents.GeneralMethod;
 import utilities.ReusableComponents.MobileGeneralMethod;
 import utilities.yamlReader.yamlReader;
 import utilities.PropertyReader.propertyReader;

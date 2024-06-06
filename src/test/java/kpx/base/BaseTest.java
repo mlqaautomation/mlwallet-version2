@@ -28,6 +28,7 @@ public class BaseTest {
     protected Login loginWalletSteps;
     protected Shop_Safe shopSafe;
     protected KwartaPadala_Wallet kwartaPadalaWallet;
+    protected KwartaPadala_Branch kwartaPadalaBranch;
     protected BuyELoad buyELoad;
     protected CashInViaBranch cashInViaBranch;
     protected CashOutViaBranch cashOutViaBranch;
@@ -98,6 +99,7 @@ public class BaseTest {
         this.loginWalletSteps = new Login();
         this.shopSafe = new Shop_Safe();
         this.kwartaPadalaWallet = new KwartaPadala_Wallet();
+        this.kwartaPadalaBranch = new KwartaPadala_Branch();
         this.buyELoad = new BuyELoad();
         this.gCash = new GCash();
         this.payBills = new PayBills();

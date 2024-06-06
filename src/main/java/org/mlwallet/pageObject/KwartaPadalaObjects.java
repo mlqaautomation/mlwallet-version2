@@ -18,7 +18,9 @@ public class KwartaPadalaObjects extends AppiumDriverManager {
      public WebElement objSendMoney(){
         return driver.findElement(By.xpath("//*[@text='Send Money']"));
     }
-
+    public WebElement objSenderName(){
+        return driver.findElement(By.xpath("(//*[@resource-id='Sender Name'])[2]"));
+    }
      public WebElement objSendWalletOptions(){
         return driver.findElement(By.xpath("//*[@text='Send Wallet Options']"));
     }
