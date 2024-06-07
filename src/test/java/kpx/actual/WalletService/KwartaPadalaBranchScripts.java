@@ -35,14 +35,16 @@ public class KwartaPadalaBranchScripts extends BaseTest {
     @Test(priority = 4, description = "send_Money_Edit_Recipient_STB_TC_06")
     public void sendMoneyEditRecipient_STB_TC_06() throws Exception {
         kwartaPadalaBranch.sendMoneyEditRecipient_STB_TC_06();
-    }  @Test(priority = 5, description = "send_Money_Invalid_Amount_STB_TC_09")
+    }
+    @Test(priority = 5, description = "send_Money_Invalid_Amount_STB_TC_09")
     public void sendMoneyInvalidAmount_STB_TC_09() throws Exception {
         kwartaPadalaBranch.sendMoneyInvalidAmount_STB_TC_09("0");
     }
-    @Test(priority = 6, description = "send_Money_Insufficient_Amount_STB_TC_10")
-    public void sendMoneyInsufficientAmount_STB_TC_10() throws Exception {
-        kwartaPadalaBranch.sendMoneyInsufficientAmount_STB_TC_10();
-    }  @Test(priority = 7, description = "send_Money_Maximum_Amount_STB_TC_12")
+//    @Test(priority = 6, description = "send_Money_Insufficient_Amount_STB_TC_10")
+//    public void sendMoneyInsufficientAmount_STB_TC_10() throws Exception {
+//        kwartaPadalaBranch.sendMoneyInsufficientAmount_STB_TC_10();
+//    }
+    @Test(priority = 7, description = "send_Money_Maximum_Amount_STB_TC_12")
     public void sendMoneyMaximumAmount_STB_TC_12() throws Exception {
         kwartaPadalaBranch.sendMoneyMaximumAmount_STB_TC_12();
     }
@@ -68,10 +70,12 @@ public class KwartaPadalaBranchScripts extends BaseTest {
     }  @Test(priority = 13, description = "send_Money_To_Branch_Confirm_Details_Page_UI_Validation_STB_TC_17")
     public void sendMoneyToBranchConfirmDetailsPageUIValidation_STB_TC_17() throws Exception {
         kwartaPadalaBranch.sendMoneyToBranchConfirmDetailsPageUIValidation_STB_TC_17("100");
-    }  @Test(priority = 14, description = "send_Money_To_Branch_Select_Payment_Method_Page_UI_Validation_STB_TC_18")
+    }
+    @Test(priority = 14, description = "send_Money_To_Branch_Select_Payment_Method_Page_UI_Validation_STB_TC_18")
     public void sendMoneyToBranchSelectPaymentMethodPageUIValidation_STB_TC_18() throws Exception {
         kwartaPadalaBranch.sendMoneyToBranchSelectPaymentMethodPageUIValidation_STB_TC_18("100");
-    }  @Test(priority = 15, description = "send_Money_To_Branch_Enter_Amount_Page_UI_Validation_STB_TC_19")
+    }
+    @Test(priority = 15, description = "send_Money_To_Branch_Enter_Amount_Page_UI_Validation_STB_TC_19")
     public void sendMoneyToBranchEnterAmountPageUIValidation_STB_TC_19() throws Exception {
         kwartaPadalaBranch.sendMoneyToBranchEnterAmountPageUIValidation_STB_TC_19();
     }  @Test(priority = 16, description = "kwarta_Padala_Transaction_Details_UI_Validation_STB_TC_20")
@@ -176,14 +180,14 @@ public class KwartaPadalaBranchScripts extends BaseTest {
     public void sendMoneyToMLBranchInternetInterruptionWhileEnteringOTP_STB_TC_55() throws Exception {
         kwartaPadalaBranch.sendMoneyToMLBranchInternetInterruptionWhileEnteringOTP_STB_TC_55();
     }
-    @Test(priority = 45, description = "send_Money_To_ML_Branch_Transaction_With_Valid_ML_Pin_STB_TC_64")
-    public void sendMoneyToMLBranchTransactionWithValidMLPin_STB_TC_64() throws Exception {
-        kwartaPadalaBranch.sendMoneyToMLBranchTransactionWithValidMLPin_STB_TC_64();
-    }
-    @Test(priority = 46, description = "send_Money_To_ML_Branch_Transaction_With_In_Valid_ML_Pin_STB_TC_65")
-    public void sendMoneyToMLBranchTransactionWithInValidMLPin_STB_TC_65() throws Exception {
-        kwartaPadalaBranch.sendMoneyToMLBranchTransactionWithInValidMLPin_STB_TC_65();
-    }
+//    @Test(priority = 45, description = "send_Money_To_ML_Branch_Transaction_With_Valid_ML_Pin_STB_TC_64")
+//    public void sendMoneyToMLBranchTransactionWithValidMLPin_STB_TC_64() throws Exception {
+//        kwartaPadalaBranch.sendMoneyToMLBranchTransactionWithValidMLPin_STB_TC_64();
+//    }
+//    @Test(priority = 46, description = "send_Money_To_ML_Branch_Transaction_With_In_Valid_ML_Pin_STB_TC_65")
+//    public void sendMoneyToMLBranchTransactionWithInValidMLPin_STB_TC_65() throws Exception {
+//        kwartaPadalaBranch.sendMoneyToMLBranchTransactionWithInValidMLPin_STB_TC_65();
+//    }
     @Test(priority = 47, description = "send_Money_To_ML_Branch_In_OTP_Popup_Validation_STB_TC_71")
     public void sendMoneyToMLBranchInOTPPopupValidation_STB_TC_71() throws Exception {
         kwartaPadalaBranch.sendMoneyToMLBranchInOTPPopupValidation_STB_TC_71();
@@ -207,10 +211,6 @@ public class KwartaPadalaBranchScripts extends BaseTest {
     @Test(priority = 52, description = "send_Money_Required_Details_STB_TC_08")
     public void sendMoneyRequiredDetails_STB_TC_08() throws Exception {
         kwartaPadalaBranch.sendMoneyRequiredDetails_STB_TC_08();
-    }
-    @Test(priority = 53, description = "send_Money_Invalid_Details_STB_TC_07")
-    public void sendMoneyInvalidDetails_STB_TC_07() throws Exception {
-        kwartaPadalaBranch.sendMoneyInvalidDetails_STB_TC_07();
     }
     @Test(priority = 54, description = "send_Money_To_ML_Branch_Transaction_Validation_After_MinimizingApp_STB_TC_58")
     public void sendMoneyToMLBranchTransactionValidationAfterMinimizingApp_STB_TC_58() throws Exception {

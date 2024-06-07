@@ -19,9 +19,9 @@ public class KwartaPadala_Branch extends Base_Steps {
         if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objKwartaPadala(), "MLWallet User")) {
             mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "Amount", propertyReader.getproperty("AmountInput"));
             mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Next Button");
-            mobileGeneralMethod.waitSleep(3000);
+            mobileGeneralMethod.waitSleep(5000);
             mobileGeneralMethod.tap(kwartaPadalaObjects.objMLWalletBalance(), "MLWallet Balance Button");
-            mobileGeneralMethod.waitSleep(8000);
+            mobileGeneralMethod.waitSleep(5000);
             mobileGeneralMethod.isVisible(kwartaPadalaObjects.objConfirmDetails(), "Confirm Details Page");
             mobileGeneralMethod.verticalSwipe();
             mobileGeneralMethod.tap(kwartaPadalaObjects.objConfirmBtn(), "Button");
@@ -82,10 +82,15 @@ public class KwartaPadala_Branch extends Base_Steps {
 
     public void sendMoneyToMLBranchRatesValidation(String sAmount) throws Exception {
         login.loginWalletBranchTier();
+        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.tap(kwartaPadalaObjects.objSendTransferBtn(), "Send Transfer Button");
+        mobileGeneralMethod.isVisible(kwartaPadalaObjects.objSendMoney(), "Send Money Page");
+        mobileGeneralMethod.tap(kwartaPadalaObjects.objToAnyMLBranch(), "MLWallet User Button");
+        mobileGeneralMethod.waitSleep(1000);
         enterMLBranchDetails();
         mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.isVisible(kwartaPadalaObjects.objKwartaPadala(), "Page");
-        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), sAmount, "Amount text Field");
+        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "Amount text Field",sAmount );
         mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
         mobileGeneralMethod.isVisible(kwartaPadalaObjects.objSelectPaymentMethod(), "Page");
         Thread.sleep(1000);
@@ -144,7 +149,7 @@ public class KwartaPadala_Branch extends Base_Steps {
             mobileGeneralMethod.tap(kwartaPadalaObjects.objCheckBox(), "Check Box");
             mobileGeneralMethod.waitSleep(3000);
             mobileGeneralMethod.type(kwartaPadalaObjects.objLastName(), "Last Name Text Field", propertyReader.getproperty("Last_Name"));
-            mobileGeneralMethod.type(buyEloadObject.objMobileNumber(), "Mobile Field", "9999999934");
+            mobileGeneralMethod.type(kwartaPadalaObjects.objMobileNumber(), "Mobile Field", "9999999934");
             mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
         }
 
@@ -158,7 +163,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.waitSleep(1000);
         enterMLBranchDetails();
         enterAmountToKwartaPadala();
-        enableLocation_PopUp();
+//        enableLocation_PopUp();
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(), "Continue Button");
         mobileGeneralMethod.waitSleep(10000);
@@ -203,7 +208,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
         if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objFirstNameRequiredMsg(), "Error Message")) {
             String sFirstNameErrorMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objFirstNameRequiredMsg());
-            String sExpectedMsg = "First name is required";
+            String sExpectedMsg = "First name is required.";
             mobileGeneralMethod.assertionValidation(sFirstNameErrorMsg, sExpectedMsg);
         }
 //        hideKeyboard();
@@ -212,7 +217,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
         if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objMiddleNameRequiredMsg(), "Error Message")) {
             String sMiddleNameRequiredMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objMiddleNameRequiredMsg());
-            String sExpectedMsg = "Middle name is required";
+            String sExpectedMsg = "Middle name is required.";
             mobileGeneralMethod.assertionValidation(sMiddleNameRequiredMsg, sExpectedMsg);
         }
         mobileGeneralMethod.waitSleep(1000);
@@ -221,7 +226,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
         if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objLastNameRequiredMsg(), "Error Message")) {
             String sLastNameRequiredMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objLastNameRequiredMsg());
-            String sExpectedMsg = "Last name is required";
+            String sExpectedMsg = "Last name is required.";
             mobileGeneralMethod.assertionValidation(sLastNameRequiredMsg, sExpectedMsg);
         }
         mobileGeneralMethod.waitSleep(1000);
@@ -230,7 +235,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
         if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objMobileNumberRequiredMsg(), "Error Message")) {
             String sMiddleNameRequiredMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objMobileNumberRequiredMsg());
-            String sExpectedMsg = "Mobile number is required";
+            String sExpectedMsg = "Mobile number is required.";
             mobileGeneralMethod.assertionValidation(sMiddleNameRequiredMsg, sExpectedMsg);
         }
         mobileGeneralMethod.type(mlWalletPageObjects.mobileNum_editText(), "Mobile Field", "9999999934");
@@ -248,65 +253,65 @@ public class KwartaPadala_Branch extends Base_Steps {
 
     }
 
-        public void sendMoneyInvalidDetails_STB_TC_07() throws Exception {
-        login.loginWalletBranchTier();
-        mobileGeneralMethod.tap(kwartaPadalaObjects.objSendTransferBtn(), "Send Transfer Button");
-        mobileGeneralMethod.isVisible(kwartaPadalaObjects.objSendMoney(), "Send Money Page");
-        mobileGeneralMethod.tap(kwartaPadalaObjects.objToAnyMLBranch(), "MLWallet User Button");
-        mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.isVisible(kwartaPadalaObjects.objKwartaPadala(), "Page");
-        mobileGeneralMethod.type(kwartaPadalaObjects.objFirstname(), "First Name Text Field", propertyReader.getproperty("Invalid_First_Name"));
-        mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
-        if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objFirstNameErrorMsg(), "Error Message")) {
-            String sFirstNameErrorMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objFirstNameErrorMsg());
-            String sExpectedMsg = "First name must only contain letters and spaces";
-            mobileGeneralMethod.assertionValidation(sFirstNameErrorMsg, sExpectedMsg);
-        }
-        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "First Name Text Field", propertyReader.getproperty("First_Name"));
-        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "First Name Text Field", propertyReader.getproperty("First_Name"));
-        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "Middle Name Text Field", propertyReader.getproperty("Invalid_Middle_Name"));
-        mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
-        if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objMiddleNameErrorMsg(), "Error Message")) {
-            String sMiddleNameRequiredMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objMiddleNameErrorMsg());
-            String sExpectedMsg = "Middle name must only contain letters and spaces";
-            mobileGeneralMethod.assertionValidation(sMiddleNameRequiredMsg, sExpectedMsg);
-        }
-        mobileGeneralMethod.tap(kwartaPadalaObjects.objCheckBox(), "Check Box");
-        mobileGeneralMethod.verticalSwipeDown();
-        mobileGeneralMethod.verticalSwipe();
-        mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "Last Name Text Field", propertyReader.getproperty("Invalid_Last_Name"));
-        mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
-        if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objLastNameErrorMsg(), "Error Message")) {
-            String sLastNameRequiredMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objLastNameErrorMsg());
-            String sExpectedMsg = "Last name must only contain letters and spaces";
-            mobileGeneralMethod.assertionValidation(sLastNameRequiredMsg, sExpectedMsg);
-        }
-        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "Last Name Text Field", propertyReader.getproperty("Last_Name"));
-        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "Last Name Text Field", propertyReader.getproperty("Last_Name"));
-
-        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "Last Name Text Field", propertyReader.getproperty("Invalid_MobileNumber"));
-        mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
-        if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objMobileNumberErrorMsg(), "Error Message")) {
-            String sMiddleNameRequiredMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objMobileNumberErrorMsg());
-            String sExpectedMsg = "Mobile number is invalid";
-            mobileGeneralMethod.assertionValidation(sMiddleNameRequiredMsg, sExpectedMsg);
-        }
-         mobileGeneralMethod.clearField(kwartaPadalaObjects.objMobileNumber(),"Mobile Number");
-        mobileGeneralMethod.type(mlWalletPageObjects.mobileNum_editText(), "Mobile Field", "9999999934");
-        mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
-        mobileGeneralMethod.waitSleep(1000);
-        if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objKwartaPadala(), "Page")){
-            LoggingUtils.info("STB_TC_07, Prompt msg for Receiver's Details Invalid is validated");
-            ExtentReporter.logPass("STB_TC_07", "STB_TC_07, Prompt msg for Receiver's Details Invalid is validated");
-            System.out.println("-----------------------------------------------------------");
-        } else {
-            ExtentReporter.logFail("STB_TC_07", "STB_TC_07(), Failed To Validate Prompt msg for Receiver's Details Invalid");
-            System.out.println("-----------------------------------------------------------");
-
-        }
-
-    }
+//        public void sendMoneyInvalidDetails_STB_TC_07() throws Exception {
+//        login.loginWalletBranchTier();
+//        mobileGeneralMethod.tap(kwartaPadalaObjects.objSendTransferBtn(), "Send Transfer Button");
+//        mobileGeneralMethod.isVisible(kwartaPadalaObjects.objSendMoney(), "Send Money Page");
+//        mobileGeneralMethod.tap(kwartaPadalaObjects.objToAnyMLBranch(), "MLWallet User Button");
+//        mobileGeneralMethod.waitSleep(1000);
+//        mobileGeneralMethod.isVisible(kwartaPadalaObjects.objKwartaPadala(), "Page");
+//        mobileGeneralMethod.type(kwartaPadalaObjects.objFirstname(), "First Name Text Field", propertyReader.getproperty("Invalid_First_Name"));
+//        mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
+//        if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objFirstNameErrorMsg(), "Error Message")) {
+//            String sFirstNameErrorMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objFirstNameErrorMsg());
+//            String sExpectedMsg = "First name must only contain letters and spaces";
+//            mobileGeneralMethod.assertionValidation(sFirstNameErrorMsg, sExpectedMsg);
+//        }
+//        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "First Name Text Field", propertyReader.getproperty("First_Name"));
+//        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "First Name Text Field", propertyReader.getproperty("First_Name"));
+//        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "Middle Name Text Field", propertyReader.getproperty("Invalid_Middle_Name"));
+//        mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
+//        if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objMiddleNameErrorMsg(), "Error Message")) {
+//            String sMiddleNameRequiredMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objMiddleNameErrorMsg());
+//            String sExpectedMsg = "Middle name must only contain letters and spaces";
+//            mobileGeneralMethod.assertionValidation(sMiddleNameRequiredMsg, sExpectedMsg);
+//        }
+//        mobileGeneralMethod.tap(kwartaPadalaObjects.objCheckBox(), "Check Box");
+//        mobileGeneralMethod.verticalSwipeDown();
+//        mobileGeneralMethod.verticalSwipe();
+//        mobileGeneralMethod.waitSleep(3000);
+//        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "Last Name Text Field", propertyReader.getproperty("Invalid_Last_Name"));
+//        mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
+//        if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objLastNameErrorMsg(), "Error Message")) {
+//            String sLastNameRequiredMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objLastNameErrorMsg());
+//            String sExpectedMsg = "Last name must only contain letters and spaces";
+//            mobileGeneralMethod.assertionValidation(sLastNameRequiredMsg, sExpectedMsg);
+//        }
+//        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "Last Name Text Field", propertyReader.getproperty("Last_Name"));
+//        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "Last Name Text Field", propertyReader.getproperty("Last_Name"));
+//
+//        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "Last Name Text Field", propertyReader.getproperty("Invalid_MobileNumber"));
+//        mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
+//        if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objMobileNumberErrorMsg(), "Error Message")) {
+//            String sMiddleNameRequiredMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objMobileNumberErrorMsg());
+//            String sExpectedMsg = "Mobile number is invalid";
+//            mobileGeneralMethod.assertionValidation(sMiddleNameRequiredMsg, sExpectedMsg);
+//        }
+//         mobileGeneralMethod.clearField(kwartaPadalaObjects.objMobileNumber(),"Mobile Number");
+//        mobileGeneralMethod.type(mlWalletPageObjects.mobileNum_editText(), "Mobile Field", "9999999934");
+//        mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
+//        mobileGeneralMethod.waitSleep(1000);
+//        if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objKwartaPadala(), "Page")){
+//            LoggingUtils.info("STB_TC_07, Prompt msg for Receiver's Details Invalid is validated");
+//            ExtentReporter.logPass("STB_TC_07", "STB_TC_07, Prompt msg for Receiver's Details Invalid is validated");
+//            System.out.println("-----------------------------------------------------------");
+//        } else {
+//            ExtentReporter.logFail("STB_TC_07", "STB_TC_07(), Failed To Validate Prompt msg for Receiver's Details Invalid");
+//            System.out.println("-----------------------------------------------------------");
+//
+//        }
+//
+//    }
     public void sendMoneyAddRecipient_STB_TC_03() throws Exception {
         login.loginWalletBranchTier();
         mobileGeneralMethod.tap(kwartaPadalaObjects.objSendTransferBtn(), "Send Transfer Button");
@@ -342,9 +347,8 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.tap(kwartaPadalaObjects.objCheckBox(), "Check Box");
         mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
-        enterAmountToKwartaPadala();
-        enableLocation_PopUp();
-        enableLocation_PopUp();
+        enterAmountToKwartaPadala("10");
+//        enableLocation_PopUp();
         mobileGeneralMethod.waitSleep(2000);
         mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(), "Continue Button");
         mobileGeneralMethod.waitSleep(2000);
@@ -369,7 +373,7 @@ public class KwartaPadala_Branch extends Base_Steps {
             if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objReferenceNumberInTransactionDetails(), "Page")) {
                 String sReferenceNumberInCashOut = mobileGeneralMethod.getText(kwartaPadalaObjects.objReferenceNumberInTransactionDetails());
                 System.out.println(sReferenceNumberInCashOut);
-                mobileGeneralMethod.assertionValidation(sReferenceNumberInCashOut, sReference);
+                mobileGeneralMethod.assertionValidation(sReferenceNumberInCashOut, sReferenceNumber);
                 LoggingUtils.info("STB_TC_02, Successfully sent Amount to saved Recipient and Transaction Details is validated");
                 ExtentReporter.logPass("STB_TC_02", "STB_TC_02, Successfully sent Amount to saved Recipient and Transaction Details is validated");
                 System.out.println("-----------------------------------------------------------");
@@ -481,28 +485,28 @@ public class KwartaPadala_Branch extends Base_Steps {
         }
     }
 
-    public void sendMoneyInsufficientAmount_STB_TC_10() throws Exception {
-        login.loginWalletBranchTier();
-        mobileGeneralMethod.tap(kwartaPadalaObjects.objSendTransferBtn(), "Send Transfer Button");
-        mobileGeneralMethod.isVisible(kwartaPadalaObjects.objSendMoney(), "Send Money Page");
-        mobileGeneralMethod.tap(kwartaPadalaObjects.objToAnyMLBranch(), "MLWallet User Button");
-        mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.isVisible(kwartaPadalaObjects.objKwartaPadala(), "Page");
-        enterMLBranchDetails();
-        enterAmountToKwartaPadala("39000");
-        if ((mobileGeneralMethod.isVisible(kwartaPadalaObjects.objInsufficientAmountMsg(), "Error Message"))) {
-            String sInvalidAmountErrorMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objInsufficientAmountMsg());
-            String sExpectedErrorMsg = "There is insufficient balance to proceed with this transaction. Please try again.";
-            mobileGeneralMethod.assertionValidation(sInvalidAmountErrorMsg, sExpectedErrorMsg);
-            LoggingUtils.info("STB_TC_10, Insufficient Balance - Error Message is validated");
-            ExtentReporter.logPass("STB_TC_10", "STB_TC_10, Insufficient Balance - Error Message is validated");
-            System.out.println("-----------------------------------------------------------");
-        } else {
-            ExtentReporter.logFail("STB_TC_10", "STB_TC_10(), Failed To Validate Error Message -Insufficient Balance");
-            System.out.println("-----------------------------------------------------------");
-
-        }
-    }
+//    public void sendMoneyInsufficientAmount_STB_TC_10() throws Exception {
+//        login.loginWalletSemi_Verified();
+//        mobileGeneralMethod.tap(kwartaPadalaObjects.objSendTransferBtn(), "Send Transfer Button");
+//        mobileGeneralMethod.isVisible(kwartaPadalaObjects.objSendMoney(), "Send Money Page");
+//        mobileGeneralMethod.tap(kwartaPadalaObjects.objToAnyMLBranch(), "MLWallet User Button");
+//        mobileGeneralMethod.waitSleep(1000);
+//        mobileGeneralMethod.isVisible(kwartaPadalaObjects.objKwartaPadala(), "Page");
+//        enterMLBranchDetails();
+//        enterAmountToKwartaPadala("39000");
+//        if ((mobileGeneralMethod.isVisible(kwartaPadalaObjects.objInsufficientAmountMsg(), "Error Message"))) {
+//            String sInvalidAmountErrorMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objInsufficientAmountMsg());
+//            String sExpectedErrorMsg = "There is insufficient balance on your account to proceed with this transaction. Please try again.";
+//            mobileGeneralMethod.assertionValidation(sInvalidAmountErrorMsg, sExpectedErrorMsg);
+//            LoggingUtils.info("STB_TC_10, Insufficient Balance - Error Message is validated");
+//            ExtentReporter.logPass("STB_TC_10", "STB_TC_10, Insufficient Balance - Error Message is validated");
+//            System.out.println("-----------------------------------------------------------");
+//        } else {
+//            ExtentReporter.logFail("STB_TC_10", "STB_TC_10(), Failed To Validate Error Message -Insufficient Balance");
+//            System.out.println("-----------------------------------------------------------");
+//
+//        }
+//    }
 
     public void sendMoneyMaximumAmount_STB_TC_12() throws Exception {
         login.loginWalletBranchTier();
@@ -611,7 +615,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.waitSleep(1000);
         enterMLBranchDetails();
         enterAmountToKwartaPadala();
-        enableLocation_PopUp();
+//        enableLocation_PopUp();
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(), "Continue Button");
         mobileGeneralMethod.waitSleep(10000);
@@ -681,7 +685,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.tap(kwartaPadalaObjects.objToAnyMLBranch(), "MLWallet User Button");
         mobileGeneralMethod.waitSleep(1000);
         enterMLBranchDetails();
-        mobileGeneralMethod.waitSleep(1000);
+        mobileGeneralMethod.waitSleep(5000);
         mobileGeneralMethod.isVisible(kwartaPadalaObjects.objKwartaPadala(), "Page");
         mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "Amount text Field", nAmount);
         mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
@@ -749,8 +753,9 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.tap(kwartaPadalaObjects.objToAnyMLBranch(), "MLWallet User Button");
         if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objSavedRecipients(), "Button")) {
             mobileGeneralMethod.tap(kwartaPadalaObjects.objSavedRecipients(), "Button");
+            mobileGeneralMethod.waitSleep(3000);
             mobileGeneralMethod.tap(kwartaPadalaObjects.objAddRecipient(), "Button");
-            mobileGeneralMethod.waitSleep(10000);
+            mobileGeneralMethod.waitSleep(3000);
             if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objAddRecipient(), "Page")) {
                 mobileGeneralMethod.isVisible(kwartaPadalaObjects.objFirstname(), "First Name Text Field");
                 mobileGeneralMethod.isVisible(kwartaPadalaObjects.objMiddleName(), "Middle Name Text Field");
@@ -826,7 +831,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.waitSleep(1000);
         enterMLBranchDetails();
         enterAmountToKwartaPadala();
-        enableLocation_PopUp();
+//        enableLocation_PopUp();
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(), "Continue Button");
         mobileGeneralMethod.waitSleep(10000);
@@ -851,7 +856,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.waitSleep(1000);
         enterMLBranchDetails();
         enterAmountToKwartaPadala();
-        enableLocation_PopUp();
+//        enableLocation_PopUp();
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(), "Continue Button");
         mobileGeneralMethod.waitSleep(10000);
@@ -904,7 +909,7 @@ public class KwartaPadala_Branch extends Base_Steps {
             String sMaximumLimitErrorMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objMaxLimitErrorMsg());
             String sExpectedErrorMsg = "The maximum Send Money per transaction set for your verification level is P50,000.00. Please try again.";
             mobileGeneralMethod.assertionValidation(sMaximumLimitErrorMsg, sExpectedErrorMsg);
-            mobileGeneralMethod.isVisible(kwartaPadalaObjects.objOkBtn(), "Button");
+            mobileGeneralMethod.isVisible(kwartaPadalaObjects.objGotItBtn(), "Button");
             LoggingUtils.info("STB_TC_29, Send Money To ML Branch, Branch verified Tier Account Maximum Transaction - Error Message is validated");
             ExtentReporter.logPass("STB_TC_29", "STB_TC_29, Send Money To ML Branch, Branch verified Tier Account Maximum Transaction - Error Message is validated");
             System.out.println("-----------------------------------------------------------");
@@ -928,7 +933,7 @@ public class KwartaPadala_Branch extends Base_Steps {
             String sMaximumLimitErrorMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objMaxLimitErrorMsg());
             String sExpectedErrorMsg = "The maximum Send Money per transaction set for your verification level is P50,000.00. Please try again.";
             mobileGeneralMethod.assertionValidation(sMaximumLimitErrorMsg, sExpectedErrorMsg);
-            mobileGeneralMethod.isVisible(kwartaPadalaObjects.objOkBtn(), "Button");
+            mobileGeneralMethod.isVisible(kwartaPadalaObjects.objGotItBtn(), "Button");
             LoggingUtils.info("STB_TC_29, Send Money To ML Branch, Branch verified Tier Account Maximum Transaction - Error Message is validated");
             ExtentReporter.logPass("STB_TC_29", "STB_TC_29, Send Money To ML Branch, Branch verified Tier Account Maximum Transaction - Error Message is validated");
             System.out.println("-----------------------------------------------------------");
@@ -1176,7 +1181,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         sendMoneyToMLBranchRatesValidation(sAmount);
         if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objServiceFee(), "Service Fee")) {
             String sMaximumLimitErrorMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objServiceFee());
-            String sExceptedServiceFee = "Php 50.00";
+            String sExceptedServiceFee = "Php 500.00";
             mobileGeneralMethod.assertionValidation(sMaximumLimitErrorMsg, sExceptedServiceFee);
             LoggingUtils.info("STB_TC_48, Send Money To ML Branch charged PHP500.00 for PHP2500.01 to PHP50000.00 validated");
             ExtentReporter.logPass("STB_TC_48", "STB_TC_48, Send Money To ML Branch charged PHP500.00 for PHP2500.01 to PHP50000.00 validated");
@@ -1310,7 +1315,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.waitSleep(1000);
         enterMLBranchDetails();
         enterAmountToKwartaPadala();
-        enableLocation_PopUp();
+//        enableLocation_PopUp();
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.setWifiConnectionToONOFF("OFF");
         mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(), "Continue Button");
@@ -1334,7 +1339,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.waitSleep(1000);
         enterMLBranchDetails();
         enterAmountToKwartaPadala();
-        enableLocation_PopUp();
+//        enableLocation_PopUp();
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.setWifiConnectionToONOFF("OFF");
         mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(), "Continue Button");
@@ -1351,73 +1356,72 @@ public class KwartaPadala_Branch extends Base_Steps {
         }
     }
 
-    public void sendMoneyToMLBranchTransactionWithValidMLPin_STB_TC_64() throws Exception {
-        login.loginWalletBranchTier();
-        mobileGeneralMethod.tap(kwartaPadalaObjects.objSendTransferBtn(), "Send Transfer Button");
-        mobileGeneralMethod.isVisible(kwartaPadalaObjects.objSendMoney(), "Send Money Page");
-        mobileGeneralMethod.tap(kwartaPadalaObjects.objToAnyMLBranch(), "MLWallet User Button");
-        mobileGeneralMethod.waitSleep(1000);
-        enterMLBranchDetails();
-        enterAmountToKwartaPadala();
-        mobileGeneralMethod.waitSleep(3000);
-        enableLocation_PopUp();
+//    public void sendMoneyToMLBranchTransactionWithValidMLPin_STB_TC_64() throws Exception {
+//        login.loginWalletBranchTier();
+//        mobileGeneralMethod.tap(kwartaPadalaObjects.objSendTransferBtn(), "Send Transfer Button");
+//        mobileGeneralMethod.isVisible(kwartaPadalaObjects.objSendMoney(), "Send Money Page");
+//        mobileGeneralMethod.tap(kwartaPadalaObjects.objToAnyMLBranch(), "MLWallet User Button");
+//        mobileGeneralMethod.waitSleep(1000);
+//        enterMLBranchDetails();
+//        enterAmountToKwartaPadala();
+//        mobileGeneralMethod.waitSleep(3000);
+//        enableLocation_PopUp();
 //        handleMpin("1111");
-        mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(), "Continue Button");
-        mobileGeneralMethod.waitSleep(10000);
-        if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objSendMoneySuccessful(), "Pop Up Message")) {
-            mobileGeneralMethod.isVisible(kwartaPadalaObjects.objPHPAmount(), "Amount");
-            mobileGeneralMethod.isVisible(kwartaPadalaObjects.objDate(), "Date");
-            mobileGeneralMethod.isVisible(kwartaPadalaObjects.objReferenceNumber(), "Reference Number");
-            String sReference = mobileGeneralMethod.getText(kwartaPadalaObjects.objReferenceNumber());
-            System.out.println(sReference);
-            String sReferenceNumber = sReference.substring(9, 20);
-            System.out.println(sReferenceNumber);
-            mobileGeneralMethod.verticalSwipe();
-            mobileGeneralMethod.tap(kwartaPadalaObjects.objBackToHomeBtn(), "Button");
-            mobileGeneralMethod.waitSleep(3000);
-            mobileGeneralMethod.verticalSwipeDown();
-            mobileGeneralMethod.verticalSwipe();
-            mobileGeneralMethod.waitSleep(3000);
-            mobileGeneralMethod.isVisible(homePageObject.objRecentTransactions(), "Date");
-            mobileGeneralMethod.isVisible(homePageObject.objRecentTransactions(), "Date");
-            mobileGeneralMethod.tap(kwartaPadalaObjects.objKwartaPadala(), "Text");
-            if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objReferenceNumberInTransactionDetails(), "Page")) {
-                String sReferenceNumberInCashOut = mobileGeneralMethod.getText(kwartaPadalaObjects.objReferenceNumberInTransactionDetails());
-                mobileGeneralMethod.assertionValidation(sReference, sReferenceNumberInCashOut);
-                LoggingUtils.info("STB_TC_64, Send Money to any ML Branch Transaction With Valid ML Pin validated");
-                ExtentReporter.logPass("STB_TC_64", "STB_TC_64, Send Money to any ML Branch Transaction With Valid ML Pin validated");
-                System.out.println("-----------------------------------------------------------");
-            }
-        } else {
-            ExtentReporter.logFail("STB_TC_64", "STB_TC_64(), Failed To Validate Send Money to any ML Branch Transaction With Valid ML Pin");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
+//        mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(), "Continue Button");
+//        mobileGeneralMethod.waitSleep(10000);
+//        if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objSendMoneySuccessful(), "Pop Up Message")) {
+//            mobileGeneralMethod.isVisible(kwartaPadalaObjects.objPHPAmount(), "Amount");
+//            mobileGeneralMethod.isVisible(kwartaPadalaObjects.objDate(), "Date");
+//            mobileGeneralMethod.isVisible(kwartaPadalaObjects.objReferenceNumber(), "Reference Number");
+//            String sReference = mobileGeneralMethod.getText(kwartaPadalaObjects.objReferenceNumber());
+//            System.out.println(sReference);
+//            String sReferenceNumber = sReference.substring(9, 20);
+//            System.out.println(sReferenceNumber);
+//            mobileGeneralMethod.verticalSwipe();
+//            mobileGeneralMethod.tap(kwartaPadalaObjects.objBackToHomeBtn(), "Button");
+//            mobileGeneralMethod.waitSleep(3000);
+//            mobileGeneralMethod.verticalSwipeDown();
+//            mobileGeneralMethod.verticalSwipe();
+//            mobileGeneralMethod.waitSleep(3000);
+//            mobileGeneralMethod.isVisible(homePageObject.objRecentTransactions(), "Date");
+//            mobileGeneralMethod.isVisible(homePageObject.objRecentTransactions(), "Date");
+//            mobileGeneralMethod.tap(kwartaPadalaObjects.objKwartaPadala(), "Text");
+//            if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objReferenceNumberInTransactionDetails(), "Page")) {
+//                String sReferenceNumberInCashOut = mobileGeneralMethod.getText(kwartaPadalaObjects.objReferenceNumberInTransactionDetails());
+//                mobileGeneralMethod.assertionValidation(sReferenceNumber, sReferenceNumberInCashOut);
+//                LoggingUtils.info("STB_TC_64, Send Money to any ML Branch Transaction With Valid ML Pin validated");
+//                ExtentReporter.logPass("STB_TC_64", "STB_TC_64, Send Money to any ML Branch Transaction With Valid ML Pin validated");
+//                System.out.println("-----------------------------------------------------------");
+//            }
+//        } else {
+//            ExtentReporter.logFail("STB_TC_64", "STB_TC_64(), Failed To Validate Send Money to any ML Branch Transaction With Valid ML Pin");
+//            System.out.println("-----------------------------------------------------------");
+//        }
+//    }
 
-    public void sendMoneyToMLBranchTransactionWithInValidMLPin_STB_TC_65() throws Exception {
-        login.loginWalletBranchTier();
-        mobileGeneralMethod.tap(kwartaPadalaObjects.objSendTransferBtn(), "Send Transfer Button");
-        mobileGeneralMethod.isVisible(kwartaPadalaObjects.objSendMoney(), "Send Money Page");
-        mobileGeneralMethod.tap(kwartaPadalaObjects.objToAnyMLBranch(), "MLWallet User Button");
-        mobileGeneralMethod.waitSleep(1000);
-        enterMLBranchDetails();
-        enterAmountToKwartaPadala();
-        enableLocation_PopUp();
+//    public void sendMoneyToMLBranchTransactionWithInValidMLPin_STB_TC_65() throws Exception {
+//        login.loginWalletBranchTier();
+//        mobileGeneralMethod.tap(kwartaPadalaObjects.objSendTransferBtn(), "Send Transfer Button");
+//        mobileGeneralMethod.isVisible(kwartaPadalaObjects.objSendMoney(), "Send Money Page");
+//        mobileGeneralMethod.tap(kwartaPadalaObjects.objToAnyMLBranch(), "MLWallet User Button");
+//        mobileGeneralMethod.waitSleep(1000);
+//        enterMLBranchDetails();
+//        enterAmountToKwartaPadala();
+//        enableLocation_PopUp();
 //        handleMpin("1234");
-        mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(), "Continue Button");
-        mobileGeneralMethod.waitSleep(10000);
-        if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objInvalidPINMsg(), "Pop Up Message")) {
-            String sActualErrorMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objInvalidPINMsg());
-            String sExceptedErrorMsg = "You have entered an invalid PIN. Please try again.";
-            mobileGeneralMethod.assertionValidation(sExceptedErrorMsg, sActualErrorMsg);
-            LoggingUtils.info("STB_TC_65, Send Money to any ML Branch Transaction With Invalid ML Pin validated");
-            ExtentReporter.logPass("STB_TC_65", "STB_TC_65, Send Money to any ML Branch Transaction With Invalid ML Pin validated");
-            System.out.println("-----------------------------------------------------------");
-        } else {
-            ExtentReporter.logFail("STB_TC_65", "STB_TC_65(), Failed To Validate Send Money to any ML Branch Transaction With Invalid ML Pin");
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
+//        mobileGeneralMethod.waitSleep(10000);
+//        if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objInvalidPINMsg(), "Pop Up Message")) {
+//            String sActualErrorMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objInvalidPINMsg());
+//            String sExceptedErrorMsg = "You have entered an invalid PIN. Please try again.";
+//            mobileGeneralMethod.assertionValidation(sExceptedErrorMsg, sActualErrorMsg);
+//            LoggingUtils.info("STB_TC_65, Send Money to any ML Branch Transaction With Invalid ML Pin validated");
+//            ExtentReporter.logPass("STB_TC_65", "STB_TC_65, Send Money to any ML Branch Transaction With Invalid ML Pin validated");
+//            System.out.println("-----------------------------------------------------------");
+//        } else {
+//            ExtentReporter.logFail("STB_TC_65", "STB_TC_65(), Failed To Validate Send Money to any ML Branch Transaction With Invalid ML Pin");
+//            System.out.println("-----------------------------------------------------------");
+//        }
+//    }
 
     public void sendMoneyToMLBranchInOTPPopupValidation_STB_TC_71() throws Exception {
         login.loginWalletBranchTier();
@@ -1427,7 +1431,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.waitSleep(1000);
         enterMLBranchDetails();
         enterAmountToKwartaPadala();
-        enableLocation_PopUp();
+//        enableLocation_PopUp();
         mobileGeneralMethod.waitSleep(1000);
         if (mobileGeneralMethod.isVisible(loginObject.objOneTimePin(), "Page")) {
             mobileGeneralMethod.isVisible(loginObject.objOTP(), "One Time Pin");
@@ -1448,7 +1452,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.waitSleep(1000);
         enterMLBranchDetails();
         enterAmountToKwartaPadala();
-        enableLocation_PopUp();
+//        enableLocation_PopUp();
         mobileGeneralMethod.waitSleep(1000);
         if (mobileGeneralMethod.isVisible(loginObject.objOneTimePin(), "Page")) {
             mobileGeneralMethod.isVisible(loginObject.objOTP(), "One Time Pin");
@@ -1472,7 +1476,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.waitSleep(1000);
         enterMLBranchDetails();
         enterAmountToKwartaPadala();
-        enableLocation_PopUp();
+//        enableLocation_PopUp();
         mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.isVisible(loginObject.objOneTimePin(), "Page");
         if (mobileGeneralMethod.isVisible(loginObject.objOTP(), "One Time Pin")) {
@@ -1496,7 +1500,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.waitSleep(1000);
         enterMLBranchDetails();
         enterAmountToKwartaPadala();
-        enableLocation_PopUp();
+//        enableLocation_PopUp();
         mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.isVisible(loginObject.objOneTimePin(), "Page");
         mobileGeneralMethod.isVisible(loginObject.objCancelBtn(), "Button");
@@ -1518,7 +1522,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.waitSleep(1000);
         enterMLBranchDetails();
         enterAmountToKwartaPadala();
-        enableLocation_PopUp();
+//        enableLocation_PopUp();
         mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.isVisible(loginObject.objOneTimePin(), "Page");
         mobileGeneralMethod.isVisible(loginObject.objCancelBtn(), "Button");

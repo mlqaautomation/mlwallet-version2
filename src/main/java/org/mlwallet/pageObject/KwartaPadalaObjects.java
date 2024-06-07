@@ -170,21 +170,24 @@ public class KwartaPadalaObjects extends AppiumDriverManager {
      public WebElement objOkBtn(){
         return driver.findElement(By.xpath("//*[@text='Ok']"));
     }
+    public WebElement objGotItBtn(){
+        return driver.findElement(By.xpath("(//*[@class='android.widget.TextView'])[2]"));
+    }
      public WebElement objEditRecipientLastName(){
         return driver.findElement(By.xpath("(//*[@text='Middle Name']/following-sibling::android.widget.EditText)[1]"));
     }
 
      public WebElement objFirstNameRequiredMsg(){
-        return driver.findElement(By.xpath("//*[@text='First name is required']"));
+        return driver.findElement(By.xpath("//*[@text='First name is required.']"));
     }
      public WebElement objMiddleNameRequiredMsg(){
-        return driver.findElement(By.xpath("//*[@text='Middle name is required']"));
+        return driver.findElement(By.xpath("//*[@text='Middle name is required.']"));
     }
      public WebElement objLastNameRequiredMsg(){
-        return driver.findElement(By.xpath("//*[@text='Last name is required']"));
+        return driver.findElement(By.xpath("//*[@text='Last name is required.']"));
     }
      public WebElement objMobileNumberRequiredMsg(){
-        return driver.findElement(By.xpath("//*[@text='Mobile number is required']"));
+        return driver.findElement(By.xpath("//*[@text='Mobile number is required.']"));
     }
      public WebElement objFirstNameErrorMsg(){
         return driver.findElement(By.xpath("//*[@text='First name must only contain letters and spaces']"));
@@ -211,7 +214,7 @@ public class KwartaPadalaObjects extends AppiumDriverManager {
     }
 
      public WebElement objMaxLimitErrorMsg(){
-        return driver.findElement(By.xpath("//*[@text='Ok']/parent::android.view.ViewGroup/parent::android.view.ViewGroup/preceding-sibling::android.widget.TextView"));
+        return driver.findElement(By.xpath("(//*[@class='android.widget.TextView'])[1]"));
     }
      public WebElement objErrorMsg(){
         return driver.findElement(By.xpath("//*[@text='Upgrade Now']/parent::android.view.ViewGroup/parent::android.view.ViewGroup/preceding-sibling::android.widget.TextView"));
@@ -310,7 +313,7 @@ public class KwartaPadalaObjects extends AppiumDriverManager {
         return driver.findElement(By.xpath("(//*[@resource-id='Receiver Mobile No.'])[2]"));
     }
      public WebElement objPaymentMethod(){
-        return driver.findElement(By.xpath("(//*[@resource-id='Payment Method'])[2]"));
+        return driver.findElement(By.xpath("//*[@text='Select Payment Method']"));
     }
 
      public WebElement objAmount(){
