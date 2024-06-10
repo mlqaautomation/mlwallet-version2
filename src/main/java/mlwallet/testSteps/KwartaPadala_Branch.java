@@ -230,15 +230,15 @@ public class KwartaPadala_Branch extends Base_Steps {
             mobileGeneralMethod.assertionValidation(sLastNameRequiredMsg, sExpectedMsg);
         }
         mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "Last Name Text Field", propertyReader.getproperty("Last_Name"));
-        mobileGeneralMethod.type(kwartaPadalaObjects.objAmountTxtField(), "Last Name Text Field", propertyReader.getproperty("Last_Name"));
+        mobileGeneralMethod.type(kwartaPadalaObjects.objLastName(), "Last Name Text Field", propertyReader.getproperty("Last_Name"));
+        mobileGeneralMethod.type(kwartaPadalaObjects.objLastName(), "Last Name Text Field", propertyReader.getproperty("Last_Name"));
         mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
         if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objMobileNumberRequiredMsg(), "Error Message")) {
             String sMiddleNameRequiredMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objMobileNumberRequiredMsg());
             String sExpectedMsg = "Mobile number is required.";
             mobileGeneralMethod.assertionValidation(sMiddleNameRequiredMsg, sExpectedMsg);
         }
-        mobileGeneralMethod.type(mlWalletPageObjects.mobileNum_editText(), "Mobile Field", "9999999934");
+        mobileGeneralMethod.type(kwartaPadalaObjects.objMobileNumber(), "Mobile Field", propertyReader.getproperty("Branch_Verified"));
         mobileGeneralMethod.tap(kwartaPadalaObjects.objNextBtn(), "Button");
         mobileGeneralMethod.waitSleep(1000);
         if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objKwartaPadala(), "Page")){
