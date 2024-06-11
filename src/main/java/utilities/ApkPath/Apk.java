@@ -7,7 +7,7 @@ public class Apk {
     public static final Path API_DEMOS_APK;
 
     static {
-        String filePath = "src/main/resources/mlwallet-app.apk";
+        String filePath = "src/main/resources/mlwallet.apk";
         API_DEMOS_APK = Paths.get(filePath).toAbsolutePath().normalize();
     }
 

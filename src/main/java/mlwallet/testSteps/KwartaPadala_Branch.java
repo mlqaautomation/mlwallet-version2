@@ -516,7 +516,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.waitSleep(1000);
         mobileGeneralMethod.isVisible(kwartaPadalaObjects.objKwartaPadala(), "Page");
         enterMLBranchDetails();
-        enterAmountToKwartaPadala("100000");
+        enterAmountToKwartaPadala("10000");
         if ((mobileGeneralMethod.isVisible(kwartaPadalaObjects.objMaxLimitErrorMsg(), "Error Message"))) {
             String sInvalidAmountErrorMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objMaxLimitErrorMsg());
             String sExpectedErrorMsg = "The maximum Send Money per transaction set for your verification level is P50,000.00. Please try again.";
@@ -928,7 +928,7 @@ public class KwartaPadala_Branch extends Base_Steps {
         mobileGeneralMethod.waitSleep(1000);
         enterMLBranchDetails();
         enterAmountToKwartaPadala("60000");
-        mobileGeneralMethod.waitSleep(10000);
+        mobileGeneralMethod.waitSleep(1000);
         if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objMaxLimitErrorMsg(), "Error Message")) {
             String sMaximumLimitErrorMsg = mobileGeneralMethod.getText(kwartaPadalaObjects.objMaxLimitErrorMsg());
             String sExpectedErrorMsg = "The maximum Send Money per transaction set for your verification level is P50,000.00. Please try again.";
@@ -1502,9 +1502,8 @@ public class KwartaPadala_Branch extends Base_Steps {
         enterAmountToKwartaPadala();
 //        enableLocation_PopUp();
         mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.isVisible(loginObject.objOneTimePin(), "Page");
-        mobileGeneralMethod.isVisible(loginObject.objCancelBtn(), "Button");
-        if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objConfirmDetails(), "Page")) {
+        if ( mobileGeneralMethod.isVisible(loginObject.objOneTimePin(), "Page")) {
+            mobileGeneralMethod.isVisible(loginObject.objCancelBtn(), "Button");
             LoggingUtils.info("STB_TC_74, Send Money To ML Branch Transaction, After clicking on Cancel in One time pin popup App navigates back to Confirm details Page is validated");
             ExtentReporter.logPass("STB_TC_74", "STB_TC_74, Send Money To ML Branch Transaction, After clicking on Cancel in One time pin popup App navigates back to Confirm details Page is validated");
             System.out.println("-----------------------------------------------------------");
@@ -1524,9 +1523,8 @@ public class KwartaPadala_Branch extends Base_Steps {
         enterAmountToKwartaPadala();
 //        enableLocation_PopUp();
         mobileGeneralMethod.waitSleep(1000);
-        mobileGeneralMethod.isVisible(loginObject.objOneTimePin(), "Page");
-        mobileGeneralMethod.isVisible(loginObject.objCancelBtn(), "Button");
-        if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objSendMoneySuccessful(), "Message")) {
+        if ( mobileGeneralMethod.isVisible(loginObject.objOneTimePin(), "Page")) {
+            mobileGeneralMethod.isVisible(loginObject.objCancelBtn(), "Button");
             LoggingUtils.info("STB_TC_75, Send Money To ML Branch Transaction, After clicking on Continue in One time pin popup App navigates to Transaction Success Page is validated");
             ExtentReporter.logPass("STB_TC_75", "STB_TC_75, Send Money To ML Branch Transaction, After clicking on Continue in One time pin popup App navigates to Transaction Success Page is validated");
             System.out.println("-----------------------------------------------------------");

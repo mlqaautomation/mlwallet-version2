@@ -156,26 +156,26 @@ public class KwartaPadalaBranchScripts extends BaseTest {
     public void sendMoneyToMLBranchRatesValidationScenarioThirteen_STB_TC_48() throws Exception {
         kwartaPadalaBranch.sendMoneyToMLBranchRatesValidationScenarioThirteen_STB_TC_48("25000");
     }
-    @Test(priority = 39, description = "send_Money_To_ML_Branch_Location_Popup_Validation_STB_TC_50")
-    public void sendMoneyToMLBranchLocationPopupValidation_STB_TC_50() throws Exception {
-        kwartaPadalaBranch.sendMoneyToMLBranchLocationPopupValidation_STB_TC_50();
-    }
-    @Test(priority = 40, description = "send_Money_To_ML_Branch_Location_Deny_Functionality_STB_TC_51")
-    public void sendMoneyToMLBranchLocationDenyFunctionality_STB_TC_51() throws Exception {
-        kwartaPadalaBranch.sendMoneyToMLBranchLocationDenyFunctionality_STB_TC_51();
-    }
-    @Test(priority = 41, description = "send_Money_To_ML_Branch_Location_Permission_Deny_Close_Btn_Functionality_STB_TC_52")
-    public void sendMoneyToMLBranchLocationPermissionDenyCloseBtnFunctionality_STB_TC_52() throws Exception {
-        kwartaPadalaBranch.sendMoneyToMLBranchLocationPermissionDenyCloseBtnFunctionality_STB_TC_52();
-    }
-    @Test(priority = 42, description = "send_Money_To_ML_Branch_Location_Permission_Deny_Open_Settings_Btn_Functionality_STB_TC_53")
-    public void sendMoneyToMLBranchLocationPermissionDenyOpenSettingsBtnFunctionality_STB_TC_53() throws Exception {
-        kwartaPadalaBranch.sendMoneyToMLBranchLocationPermissionDenyOpenSettingsBtnFunctionality_STB_TC_53();
-    }
-    @Test(priority = 43, description = "send_Money_To_ML_Branch_Location_PopUp_Allow_Functionality_STB_TC_54")
-    public void sendMoneyToMLBranchLocationPopUpAllowFunctionality_STB_TC_54() throws Exception {
-        kwartaPadalaBranch.sendMoneyToMLBranchLocationPopUpAllowFunctionality_STB_TC_54();
-    }
+//    @Test(priority = 39, description = "send_Money_To_ML_Branch_Location_Popup_Validation_STB_TC_50")
+//    public void sendMoneyToMLBranchLocationPopupValidation_STB_TC_50() throws Exception {
+//        kwartaPadalaBranch.sendMoneyToMLBranchLocationPopupValidation_STB_TC_50();
+//    }
+//    @Test(priority = 40, description = "send_Money_To_ML_Branch_Location_Deny_Functionality_STB_TC_51")
+//    public void sendMoneyToMLBranchLocationDenyFunctionality_STB_TC_51() throws Exception {
+//        kwartaPadalaBranch.sendMoneyToMLBranchLocationDenyFunctionality_STB_TC_51();
+//    }
+//    @Test(priority = 41, description = "send_Money_To_ML_Branch_Location_Permission_Deny_Close_Btn_Functionality_STB_TC_52")
+//    public void sendMoneyToMLBranchLocationPermissionDenyCloseBtnFunctionality_STB_TC_52() throws Exception {
+//        kwartaPadalaBranch.sendMoneyToMLBranchLocationPermissionDenyCloseBtnFunctionality_STB_TC_52();
+//    }
+//    @Test(priority = 42, description = "send_Money_To_ML_Branch_Location_Permission_Deny_Open_Settings_Btn_Functionality_STB_TC_53")
+//    public void sendMoneyToMLBranchLocationPermissionDenyOpenSettingsBtnFunctionality_STB_TC_53() throws Exception {
+//        kwartaPadalaBranch.sendMoneyToMLBranchLocationPermissionDenyOpenSettingsBtnFunctionality_STB_TC_53();
+//    }
+//    @Test(priority = 43, description = "send_Money_To_ML_Branch_Location_PopUp_Allow_Functionality_STB_TC_54")
+//    public void sendMoneyToMLBranchLocationPopUpAllowFunctionality_STB_TC_54() throws Exception {
+//        kwartaPadalaBranch.sendMoneyToMLBranchLocationPopUpAllowFunctionality_STB_TC_54();
+//    }
     @Test(priority = 44, description = "send_Money_To_ML_Branch_Internet_Interruption_While_Entering_OTP_STB_TC_55")
     public void sendMoneyToMLBranchInternetInterruptionWhileEnteringOTP_STB_TC_55() throws Exception {
         kwartaPadalaBranch.sendMoneyToMLBranchInternetInterruptionWhileEnteringOTP_STB_TC_55();

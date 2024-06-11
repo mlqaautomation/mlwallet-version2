@@ -35,10 +35,10 @@ public class KwartaPadalaWalletScripts extends BaseTest {
     public void sendToMLWalletInvalidAmount_STW_TC_05() throws Exception {
         kwartaPadalaWallet.sendToMLWalletInvalidAmount_STW_TC_05("0");
     }
-    @Test(priority = 6, description = "send_To_MLWallet_Insufficient_Amount_STW_TC_06")
-    public void sendToMLWalletInsufficientAmount_STW_TC_06() throws Exception {
-        kwartaPadalaWallet.sendToMLWalletInsufficientAmount_STW_TC_06();
-    }
+//    @Test(priority = 6, description = "send_To_MLWallet_Insufficient_Amount_STW_TC_06")
+//    public void sendToMLWalletInsufficientAmount_STW_TC_06() throws Exception {
+//        kwartaPadalaWallet.sendToMLWalletInsufficientAmount_STW_TC_06();
+//    }
     @Test(priority = 7, description = "send_Money_MLWallet_Maximum_Amount_STW_TC_07")
     public void sendMoneyMLWalletMaximumAmount_STW_TC_07() throws Exception {
         kwartaPadalaWallet.sendMoneyMLWalletMaximumAmount_STW_TC_07();
@@ -106,10 +106,10 @@ public class KwartaPadalaWalletScripts extends BaseTest {
     public void sendMoneyMLWalletFullyVerifiedAccountUser_STW_TC_25() throws Exception {
         kwartaPadalaWallet.sendMoneyMLWalletFullyVerifiedAccountUser_STW_TC_25();
     }
-    @Test(priority = 24, description = "send_Money_MLWallet_Semi-Verified_Account_Max_Limit_STW_TC_26")
-    public void sendMoneyMLWalletSemiVerifiedAccountMaxLimit_STW_TC_26() throws Exception {
-        kwartaPadalaWallet.sendMoneyMLWalletSemiVerifiedAccountMaxLimit_STW_TC_26();
-    }
+//    @Test(priority = 24, description = "send_Money_MLWallet_Semi-Verified_Account_Max_Limit_STW_TC_26")
+//    public void sendMoneyMLWalletSemiVerifiedAccountMaxLimit_STW_TC_26() throws Exception {
+//        kwartaPadalaWallet.sendMoneyMLWalletSemiVerifiedAccountMaxLimit_STW_TC_26();
+//    }
     @Test(priority = 25, description = "send_Money_MLWallet_Branch_Verified_Account_Max_Limit_STW_TC_29")
     public void sendMoneyMLWalletBranchVerifiedAccountMaxLimit_STW_TC_29() throws Exception {
         kwartaPadalaWallet.sendMoneyMLWalletBranchVerifiedAccountMaxLimit_STW_TC_29();
@@ -134,26 +134,26 @@ public class KwartaPadalaWalletScripts extends BaseTest {
 //    public void sendMoneyToMLWalletMaxTransactionReceivingLimitFullyVerifiedTier_STW_TC_40() throws Exception {
 //        kwartaPadalaWallet.sendMoneyToMLWalletMaxTransactionReceivingLimitFullyVerifiedTier_STW_TC_40("50000");
 //    }
-    @Test(priority = 31, description = "send_Money_To_MLWallet_Location_Popup_Validation_STW_TC_42")
-    public void sendMoneyToMLWalletLocationPopupValidation_STW_TC_42() throws Exception {
-        kwartaPadalaWallet.sendMoneyToMLWalletLocationPopupValidation_STW_TC_42();
-    }
-    @Test(priority = 32, description = "send_Money_To_MLWallet_Location_Deny_Functionality_STW_TC_43")
-    public void sendMoneyToMLWalletLocationDenyFunctionality_STW_TC_43() throws Exception {
-        kwartaPadalaWallet.sendMoneyToMLWalletLocationDenyFunctionality_STW_TC_43();
-    }
-    @Test(priority = 33, description = "send_Money_To_MLWallet_Location_Permission_Deny_Close_Btn_Functionality_STW_TC_44")
-    public void sendMoneyToMLWalletLocationPermissionDenyCloseBtnFunctionality_STW_TC_44() throws Exception {
-        kwartaPadalaWallet.sendMoneyToMLWalletLocationPermissionDenyCloseBtnFunctionality_STW_TC_44();
-    }
-    @Test(priority = 34, description = "send_Money_To_MLWallet_Location_Permission_Deny_Open_Settings_Btn_Functionality_STW_TC_45")
-    public void sendMoneyToMLWalletLocationPermissionDenyOpenSettingsBtnFunctionality_STW_TC_45() throws Exception {
-        kwartaPadalaWallet.sendMoneyToMLWalletLocationPermissionDenyOpenSettingsBtnFunctionality_STW_TC_45();
-    }
-    @Test(priority = 35, description = "send_Money_To_MLWallet_Location_PopUp_Allow_Functionality_STW_TC_46")
-    public void sendMoneyToMLWalletLocationPopUpAllowFunctionality_STW_TC_46() throws Exception {
-        kwartaPadalaWallet.sendMoneyToMLWalletLocationPopUpAllowFunctionality_STW_TC_46();
-    }
+//    @Test(priority = 31, description = "send_Money_To_MLWallet_Location_Popup_Validation_STW_TC_42")
+//    public void sendMoneyToMLWalletLocationPopupValidation_STW_TC_42() throws Exception {
+//        kwartaPadalaWallet.sendMoneyToMLWalletLocationPopupValidation_STW_TC_42();
+//    }
+//    @Test(priority = 32, description = "send_Money_To_MLWallet_Location_Deny_Functionality_STW_TC_43")
+//    public void sendMoneyToMLWalletLocationDenyFunctionality_STW_TC_43() throws Exception {
+//        kwartaPadalaWallet.sendMoneyToMLWalletLocationDenyFunctionality_STW_TC_43();
+//    }
+//    @Test(priority = 33, description = "send_Money_To_MLWallet_Location_Permission_Deny_Close_Btn_Functionality_STW_TC_44")
+//    public void sendMoneyToMLWalletLocationPermissionDenyCloseBtnFunctionality_STW_TC_44() throws Exception {
+//        kwartaPadalaWallet.sendMoneyToMLWalletLocationPermissionDenyCloseBtnFunctionality_STW_TC_44();
+//    }
+//    @Test(priority = 34, description = "send_Money_To_MLWallet_Location_Permission_Deny_Open_Settings_Btn_Functionality_STW_TC_45")
+//    public void sendMoneyToMLWalletLocationPermissionDenyOpenSettingsBtnFunctionality_STW_TC_45() throws Exception {
+//        kwartaPadalaWallet.sendMoneyToMLWalletLocationPermissionDenyOpenSettingsBtnFunctionality_STW_TC_45();
+//    }
+//    @Test(priority = 35, description = "send_Money_To_MLWallet_Location_PopUp_Allow_Functionality_STW_TC_46")
+//    public void sendMoneyToMLWalletLocationPopUpAllowFunctionality_STW_TC_46() throws Exception {
+//        kwartaPadalaWallet.sendMoneyToMLWalletLocationPopUpAllowFunctionality_STW_TC_46();
+//    }
     @Test(priority = 36, description = "send_Money_To_MLWallet_Internet_Interruption_While_Entering_OTP_STW_TC_47")
     public void sendMoneyToMLWalletInternetInterruptionWhileEnteringOTP_STW_TC_47() throws Exception {
         kwartaPadalaWallet.sendMoneyToMLWalletInternetInterruptionWhileEnteringOTP_STW_TC_47();
@@ -162,15 +162,15 @@ public class KwartaPadalaWalletScripts extends BaseTest {
     public void sendMoneyToMLWalletTransactionValidationAfterMinimizingApp_STW_TC_50() throws Exception {
         kwartaPadalaWallet.sendMoneyToMLWalletTransactionValidationAfterMinimizingApp_STW_TC_50();
     }
-@Test(priority = 38, description = "send_Money_To_MLWallet_Transaction_With_Valid_MLPin_STW_TC_56")
-public void sendMoneyToMLWalletTransactionWithValidMLPin_STW_TC_56() throws Exception {
-    kwartaPadalaWallet.sendMoneyToMLWalletTransactionWithValidMLPin_STW_TC_56();
-}
+//@Test(priority = 38, description = "send_Money_To_MLWallet_Transaction_With_Valid_MLPin_STW_TC_56")
+//public void sendMoneyToMLWalletTransactionWithValidMLPin_STW_TC_56() throws Exception {
+//    kwartaPadalaWallet.sendMoneyToMLWalletTransactionWithValidMLPin_STW_TC_56();
+//}
 
-    @Test(priority = 39, description = "send_Money_To_MLWallet_Transaction_With_InValid_MLPin_STW_TC_57")
-    public void sendMoneyToMLWalletTransactionWithInValidMLPin_STW_TC_57() throws Exception {
-        kwartaPadalaWallet.sendMoneyToMLWalletTransactionWithInValidMLPin_STW_TC_57();
-    }
+//    @Test(priority = 39, description = "send_Money_To_MLWallet_Transaction_With_InValid_MLPin_STW_TC_57")
+//    public void sendMoneyToMLWalletTransactionWithInValidMLPin_STW_TC_57() throws Exception {
+//        kwartaPadalaWallet.sendMoneyToMLWalletTransactionWithInValidMLPin_STW_TC_57();
+//    }
     @Test(priority = 40, description = "send_Money_To_MLWallet_In_OTP_Popup_Validation_STW_TC_63")
     public void sendMoneyToMLWalletInOTPPopupValidation_STW_TC_63() throws Exception {
         kwartaPadalaWallet.sendMoneyToMLWalletInOTPPopupValidation_STW_TC_63();

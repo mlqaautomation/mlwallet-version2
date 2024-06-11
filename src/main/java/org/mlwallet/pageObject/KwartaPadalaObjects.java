@@ -101,7 +101,8 @@ public class KwartaPadalaObjects extends AppiumDriverManager {
     }
 
      public WebElement objDate(){
-        return driver.findElement(By.xpath("(//*[@text='Send Money - Kwarta Padala Successful']/following-sibling::android.widget.TextView)[2]"));
+         return driver.findElement(By.xpath("(//*[@class='android.widget.TextView'])[6]"));
+//        return driver.findElement(By.xpath("(//*[@text='Send Money - Kwarta Padala Successful']/following-sibling::android.widget.TextView)[2]"));
     }
 
      public WebElement objReferenceNumber(){
@@ -271,7 +272,8 @@ public class KwartaPadalaObjects extends AppiumDriverManager {
     }
 
      public WebElement objEllipsisBtn(){
-        return driver.findElement(By.xpath("//*[@text='Singh, Sharath Nm']/parent::android.view.ViewGroup/parent::android.view.ViewGroup/parent::android.view.ViewGroup/following-sibling::android.view.ViewGroup"));
+         return driver.findElement(By.xpath("(//*[@class='android.widget.TextView'])[6]"));
+//        return driver.findElement(By.xpath("//*[@text='Singh, Sharath Nm']/parent::android.view.ViewGroup/parent::android.view.ViewGroup/parent::android.view.ViewGroup/following-sibling::android.view.ViewGroup"));
     }
 
      public WebElement objDeleteBtn(){
@@ -313,7 +315,8 @@ public class KwartaPadalaObjects extends AppiumDriverManager {
         return driver.findElement(By.xpath("(//*[@resource-id='Receiver Mobile No.'])[2]"));
     }
      public WebElement objPaymentMethod(){
-        return driver.findElement(By.xpath("//*[@text='Select Payment Method']"));
+        return driver.findElement(By.xpath("//*[@text='Payment Method']"));
+//         return driver.findElement(By.xpath("//*[@text='Select Payment Method']"));
     }
 
      public WebElement objAmount(){
