@@ -9,7 +9,7 @@ public class CashOutViaBranchScripts extends BaseTest {
 //    public void cashOutViaBranchSuccessfulTransaction_WM_TC_05() throws Exception {
 //        cashOutViaBranch.cashOutViaBranchSuccessfulTransaction_WM_TC_05();
 //    }
-    //------Postive Testing
+//    //------Postive Testing
 //    @Test(priority = 2, description = "cashOutUIValidation_WM_2")
 //    public void cashOutUIValidation_WM_2() throws Exception {
 //        cashOutViaBranch.cashOutUIValidation_WM_TC_16();
@@ -60,39 +60,40 @@ public class CashOutViaBranchScripts extends BaseTest {
 //        cashOutViaBranch.cashOutBranchTransactionOTPContinueBtnFunctionality_WM_TC_117();
 //    }
 
+
     //------Negative Testing
-//    @Test(priority = 1, description = "cashOutMaxLimit_WM_1")
-//    public void cashOutMaxLimit_WM_1() throws Exception {
-//        cashOutViaBranch.cashOutMaxLimit_WM_TC_06();
-//    }
-//    @Test(priority = 2, description = "cashOutInsufficientBalance_WM_2")
-//    public void cashOutInsufficientBalance_WM_2() throws Exception {
-//        cashOutViaBranch.cashOutInsufficientBalance_WM_TC_07();
-//    }
-//    @Test(priority = 3, description = "cashOutBranchMaximumTransactionBranchVerifiedTier_WM_3")
-//    public void cashOutBranchMaximumTransactionBranchVerifiedTier_WM_3() throws Exception {
-//        cashOutViaBranch.cashOutBranchMaximumTransactionSemiVerifiedTier_WM_TC_08();
-//    }
-//    @Test(priority = 4, description = "cashOutBuyerTierLevelAcc_WM_4")
-//    public void cashOutBuyerTierLevelAcc_WM_4() throws Exception {
-//        cashOutViaBranch.cashOutBuyerTierLevelAcc_WM_TC_09();
-//    }
-//    @Test(priority = 5, description = "cashOutWithdrawBackBtnValidation_WM_5")
-//    public void cashOutWithdrawBackBtnValidation_WM_5() throws Exception {
-//        cashOutViaBranch.cashOutWithdrawBackBtnValidation_WM_TC_17();
-//    }
-//    @Test(priority = 6, description = "cashOutToBranchBackBtnValidation_WM_6")
-//    public void cashOutToBranchBackBtnValidation_WM_6() throws Exception {
-//        cashOutViaBranch.cashOutToBranchBackBtnValidation_WM_TC_19();
-//    }
-//    @Test(priority = 7, description = "cashOutCancelIconValidation_WM_7")
-//    public void cashOutCancelIconValidation_WM_7() throws Exception {
-//        cashOutViaBranch.cashOutCancelIconValidation_WM_TC_23();
-//    }
-//    @Test(priority = 8, description = "cashOutMLBranchMaxLimitFullyVerifiedTier_WM_8")
-//    public void cashOutMLBranchMaxLimitFullyVerifiedTier_WM_8() throws Exception {
-//        cashOutViaBranch.cashOutMLBranchMaxLimitFullyVerifiedTier_WM_TC_42();
-//    }
+    @Test(priority = 1, description = "cashOutMaxLimit_WM_1")
+    public void cashOutMaxLimit_WM_1() throws Exception {
+        cashOutViaBranch.cashOutMaxLimit_WM_TC_06();
+    }
+    @Test(priority = 2, description = "cashOutInsufficientBalance_WM_2")
+    public void cashOutInsufficientBalance_WM_2() throws Exception {
+        cashOutViaBranch.cashOutInsufficientBalance_WM_TC_07();
+    }
+    @Test(priority = 3, description = "cashOutBranchMaximumTransactionBranchVerifiedTier_WM_3")
+    public void cashOutBranchMaximumTransactionBranchVerifiedTier_WM_3() throws Exception {
+        cashOutViaBranch.cashOutBranchMaximumTransactionSemiVerifiedTier_WM_TC_08();
+    }
+    @Test(priority = 4, description = "cashOutBuyerTierLevelAcc_WM_4")
+    public void cashOutBuyerTierLevelAcc_WM_4() throws Exception {
+        cashOutViaBranch.cashOutBuyerTierLevelAcc_WM_TC_09();
+    }
+    @Test(priority = 5, description = "cashOutWithdrawBackBtnValidation_WM_5")
+    public void cashOutWithdrawBackBtnValidation_WM_5() throws Exception {
+        cashOutViaBranch.cashOutWithdrawBackBtnValidation_WM_TC_17();
+    }
+    @Test(priority = 6, description = "cashOutToBranchBackBtnValidation_WM_6")
+    public void cashOutToBranchBackBtnValidation_WM_6() throws Exception {
+        cashOutViaBranch.cashOutToBranchBackBtnValidation_WM_TC_19();
+    }
+    @Test(priority = 7, description = "cashOutCancelIconValidation_WM_7")
+    public void cashOutCancelIconValidation_WM_7() throws Exception {
+        cashOutViaBranch.cashOutCancelIconValidation_WM_TC_23();
+    }
+    @Test(priority = 8, description = "cashOutMLBranchMaxLimitFullyVerifiedTier_WM_8")
+    public void cashOutMLBranchMaxLimitFullyVerifiedTier_WM_8() throws Exception {
+        cashOutViaBranch.cashOutMLBranchMaxLimitFullyVerifiedTier_WM_TC_42();
+    }
 //-----Need Test Data MLPin
 //    @Test(priority = 9, description = "cashOutBranchTransactionWithInValidMLPin_WM_9")
 //    public void cashOutBranchTransactionWithInValidMLPin_WM_9() throws Exception {
