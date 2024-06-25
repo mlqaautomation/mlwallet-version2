@@ -38,6 +38,9 @@ public class TopUpGamesObjects extends AppiumDriverManager {
    public WebElement objMobileNumber(){
         return driver.findElement(By.xpath("(//*[@text='*Mobile Number']/following-sibling::android.widget.EditText)[1]"));
     }
+    public WebElement objContinueOTP(){
+        return driver.findElement(By.xpath("//*[@text='CONTINUE']"));
+    }
    public WebElement objContinue(){
         return driver.findElement(By.xpath("//*[@text='Continue']"));
     }

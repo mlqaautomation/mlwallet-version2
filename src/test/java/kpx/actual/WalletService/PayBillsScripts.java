@@ -88,31 +88,31 @@ public class PayBillsScripts extends BaseTest {
 //        payBills.billingInformationInvalidInput_PB_TC_10();
 //    }
 //------Dependent TC 12
-//    @Test(priority = 3, description = "addBillerToPayBills_PB_3")
-//    public void editAddedBillerToPayBills_PB_3() throws Exception {
-//        payBills.editAddedBillerToPayBills_PB_TC_14();
-//    }
+    @Test(priority = 3, description = "addBillerToPayBills_PB_3")
+    public void editAddedBillerToPayBills_PB_3() throws Exception {
+        payBills.editAddedBillerToPayBills_PB_TC_14();
+    }
 //------Dependent TC 12
-//    @Test(priority = 4, description = "deleteAddedBillerPayBills_PB_4")
-//    public void deleteAddedBillerPayBills_PB_4() throws Exception {
-//        payBills.deleteAddedBillerPayBills_PB_TC_15();
-//    }
-//    @Test(priority = 4, description = "payBillsMaxBillsPaymentPerTransactionBuyTierUser_PB_5")
-//    public void payBillsMaxBillsPaymentPerTransactionBuyTierUser_PB_5() throws Exception {
-//        payBills.payBillsMaxBillsPaymentPerTransactionBuyTierUser_PB_TC_22();
-//    }
-//    @Test(priority = 5, description = "payBillsMaxBillsPaymentPerTransactionSemiVerifiedTier_PB_6")
-//    public void payBillsMaxBillsPaymentPerTransactionSemiVerifiedTier_PB_6() throws Exception {
-//        payBills.payBillsMaxBillsPaymentPerTransactionSemiVerifiedTier_PB_TC_25();
-//    }
-//    @Test(priority = 6, description = "payBillsMaxBillsPaymentPerTransactionBranchVerifiedTier_PB_7")
-//    public void payBillsMaxBillsPaymentPerTransactionBranchVerifiedTier_PB_7() throws Exception {
-//        payBills.payBillsMaxBillsPaymentPerTransactionBranchVerifiedTier_PB_TC_28();
-//    }
-//    @Test(priority = 7, description = "payBillsMaxBillsPaymentPerTransactionFullyVerifiedTier_PB_8")
-//    public void payBillsMaxBillsPaymentPerTransactionFullyVerifiedTier_PB_8() throws Exception {
-//        payBills.payBillsMaxBillsPaymentPerTransactionFullyVerifiedTier_PB_TC_31();
-//    }
+    @Test(priority = 4, description = "deleteAddedBillerPayBills_PB_4")
+    public void deleteAddedBillerPayBills_PB_4() throws Exception {
+        payBills.deleteAddedBillerPayBills_PB_TC_15();
+    }
+    @Test(priority = 4, description = "payBillsMaxBillsPaymentPerTransactionBuyTierUser_PB_5")
+    public void payBillsMaxBillsPaymentPerTransactionBuyTierUser_PB_5() throws Exception {
+        payBills.payBillsMaxBillsPaymentPerTransactionBuyTierUser_PB_TC_22();
+    }
+    @Test(priority = 5, description = "payBillsMaxBillsPaymentPerTransactionSemiVerifiedTier_PB_6")
+    public void payBillsMaxBillsPaymentPerTransactionSemiVerifiedTier_PB_6() throws Exception {
+        payBills.payBillsMaxBillsPaymentPerTransactionSemiVerifiedTier_PB_TC_25();
+    }
+    @Test(priority = 6, description = "payBillsMaxBillsPaymentPerTransactionBranchVerifiedTier_PB_7")
+    public void payBillsMaxBillsPaymentPerTransactionBranchVerifiedTier_PB_7() throws Exception {
+        payBills.payBillsMaxBillsPaymentPerTransactionBranchVerifiedTier_PB_TC_28();
+    }
+    @Test(priority = 7, description = "payBillsMaxBillsPaymentPerTransactionFullyVerifiedTier_PB_8")
+    public void payBillsMaxBillsPaymentPerTransactionFullyVerifiedTier_PB_8() throws Exception {
+        payBills.payBillsMaxBillsPaymentPerTransactionFullyVerifiedTier_PB_TC_31();
+    }
 //------------Negative cant run App Crash
 //    @Test(priority = 8, description = "payBillsTransactionOTPCancelBtnFunctionality_PB_9")
 //    public void payBillsTransactionOTPCancelBtnFunctionality_PB_9() throws Exception {

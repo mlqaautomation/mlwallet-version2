@@ -28,6 +28,7 @@ public class BaseTest {
     protected Login loginWalletSteps;
     protected Shop_Safe shopSafe;
     protected KwartaPadala_Wallet kwartaPadalaWallet;
+    protected MlShop mlShop;
     protected KwartaPadala_Branch kwartaPadalaBranch;
     protected BuyELoad buyELoad;
     protected CashInViaBranch cashInViaBranch;

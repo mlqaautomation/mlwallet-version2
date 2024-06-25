@@ -11,7 +11,7 @@ public class CashInViaBranchScripts extends BaseTest {
 //    public void cashInViaBranchSuccessfulTransaction_CIBR_1() throws Exception {
 //        cashInViaBranch.cashInViaBranchSuccessfulTransaction_CIBR_TC_16();
 //    }
-    //----Positive Testing
+//    //----Positive Testing
 //    @Test(priority = 2, description = "cashInviaBranch_ValidAmount_Scenario_CIBR_2")
 //    public void cashInviaBranch_ValidAmount_Scenario_CIBR_2() throws Exception {
 //        cashInViaBranch.cashInviaBranch_ValidAmount_Scenario_CIBR_TC_01();
@@ -61,10 +61,10 @@ public class CashInViaBranchScripts extends BaseTest {
 //    public void cashInViaBranchTransactionNewOTPAfterSixtySecondsValidation_CIBR_13() throws Exception {
 //        cashInViaBranch.cashInViaBranchTransactionNewOTPAfterSixtySecondsValidation_CIBR_TC_52();
 //    }
-//    @Test(priority = 13, description = "cashInViaBranchOTPContinueBtnFunctionality_CIBR_14")
-//    public void cashInViaBranchOTPContinueBtnFunctionality_CIBR_14() throws Exception {
-//        cashInViaBranch.cashInViaBranchOTPContinueBtnFunctionality_CIBR_TC_54();
-//    }
+    @Test(priority = 13, description = "cashInViaBranchOTPContinueBtnFunctionality_CIBR_14")
+    public void cashInViaBranchOTPContinueBtnFunctionality_CIBR_14() throws Exception {
+        cashInViaBranch.cashInViaBranchOTPContinueBtnFunctionality_CIBR_TC_54();
+    }
 
     //-----Negative Testing
 //    @Test(priority = 1, description = "cashInViaBranchCancelTransactionScenario_CIBR_1")

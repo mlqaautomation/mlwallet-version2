@@ -60,6 +60,9 @@ public class GCashObjects extends AppiumDriverManager {
     public WebElement objAmountTextBox(){
         return driver.findElement(By.xpath("//*[@text='PHP']/following-sibling::android.widget.EditText"));
     }
+    public WebElement objSendMoneyTab(){
+        return driver.findElement(By.xpath("//*[@text='Send Money']"));
+    }
     public WebElement objNextBtn(){
         return driver.findElement(By.xpath("//*[@text='Next']"));
     }
@@ -121,6 +124,9 @@ public class GCashObjects extends AppiumDriverManager {
     public WebElement objSendtoGCash_Transaction(){
         return driver.findElement(By.xpath("//*[@text='Send Money to GCash']"));
     }
+    public WebElement objVerificationTierPerksLabel(){
+        return driver.findElement(By.xpath("//*[@text='Verification Tier Perks']"));
+    }
     public WebElement objAmountSendTransactText(){
         return driver.findElement(By.xpath("//*[@text='Send Money to GCash']/following-sibling::*[1]"));
     }
@@ -170,6 +176,9 @@ public class GCashObjects extends AppiumDriverManager {
 
     public WebElement objCloseBtn(){
         return driver.findElement(By.xpath("//*[@text='Close']"));
+    }
+    public WebElement objKwartaPadala(){
+        return driver.findElement(By.xpath("(//*[@text='Kwarta Padala'])[1]"));
     }
     public WebElement objSendViaMLWalletlabel(){
         return driver.findElement(By.xpath("//*[@text='You may also Send Money to any ML Wallet User.']"));

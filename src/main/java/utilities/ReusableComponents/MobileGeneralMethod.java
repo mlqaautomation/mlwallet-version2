@@ -99,6 +99,13 @@ public class MobileGeneralMethod extends AppiumDriverManager {
         }
         return false;
     }
+    public boolean isNotDisplayed(WebElement locator) {
+        try {
+            return !locator.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return true;
+        }
+    }
     public void waitSleep(int miliSeconds){
         try{
             Thread.sleep(miliSeconds);
@@ -184,15 +191,26 @@ public class MobileGeneralMethod extends AppiumDriverManager {
             ExtentReporter.logFail("Assertion",actual+" and "+expected+" are not matched");
         }
     }
+    public void assertionNotSameValidation(String actual, String expected) throws Exception {
+        Assert.assertNotEquals(actual,expected);
+        if(!actual.equals(expected))
+        {
+            LoggingUtils.info(actual+" and "+expected+" are not matched");
+            ExtentReporter.logPass("Assertion",actual+" and "+expected+" are not matched");
+        }else {
+            LoggingUtils.info(actual+" and "+expected+" are matched");
+            ExtentReporter.logFail("Assertion",actual+" and "+expected+" are matched");
+        }
+    }
     public void assertionNotEqualValidation(int actual, int expected) throws Exception {
         Assert.assertNotEquals(actual,expected);
         if(actual != expected)
         {
             LoggingUtils.info(actual+" and "+expected+" are not matched");
-            ExtentReporter.logFail("Assertion",actual+" and "+expected+" are not matched");
+            ExtentReporter.logPass("Assertion",actual+" and "+expected+" are not matched");
         }else {
             LoggingUtils.info(actual+" and "+expected+" are matched");
-            ExtentReporter.logPass("Assertion",actual+" and "+expected+" are matched");
+            ExtentReporter.logFail("Assertion",actual+" and "+expected+" are matched");
         }
     }
     public void assertionValidationdouble(double actual, double expected) throws Exception {

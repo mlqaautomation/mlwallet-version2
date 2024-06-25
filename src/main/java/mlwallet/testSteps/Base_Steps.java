@@ -18,6 +18,8 @@ public class Base_Steps {
     GCashObjects gCashObjects = new GCashObjects();
     HomePageObject homePageObject = new HomePageObject();
     LoginObject loginObject = new LoginObject();
+    MlShopObjects mlShopObjects = new MlShopObjects();
+    ShopSafeObjects shopSafeObjects = new ShopSafeObjects();
     PayBillsObject payBillsObject = new PayBillsObject();
     HistoryObject historyObject = new HistoryObject();
     BuyEloadObject buyEloadObject = new BuyEloadObject();
