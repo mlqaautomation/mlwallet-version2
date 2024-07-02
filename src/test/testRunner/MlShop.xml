@@ -9,7 +9,7 @@
         <parameter name="type" value="mobile">
             <classes>
                 <!-- Drop Off -->
-                <class name="kpx.actual.WalletService.KwartaPadalaWalletScripts"> </class>
+                <class name="kpx.actual.WalletService.MlShopScripts"> </class>
             </classes>
         </parameter>
     </test>
