@@ -107,7 +107,7 @@ public class LoginObject extends AppiumDriverManager {
         return driver.findElement(By.xpath("((//*[@text='One Time Pin']/following-sibling::android.view.ViewGroup)[1]/child::android.widget.TextView)[1]"));
     }
     public WebElement objSeconds(){
-        return driver.findElement(By.xpath("(//*[@class='com.horcrux.svg.SvgView'])[2]/following-sibling::android.view.ViewGroup/child::android.widget.TextView"));
+        return driver.findElement(By.xpath("(//*[@class='android.widget.TextView'])[3]"));
     }
     public WebElement objNotif(){
         return driver.findElement(By.xpath("//*[contains(@text, 'notifications')]"));

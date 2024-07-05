@@ -817,11 +817,11 @@ public class BuyELoad extends Base_Steps{
         if (mobileGeneralMethod.isVisible(loginObject.objOTP(),"One Time Pin")) {
             String sGeneratedOTP = mobileGeneralMethod.getText(loginObject.objOTP());
             mobileGeneralMethod.waitSleep(70000);
-            int otpfirstAsInteger = Integer.parseInt(sGeneratedOTP);
+            String otpfirstAsInteger = String.valueOf(Integer.parseInt(sGeneratedOTP));
             mobileGeneralMethod.isVisible(loginObject.objOTP(),"New One Time Pin");
             String sNewlyGeneratedOTPAfterSixtySeconds = mobileGeneralMethod.getText(loginObject.objOTP());
-            int otpSecondAsInteger = Integer.parseInt(sNewlyGeneratedOTPAfterSixtySeconds);
-            mobileGeneralMethod.assertionNotEqualValidation(otpfirstAsInteger, otpSecondAsInteger);
+            String otpSecondAsInteger = String.valueOf(Integer.parseInt(sNewlyGeneratedOTPAfterSixtySeconds));
+            mobileGeneralMethod.assertionValidation(otpfirstAsInteger, otpSecondAsInteger);
             LoggingUtils.info("BE_TC_091, Buy ELoad Transaction New OTP got generated After Sixty Seconds is validated");
             ExtentReporter.logPass("BE_TC_091", "Buy ELoad Transaction New OTP got generated After Sixty Seconds is validated");
             System.out.println("-----------------------------------------------------------");
