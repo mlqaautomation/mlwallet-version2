@@ -14,7 +14,9 @@ public class MLWallet_PageObjects extends AppiumDriverManager {
     public WebElement mobileNum_editText() {
         return wait.until(ExpectedConditions.visibilityOf(driver.findElement(AppiumBy.xpath("//android.view.ViewGroup[@resource-id='967123']/child::android.view.ViewGroup/child::android.widget.EditText"))));
     }
-
+    public WebElement objAnnouncement_Exit_Button() {
+        return driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"×\"]"));
+    }
     public WebElement login_btn() {
         return wait.until(ExpectedConditions.visibilityOf(driver.findElement(AppiumBy.xpath("//*[@resource-id='208465']"))));
     }

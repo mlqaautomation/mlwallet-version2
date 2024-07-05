@@ -26,12 +26,16 @@ public class BaseTest {
     protected Login_Steps loginSteps;
     protected WS_ShopSafe_Steps wsShopSafeSteps;
     protected Login loginWalletSteps;
+    protected Logout logout;
     protected Shop_Safe shopSafe;
+    protected Registration registration;
+    protected TroubleSignIn troubleSignIn;
     protected KwartaPadala_Wallet kwartaPadalaWallet;
     protected BuyELoad buyELoad;
     protected CashInViaBranch cashInViaBranch;
     protected CashOutViaBranch cashOutViaBranch;
     protected GCash gCash;
+    protected History history;
     protected PayBills payBills;
     protected TopUpGames topUpGames;
 
@@ -94,7 +98,7 @@ public class BaseTest {
         this.loginSteps = new Login_Steps();
         this.wsShopSafeSteps = new WS_ShopSafe_Steps();
     }
-    public void initWallet(){
+    public void initWallet() throws InterruptedException {
         this.loginWalletSteps = new Login();
         this.shopSafe = new Shop_Safe();
         this.kwartaPadalaWallet = new KwartaPadala_Wallet();
@@ -104,6 +108,10 @@ public class BaseTest {
         this.topUpGames = new TopUpGames();
         this.cashInViaBranch = new CashInViaBranch();
         this.cashOutViaBranch = new CashOutViaBranch();
+        this.history = new History();
+        this.registration = new Registration();
+        this.troubleSignIn = new TroubleSignIn();
+        this.logout = new Logout();
     }
 
 }

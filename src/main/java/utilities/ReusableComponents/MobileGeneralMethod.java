@@ -1,7 +1,9 @@
 package utilities.ReusableComponents;
 
+import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -13,12 +15,15 @@ import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.Reporter;
 import utilities.Driver.AppiumDriverManager;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
 import utilities.yamlReader.yamlReader;
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static utilities.Driver.AppiumDriverManager.getAndroidDriver;
 
@@ -31,6 +36,7 @@ public class MobileGeneralMethod extends AppiumDriverManager {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         this.wait =  new WebDriverWait(driver, Duration.ofSeconds(10));
     }
+
     public void typeActiveElement(String text){
         try{
             actions.
@@ -44,6 +50,11 @@ public class MobileGeneralMethod extends AppiumDriverManager {
     public void inputOTP(){
         for(int i = 1; i <= 6 ; i++){
             typeActiveElement("1");
+        }
+    }
+    public void inputInvalidOTP(){
+        for(int i = 1; i <= 6 ; i++){
+            typeActiveElement("5");
         }
     }
     public void tap(WebElement locator, String elementName){
@@ -136,11 +147,43 @@ public class MobileGeneralMethod extends AppiumDriverManager {
             swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
             swipe.addAction(finger.createPointerMove(Duration.ofMillis(600), PointerInput.Origin.viewport(), startX, endY));
             swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-            driver.perform(Arrays.asList(swipe));
+            driver.perform(Collections.singletonList(swipe));
             ExtentReporter.logInfo("Swipe test", ".");
         }catch (Exception e){
             throw new AssertionError("Err: " +e);
         }
+    }
+    public void horizontalSwipe() {
+        try {
+            Dimension size = driver.manage().window().getSize();
+            int startX = size.getWidth() * 4 / 5;
+            int startY = size.getHeight() / 2;
+            int endX = size.getWidth() / 5;
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Sequence swipe = new Sequence(finger, 0);
+            swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+            swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+            swipe.addAction(finger.createPointerMove(Duration.ofMillis(600), PointerInput.Origin.viewport(), endX, startY));
+            swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+            driver.perform(Collections.singletonList(swipe));
+            ExtentReporter.logInfo("Horizontal Swipe test", ".");
+        } catch (Exception e) {
+            throw new AssertionError("Err: " + e);
+        }
+    }
+    public void verticalSwipeByPercentages(double startPercentage, double endPercentage, double anchorPercentage) {
+        Dimension size = driver.manage().window().getSize();
+        int anchor = (int) (size.width * anchorPercentage);
+        int startPoint = (int) (size.height * startPercentage);
+        int endPoint = (int) (size.height * endPercentage);
+
+        new TouchAction(driver)
+                .press(PointOption.point(anchor, startPoint))
+                .waitAction(new WaitOptions().withDuration(Duration.ofMillis(600)))
+                .moveTo(PointOption.point(anchor, endPoint))
+                .release()
+                .perform();
+        ExtentReporter.logInfo("Swiped Vertically", ".");
     }
 
     public void verticalSwipeDown(){
@@ -155,7 +198,7 @@ public class MobileGeneralMethod extends AppiumDriverManager {
             scroll.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
             scroll.addAction(finger.createPointerMove(Duration.ofMillis(600), PointerInput.Origin.viewport(), startX, endY));
             scroll.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-            driver.perform(Arrays.asList(scroll));
+            driver.perform(Collections.singletonList(scroll));
             ExtentReporter.logInfo("Scroll down test", ".");
         } catch (Exception e) {
             throw new AssertionError("Err: " + e);
@@ -227,5 +270,6 @@ public class MobileGeneralMethod extends AppiumDriverManager {
         waitSleep(2000);
         LoggingUtils.info(steps+" "+message+" ");
         ExtentReporter.logPass("Failed",steps+" "+message+" ");
+
     }
 }
