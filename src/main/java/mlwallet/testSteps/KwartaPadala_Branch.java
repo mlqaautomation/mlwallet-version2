@@ -117,9 +117,9 @@ public class KwartaPadala_Branch extends Base_Steps {
         if (mobileGeneralMethod.isVisible(kwartaPadalaObjects.objKwartaPadala(), "Page")) {
             mobileGeneralMethod.tap(kwartaPadalaObjects.objSavedRecipients(), "Button");
             mobileGeneralMethod.waitSleep(1000);
-            mobileGeneralMethod.type(kwartaPadalaObjects.objSearchRecipient(), "Last Name Text Field", propertyReader.getproperty("Last_Name"));
-            mobileGeneralMethod.isVisible(payBillsObject.objSelectLastName(propertyReader.getproperty("Last_Name"), propertyReader.getproperty("First_Name")), "Recipient");
-            mobileGeneralMethod.tap(payBillsObject.objSelectLastName(propertyReader.getproperty("Last_Name"), propertyReader.getproperty("First_Name")), "Recipient");
+            mobileGeneralMethod.type(kwartaPadalaObjects.objSearchRecipient(), "Last Name Text Field", propertyReader.getproperty("Middle_Name"));
+            mobileGeneralMethod.isVisible(payBillsObject.objSelectLastName(propertyReader.getproperty("Edited_Last_name"), propertyReader.getproperty("First_Name")), "Recipient");
+            mobileGeneralMethod.tap(payBillsObject.objSelectLastName(propertyReader.getproperty("Edited_Last_name"), propertyReader.getproperty("First_Name")), "Recipient");
             mobileGeneralMethod.waitSleep(1000);
         }
     }

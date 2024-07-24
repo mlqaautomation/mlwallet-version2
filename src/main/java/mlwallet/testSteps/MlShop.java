@@ -9,59 +9,58 @@ public class MlShop extends Base_Steps {
 
     public void shopItemsNavigation() throws Exception {
         mobileGeneralMethod.tap(mlShopObjects.objShopItemsTab(), "Shop Items Icon");
-        Thread.sleep(10000);
-        mobileGeneralMethod.tap(mlShopObjects.objMLShopPage(), "ML Shop Page");
-        mobileGeneralMethod.tap(mlShopObjects.objloginOkayButton(), "Login Success Button");
+        mobileGeneralMethod.waitSleep(8000);
     }
 
     public void selectItemAndAddToCart() throws Exception {
-        mobileGeneralMethod.verticalSwipeDown();
-        mobileGeneralMethod.verticalSwipe();
+        mobileGeneralMethod.tap(mlShopObjects.objAllTypesBtn(), "All Types Button");
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
-        mobileGeneralMethod.waitSleep(3000);
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item Button");
         mobileGeneralMethod.tap(mlShopObjects.objSelectItem(), "Item");
-        //click(MLWalletShopItemsPage.objSelectItem, getTextVal(MLWalletShopItemsPage.objSelectItem, "Item"));
-        mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
-        mobileGeneralMethod.waitSleep(3000);
+        mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.tap(mlShopObjects.objAddToCartBtn(), "Add to cart Button");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlShopObjects.objConfirmAddCarButton(), "Confirm Button");
+        mobileGeneralMethod.tap(mlShopObjects.objBackBtn(), "Back Button");
+        mobileGeneralMethod.waitSleep(3000);
+        mobileGeneralMethod.verticalSwipeDown();
     }
 
-    public void navigationToCart() throws Exception {
-        mobileGeneralMethod.tap(mlShopObjects.objHamburgerMenu(), "Hamburger Menu");
-        mobileGeneralMethod.tap(mlShopObjects.objCart(), "Cart");
-    }
-
-    public void editAddressAndPlaceTheOrder() throws Exception {
-        mobileGeneralMethod.tap(mlShopObjects.objCheckBox(), "Check Box");
+    public void navigationToCartAndCheckOut() throws Exception {
+        mobileGeneralMethod.tap(mlShopObjects.objCart(), "Cart Button");
+        mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlShopObjects.objCheckOutBtn(), "Checkout Button");
-        mobileGeneralMethod.tap(mlShopObjects.objSelectBranchPage(), "Page");
-        mobileGeneralMethod.tap(mlShopObjects.objSaveBtn(), "Save Button");
-        mobileGeneralMethod.isVisible(mlShopObjects.objAddressSuccessfulMsg(), "Message");
-        mobileGeneralMethod.tap(mlShopObjects.objOkBtn(), "OK Button");
+        mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
-        mobileGeneralMethod.waitSleep(3000);
+        mobileGeneralMethod.verticalSwipe();
+        mobileGeneralMethod.verticalSwipe();
+    }
+    public void InputAddressAndPlaceTheOrder() throws Exception {
+        mobileGeneralMethod.tap(mlShopObjects.objInputProvinceAndState(), "Province And State Field");
+        mobileGeneralMethod.tap(mlShopObjects.objSelectAbra(), "Select Abra");
+        mobileGeneralMethod.tap(mlShopObjects.objInputCityAndTown(), "City And Town Field");
+        mobileGeneralMethod.tap(mlShopObjects.objSelectBangued(), "Select Bangued");
+        mobileGeneralMethod.tap(mlShopObjects.objInputBranchName(), "Branch Field");
+        mobileGeneralMethod.tap(mlShopObjects.objSelectMlTestTG(), "Select ML Test TG");
+        //----------------------------------------------------------------------------
         mobileGeneralMethod.isVisible(mlShopObjects.objSelectPaymentMethod(), "Header");
         mobileGeneralMethod.tap(mlShopObjects.objMLWallet(), "Option");
-        mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
-        mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlShopObjects.objPlaceOrderBtn(), "Place Order Button");
+        mobileGeneralMethod.tap(mlShopObjects.objProceedBtn(), "Proceed Button");
+        mobileGeneralMethod.inputOTP();
+        mobileGeneralMethod.waitSleep(3000);
+        mobileGeneralMethod.isVisible(mlShopObjects.objSuccesFullyCheckOutMsg(), "Successful Checkout");
+        mobileGeneralMethod.tap(mlShopObjects.objSuccessFullyCheckOutOkayBtn(), "Okay Button");
     }
-
 
     public void mlWallet_ShopItems_Successful_Purchase() throws Exception {
         shopItemsNavigation();
         selectItemAndAddToCart();
-        mobileGeneralMethod.verticalSwipeDown();
-        mobileGeneralMethod.verticalSwipe();
-        mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
-        editAddressAndPlaceTheOrder();
+        navigationToCartAndCheckOut();
+        InputAddressAndPlaceTheOrder();
 //        mobileGeneralMethod.isVisible(mlShopObjects.objOtpPage(), "Pop up");
 //        Thread.sleep(2000);
 //        mobileGeneralMethod.tap(mlShopObjects.objOtpTextField(), "Otp Text Field");
@@ -77,11 +76,8 @@ public class MlShop extends Base_Steps {
         login.loginWalletBuyerTier();
         shopItemsNavigation();
         selectItemAndAddToCart();
-        mobileGeneralMethod.verticalSwipeDown();
-        mobileGeneralMethod.verticalSwipe();
-        mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
-        editAddressAndPlaceTheOrder();
+        navigationToCartAndCheckOut();
+        InputAddressAndPlaceTheOrder();
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlWalletPageObjects.continue2_btn(), "Continue Button");
         mobileGeneralMethod.waitSleep(10000);
@@ -105,8 +101,8 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
-        editAddressAndPlaceTheOrder();
+        navigationToCartAndCheckOut();
+        InputAddressAndPlaceTheOrder();
 //        mobileGeneralMethod.isVisible(mlShopObjects.objOtpPage(), "Pop up");
 //        Thread.sleep(2000);
 //        mobileGeneralMethod.tap(mlShopObjects.objOtpTextField(), "Otp Text Field");
@@ -122,19 +118,16 @@ public class MlShop extends Base_Steps {
         login.loginWalletBranchTier();
         shopItemsNavigation();
         selectItemAndAddToCart();
-        mobileGeneralMethod.verticalSwipeDown();
-        mobileGeneralMethod.verticalSwipe();
-        mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
-        editAddressAndPlaceTheOrder();
-        mobileGeneralMethod.isVisible(mlShopObjects.objOtpPage(), "Pop up");
-        Thread.sleep(2000);
-        mobileGeneralMethod.tap(mlShopObjects.objValidateBtn(), "Validate Button");
-        String oOpsMsg = mobileGeneralMethod.getText(mlShopObjects.objInvalidOtpPopUp());
-        String supplyFieldsMsg = mobileGeneralMethod.getText(mlShopObjects.objInvalidOtpPopUpMsg());
-        LoggingUtils.info(oOpsMsg + " " + supplyFieldsMsg + " Pop Up Message is displayed");
-        ExtentReporter.logInfo("", oOpsMsg + " " + supplyFieldsMsg + " Pop Up Message is displayed");
-        LoggingUtils.info("MLS_TC_04, Oops... Please supply all fields. - Error message is validated");
+        navigationToCartAndCheckOut();
+        InputAddressAndPlaceTheOrder();
+//        mobileGeneralMethod.isVisible(mlShopObjects.objOtpPage(), "Pop up");
+//        Thread.sleep(2000);
+//        mobileGeneralMethod.tap(mlShopObjects.objValidateBtn(), "Validate Button");
+//        String oOpsMsg = mobileGeneralMethod.getText(mlShopObjects.objInvalidOtpPopUp());
+//        String supplyFieldsMsg = mobileGeneralMethod.getText(mlShopObjects.objInvalidOtpPopUpMsg());
+//        LoggingUtils.info(oOpsMsg + " " + supplyFieldsMsg + " Pop Up Message is displayed");
+//        ExtentReporter.logInfo("", oOpsMsg + " " + supplyFieldsMsg + " Pop Up Message is displayed");
+//        LoggingUtils.info("MLS_TC_04, Oops... Please supply all fields. - Error message is validated");
         ExtentReporter.logPass("MLS_TC_04", "MLS_TC_04, Oops... Please supply all fields. - Error message is validated");
         System.out.println("-----------------------------------------------------------");
     }
@@ -161,7 +154,7 @@ public class MlShop extends Base_Steps {
 //        mobileGeneralMethod.verticalSwipeDown();
 //        mobileGeneralMethod.verticalSwipe();
 //        mobileGeneralMethod.waitSleep(3000);
-//        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+//        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
 //        if (mobileGeneralMethod.isDisplayed(mlShopObjects.objItems())) {
 //            List<WebElement> values = findElements(mlShopObjects.objItems());
 //            assert values != null;
@@ -186,7 +179,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.tap(mlShopObjects.objSelectItem(), "Item");
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
@@ -210,7 +203,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
+        navigationToCartAndCheckOut();
         if (mobileGeneralMethod.isVisible(mlShopObjects.objCartPageHeader(), "Header")) {
             mobileGeneralMethod.isVisible(mlShopObjects.objCheckBox(), "Item Check Box");
             mobileGeneralMethod.isVisible(mlShopObjects.objProductNameInCartPage(), "Product Name in Cart Page");
@@ -230,7 +223,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
+        navigationToCartAndCheckOut();
         mobileGeneralMethod.tap(mlShopObjects.objCheckBox(), "Check Box");
         mobileGeneralMethod.tap(mlShopObjects.objCheckOutBtn(), "Checkout Button");
         if (mobileGeneralMethod.isVisible(mlShopObjects.objShippingDetails(),  "Page")) {
@@ -271,7 +264,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
+        navigationToCartAndCheckOut();
         mobileGeneralMethod.tap(mlShopObjects.objCheckBox(), "Check Box");
         mobileGeneralMethod.tap(mlShopObjects.objCheckOutBtn(), "Checkout Button");
       mobileGeneralMethod.tap(mlShopObjects.objEditAddress(), "Edit address Icon");
@@ -305,7 +298,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
+        navigationToCartAndCheckOut();
         mobileGeneralMethod.tap(mlShopObjects.objCheckBox(), "Check Box");
         mobileGeneralMethod.tap(mlShopObjects.objCheckOutBtn(), "Checkout Button");
        mobileGeneralMethod.tap(mlShopObjects.objEditAddress(), "Edit address Icon");
@@ -333,8 +326,8 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
-        editAddressAndPlaceTheOrder();
+        navigationToCartAndCheckOut();
+        InputAddressAndPlaceTheOrder();
         if (mobileGeneralMethod.isVisible(mlShopObjects.objOtpPage(), "Pop up")) {
             LoggingUtils.info("MLS_TC_24, Shop Items Place Order Button Functionality On Shipping Details Screen validated");
             ExtentReporter.logPass("MLS_TC_24", "MLS_TC_24, Shop Items Place Order Button Functionality On Shipping Details Screen validated");
@@ -350,8 +343,8 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
-        editAddressAndPlaceTheOrder();
+        navigationToCartAndCheckOut();
+        InputAddressAndPlaceTheOrder();
         if (mobileGeneralMethod.isVisible(mlShopObjects.objOtpPage(), "Pop up")) {
             mobileGeneralMethod.isVisible(mlShopObjects.objOTPMsg(), "Message");
             mobileGeneralMethod.isVisible(mlShopObjects.objValidateBtn(), "Button");
@@ -380,7 +373,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
+        navigationToCartAndCheckOut();
         mobileGeneralMethod.tap(mlShopObjects.objCheckBox(), "Check Box");
         mobileGeneralMethod.tap(mlShopObjects.objCheckOutBtn(), "Checkout Button");
         mobileGeneralMethod.tap(mlShopObjects.objEditAddress(), "Edit Address Tab");
@@ -420,7 +413,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
+        navigationToCartAndCheckOut();
         if (mobileGeneralMethod.isVisible(mlShopObjects.objCartPageHeader(), "Header")) {
             mobileGeneralMethod.isVisible(mlShopObjects.objCheckBox(), "Item Check Box");
             mobileGeneralMethod.isVisible(mlShopObjects.objProductNameInCartPage(), "Product Name in Cart Page");
@@ -440,7 +433,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
+        navigationToCartAndCheckOut();
        mobileGeneralMethod.tap(mlShopObjects.objDeleteIcon(), "Delete Icon");
         mobileGeneralMethod.tap(mlShopObjects.objCancel(), "Button");
         if (mobileGeneralMethod.isVisible(mlShopObjects.objCheckOutBtn(), "Cart Page")) {
@@ -458,7 +451,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
+        navigationToCartAndCheckOut();
         mobileGeneralMethod.tap(mlShopObjects.objDeleteIcon(), "Delete Icon");
         mobileGeneralMethod.tap(mlShopObjects.objYesBtn(), "Button");
         if (mobileGeneralMethod.isVisible(mlShopObjects.objProductNameInCartPage(), "Cart Page")) {
@@ -522,7 +515,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
+        navigationToCartAndCheckOut();
         if (mobileGeneralMethod.isVisible(mlShopObjects.objSubtotalAmount(), "SubTotal Items")) {
             String sActualSubtotalItems = mobileGeneralMethod.getText(mlShopObjects.objSubtotalAmount());
             String sExceptedSubtotalItems = "P 0.00";
@@ -541,7 +534,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
+        navigationToCartAndCheckOut();
         mobileGeneralMethod.tap(mlShopObjects.objCheckBox(), "Check Box");
         mobileGeneralMethod.waitSleep(3000);
         if (mobileGeneralMethod.isVisible(mlShopObjects.objSubtotalAmount(), "SubTotal Items")) {
@@ -611,7 +604,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.tap(mlShopObjects.objSelectItem(), "Item");
         mobileGeneralMethod.waitSleep(3000);
         if (mobileGeneralMethod.isVisible(mlShopObjects.objProductImage(), "Product Image")) {
@@ -631,7 +624,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlShopObjects.objCategoriesHamburgerMenu(), "Categories Hamburger Menu");
         if (mobileGeneralMethod.isVisible(mlShopObjects.objCategoriesHamburgerMenu(), "Menu")) {
@@ -649,7 +642,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlShopObjects.objCategoriesHamburgerMenu(), "Categories Hamburger Menu");
         mobileGeneralMethod.isVisible(mlShopObjects.objCategoriesHamburgerMenu(), "Menu");
@@ -668,7 +661,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlShopObjects.objCategoriesHamburgerMenu(), "Categories Hamburger Menu");
         mobileGeneralMethod.isVisible(mlShopObjects.objCategoriesHamburgerMenu(), "Menu");
@@ -688,7 +681,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlShopObjects.objCategoriesHamburgerMenu(), "Categories Hamburger Menu");
         mobileGeneralMethod.isVisible(mlShopObjects.objCategoriesHamburgerMenu(), "Menu");
@@ -709,7 +702,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(10000);
@@ -732,7 +725,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(10000);
         mobileGeneralMethod.tap(mlShopObjects.objCategoriesHamburgerMenu(), "Categories Hamburger Menu");
         mobileGeneralMethod.isVisible(mlShopObjects.objCategoriesHamburgerMenu(), "Menu");
@@ -753,7 +746,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(10000);
@@ -776,7 +769,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlShopObjects.objCategoriesHamburgerMenu(), "Categories Hamburger Menu");
         mobileGeneralMethod.isVisible(mlShopObjects.objCategoriesHamburgerMenu(), "Menu");
@@ -797,7 +790,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlShopObjects.objCategoriesHamburgerMenu(), "Categories Hamburger Menu");
         mobileGeneralMethod.isVisible(mlShopObjects.objCategoriesHamburgerMenu(), "Menu");
@@ -817,7 +810,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(10000);
         mobileGeneralMethod.tap(mlShopObjects.objCategoriesHamburgerMenu(), "Categories Hamburger Menu");
         mobileGeneralMethod.isVisible(mlShopObjects.objCategoriesHamburgerMenu(), "Menu");
@@ -837,7 +830,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlShopObjects.objCategoriesHamburgerMenu(), "Categories Hamburger Menu");
         mobileGeneralMethod.isVisible(mlShopObjects.objCategoriesHamburgerMenu(), "Menu");
@@ -857,7 +850,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlShopObjects.objGender(), "Filter");
         for (int i = 1; i <= 5; i++) {
@@ -875,7 +868,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlShopObjects.objColor(), "Filter");
         for (int i = 1; i <= 6; i++) {
@@ -892,7 +885,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(10000);
         mobileGeneralMethod.tap(mlShopObjects.objKarat(), "Filter");
         for (int i = 1; i <= 6; i++) {
@@ -909,7 +902,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(10000);
         mobileGeneralMethod.tap(mlShopObjects.objPrice(), "Filter");
         for (int i = 1; i <= 3; i++) {
@@ -926,7 +919,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(10000);
         mobileGeneralMethod.tap(mlShopObjects.objSelectItem(), "Item");
         mobileGeneralMethod.waitSleep(10000);
@@ -956,7 +949,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlShopObjects.objSelectItem(), "Item");
         mobileGeneralMethod.waitSleep(3000);
@@ -981,7 +974,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(10000);
         mobileGeneralMethod.tap(mlShopObjects.objSelectItem(), "Item");
         mobileGeneralMethod.waitSleep(10000);
@@ -1005,7 +998,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(10000);
         mobileGeneralMethod.tap(mlShopObjects.objSelectItem(), "Item");
         mobileGeneralMethod.waitSleep(10000);
@@ -1040,7 +1033,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        mobileGeneralMethod.tap(mlShopObjects.objItemMenu(), "Rings Item");
+        mobileGeneralMethod.tap(mlShopObjects.objRingBtn(), "Rings Item");
         mobileGeneralMethod.waitSleep(3000);
         mobileGeneralMethod.tap(mlShopObjects.objSelectItem(), "Item");
         mobileGeneralMethod.waitSleep(3000);
@@ -1092,7 +1085,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
+        navigationToCartAndCheckOut();
         mobileGeneralMethod.tap(mlShopObjects.objCheckBox(), "Check Box");
         mobileGeneralMethod.tap(mlShopObjects.objCheckOutBtn(), "Checkout Button");
         mobileGeneralMethod.tap(mlShopObjects.objEditAddress(), "Edit Address Tab");
@@ -1123,7 +1116,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
+        navigationToCartAndCheckOut();
         mobileGeneralMethod.tap(mlShopObjects.objCheckBox(), "Check Box");
         mobileGeneralMethod.tap(mlShopObjects.objCheckOutBtn(), "Checkout Button");
         mobileGeneralMethod.tap(mlShopObjects.objEditAddress(), "Edit Address Tab");
@@ -1157,7 +1150,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
+        navigationToCartAndCheckOut();
         if (mobileGeneralMethod.isVisible(mlShopObjects.objSubtotalAmount(), "SubTotal Amount")) {
             String sSubTotalAmount = mobileGeneralMethod.getText(mlShopObjects.objSubtotalAmount());
             String sExceptedSubTotalAmount = "P 0.00";
@@ -1176,7 +1169,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(3000);
-        navigationToCart();
+        navigationToCartAndCheckOut();
         mobileGeneralMethod.tap(mlShopObjects.objCheckBox(), "Check Box");
     }
 
@@ -1187,7 +1180,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(5000);
-        navigationToCart();
+        navigationToCartAndCheckOut();
         mobileGeneralMethod.tap(mlShopObjects.objCheckBox(), "Check Box");
         mobileGeneralMethod.tap(mlShopObjects.objDeleteIcon(), "objDeleteIcon");
         mobileGeneralMethod.tap(mlShopObjects.objDeleteCancelButton(), "objDeleteCancelButton");
@@ -1227,7 +1220,7 @@ public class MlShop extends Base_Steps {
         mobileGeneralMethod.verticalSwipeDown();
         mobileGeneralMethod.verticalSwipe();
         mobileGeneralMethod.waitSleep(5000);
-        navigationToCart();
+        navigationToCartAndCheckOut();
         mobileGeneralMethod.tap(mlShopObjects.objCheckBox(), "Check Box");
         mobileGeneralMethod.tap(mlShopObjects.objDeleteIcon(), "objDeleteIcon");
         mobileGeneralMethod.tap(mlShopObjects.objDeleteExitButton(), "objDeleteExitButton");

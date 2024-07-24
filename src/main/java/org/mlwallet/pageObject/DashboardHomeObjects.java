@@ -8,6 +8,9 @@ public class DashboardHomeObjects extends AppiumDriverManager {
     public WebElement objRecentTransactions(){
         return driver.findElement(By.xpath("(//*[@text='Recent Transactions'])"));
     }
+    public WebElement objMLShopPage(){
+        return driver.findElement(By.xpath("//*[@text='ML Shop']"));
+    }
     public WebElement objCashOutButton(){
         return driver.findElement(By.xpath("(//*[@text='Cash Out'])[1]"));
     }

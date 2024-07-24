@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertTrue;
 public class LogoutScipts extends BaseTest {
     //------HappyPath
-    @Test(priority = 1, description = "v")
+    @Test(priority = 1, description = "logInWithChangeNumber_01")
     public void logInWithChangeNumber_01() throws Exception {
         logout.logInWithChangeNumber_Lout_TC_09();
     }

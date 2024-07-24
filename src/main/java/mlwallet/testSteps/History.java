@@ -69,9 +69,9 @@ public class History extends Base_Steps{
             mobileGeneralMethod.tap(historyObject.obj30(),"Select 30 End Date Button");
             mobileGeneralMethod.tap(historyObject.objOkBtn(),"Okay Button");
             mobileGeneralMethod.tap(historyObject.objSubmitRequestBtn(),"Submit Request Button");
-            mobileGeneralMethod.waitSleep(5000);
-            mobileGeneralMethod.isVisible(historyObject.objRequestAcceptTitle(),"Request Transaction Accepted");
-            mobileGeneralMethod.isVisible(historyObject.objRequestAcceptBody(),"Request Transaction Accepted");
+            mobileGeneralMethod.waitSleep(10000);
+            mobileGeneralMethod.isVisible(historyObject.objRequestAcceptTitle(),"Request Transaction Title Accepted");
+            mobileGeneralMethod.isVisible(historyObject.objRequestAcceptBody(),"Request Transaction Body Accepted");
             mobileGeneralMethod.isVisible(historyObject.objGotItBtn(),"Got It Button");
             mobileGeneralMethod.tap(historyObject.objGotItBtn(),"Got It Button");
             LoggingUtils.info("TH_TC_30,Successful Request Transaction Page Validated");

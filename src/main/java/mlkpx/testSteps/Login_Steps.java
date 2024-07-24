@@ -8,6 +8,8 @@ public class Login_Steps extends Base_Steps {
 
     public void signInGoogle(String role)throws NoSuchElementException {
         try{
+            waitSleep(6000);
+            click(googlePageObjects.signinKPX(),"Click Sign In Button ");
             click(googlePageObjects.googleContainer(), "Google Sign in Container");
             switchToNextTab();
             waitSleep(2000);
@@ -19,6 +21,8 @@ public class Login_Steps extends Base_Steps {
             typeEnter(googlePageObjects.codeField(), "Auth Key Field", TOTPGenerator.getTwoFactorCode());
             switchToPreviousTab();
         }catch (Exception e){
+            waitSleep(6000);
+            click(googlePageObjects.signinKPX(),"Click Sign In Button ");
             click(googlePageObjects.selectGoogleAuthenticator(), "Google Auth Option");
             typeEnter(googlePageObjects.codeField(), "Auth Key Field", TOTPGenerator.getTwoFactorCode());
             switchToPreviousTab();
@@ -28,11 +32,15 @@ public class Login_Steps extends Base_Steps {
     public void signInGoogleV2()throws Exception{
         // logging in google via clicking the email, this only happens when browser is not closed
         try{
+            waitSleep(6000);
+            click(googlePageObjects.signinKPX(),"Click Sign In Button ");
             click(googlePageObjects.googleContainer(), "Google Sign in Container");
             switchToNextTab();
             click(googlePageObjects.chooseCurrentAccount(), getText(googlePageObjects.chooseCurrentAccount()));
             switchToPreviousTab();
         }catch (Exception e){
+            waitSleep(6000);
+            click(googlePageObjects.signinKPX(),"Click Sign In Button ");
             click(googlePageObjects.googleContainer2(), "Google Sign in Container");
             switchToNextTab();
             click(googlePageObjects.chooseCurrentAccount(), getText(googlePageObjects.chooseCurrentAccount()));
@@ -44,7 +52,6 @@ public class Login_Steps extends Base_Steps {
         try{
             type(loginPageObjects.userNameField(),"kpx username field", reader.getKpxUsername(role));
             type(loginPageObjects.passwordField(), "kpx password field", reader.getKpxPassword(role));
-
             click(loginPageObjects.loginButton(), "Login button");
             waitSleep(4000);
         }catch (Exception e){

@@ -8,11 +8,14 @@ public class MlShopObjects extends AppiumDriverManager {
         public WebElement objShopItemsTab(){
         return driver.findElement(By.xpath("//*[@text='Shop']"));
     }
+        public WebElement objAllTypesBtn(){
+        return driver.findElement(By.xpath("(//*[@text='All Types'])[1]"));
+        }
         public WebElement objMLShopPage(){
         return driver.findElement(By.xpath("//*[@text='ML Shop']"));
     }
-        public WebElement objItemMenu(){
-        return driver.findElement(By.xpath("//*[@text='Rings']/parent::android.view.View"));
+        public WebElement objRingBtn(){
+        return driver.findElement(By.xpath("(//*[@text='Ring'])[1]"));
     }
         public WebElement objHighPrice(){
         return driver.findElement(By.xpath("//*[@text='High to Low']"));
@@ -24,13 +27,13 @@ public class MlShopObjects extends AppiumDriverManager {
         return driver.findElement(By.xpath("(//*[@class='android.widget.CheckBox'])[1]"));
     }
         public WebElement objSelectItem (){
-        return driver.findElement(By.xpath("(//*[@text='High to Low' or @text='Low to High']/following-sibling::android.view.View[1]/child::android.widget.TextView[1])"));
+        return driver.findElement(By.xpath("//*[@text='Ring']/parent::android.view.View/parent::android.view.View/parent::android.view.View/child::android.view.View[8]/child::android.view.View"));
     }
         public WebElement objAddToCartBtn(){
         return driver.findElement(By.xpath("//*[@text='Add To Cart']"));
     }
         public WebElement objHamburgerMenu(){
-        return driver.findElement(By.xpath("//*[@text='Enjoy up to 50% Discount on Selected Items']/following-sibling::android.view.View/child::android.widget.Image"));
+        return driver.findElement(By.xpath("//*[@text='Enjoy up to 50% off on selected items!']/parent::android.webkit.WebView/child::android.view.View[2]/child::android.view.View"));
     }
         public WebElement objCart(){
         return driver.findElement(By.xpath("//*[@content-desc='Cart']"));
@@ -50,6 +53,25 @@ public class MlShopObjects extends AppiumDriverManager {
         public WebElement objInputFieldOne(){
         return driver.findElement(By.xpath("//*[@resource-id='dropEditProvince']"));
     }
+    public WebElement objInputProvinceAndState(){
+        return driver.findElement(By.xpath("//*[@text='Select Pick Up Branch']/following-sibling::android.view.View[1]"));
+    }
+    public WebElement objSelectAbra(){
+        return driver.findElement(By.xpath("//*[@text='ABRA']"));
+    }
+    public WebElement objInputCityAndTown(){
+        return driver.findElement(By.xpath("//*[@text='Select Pick Up Branch']/following-sibling::android.view.View[2]"));
+    }
+    public WebElement objSelectBangued(){
+        return driver.findElement(By.xpath("//*[@text='BANGUED']"));
+    }
+    public WebElement objInputBranchName(){
+        return driver.findElement(By.xpath("//*[@text='Select Pick Up Branch']/following-sibling::android.view.View[3]"));
+    }
+    public WebElement objSelectMlTestTG(){
+        return driver.findElement(By.xpath("//*[@text='ML TESTTG']"));
+    }
+
         public WebElement objBranchName(){
         return driver.findElement(By.xpath("//*[@text='Branch Name *']/following-sibling::android.view.View"));
     }
@@ -114,7 +136,7 @@ public class MlShopObjects extends AppiumDriverManager {
         return driver.findElement(By.xpath("//*[@text='Select Payment Method']"));
     }
         public WebElement objMLWallet (){
-        return driver.findElement(By.xpath("//android.widget.Button[@text='ML WALLET']"));
+        return driver.findElement(By.xpath("//*[@text='/Images/MLWALLET.png ML WALLET']"));
     }
         public WebElement objPayUsingMlWallet (){
         return driver.findElement(By.xpath("((//*[@class='android.webkit.WebView'])[2]/child::android.view.View/child::android.view.View)[2]"));
@@ -491,6 +513,9 @@ public class MlShopObjects extends AppiumDriverManager {
     }
         public WebElement objConfirmAddCarButton (){
         return driver.findElement(By.xpath("//*[@text='Confirm']"));
+    }
+    public WebElement objBackBtn (){
+        return driver.findElement(By.xpath("//*[@text='Back']"));
     }
         public WebElement objSuccessAddtoCartMsg (){
         return driver.findElement(By.xpath("//*[@resource-id='swal2-html-container']"));

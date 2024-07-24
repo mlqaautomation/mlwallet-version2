@@ -8,14 +8,14 @@ import static utilities.Driver.DriverManager.getDriver;
 public class Login_PageObjects{
 
     public WebElement userNameField(){
-        return getDriver().findElement(By.name("username"));
+        return getDriver().findElement(By.xpath("//*[@placeholder=\"Username\"]"));
     }
     public WebElement passwordField(){
-        return getDriver().findElement(By.name("password"));
+        return getDriver().findElement(By.xpath("//*[@placeholder=\"PASSWORD\"]"));
     }
 
     public WebElement invalidCredText(){
-        return getDriver().findElement(By.cssSelector("[class='sc-aXZVg FiXoI']"));
+        return getDriver().findElement(By.xpath("//*[text()='Invalid Login Credentials']"));
     }
     public WebElement loginButton(){
         return getDriver().findElement(By.cssSelector("[type='submit']"));

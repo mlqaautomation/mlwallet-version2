@@ -41,6 +41,76 @@ public class TierUpgradeObjects extends AppiumDriverManager {
     public WebElement objAccountDetailsBackBtn(){
         return driver.findElement(By.xpath("//*[@text='Account Details']/parent::android.view.ViewGroup/preceding-sibling::android.view.ViewGroup"));
     }
+
+
+
+
+    //------------------------------------------------------------
+    public WebElement objPersonalInfoText(){
+        return driver.findElement(By.xpath("//*[@text='Personal Information']"));
+    }
+    public WebElement objPlaceOfBirthText(){
+        return driver.findElement(By.xpath("//*[@text='Place of Birth']"));
+    }
+    public WebElement objPlaceOfBirthField(){
+        return driver.findElement(By.xpath("//*[@text='Place of Birth']/following-sibling::android.widget.EditText"));
+    }
+    public WebElement objNationalityText(){
+        return driver.findElement(By.xpath("//*[@text='Nationality']"));
+    }
+    public WebElement objNationalityField(){
+        return driver.findElement(By.xpath("//*[@text='Nationality']/parent::android.view.ViewGroup/child::android.view.ViewGroup/child::android.view.ViewGroup/child::android.widget.TextView"));
+    }
+    public WebElement objCityStatusText(){
+        return driver.findElement(By.xpath("//*[@text='Civil Status']"));
+    }
+    public WebElement objCityStatusField(){
+        return driver.findElement(By.xpath("//*[@text='Civil Status']/parent::android.view.ViewGroup/child::android.view.ViewGroup/child::android.view.ViewGroup/child::android.widget.TextView"));
+    }
+    public WebElement objGenderAtBirthText(){
+        return driver.findElement(By.xpath("//*[@text='Gender at Birth']"));
+    }
+    public WebElement objGenderAtBirthField(){
+        return driver.findElement(By.xpath("//*[@text='Gender at Birth']/parent::android.view.ViewGroup/child::android.view.ViewGroup/child::android.view.ViewGroup/child::android.widget.TextView"));
+    }
+    public WebElement objNatureOfWorkText(){
+        return driver.findElement(By.xpath("//*[@text='Nature of Work']"));
+    }
+    public WebElement objSourceOfIncomeText(){
+        return driver.findElement(By.xpath("//*[@text='Source of Income']"));
+    }
+    public WebElement objSourceOfIncomeField(){
+        return driver.findElement(By.xpath("//*[@text='Source of Income']/parent::android.view.ViewGroup/child::android.view.ViewGroup/child::android.view.ViewGroup/child::android.widget.TextView"));
+    }
+    public WebElement objOccupationText(){
+        return driver.findElement(By.xpath("//*[@text='Occupation']"));
+    }
+    public WebElement objOccupationField(){
+        return driver.findElement(By.xpath("//*[@text='Occupation']/following-sibling::android.widget.EditText"));
+    }
+    public WebElement objSourceOfFundsText(){
+        return driver.findElement(By.xpath("//*[@text='Source of Funds']"));
+    }
+    public WebElement objSourceOfFundsField(){
+        return driver.findElement(By.xpath("// *[@text='Source of Funds']/following-sibling::android.widget.EditText"));
+    }
+//------------------------------------------------------------
+
+    public WebElement objNationalityTitle(){
+        return driver.findElement(By.xpath("//*[@text='Nationality']"));
+    }
+    public WebElement objBackBtn(){
+        return driver.findElement(By.xpath("//*[@text='\uE5CB']"));
+    }
+    public WebElement objFilipinoNationality(){
+        return driver.findElement(By.xpath("//*[@text='FILIPINO']"));
+    }
+    public WebElement objSingleCivilStatus(){
+        return driver.findElement(By.xpath("//*[@text='Single']"));
+    }
+    public WebElement objMaleGender(){
+        return driver.findElement(By.xpath("//*[@text='Male']"));
+    }
     //  Search field
     public WebElement objSearchFieldInput(){
         return driver.findElement(By.xpath("//*[@class='android.widget.EditText']"));
@@ -297,13 +367,6 @@ public class TierUpgradeObjects extends AppiumDriverManager {
 // Govt Fields
     public WebElement objProgramTypeField(){
         return driver.findElement(By.xpath("//*[@text='Grant/Program Type']/following-sibling::android.widget.EditText"));
-    }
-    // Other Source Income Fields
-    public WebElement objOccupationField(){
-        return driver.findElement(By.xpath("//*[@text='Occupation']/following-sibling::android.widget.EditText"));
-    }
-    public WebElement objSourceOfFundsField(){
-        return driver.findElement(By.xpath("//*[@text='Source of Funds']/following-sibling::android.widget.EditText"));
     }
     // is required error message locators
     public WebElement getObjIsRequired(String type){

@@ -647,7 +647,7 @@ public class Registration extends Base_Steps{
     public void registrationTermsAndConditionPageBackBtnValidation_RG_TC_37() throws Exception {
         ExtentReporter.logInfo("RG_TC_37","Registration Terms and Condition Page Back Btn Validation");
         registrationAddressPageNavigation();
-        mobileGeneralMethod.waitSleep(3000);
+        mobileGeneralMethod.waitSleep(5000);
         mobileGeneralMethod.isVisible(registrationObjects.objRegistrationAddress(),"Page");
         mobileGeneralMethod.tap(registrationObjects.objProvince(), "Province Field");
         mobileGeneralMethod.type(registrationObjects.objProvinceSearchField(), "Province Search Field", propertyReader.getproperty("Province"));

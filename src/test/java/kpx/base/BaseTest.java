@@ -40,6 +40,9 @@ public class BaseTest {
     protected History history;
     protected PayBills payBills;
     protected TopUpGames topUpGames;
+    protected Settings settings;
+    protected DashboardHome dashboardHome;
+    protected TierUpgrade tierUpgrade;
 
     @Parameters("type")
     @BeforeClass (alwaysRun = true)
@@ -115,6 +118,10 @@ public class BaseTest {
         this.registration = new Registration();
         this.troubleSignIn = new TroubleSignIn();
         this.logout = new Logout();
+        this.mlShop = new MlShop();
+        this.settings = new Settings();
+        this.dashboardHome = new DashboardHome();
+        this.tierUpgrade = new TierUpgrade();
     }
 
 }

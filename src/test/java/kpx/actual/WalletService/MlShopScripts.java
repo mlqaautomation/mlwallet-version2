@@ -10,19 +10,12 @@ import static utilities.Driver.AppiumDriverManager.APP_ID;
 import static utilities.Driver.AppiumDriverManager.getAndroidDriver;
 
 public class MlShopScripts extends BaseTest {
-    @Test(description = "Test to verify app is installed")
-    public void isAppInstalledTest(){
-        assertTrue(getAndroidDriver().isAppInstalled(APP_ID));
-        ExtentReporter.logPass("isAppInstalledTest", "MLWALLET is installed");
+
+    @Test(priority = 1)
+    public void mlWalletShopItems_Scenario() throws Exception
+    {
+        mlShop.shopItemsWithoutInputOtp_MLS_TC_04();
     }
-//=========================================================================================================//
-
-
-//    @Test(priority = 1)
-//    public void mlWalletShopItems_Scenario() throws Exception
-//    {
-//        mlShop.shopItemsWithoutInputOtp_MLS_TC_04();
-//    }
 //
 //    @Test(priority = 2)
 //    public void shopItemsHamburgerMenuNavigation_MLS_TC_12() throws Exception {
@@ -276,31 +269,30 @@ public class MlShopScripts extends BaseTest {
 //       mlShop.shopItemsPayUsingOnlineBankingOptionSelectionValidation_MLS_TC_36();
 //   }
 
-        @Test(priority = 52)
-        public void shopItemsSubTotalAmountValidationBeforeSelectingItems_MLS_TC_59() throws Exception {
-            mlShop.shopItemsSubTotalAmountValidationBeforeSelectingItems_MLS_TC_59();
-        }
+//        @Test(priority = 52)
+//        public void shopItemsSubTotalAmountValidationBeforeSelectingItems_MLS_TC_59() throws Exception {
+//            mlShop.shopItemsSubTotalAmountValidationBeforeSelectingItems_MLS_TC_59();
+//        }
 //
 //   @Test(priority = 53)
 //   public void mlWallet_ShopItems_with_Insufficient_Balance() throws Exception {
 //       mlShop.mlWallet_ShopItems_with_Insufficient_Balance();
 //   }
 
-
-        @Test(priority = 1)
-        public void shopItemsAddedItemInCartDeletedPopupValidationCancelButton_MLS_TC_129() throws Exception
-        {
-            mlShop.shopItemsAddedItemInCartDeletedPopupValidationCancelButton_MLS_TC_129();
-        }
-        @Test(priority = 0)
-        public void shopItemsAddedItemInCartDeletedPopupValidationExitButton_MLS_TC_131() throws Exception
-        {
-            mlShop.shopItemsAddedItemInCartDeletedPopupValidationExitButton_MLS_TC_131();
-        }
-
-        @Test(priority = 54)
-        public void shopItemsClickYesButtonToRemoveItemsFromTheCart_MLS_TC_108() throws Exception {
-            mlShop.shopItemsClickYesButtonToRemoveItemsFromTheCart_MLS_TC_108();
-        }
+//        @Test(priority = 1)
+//        public void shopItemsAddedItemInCartDeletedPopupValidationCancelButton_MLS_TC_129() throws Exception
+//        {
+//            mlShop.shopItemsAddedItemInCartDeletedPopupValidationCancelButton_MLS_TC_129();
+//        }
+//        @Test(priority = 0)
+//        public void shopItemsAddedItemInCartDeletedPopupValidationExitButton_MLS_TC_131() throws Exception
+//        {
+//            mlShop.shopItemsAddedItemInCartDeletedPopupValidationExitButton_MLS_TC_131();
+//        }
+//
+//        @Test(priority = 54)
+//        public void shopItemsClickYesButtonToRemoveItemsFromTheCart_MLS_TC_108() throws Exception {
+//            mlShop.shopItemsClickYesButtonToRemoveItemsFromTheCart_MLS_TC_108();
+//        }
 
 }

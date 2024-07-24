@@ -6,6 +6,10 @@ import org.openqa.selenium.WebElement;
 import static utilities.Driver.DriverManager.getDriver;
 
 public class Google_PageObjects {
+
+    public WebElement signinKPX(){
+        return getDriver().findElement(By.xpath("//*[contains(text(), 'SIGN IN WITH KPX')]"));
+    }
     public WebElement googleContainer (){
         return getDriver().findElement(By.cssSelector("[role='button']"));
     }
