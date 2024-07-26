@@ -111,6 +111,9 @@ public class TierUpgradeObjects extends AppiumDriverManager {
     public WebElement objMaleGender(){
         return driver.findElement(By.xpath("//*[@text='Male']"));
     }
+    public WebElement objOtherSourceOfIncome(){
+        return driver.findElement(By.xpath("//*[@text='OTHER SOURCE OF INCOME']"));
+    }
     //  Search field
     public WebElement objSearchFieldInput(){
         return driver.findElement(By.xpath("//*[@class='android.widget.EditText']"));
@@ -138,6 +141,9 @@ public class TierUpgradeObjects extends AppiumDriverManager {
     //  Confirm details btn
     public WebElement objConfirmDetails(){
         return driver.findElement(By.xpath("//*[@text='Confirm Details']"));
+    }
+    public WebElement objContinueBtn(){
+        return driver.findElement(By.xpath("//*[@text='Continue']"));
     }
     //  Tier Upgrade btn
     public WebElement objTierUpgrade(){
@@ -252,6 +258,27 @@ public class TierUpgradeObjects extends AppiumDriverManager {
     public WebElement objCardInputField(){
         return driver.findElement(By.xpath("//*[@class='android.widget.EditText']"));
     }
+    public WebElement objExpiryDateField(){
+        return driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"Expiry Date, \uE935\"]"));
+    }
+    public WebElement objCardError(){
+        return driver.findElement(By.xpath("//*[@text='ID Card Number is required.']"));
+    }
+    public WebElement objExpiryDateError(){
+        return driver.findElement(By.xpath("//*[@text='ID Expiry Date is required.']"));
+    }
+    public WebElement objTierMessage(){
+        return driver.findElement(By.xpath("//*[@text='You may wait for us to complete your verification']"));
+    }
+    public WebElement objConfirmTierBtn(){
+        return driver.findElement(By.xpath("//*[@text='Confirm']"));
+    }
+    public WebElement objPendingVerificationMessage(){
+        return driver.findElement(By.xpath("//*[@text='Waiting for pending verification']"));
+    }
+    public WebElement objLetsTakePicture(){
+        return driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"Let's Take a Picture\"]/android.widget.TextView"));
+    }
     //  Scan Front of ID
     public WebElement objScanFrontOfID(){
         return driver.findElement(By.xpath("//*[@text='Scan Front of ID']"));
@@ -276,8 +303,23 @@ public class TierUpgradeObjects extends AppiumDriverManager {
     public WebElement objPhilHealth(){
         return driver.findElement(By.xpath("//*[@text='PHILHEALTH']"));
     }
+    //  GSIS
+    public WebElement objGSIS(){
+        return driver.findElement(By.xpath("//*[@text='GSIS (E-CARD)']"));
+    }
+    //  DRIVERS LICENSE
+    public WebElement objDriverLicense(){
+        return driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"DRIVER'S LICENSE\"]/android.widget.TextView"));
+    }
+    //android.view.ViewGroup[@content-desc="DRIVER'S LICENSE"]/android.widget.TextView
     //  Scan Front of ID Info
     public WebElement objScanFrontOfIDInfo(){
+        return driver.findElement(By.xpath("(//*[@resource-id='com.mlhuillier.mlwallet:id/texture_view']/parent::android.widget.FrameLayout/following-sibling::android.widget.TextView)[2]"));
+    }
+    public WebElement objScanBackOfIDInfo(){
+        return driver.findElement(By.xpath("(//*[@resource-id='com.mlhuillier.mlwallet:id/texture_view']/parent::android.widget.FrameLayout/following-sibling::android.widget.TextView)[2]"));
+    }
+    public WebElement objScanFaceOfIDInfo(){
         return driver.findElement(By.xpath("(//*[@resource-id='com.mlhuillier.mlwallet:id/texture_view']/parent::android.widget.FrameLayout/following-sibling::android.widget.TextView)[2]"));
     }
     //  Capture Screen
@@ -371,5 +413,8 @@ public class TierUpgradeObjects extends AppiumDriverManager {
     // is required error message locators
     public WebElement getObjIsRequired(String type){
         return driver.findElement(By.xpath("//*[@text='" + type + "']"));
+    }
+    public WebElement objIsRequiredCompanyEmployerName(){
+        return driver.findElement(By.xpath("//*[@text='Company/Employer Name is required.']"));
     }
 }
